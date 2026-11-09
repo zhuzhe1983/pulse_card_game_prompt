@@ -1,1 +1,6 @@
 .DS_Store
+
+# Private source artwork and intermediate exports
+*.[cC][dD][rR]
+/card_export*/
+/card_assets*.zip
