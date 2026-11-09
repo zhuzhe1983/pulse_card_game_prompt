@@ -1,0 +1,27 @@
+{
+  "save_schema_version": 1,
+  "snapshot_id": "40000000-0000-4000-8000-000000000000",
+  "parent_snapshot_id": null,
+  "history_tail": [],
+  "player_id": "10000000-0000-4000-8000-000000000001",
+  "writer_device_id": "20000000-0000-4000-8000-000000000001",
+  "save_seq": 0,
+  "modified_at_ms": 1794103200000,
+  "game_calendar_offset_min": 480,
+  "nickname": "小栈",
+  "collection": [],
+  "decks": [],
+  "wallet": {
+    "shards": 0
+  },
+  "day_ledger": {
+    "day_id": 0,
+    "claims": []
+  },
+  "clock": {
+    "high_water_utc_ms": 0,
+    "high_water_day_id": 0,
+    "last_source": "unknown"
+  },
+  "extensions": {}
+}

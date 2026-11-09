@@ -1,0 +1,305 @@
+{
+  "release": "1.0.0",
+  "files": [
+    {
+      "path": "CONTRACT.json",
+      "bytes": 1223,
+      "sha256": "ff1812716af5373edb77dec47c5b8e15d931b096908a7a8fc50e72031424fc07"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2765,
+      "sha256": "4fad158656d4aaf60983dbeefa11cb68cc96c610f1eefaa159976565c9e9b566"
+    },
+    {
+      "path": "REQUIREMENTS.html",
+      "bytes": 364246,
+      "sha256": "78c06898583f266d74f2a157fa1c927a7d5ae8e5a6e25fb1a826f4a6f7bd8be6"
+    },
+    {
+      "path": "START_HERE.txt",
+      "bytes": 5791,
+      "sha256": "0ba2e7423bbe33afea16f60cae9b6946159262c62e270f0ddf73bb53c719ffc6"
+    },
+    {
+      "path": "UNIVERSAL_PROMPT_FULL.txt",
+      "bytes": 384210,
+      "sha256": "350d1bd632988aaad9b1ded7f27adfd0e9d69ebc5fb9a9632c664558ccd6a2d1"
+    },
+    {
+      "path": "VALIDATION_REPORT.txt",
+      "bytes": 11376,
+      "sha256": "e06ae684b260ddf4814b321a5d07790966654820b877a2d27ec76698fb51a66b"
+    },
+    {
+      "path": "content/core_pack.json",
+      "bytes": 5997,
+      "sha256": "33b9c16549598bb20cdbbfdbc4ea8b1fff19409788e34b17ad94c74549e58311"
+    },
+    {
+      "path": "content/manifest.json",
+      "bytes": 484,
+      "sha256": "51a60c099d0d34f066148f57e33e0d5ada0080fd73ca3d250004dda6ebd89303"
+    },
+    {
+      "path": "content/zh-CN.json",
+      "bytes": 881,
+      "sha256": "d91d73f68caf11693754a2de615bdad87b02030dd84b817369e8804107704983"
+    },
+    {
+      "path": "docs/00_PRODUCT_AND_DECISIONS.md",
+      "bytes": 8298,
+      "sha256": "e1581c670ee53d474e7cba9cc4a119d0f4f0d77770ff6ff6f4cc940119ac8056"
+    },
+    {
+      "path": "docs/01_GAMEPLAY.md",
+      "bytes": 38313,
+      "sha256": "c94dddff6531a5c9799357cc652fb9b46e94b4e45d019f616f7b70624e76be5e"
+    },
+    {
+      "path": "docs/02_STYLE_AND_UX.md",
+      "bytes": 28340,
+      "sha256": "167a34b6ae49f9a8b76a8fc66637176fb09bab7010e46d447d0c3241828bb3f7"
+    },
+    {
+      "path": "docs/03_NFC_PLAYER_SAVE.md",
+      "bytes": 30644,
+      "sha256": "ab3c9c68285e7e09a5a86d2d2e39c1383d63e3b206a61ea88a71da272f54133c"
+    },
+    {
+      "path": "docs/04_WIRE_PROTOCOL.md",
+      "bytes": 39184,
+      "sha256": "a8271095517df1f6596174c011a899115109b9341a703c1f8b8bd7b0284a82dc"
+    },
+    {
+      "path": "docs/05_PLATFORM_ADAPTERS.md",
+      "bytes": 21534,
+      "sha256": "09be9a2ac13c40d70d1e78bc4acafbd271fb212c043fa6690956466ab008d742"
+    },
+    {
+      "path": "docs/06_VERSION_COMPATIBILITY.md",
+      "bytes": 15803,
+      "sha256": "a01c7190416afb4e6c0291b1b8827b5f1f81c51a3fa96aa0ceeaba2267deea16"
+    },
+    {
+      "path": "docs/07_ACCEPTANCE_AND_RECOVERY.md",
+      "bytes": 7542,
+      "sha256": "dd2c78a5e9ea3f9c8b8131d64e2646d38d23e41c1b6c937a5008de5e648b5cd2"
+    },
+    {
+      "path": "docs/08_AGENT_IMPLEMENTATION_CONTRACT.md",
+      "bytes": 7065,
+      "sha256": "4e05a17cb5fc68fb2d0e26f8a29fd7cf83960a49a234f1dd2782ef4cffd9d329"
+    },
+    {
+      "path": "docs/09_TUTORIAL_AND_PLAYTEST.md",
+      "bytes": 32550,
+      "sha256": "029b3a29c201e5cb66ccbef12ef40b79f772f31f39505677673897628110d547"
+    },
+    {
+      "path": "docs/10_SOURCES_AND_MATERIALS.md",
+      "bytes": 14639,
+      "sha256": "f0a9bd2260ee76a24b3b92992bc7d40dede502a450cea9bfcae3c1ba0b6b3698"
+    },
+    {
+      "path": "docs/11_REFERENCE_AND_DATA_CONTRACT.md",
+      "bytes": 9338,
+      "sha256": "7121f202e4ce628a9620421f311ac600fe75ca36f24ab3a7005ac621147b4724"
+    },
+    {
+      "path": "docs/12_LOBBY_AND_SESSION.md",
+      "bytes": 8909,
+      "sha256": "918cd882ec8557ce90edd08386fbb0e61267c880affbc7bd10a74f91671e1131"
+    },
+    {
+      "path": "examples/battle_view_player0.json",
+      "bytes": 1946,
+      "sha256": "c7bb1db67ccf02b41ca4aaef2ccd7d1d7e19cb4a8cb14b3f3759e0cbd6f1dc71"
+    },
+    {
+      "path": "examples/battle_view_spectator.json",
+      "bytes": 1067,
+      "sha256": "a5d8afaf28d5d7107b9fa4cc4503c67510ae0b3337e324f860e07590bd7df578"
+    },
+    {
+      "path": "examples/hero_blind_box.json",
+      "bytes": 176,
+      "sha256": "573144a10a3313a50d895e3b42c454554f6e5e6486ec215dcc0302306dec783f"
+    },
+    {
+      "path": "examples/hero_fixed.json",
+      "bytes": 174,
+      "sha256": "27426a85d7e670f9a800104fec8cc6581e9d5c65ed169cea7699ddb2eea202cf"
+    },
+    {
+      "path": "examples/player_after_claim.json",
+      "bytes": 1329,
+      "sha256": "f029f796104fac3b5bcfe17c187ee6c4450bc45d4e3e4c3927e6a2c3ee60f524"
+    },
+    {
+      "path": "examples/player_initial.json",
+      "bytes": 618,
+      "sha256": "e9e65c37e64ad1682ae77afba3a40376ccdfd1858758cf24bf991908d5cb2e81"
+    },
+    {
+      "path": "examples/wire_examples.json",
+      "bytes": 32409,
+      "sha256": "974f8c537cf284f55cb0cfb27cb00490d5c56fb14a9b3b035787a311e3ddb9e7"
+    },
+    {
+      "path": "fixtures/battle_golden.json",
+      "bytes": 110350,
+      "sha256": "49d1b24e8640e0489c1b4b322927ee84aa4680841ff9c47fa4cf4c8d7ac87292"
+    },
+    {
+      "path": "fixtures/battle_summary.json",
+      "bytes": 13998,
+      "sha256": "a8206b3393f74e7f4eb77f9abd65e5954cf6f52407983f7f01b8b0e10317d85b"
+    },
+    {
+      "path": "fixtures/canonical_vectors.json",
+      "bytes": 1763,
+      "sha256": "9477ba4b19cc3681b2a90444136d21e8b2fe67778d7fba5786771ca12958d1f6"
+    },
+    {
+      "path": "fixtures/capacity_examples.json",
+      "bytes": 1117,
+      "sha256": "ffb2bf4e89cfef38901047a71715788488eb4ca42d21297117a573f087bbeb00"
+    },
+    {
+      "path": "fixtures/draw_vectors.json",
+      "bytes": 4972,
+      "sha256": "5e55c1ecf53cd9f9ec1f8b3de25fc2ed21205884e5b89663e2a9d0288bbdfe21"
+    },
+    {
+      "path": "fixtures/player_card_codec0.bin",
+      "bytes": 1142,
+      "sha256": "fe31aa48c701ec9f7b410b05c9d4e7660e384d2d201a674668551189da64d580"
+    },
+    {
+      "path": "fixtures/player_card_ndef.bin",
+      "bytes": 1178,
+      "sha256": "ab8222e0d880535a3e69037ad6faff25cd8bc87ca65de6cfe2eb7083796d8a98"
+    },
+    {
+      "path": "fixtures/player_card_raw_dual.bin",
+      "bytes": 8192,
+      "sha256": "65a61f76ca6182e1490c0270bffde5b5e41352c8315d22c2138fc9c9172c0692"
+    },
+    {
+      "path": "fixtures/storage_vectors.json",
+      "bytes": 6563,
+      "sha256": "b42fa54277c0dca32a1d053d04ab6cf0f6cfd14ca6c2df352023478a82d2e78b"
+    },
+    {
+      "path": "fixtures/wire_golden.json",
+      "bytes": 2979,
+      "sha256": "dfa01ac5a12a7647a46f13416c38801587db4823bf5d79769b46e2dcc5afc2aa"
+    },
+    {
+      "path": "reference/__init__.py",
+      "bytes": 65,
+      "sha256": "627fd4e5db896741b28cade884f7c17319d145c6d9a1110da0fc8cbd34029cf0"
+    },
+    {
+      "path": "reference/battle.py",
+      "bytes": 13500,
+      "sha256": "e670ff3184d62736714cb7909d9ecdd1fcc3ce2623f6980f5bff40e9f25ee2c5"
+    },
+    {
+      "path": "reference/common.py",
+      "bytes": 3229,
+      "sha256": "6254742cf52f4092a67a7b091410b1565873f6cc95a484aa778abafcde5d586f"
+    },
+    {
+      "path": "reference/nfc_storage.py",
+      "bytes": 8553,
+      "sha256": "08213e231ddee88dd67236de563df4dd24f481b6ad57bf65261aef1aca7827a2"
+    },
+    {
+      "path": "reference/player.py",
+      "bytes": 14805,
+      "sha256": "a67705463e4b6671cc79c7b5a4e06c0db23bba8ca3acb6807d0bba446cb4d377"
+    },
+    {
+      "path": "reference/runner.py",
+      "bytes": 2540,
+      "sha256": "faa72bfd9cceb7c8927d12348a47471d68634b46c62be5eed4c296f56fb2f2e6"
+    },
+    {
+      "path": "reference/wire.py",
+      "bytes": 8104,
+      "sha256": "c6eb707dbd349059a644602c40e02b671e3d874e81e837485c55d7a6adbdacb4"
+    },
+    {
+      "path": "schemas/battle-state.schema.json",
+      "bytes": 6417,
+      "sha256": "1443aec6613f10def459531c938bce3c6edd31d11ba515981206c29aa86ef6e8"
+    },
+    {
+      "path": "schemas/battle-view.schema.json",
+      "bytes": 7063,
+      "sha256": "6cb3d38c7dc2b4d5cc5404229617f2a27822d532b382642ec91a2decbfa5adcb"
+    },
+    {
+      "path": "schemas/content-pack.schema.json",
+      "bytes": 8175,
+      "sha256": "9156c725152a216d0f493382b0889baf8433609f14ff0ce6c1134b0535751ba8"
+    },
+    {
+      "path": "schemas/envelope.schema.json",
+      "bytes": 29952,
+      "sha256": "1c1405e880d2149268fea949d545352df429ba7052f09abba248d8e75cf82567"
+    },
+    {
+      "path": "schemas/frame.schema.json",
+      "bytes": 2984,
+      "sha256": "cd4f23a5ff7f5b981f3c3d324c7d1134032e73680ae1c5e6cc507d4baac40e1b"
+    },
+    {
+      "path": "schemas/hero-descriptor.schema.json",
+      "bytes": 1879,
+      "sha256": "b2d766eb6ae186782348d46c6dcb337a83f0bdb3603501d7bdc8c9a71cef8ce9"
+    },
+    {
+      "path": "schemas/player-snapshot.schema.json",
+      "bytes": 8587,
+      "sha256": "5ed35ca41f5247cfde0e97c2e8fc3ab5fd8e3d3d607f9b00c5e583d692cac268"
+    },
+    {
+      "path": "schemas/reader-capabilities.schema.json",
+      "bytes": 2246,
+      "sha256": "8126d389e31393a15f671ff864648a852360be8befdad577129d8b95acd9920b"
+    },
+    {
+      "path": "templates/CARD_SCAN_REPORT.json",
+      "bytes": 633,
+      "sha256": "1aa0ecfb2d1d588b4dc1244aa48b3e7a5f46b00300e4ac2d120c491dabb03dcf"
+    },
+    {
+      "path": "templates/TARGET_PROFILE.json",
+      "bytes": 1247,
+      "sha256": "8d8f8933a5a6b56baca77488d84ac695915bd24e942fa819959fe827e4bab1c4"
+    },
+    {
+      "path": "tests/test_core.py",
+      "bytes": 12772,
+      "sha256": "ef34f662ed0e5f0caedb2b1ffbf7115b1e0e208bf123829fd671373171eeabfd"
+    },
+    {
+      "path": "tests/test_storage.py",
+      "bytes": 20745,
+      "sha256": "ac91240370fde8c688c865025980f53b99cb596eccf8a24bbbe8e1bc355f3473"
+    },
+    {
+      "path": "tests/test_wire.py",
+      "bytes": 16648,
+      "sha256": "85c50a32eaf2d14e2fe9647acb6eea1db1d41d0f6d16935470cd9fde801ca11d"
+    },
+    {
+      "path": "tests/validate_schemas.py",
+      "bytes": 8002,
+      "sha256": "4b52270bade891d7f1c5a0670bd21f0f080aafb57fc51cdd4c0d0336957b28fd"
+    }
+  ]
+}

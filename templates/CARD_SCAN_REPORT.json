@@ -1,0 +1,19 @@
+{
+  "report_version": 1,
+  "captured_at_utc": "REQUIRED",
+  "reader_model": "REQUIRED",
+  "reader_firmware_or_library": "REQUIRED",
+  "tag_label": "REQUIRED",
+  "technology": "unknown",
+  "uid_hex": null,
+  "uid_is_stable_after_removal": null,
+  "uid_byte_order": "raw RF order; must be verified",
+  "ndef_readable": null,
+  "ndef_writable": null,
+  "ndef_message_capacity_bytes": null,
+  "raw_application_capacity_bytes": null,
+  "ndef_records": [],
+  "safe_test_region": null,
+  "write_readback_verified": false,
+  "notes": "Do not publish private keys or a real player save. Never destructively probe an unknown official card."
+}

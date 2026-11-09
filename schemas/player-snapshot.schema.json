@@ -1,0 +1,346 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pcg:schema:player-snapshot:1",
+  "type": "object",
+  "properties": {
+    "save_schema_version": {
+      "const": 1
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "parent_snapshot_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "history_tail": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+      },
+      "minItems": 0,
+      "maxItems": 16,
+      "uniqueItems": true
+    },
+    "player_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "writer_device_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "save_seq": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "modified_at_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "game_calendar_offset_min": {
+      "const": 480
+    },
+    "nickname": {
+      "type": "string",
+      "maxLength": 32
+    },
+    "collection": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "template_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "obtained_at_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "draw_count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "mastery": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "skin_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "unlocked_skins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "minItems": 1,
+            "maxItems": 32,
+            "uniqueItems": true
+          },
+          "nickname": {
+            "type": "string",
+            "maxLength": 32
+          }
+        },
+        "required": [
+          "template_id",
+          "obtained_at_ms",
+          "draw_count",
+          "mastery",
+          "skin_id",
+          "unlocked_skins",
+          "nickname"
+        ],
+        "additionalProperties": {
+          "$ref": "#/$defs/json_value"
+        }
+      },
+      "minItems": 0,
+      "maxItems": 1024
+    },
+    "decks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "deck_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "template_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "minItems": 10,
+            "maxItems": 10,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "deck_id",
+          "name",
+          "template_ids"
+        ],
+        "additionalProperties": {
+          "$ref": "#/$defs/json_value"
+        }
+      },
+      "minItems": 0,
+      "maxItems": 16
+    },
+    "wallet": {
+      "type": "object",
+      "properties": {
+        "shards": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "shards"
+      ],
+      "additionalProperties": {
+        "$ref": "#/$defs/json_value"
+      }
+    },
+    "day_ledger": {
+      "type": "object",
+      "properties": {
+        "day_id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "hero_card_id": {
+                "type": "string",
+                "pattern": "^(uid:[0-9a-f]{64}|issued:[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$"
+              },
+              "template_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "claim_id": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "claimed_at_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "pool_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "pool_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "hero_card_id",
+              "template_id",
+              "claim_id",
+              "claimed_at_ms",
+              "pool_id",
+              "pool_hash"
+            ],
+            "additionalProperties": {
+              "$ref": "#/$defs/json_value"
+            }
+          },
+          "minItems": 0,
+          "maxItems": 512
+        }
+      },
+      "required": [
+        "day_id",
+        "claims"
+      ],
+      "additionalProperties": {
+        "$ref": "#/$defs/json_value"
+      }
+    },
+    "clock": {
+      "type": "object",
+      "properties": {
+        "high_water_utc_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "high_water_day_id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "last_source": {
+          "enum": [
+            "unknown",
+            "manual",
+            "device",
+            "network",
+            "server"
+          ]
+        }
+      },
+      "required": [
+        "high_water_utc_ms",
+        "high_water_day_id",
+        "last_source"
+      ],
+      "additionalProperties": {
+        "$ref": "#/$defs/json_value"
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[\\x20-\\x7e]+$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/json_value"
+      }
+    }
+  },
+  "required": [
+    "save_schema_version",
+    "snapshot_id",
+    "parent_snapshot_id",
+    "history_tail",
+    "player_id",
+    "writer_device_id",
+    "save_seq",
+    "modified_at_ms",
+    "game_calendar_offset_min",
+    "nickname",
+    "collection",
+    "decks",
+    "wallet",
+    "day_ledger",
+    "clock",
+    "extensions"
+  ],
+  "additionalProperties": {
+    "$ref": "#/$defs/json_value"
+  },
+  "description": "Unknown additive fields are permitted for lossless round-trip; unknown save_schema_version is read-only. Also enforce canonical length <=65536, unique template_id/hero_card_id, nickname UTF-8 <=96 bytes, lineage and skin membership semantics.",
+  "$defs": {
+    "json_value": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/json_value"
+          }
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[\\x20-\\x7e]+$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/json_value"
+          }
+        }
+      ]
+    }
+  }
+}

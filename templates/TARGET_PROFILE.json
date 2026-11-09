@@ -1,0 +1,46 @@
+{
+  "profile_version": 1,
+  "target_name": "REQUIRED: esp32_papermono | esp32_dial | android | ios | macos | web | custom",
+  "repository_path": null,
+  "hardware": {
+    "board_exact_model": null,
+    "board_revision": null,
+    "framework_preference": "auto",
+    "flash_bytes": null,
+    "psram_bytes": null,
+    "display_width": null,
+    "display_height": null,
+    "display_kind": "unknown",
+    "inputs": [],
+    "nfc_reader_exact_model": null,
+    "reader_connection": null,
+    "reader_voltage": null,
+    "grove_port_pin_map": null
+  },
+  "software": {
+    "os_min_version": null,
+    "browser_targets": [],
+    "preferred_language": "auto",
+    "existing_code_path": null
+  },
+  "transport": {
+    "primary": "wss",
+    "authority_base_url": null,
+    "implement_reference_authority_if_missing": true,
+    "extra_adapters": []
+  },
+  "cards": {
+    "hero_samples_available": false,
+    "player_card_chip_model": null,
+    "player_card_effective_bytes": null,
+    "player_card_profile": "auto_detect_verified",
+    "legacy_uid_mapping_file": null
+  },
+  "delivery": {
+    "locale": "zh-CN",
+    "full_client": true,
+    "core_v1_required": true,
+    "allow_mock_reader_for_development": true,
+    "publish_or_store_release": false
+  }
+}

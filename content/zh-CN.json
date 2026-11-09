@@ -1,0 +1,28 @@
+{
+  "locale": "zh-CN",
+  "names": {
+    "core2_guard": "CORE2 · 核心守卫",
+    "atom_scout": "ATOM · 侦察兵",
+    "stickc_operator": "StickC · 通讯员",
+    "dial_router": "Dial · 调度员",
+    "paper_archive": "PaperMono · 档案官",
+    "echo_booster": "Echo · 扩音手",
+    "cardputer_hacker": "Cardputer · 干扰员",
+    "lora_relay": "LoRa · 中继手",
+    "stamp_sentry": "Stamp · 哨兵",
+    "tough_guard": "TOUGH · 护卫",
+    "atom_matrix_link": "ATOM Matrix · 协作员",
+    "unit_cam_scout": "Unit Cam · 观察员",
+    "signal_boost": "增益信号",
+    "signal_jam": "干扰信号"
+  },
+  "skin_names": {
+    "base": "原型",
+    "ink": "墨线"
+  },
+  "rarity_names": {
+    "ordinary": "伙伴",
+    "hero": "英雄"
+  },
+  "note": "英雄为收藏分类；standard14全部模板免费借用，稀有度不改变同模板战力。"
+}

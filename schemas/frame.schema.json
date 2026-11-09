@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pcg:schema:frame:1",
+  "title": "PCG-F1 decoded frame",
+  "description": "JSON inspection form of the 24-byte binary header, followed by payload. This JSON is NOT sent on the radio. All multi-byte wire integers are big-endian. Additional CRC/length/fragment/bitmap cross-field checks are mandatory.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "magic": {
+      "const": "PC"
+    },
+    "frame_version": {
+      "const": 1
+    },
+    "kind": {
+      "enum": [
+        1,
+        2,
+        16,
+        17
+      ]
+    },
+    "link_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "transfer_id": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "total_len": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 8192
+    },
+    "frag_index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 127
+    },
+    "frag_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 128
+    },
+    "payload_len": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 176
+    },
+    "flags": {
+      "const": 0
+    },
+    "crc32": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "payload_hex": {
+      "type": "string",
+      "pattern": "^(?:[0-9a-f]{2})*$",
+      "maxLength": 352
+    }
+  },
+  "required": [
+    "magic",
+    "frame_version",
+    "kind",
+    "link_id",
+    "transfer_id",
+    "total_len",
+    "frag_index",
+    "frag_count",
+    "payload_len",
+    "flags",
+    "crc32",
+    "payload_hex"
+  ],
+  "oneOf": [
+    {
+      "properties": {
+        "kind": {
+          "const": 1
+        },
+        "transfer_id": {
+          "minimum": 1
+        },
+        "total_len": {
+          "minimum": 1
+        },
+        "frag_count": {
+          "minimum": 1
+        },
+        "payload_len": {
+          "minimum": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "const": 2
+        },
+        "transfer_id": {
+          "minimum": 1
+        },
+        "total_len": {
+          "minimum": 1
+        },
+        "frag_count": {
+          "minimum": 1
+        },
+        "frag_index": {
+          "const": 0
+        },
+        "payload_len": {
+          "const": 16
+        },
+        "payload_hex": {
+          "minLength": 32,
+          "maxLength": 32
+        }
+      }
+    },
+    {
+      "properties": {
+        "kind": {
+          "enum": [
+            16,
+            17
+          ]
+        },
+        "transfer_id": {
+          "const": 0
+        },
+        "total_len": {
+          "const": 0
+        },
+        "frag_count": {
+          "const": 0
+        },
+        "frag_index": {
+          "const": 0
+        },
+        "payload_len": {
+          "const": 8
+        },
+        "payload_hex": {
+          "minLength": 16,
+          "maxLength": 16
+        }
+      }
+    }
+  ]
+}

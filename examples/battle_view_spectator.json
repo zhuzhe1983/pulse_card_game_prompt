@@ -1,0 +1,49 @@
+{
+  "ruleset_id": "pcg.core.v1",
+  "content_hash": "04fdd26a10af50aada7ade7f34ec97be2c24df67786be687a878b0299a46dbaf",
+  "match_id": "match_golden_01",
+  "revision": 1,
+  "round_index": 1,
+  "phase": "playing",
+  "round_starter": 0,
+  "turn_player": 1,
+  "players": [
+    {
+      "player_id": "10000000-0000-4000-8000-000000000001",
+      "board": [
+        {
+          "instance_id": "p0:00",
+          "template_id": "core2_guard",
+          "row": "front",
+          "base_power": 6,
+          "power": 6,
+          "shield": false,
+          "stable": false,
+          "deploy_order": 1
+        }
+      ],
+      "discard": [],
+      "played_count": 1,
+      "passed": false,
+      "match_points": 0,
+      "hand_count": 9
+    },
+    {
+      "player_id": "10000000-0000-4000-8000-000000000002",
+      "board": [],
+      "discard": [],
+      "played_count": 0,
+      "passed": false,
+      "match_points": 0,
+      "hand_count": 10
+    }
+  ],
+  "round_results": [],
+  "winner": null,
+  "result_reason": null,
+  "viewer_seat": null,
+  "scores": [
+    6,
+    0
+  ]
+}

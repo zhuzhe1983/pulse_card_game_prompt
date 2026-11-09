@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pcg:schema:reader-capabilities:1",
+  "type": "object",
+  "properties": {
+    "reader_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "connection": {
+      "enum": [
+        "builtin",
+        "grove_i2c",
+        "grove_uart",
+        "usb_pcsc",
+        "usb_vendor",
+        "usb_hid_uid",
+        "ble_bridge",
+        "web_nfc",
+        "local_bridge",
+        "mock"
+      ]
+    },
+    "supported_tag_technologies": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "nfc-a",
+          "nfc-b",
+          "nfc-f",
+          "nfc-v",
+          "unknown"
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 5,
+      "uniqueItems": true
+    },
+    "supports_stable_uid": {
+      "type": "boolean"
+    },
+    "supports_ndef_read": {
+      "type": "boolean"
+    },
+    "supports_ndef_write": {
+      "type": "boolean"
+    },
+    "supports_raw_read": {
+      "type": "boolean"
+    },
+    "supports_raw_write": {
+      "type": "boolean"
+    },
+    "supports_tag_removal": {
+      "type": "boolean"
+    },
+    "supports_capacity_query": {
+      "type": "boolean"
+    },
+    "max_ndef_message_bytes": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "raw_application_bytes": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "verified_on_hardware": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 2048
+    }
+  },
+  "required": [
+    "reader_id",
+    "connection",
+    "supported_tag_technologies",
+    "supports_stable_uid",
+    "supports_ndef_read",
+    "supports_ndef_write",
+    "supports_raw_read",
+    "supports_raw_write",
+    "supports_tag_removal",
+    "supports_capacity_query",
+    "max_ndef_message_bytes",
+    "raw_application_bytes",
+    "verified_on_hardware",
+    "notes"
+  ],
+  "additionalProperties": false
+}

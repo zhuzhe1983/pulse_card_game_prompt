@@ -1,0 +1,50 @@
+{
+  "save_schema_version": 1,
+  "snapshot_id": "40000000-0000-4000-8000-000000000001",
+  "parent_snapshot_id": "40000000-0000-4000-8000-000000000000",
+  "history_tail": [
+    "40000000-0000-4000-8000-000000000000"
+  ],
+  "player_id": "10000000-0000-4000-8000-000000000001",
+  "writer_device_id": "20000000-0000-4000-8000-000000000001",
+  "save_seq": 1,
+  "modified_at_ms": 1794103200001,
+  "game_calendar_offset_min": 480,
+  "nickname": "小栈",
+  "collection": [
+    {
+      "template_id": "echo_booster",
+      "obtained_at_ms": 1794103200000,
+      "draw_count": 1,
+      "mastery": 0,
+      "skin_id": "base",
+      "unlocked_skins": [
+        "base"
+      ],
+      "nickname": ""
+    }
+  ],
+  "decks": [],
+  "wallet": {
+    "shards": 0
+  },
+  "day_ledger": {
+    "day_id": 20765,
+    "claims": [
+      {
+        "hero_card_id": "issued:30000000-0000-4000-8000-000000000002",
+        "template_id": "echo_booster",
+        "claim_id": "c573786cf207b8e28d328ac2dc9f2cbaca60c1151710cdb417b7c4eb09accf8e",
+        "claimed_at_ms": 1794103200000,
+        "pool_id": "m5.roles.v1",
+        "pool_hash": "8180eebdab6f9992a8589d4b47e48db3ac8b24e7da23651c10e64c3bd1cfc4ff"
+      }
+    ]
+  },
+  "clock": {
+    "high_water_utc_ms": 1794103200000,
+    "high_water_day_id": 20765,
+    "last_source": "network"
+  },
+  "extensions": {}
+}
