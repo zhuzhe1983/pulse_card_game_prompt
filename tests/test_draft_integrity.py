@@ -241,35 +241,48 @@ class WordingTests(unittest.TestCase):
         report = (preview / "validation" / "compare_report.json").read_text(encoding="utf-8")
         self.assertNotIn("/workspace/", report)
         self.assertIn('"diff_pixels": 0', report)
-        diff = subprocess.check_output(["git", "diff", "--name-only", "HEAD", "--", "asset/card"], cwd=ROOT, text=True)
-        self.assertEqual(diff.strip(), "")
+        self.assertEqual(len(list((ROOT / "asset" / "card").glob("[0-9][0-9]_*.png"))), 0)
 
     def test_offical_archive_spec_waits_for_package(self):
         import hashlib
         spec = load("asset/offical/MANIFEST.json")
-        self.assertEqual(spec["archive_status"], "awaiting_design_package")
-        self.assertEqual(spec["directory_spelling"], "offical")
+        self.assertEqual(spec["archive_status"], "originals_archived_design_package_pending")
+        self.assertFalse(spec["design_package_received"])
         self.assertIsNone(spec["background_token"]["value"])
-        self.assertFalse(spec["copies_written"])
         self.assertFalse(spec["original_assets_recolored"])
-        names = {item["slot"]: item for item in spec["new_products_reserved"]}
-        self.assertEqual(names["CardputerZero"]["official_product_name"], "CardputerZero")
-        self.assertIsNone(names["StampFly"]["official_product_name"])
-        blocked = [item for item in spec["legacy_filename_map"] if item["status"] == "blocked"]
-        self.assertGreaterEqual(len(blocked), 10)
+        self.assertTrue(spec["copies_written"])
+        labels = {}
+        for item in spec["files"]:
+            self.assertNotRegex(item["filename"], r"^[0-9]{2}_")
+            self.assertEqual(item["official_card_label"] + ".png", item["filename"])
+            labels.setdefault(item["filename"], item["hardware_product_name"])
+            self.assertEqual(labels[item["filename"]], item["hardware_product_name"])
+        self.assertIsNone(labels["S3.png"])
+        self.assertIsNone(labels["M5PAPER.png"])
+        self.assertIsNone(labels["ATOM.png"])
+        self.assertIsNone(labels["CORE.png"])
+        self.assertEqual(labels["DUALKEY.png"], "Chain DualKey")
+        self.assertEqual(labels["CORE2.png"], "Core2")
+        self.assertNotEqual(labels["STICKC_PLUS.png"], "StickC-Plus2")
         for kind in ("card", "char"):
             recorded = spec["byte_baseline"][kind]
             files = list((ROOT / "asset" / kind).glob("*.png"))
+            archive = list((ROOT / "asset" / "offical" / kind).glob("*.png"))
             self.assertEqual(len(files), 22)
+            self.assertEqual(len(archive), 22)
+            self.assertEqual(sorted(p.name for p in files), sorted(recorded))
             for path in files:
                 info = recorded[path.name]
                 data = path.read_bytes()
+                archived = (ROOT / "asset" / "offical" / kind / path.name).read_bytes()
+                self.assertEqual(data, archived)
                 self.assertEqual(len(data), info["bytes"])
                 self.assertEqual(hashlib.sha256(data).hexdigest(), info["sha256"])
+                self.assertTrue(info["source_file"].startswith(tuple(str(i).zfill(2) for i in range(1, 23))))
         readme = (ROOT / "asset" / "offical" / "README.md").read_text(encoding="utf-8")
         self.assertIn("needs_revision", readme)
         self.assertIn("同一 token", readme)
-        self.assertNotIn("归档完成稿", readme.split("还不是")[0])
+        self.assertIn("还不是最终完成", readme)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 [
   {
-    "file": "01_S3.png",
+    "file": "S3.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -45,10 +45,11 @@
       88.2
     ],
     "inner_gray_mean": 122.3,
-    "inner_gray_stddev": 74.2
+    "inner_gray_stddev": 74.2,
+    "source_file": "01_S3.png"
   },
   {
-    "file": "02_StickS3.png",
+    "file": "StickS3.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -93,10 +94,11 @@
       66.8
     ],
     "inner_gray_mean": 157.2,
-    "inner_gray_stddev": 64.5
+    "inner_gray_stddev": 64.5,
+    "source_file": "02_StickS3.png"
   },
   {
-    "file": "03_AI_PYRAMID_PRO.png",
+    "file": "AI_PYRAMID_PRO.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -141,10 +143,11 @@
       81.8
     ],
     "inner_gray_mean": 180.0,
-    "inner_gray_stddev": 53.2
+    "inner_gray_stddev": 53.2,
+    "source_file": "03_AI_PYRAMID_PRO.png"
   },
   {
-    "file": "04_M5STACK_console_motif.png",
+    "file": "M5STACK_console_motif.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -189,10 +192,11 @@
       66.3
     ],
     "inner_gray_mean": 155.1,
-    "inner_gray_stddev": 64.0
+    "inner_gray_stddev": 64.0,
+    "source_file": "04_M5STACK_console_motif.png"
   },
   {
-    "file": "05_M5STACK_ring_motif.png",
+    "file": "M5STACK_ring_motif.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -237,10 +241,11 @@
       92.1
     ],
     "inner_gray_mean": 144.5,
-    "inner_gray_stddev": 60.1
+    "inner_gray_stddev": 60.1,
+    "source_file": "05_M5STACK_ring_motif.png"
   },
   {
-    "file": "06_VoiceS3R_ATOM.png",
+    "file": "VoiceS3R_ATOM.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -285,10 +290,11 @@
       66.8
     ],
     "inner_gray_mean": 174.9,
-    "inner_gray_stddev": 62.2
+    "inner_gray_stddev": 62.2,
+    "source_file": "06_VoiceS3R_ATOM.png"
   },
   {
-    "file": "07_NanoH2.png",
+    "file": "NanoH2.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -333,10 +339,11 @@
       60.0
     ],
     "inner_gray_mean": 186.5,
-    "inner_gray_stddev": 60.8
+    "inner_gray_stddev": 60.8,
+    "source_file": "07_NanoH2.png"
   },
   {
-    "file": "08_DUALKEY.png",
+    "file": "DUALKEY.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -381,10 +388,11 @@
       67.7
     ],
     "inner_gray_mean": 143.6,
-    "inner_gray_stddev": 61.7
+    "inner_gray_stddev": 61.7,
+    "source_file": "08_DUALKEY.png"
   },
   {
-    "file": "09_StackChan.png",
+    "file": "StackChan.png",
     "group": "A_01-09",
     "w": 638,
     "h": 1004,
@@ -429,10 +437,11 @@
       83.2
     ],
     "inner_gray_mean": 107.1,
-    "inner_gray_stddev": 72.9
+    "inner_gray_stddev": 72.9,
+    "source_file": "09_StackChan.png"
   },
   {
-    "file": "10_CORE.png",
+    "file": "CORE.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -477,10 +486,11 @@
       85.6
     ],
     "inner_gray_mean": 114.0,
-    "inner_gray_stddev": 85.3
+    "inner_gray_stddev": 85.3,
+    "source_file": "10_CORE.png"
   },
   {
-    "file": "11_STICKC.png",
+    "file": "STICKC.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -525,10 +535,11 @@
       50.6
     ],
     "inner_gray_mean": 157.3,
-    "inner_gray_stddev": 49.7
+    "inner_gray_stddev": 49.7,
+    "source_file": "11_STICKC.png"
   },
   {
-    "file": "12_STICKV.png",
+    "file": "STICKV.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -573,10 +584,11 @@
       59.3
     ],
     "inner_gray_mean": 124.1,
-    "inner_gray_stddev": 46.8
+    "inner_gray_stddev": 46.8,
+    "source_file": "12_STICKV.png"
   },
   {
-    "file": "13_UNIT.png",
+    "file": "UNIT.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -621,10 +633,11 @@
       65.0
     ],
     "inner_gray_mean": 154.0,
-    "inner_gray_stddev": 69.0
+    "inner_gray_stddev": 69.0,
+    "source_file": "13_UNIT.png"
   },
   {
-    "file": "14_MODULE.png",
+    "file": "MODULE.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -669,10 +682,11 @@
       93.3
     ],
     "inner_gray_mean": 134.5,
-    "inner_gray_stddev": 85.9
+    "inner_gray_stddev": 85.9,
+    "source_file": "14_MODULE.png"
   },
   {
-    "file": "15_BASE.png",
+    "file": "BASE.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -717,10 +731,11 @@
       92.5
     ],
     "inner_gray_mean": 125.0,
-    "inner_gray_stddev": 92.0
+    "inner_gray_stddev": 92.0,
+    "source_file": "15_BASE.png"
   },
   {
-    "file": "16_BALA.png",
+    "file": "BALA.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -765,10 +780,11 @@
       80.3
     ],
     "inner_gray_mean": 101.2,
-    "inner_gray_stddev": 66.0
+    "inner_gray_stddev": 66.0,
+    "source_file": "16_BALA.png"
   },
   {
-    "file": "17_HAT.png",
+    "file": "HAT.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -813,10 +829,11 @@
       69.7
     ],
     "inner_gray_mean": 186.3,
-    "inner_gray_stddev": 49.2
+    "inner_gray_stddev": 49.2,
+    "source_file": "17_HAT.png"
   },
   {
-    "file": "18_ATOM.png",
+    "file": "ATOM.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -861,10 +878,11 @@
       60.9
     ],
     "inner_gray_mean": 121.9,
-    "inner_gray_stddev": 50.8
+    "inner_gray_stddev": 50.8,
+    "source_file": "18_ATOM.png"
   },
   {
-    "file": "19_STICKC_PLUS.png",
+    "file": "STICKC_PLUS.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -909,10 +927,11 @@
       52.1
     ],
     "inner_gray_mean": 44.2,
-    "inner_gray_stddev": 80.0
+    "inner_gray_stddev": 80.0,
+    "source_file": "19_STICKC_PLUS.png"
   },
   {
-    "file": "20_CORE2.png",
+    "file": "CORE2.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -957,10 +976,11 @@
       94.2
     ],
     "inner_gray_mean": 108.4,
-    "inner_gray_stddev": 82.1
+    "inner_gray_stddev": 82.1,
+    "source_file": "20_CORE2.png"
   },
   {
-    "file": "21_CORE_INK.png",
+    "file": "CORE_INK.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -1005,10 +1025,11 @@
       93.2
     ],
     "inner_gray_mean": 166.5,
-    "inner_gray_stddev": 62.8
+    "inner_gray_stddev": 62.8,
+    "source_file": "21_CORE_INK.png"
   },
   {
-    "file": "22_M5PAPER.png",
+    "file": "M5PAPER.png",
     "group": "B_10-22",
     "w": 638,
     "h": 1004,
@@ -1053,6 +1074,7 @@
       77.6
     ],
     "inner_gray_mean": 156.0,
-    "inner_gray_stddev": 67.5
+    "inner_gray_stddev": 67.5,
+    "source_file": "22_M5PAPER.png"
   }
 ]

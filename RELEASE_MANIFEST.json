@@ -8,8 +8,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3881,
-      "sha256": "2b5e1dde8f1f4767bd4c4c82939b815d8a7ef348caaea5eed24105ada8d04c79"
+      "bytes": 3937,
+      "sha256": "46fd969a09adb5fa54e81c9a5274ee570ae2e0a1760aa09834830ae6bb66b4e2"
     },
     {
       "path": "REQUIREMENTS.html",
@@ -323,8 +323,8 @@
     },
     {
       "path": "docs/visual/original_card_metrics.json",
-      "bytes": 13699,
-      "sha256": "8eefcafb862d83dd439e5c299e26a31a999dabb697ae7db58b5d3cacf5e84a0c"
+      "bytes": 14463,
+      "sha256": "456ab93a6aab5eeb4c36911e3070ee447d66b8f1bf2ee542637d55624c3844be"
     },
     {
       "path": "research/README.md",
@@ -378,8 +378,8 @@
     },
     {
       "path": "tests/test_draft_integrity.py",
-      "bytes": 14685,
-      "sha256": "51f4c072733b0f4484709d09d1b4971ae4ee2ff21495169bf1a48bbaadcb04c5"
+      "bytes": 15415,
+      "sha256": "7f0e85a10995d950753e659cf364f41701b9355a3e637ef6009bb01defc49b46"
     },
     {
       "path": "content/en.json",
@@ -533,13 +533,13 @@
     },
     {
       "path": "asset/offical/README.md",
-      "bytes": 2003,
-      "sha256": "70f7f3e3d25cc76133487ec9f0763280a7a93068768e9af5f08b3535244ed1b7"
+      "bytes": 2033,
+      "sha256": "87cbc0e5cfd29358e0af6bf6e2afd5e4dc3e4573815b14b8998d86914f86c340"
     },
     {
       "path": "asset/offical/MANIFEST.json",
-      "bytes": 10593,
-      "sha256": "dd52bea610394cef000b1783d05713378006b996082c10cb59034285fb5fdfd4"
+      "bytes": 26591,
+      "sha256": "9c50f97c2e9cbdbbad9102c715c92629890f5222ddef02c9cfe85c930b662709"
     }
   ]
 }
