@@ -8,13 +8,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 3317,
-      "sha256": "8cccd478a239aea1e92c77fa2a5aeb8ed847926f5f918c99e405da2bfc04e38c"
+      "bytes": 3511,
+      "sha256": "acd342652e4ccc88e6cc6a25251a2f21c4e7375d60ae8748d12d75f3ebf10fa1"
     },
     {
       "path": "REQUIREMENTS.html",
-      "bytes": 364953,
-      "sha256": "e56c7f1765ef6767320fbae91f981ebf723ca4d34efddb5193fe3453040954f1"
+      "bytes": 364796,
+      "sha256": "b2b17e4ac6fe2c2c47df6749390dc5dbca67ef1b26349b1ff15542fc6c7f6c10"
     },
     {
       "path": "START_HERE.txt",
@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 445965,
-      "sha256": "4d1d9228930536d2337dfd64aa7401e9214abf87e9940b6a583169073c85ba1a"
+      "bytes": 527448,
+      "sha256": "07315f185f4cd9dd9631fb509482a0f921a85749d4382d12c77635611be6bf98"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -38,13 +38,13 @@
     },
     {
       "path": "content/manifest.json",
-      "bytes": 484,
-      "sha256": "51a60c099d0d34f066148f57e33e0d5ada0080fd73ca3d250004dda6ebd89303"
+      "bytes": 499,
+      "sha256": "b4f21d5402a1abf2e1a91d866926cc7d2531f29aefe4a576a33e24966df3b331"
     },
     {
       "path": "content/zh-CN.json",
-      "bytes": 881,
-      "sha256": "d91d73f68caf11693754a2de615bdad87b02030dd84b817369e8804107704983"
+      "bytes": 4167,
+      "sha256": "abdd19ea01ed28da76167bdb46d3cc9b97a26306390a5c3d8107447c24eb7f8c"
     },
     {
       "path": "docs/00_PRODUCT_AND_DECISIONS.md",
@@ -53,13 +53,13 @@
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 38431,
-      "sha256": "7a3fba03bd06d28e2c091a152ecee63aece37e8e5e4301c9df534522628eeace"
+      "bytes": 38242,
+      "sha256": "036da4114efa1b1c14457523d64d0a593552ad54bcaf8eea07e5f7cca73c125c"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
-      "bytes": 28528,
-      "sha256": "1d6a082e980120deade6304406b21acd2a33afa4b5c88a541f846a7c5803eac9"
+      "bytes": 28527,
+      "sha256": "f3796c630661d462afb9c8d58e8b1a6867bafc1f44fc7ad483becb0187f76ea6"
     },
     {
       "path": "docs/03_NFC_PLAYER_SAVE.md",
@@ -93,8 +93,8 @@
     },
     {
       "path": "docs/09_TUTORIAL_AND_PLAYTEST.md",
-      "bytes": 32550,
-      "sha256": "029b3a29c201e5cb66ccbef12ef40b79f772f31f39505677673897628110d547"
+      "bytes": 32572,
+      "sha256": "2900714e9b7b321c21748a440471a45b9aa15eb729a299e01c7ba9fe62e750bf"
     },
     {
       "path": "docs/10_SOURCES_AND_MATERIALS.md",
@@ -303,18 +303,18 @@
     },
     {
       "path": "content/expansion_draft.json",
-      "bytes": 45905,
-      "sha256": "758dd12b9ad6199afde143e3bd2a3741cd918f3aed61f8029949db88ab9f54e3"
+      "bytes": 119803,
+      "sha256": "7b591757c62d8097781b42323b025338f1068eb3f779be2fcfe4b4f1d7ccb2d2"
     },
     {
       "path": "docs/13_WORLD_AND_FACTIONS.md",
-      "bytes": 2497,
-      "sha256": "d781fe6a6a23c42736a77786706515f5f01f8c427a867f399e9c303e7bc94ea5"
+      "bytes": 2533,
+      "sha256": "961d2ed9702614054d4986cb5e8b2d96328fb7d9530482fcf56a24cb30ceb17f"
     },
     {
       "path": "docs/14_EXPANSION_DRAFT.md",
-      "bytes": 9466,
-      "sha256": "d775531e6256068b34f21f9d9fa9162bfc1bf37d720b3a74f95db4b393e26838"
+      "bytes": 10956,
+      "sha256": "1d809104e429d0a02710ecc6896237d2d9b192066129474dea61f9d3984eede9"
     },
     {
       "path": "docs/16_CARD_FACE_STYLES.md",
@@ -328,13 +328,13 @@
     },
     {
       "path": "research/README.md",
-      "bytes": 732,
-      "sha256": "5a0383360184720f6b19f20a819655484d6bd47dbe5dc4af46fc493c5e584301"
+      "bytes": 1073,
+      "sha256": "6332d7cc2633126da94d67004c8609323f8efe1be20face48088298345a0c878"
     },
     {
       "path": "research/hardware_catalog.csv",
-      "bytes": 56019,
-      "sha256": "29b2f0216ab3431a4d1843960953af3d55875ae2f69a8bf92387fa49338a83f8"
+      "bytes": 63889,
+      "sha256": "05e99cdeb85079fe2fa70bef19bbce3eaf161142283d80d5361b3c3bf476817c"
     },
     {
       "path": "research/hardware_catalog.md",
@@ -378,8 +378,18 @@
     },
     {
       "path": "tests/test_draft_integrity.py",
-      "bytes": 5812,
-      "sha256": "57de530f7670d506dc4804f52a46d023606f5c58f1ff4c682892f840b331d1e6"
+      "bytes": 8164,
+      "sha256": "b47747df4cb6dca68b43b2b6e4a82a1c941770b06ddd715f3d9719e6714777ac"
+    },
+    {
+      "path": "content/en.json",
+      "bytes": 2846,
+      "sha256": "c2a962a374d5ff523eaf1bdd1781a0c679fc4853834472cba309e2b3156d2614"
+    },
+    {
+      "path": "content/game_catalog.csv",
+      "bytes": 37713,
+      "sha256": "beb0b2c3dd57589f2dab67ff75b7b98740e027168a1ee1cf53f6d77c521f6d2d"
     }
   ]
 }

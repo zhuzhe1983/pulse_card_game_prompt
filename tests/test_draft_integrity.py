@@ -32,6 +32,46 @@ class DraftTests(unittest.TestCase):
         cls.core = load("content/core_pack.json")
         cls.deck = {card["template_id"]: card for card in cls.draft["kept"] + cls.draft["cards"]}
 
+    def test_localized_fields_cover_every_card(self):
+        required = ["stable_id", "game_name_zh", "game_name_en", "intro_zh", "skill_zh", "skill_en",
+                    "official_product_name", "official_model", "faction", "faction_en", "v1_role",
+                    "design_role", "base_power", "plays", "pair_with_zh", "pair_limit_zh",
+                    "product_record_ids", "sources", "image_status", "image_url"]
+        banned = ("CORE", "Stick", "TOUGH", "ATOM", "Dial", "PaperMono", "Cardputer", "LoRa", "Unit Cam", "Echo")
+        zh = load("content/zh-CN.json")
+        en = load("content/en.json")
+        seen = []
+        for card in self.draft["kept"] + self.draft["cards"]:
+            for key in required:
+                self.assertIn(key, card, card.get("template_id"))
+            self.assertTrue(card["game_name_zh"] and card["game_name_en"] and card["skill_zh"] and card["skill_en"])
+            for token in banned:
+                self.assertNotIn(token, card["game_name_zh"])
+            self.assertEqual(card["image_url"], "")
+            seen.append(card["stable_id"])
+        self.assertEqual(len(seen), 71)
+        cam = self.deck["unit_cam_scout"]
+        self.assertEqual(cam["v1_role"], "角色")
+        self.assertEqual(cam["design_role"], "器具")
+        self.assertEqual(cam["official_model"], "U109")
+        self.assertEqual(cam["game_name_zh"], "千里眼")
+        self.assertIn("不是 UnitV", cam["mapping_note"])
+        for template_id, name in zh["names"].items():
+            self.assertEqual(name, self.deck[template_id]["game_name_zh"])
+            self.assertEqual(en["names"][template_id], self.deck[template_id]["game_name_en"])
+        tactics = [card for card in self.draft["kept"] if card["stable_id"] in ("signal_boost", "signal_jam")]
+        self.assertTrue(all(card["non_product"] for card in tactics))
+
+    def test_product_image_fields_are_empty_pending(self):
+        import csv
+        with (ROOT / "research" / "hardware_catalog.csv").open(encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        self.assertEqual(len(rows), 95)
+        for row in rows:
+            self.assertEqual(row["image_status"], "awaiting_official_image")
+            self.assertEqual(row["image_url"], "")
+            self.assertTrue(row["independent_runtime"])
+
     def test_status_and_counts(self):
         draft = self.draft
         self.assertEqual(draft["document_status"], "design_draft_not_enabled")
