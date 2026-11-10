@@ -4,32 +4,32 @@
     {
       "path": "CONTRACT.json",
       "bytes": 1223,
-      "sha256": "ff1812716af5373edb77dec47c5b8e15d931b096908a7a8fc50e72031424fc07"
+      "sha256": "76a38976f2f1c09f63e218d69e0bc2d87a0869c1d21e369d1a1d834aa3373c07"
     },
     {
       "path": "README.md",
-      "bytes": 2765,
-      "sha256": "4fad158656d4aaf60983dbeefa11cb68cc96c610f1eefaa159976565c9e9b566"
+      "bytes": 2883,
+      "sha256": "56266079bc0520e1db8de0cc4a115d909adabf8275eba48f11cad3dca277923d"
     },
     {
       "path": "REQUIREMENTS.html",
-      "bytes": 364246,
-      "sha256": "78c06898583f266d74f2a157fa1c927a7d5ae8e5a6e25fb1a826f4a6f7bd8be6"
+      "bytes": 364288,
+      "sha256": "9a24ae0e582e0fc6b45254f6336cc817cf1942e96e97497e2164d83321a8cb66"
     },
     {
       "path": "START_HERE.txt",
-      "bytes": 5791,
-      "sha256": "0ba2e7423bbe33afea16f60cae9b6946159262c62e270f0ddf73bb53c719ffc6"
+      "bytes": 5907,
+      "sha256": "26986178e05f90f38d11bf1a7fe0468b363f592368f13f5457709b8b5a2ae1cc"
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 384210,
-      "sha256": "350d1bd632988aaad9b1ded7f27adfd0e9d69ebc5fb9a9632c664558ccd6a2d1"
+      "bytes": 384373,
+      "sha256": "d7454a093bf67c1deefe2f40ff23a1e5caec18db148efa4fbdc6b812b00fec75"
     },
     {
       "path": "VALIDATION_REPORT.txt",
       "bytes": 11376,
-      "sha256": "e06ae684b260ddf4814b321a5d07790966654820b877a2d27ec76698fb51a66b"
+      "sha256": "5cd5d1390a70d9093936b7e8e4504dd74cf286ac5fa1bfc72f10ee1441d660a4"
     },
     {
       "path": "content/core_pack.json",
@@ -48,8 +48,8 @@
     },
     {
       "path": "docs/00_PRODUCT_AND_DECISIONS.md",
-      "bytes": 8298,
-      "sha256": "e1581c670ee53d474e7cba9cc4a119d0f4f0d77770ff6ff6f4cc940119ac8056"
+      "bytes": 8325,
+      "sha256": "22ee75ecbb13117216c54539491c536f530faa26c7e286c9b6b80a852fb1ba67"
     },
     {
       "path": "docs/01_GAMEPLAY.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
-      "bytes": 28340,
-      "sha256": "167a34b6ae49f9a8b76a8fc66637176fb09bab7010e46d447d0c3241828bb3f7"
+      "bytes": 28360,
+      "sha256": "5cfdb1b27f207147aae78e1950e8885e5f39fd809287ebd3d3e0015295a784ac"
     },
     {
       "path": "docs/03_NFC_PLAYER_SAVE.md",
@@ -198,8 +198,8 @@
     },
     {
       "path": "reference/__init__.py",
-      "bytes": 65,
-      "sha256": "627fd4e5db896741b28cade884f7c17319d145c6d9a1110da0fc8cbd34029cf0"
+      "bytes": 55,
+      "sha256": "c7ed84a92e65858d6784ec1da13b1849dd337c5d210bf5f6e9b424ba9fedb601"
     },
     {
       "path": "reference/battle.py",

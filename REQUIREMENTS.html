@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>灵脉卡战 · 需求与开发契约 v1.0</title>
+  <title>脉冲对决 · 需求与开发契约 v1.0</title>
   <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,9 +99,9 @@ h1{font-size:30px;line-height:1.4;padding-top:46px;padding-bottom:16px;border-bo
 </style>
 </head>
 <body>
-<div class="cover"><div class="eyebrow">PULSE CARD · PRODUCT &amp; IMPLEMENTATION CONTRACT</div><h1>灵脉卡战<br>跨平台游戏需求与开发契约</h1><p>用实体卡建立身份与收藏，用同一套规则连接不同硬件。<br>面向 ESP32、Android、iOS、macOS 与 Web 的可实施规格。</p><div class="badges"><span class="badge"><b>v1.0</b> 实施基线</span><span class="badge"><b>14</b> 基础模板</span><span class="badge"><b>10</b> 张牌组</span><span class="badge"><b>3</b> 小局上限</span><span class="badge"><b>2</b> 类 NFC 卡</span></div></div>
+<div class="cover"><div class="eyebrow">PULSE · PRODUCT &amp; IMPLEMENTATION CONTRACT</div><h1>脉冲对决<br>跨平台游戏需求与开发契约</h1><p>用实体卡建立身份与收藏，用同一套规则连接不同硬件。<br>面向 ESP32、Android、iOS、macOS 与 Web 的可实施规格。</p><div class="badges"><span class="badge"><b>v1.0</b> 实施基线</span><span class="badge"><b>14</b> 基础模板</span><span class="badge"><b>10</b> 张牌组</span><span class="badge"><b>3</b> 小局上限</span><span class="badge"><b>2</b> 类 NFC 卡</span></div></div>
 <header id="title-block-header">
-<h1 class="title">灵脉卡战 · 需求与开发契约 v1.0</h1>
+<h1 class="title">脉冲对决 · 需求与开发契约 v1.0</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">章节导航</h2>
@@ -449,9 +449,9 @@ API</a></li>
 <p>本 HTML 为完整需求阅读版；完整开发包还包含主提示词、JSON、参考
 Python、二进制样例、测试与目标配置模板。阅读版可离线打开和打印。</p>
 <h1 id="chapter-00">00 · 产品目标、冻结决策与范围</h1>
-<p>版本：1.0.0；状态：可实施基线，尚未完成真实硬件认证与充分平衡测试。项目暂名“灵脉卡战”，英文
-slug
-<code>pulse-card</code>。名称、角色视觉和卡片印刷稿可以更换；更换不能隐式改协议
+<p>版本：1.0.0；状态：可实施基线，尚未完成真实硬件认证与充分平衡测试。中文产品名「脉冲对决」，英文显示名
+PULSE，技术 slug
+<code>pulse-card</code>。角色视觉和卡片印刷稿可以更换；更换显示名不能隐式改协议
 ID。</p>
 <h2 id="要做成什么">1. 要做成什么</h2>
 <p>一个以 M5 设备为角色灵感、用 NFC
@@ -1561,7 +1561,7 @@ M5Stack 官方游戏规则，也不宣称与任何商业卡牌游戏完全一致
 fixtures 和各端资源，不得只改某一端的显示文字。</p>
 <h1 id="chapter-02">02 · 视觉风格、交互与跨端体验规格</h1>
 <blockquote>
-<p>产品工作名：灵脉卡战。本文规定信息结构和交互语义，允许不同开发平台使用原生控件。所有页面消费同一份权威对局状态与卡包，不得在界面中重算出另一套规则。正式字段以
+<p>产品名：脉冲对决。英文显示名：PULSE。本文规定信息结构和交互语义，允许不同开发平台使用原生控件。所有页面消费同一份权威对局状态与卡包，不得在界面中重算出另一套规则。正式字段以
 <code>CONTRACT.json</code>、协议规范及卡包为准。</p>
 <p>视觉方向为“黑白电子漫画卡册”：清楚的硬件角色轮廓、漫画分格、短句效果、醒目的整数战力。彩色设备可以使用彩色主题，但不能增加黑白端看不到的战斗信息。</p>
 </blockquote>

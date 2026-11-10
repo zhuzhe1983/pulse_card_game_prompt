@@ -1,1 +1,1 @@
-"""Executable interoperability reference for Pulse Card Game."""
+"""Executable interoperability reference for PULSE."""
