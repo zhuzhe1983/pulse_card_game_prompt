@@ -2,7 +2,9 @@
 
 中文显示名为「脉冲对决」，英文显示名为 PULSE。技术标识保持 `pulse-card` 与协议 `pcg`。
 
-现在能打的是基础 14 张牌：10 张牌组、最多 3 个小局、每小局最多打出 5 张、可以停手、比整数战力。中文显示名在 `content/zh-CN.json`，英文显示名在 `content/en.json`，都不含官方型号。扩展目录在 `docs/13_WORLD_AND_FACTIONS.md`、`docs/14_EXPANSION_DRAFT.md` 和 `content/game_catalog.csv`，**还没有启用**。千里眼在现有规则里仍是角色；草案建议改成器具，卡包哈希没有因此改动。
+现在要玩的是单局回合战：双方基地、会增长并每回合重置的供电、主控单位的攻击和耐久。规则在 `docs/01_GAMEPLAY.md`，试玩卡在 `content/clash_playtest.json`，编号 `pcg.clash.v0`，平衡还没验证。旧的三局点数规则留在 `docs/history/`，冻结卡包和参考裁判仍是 `pcg.core.v1`，这次没有改它们的字节。
+
+中文显示名在 `content/zh-CN.json`，英文显示名在 `content/en.json`。扩展目录在 `docs/13_WORLD_AND_FACTIONS.md`、`docs/14_EXPANSION_DRAFT.md` 和 `content/game_catalog.csv`，那是旧点数规则的未启用草案。
 
 卡面实验在 `docs/16_CARD_FACE_STYLES.md`。第一轮整卡生成在 `asset/concepts/cardputerzero/`，已放弃。当前模板预览在 `asset/concepts/cardputerzero-template/`，状态 needs_revision，不是验收稿。产品图见 `research/front_image_v5.md`。v3 的 3 张不是最新结论，也不是官方一共只有 3 张。
 

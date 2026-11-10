@@ -2,8 +2,10 @@
 英文显示名：PULSE。协议、slug 与 MIME 仍为 pcg / pulse-card / vnd.pulsecard，不随显示名改变。
 
 【给读规则的人】
-先读 docs/13_WORLD_AND_FACTIONS.md，再读 docs/14_EXPANSION_DRAFT.md。现在能跑完的只有基础 14 张和 pcg.core.v1。族群草案没有进入 core_pack，也不要让旧引擎假装会放新技能。research/ 是资料摘录，里面的双行动占用和负分没有采用。
-卡面见 docs/16_CARD_FACE_STYLES.md。asset/concepts/cardputerzero/ 是第一轮弃稿，superseded，不推荐。asset/concepts/cardputerzero-template/ 是当前模板预览，needs_revision，不是验收稿，也不能说风格已经一致。
+先读 docs/01_GAMEPLAY.md。现行对战是单局回合战 pcg.clash.v0：基地生命、供电、攻击和耐久，12 张代表卡和两副试玩套牌都在这一章。数值待试玩，平衡还没验证。
+docs/history/ 保留旧的三局点数规则。reference/ 和 content/core_pack.json 仍只执行 pcg.core.v1，不要把新战斗写进旧编号，也不要改冻结卡图。
+docs/13 和 docs/14 是旧点数规则的世界观和未启用草案。research/ 是资料摘录。
+卡面见 docs/16_CARD_FACE_STYLES.md。asset/concepts/cardputerzero/ 是第一轮弃稿，superseded，不推荐。asset/concepts/cardputerzero-template/ 是模板预览，needs_revision，不是验收稿。
 
 【进阶：给实现工程师】
 【给项目所有者】
