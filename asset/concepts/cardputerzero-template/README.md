@@ -25,7 +25,7 @@
 
 | 风格 | 母版 | 来源 |
 | --- | --- | --- |
-| A | `source_masters/01_S3.svg` | 本机 `card_export_v2_review` 的 01_S3，不是 `asset/card/01_S3.png` |
+| A | `source_masters/01_S3.svg` | 本机 `card_export_v2_review` 的 01_S3。现行原卡文件名是 `asset/card/S3.png`，字节未改。 |
 | B | `source_masters/10_CORE.svg` | 本机同一导出里的 10_CORE |
 
 角色层：`source_masters/char_01_S3.svg`、`source_masters/char_10_CORE.svg`。槽位：`templates/slots.json`。合成脚本：`scripts/chroma_and_compose.py`。差分记录：`validation/compare_report.json`。

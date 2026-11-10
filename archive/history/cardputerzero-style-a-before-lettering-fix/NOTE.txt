@@ -1,0 +1,4 @@
+CardputerZero Style A preview BEFORE lettering fix (2026-11-10 ~20:06 Asia/Shanghai UTC+8).
+Issues: nameplate bar reads “ESC HAME” (should be ESC HOME); LOCK uses a padlock glyph in place of O.
+These files are the typo preview retained for audit. Main asset/ paths were later repaired in place.
+History zip of earlier drafts (needs_revision + all-blue) is otherwise unchanged in content; this folder is the typo-generation snapshot.

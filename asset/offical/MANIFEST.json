@@ -1,0 +1,1219 @@
+{
+  "archive_status": "previews_archived_not_accepted",
+  "directory_spelling": "offical",
+  "official_archive": "asset/offical/{card,char}/<official_card_label>.png",
+  "working_copy": "asset/{card,char}/<official_card_label>.png",
+  "new_preview_archive": "asset/{card,char}/{style-a,style-b}/<OfficialEnglishProductName>.<ext>",
+  "filename_rule": "去掉数字序号。文件名用卡面或原资源标签的大小写。hardware_product_name 只在能唯一对应时填写，否则为 null。",
+  "original_assets_recolored": false,
+  "copies_written": true,
+  "design_package_received": true,
+  "preview_status": "preview_not_accepted",
+  "accepted": false,
+  "background_token": {
+    "status": "per_product",
+    "token_id": null,
+    "value": null,
+    "not_locked_to_blue_masters": [
+      "#009ee0",
+      "#0079b4"
+    ],
+    "verification": "固定层只与同一 token 参数化后的模板比较，不与蓝色 01_S3 或 10_CORE 母版比较。八张预览卡的重渲像素差是 0。"
+  },
+  "packages": {
+    "main": {
+      "sha256": "039c9a2d3a872164e3c2951c380cc0c9607c872ae05c814d4105e26d73cbe36e",
+      "bytes": 8922500,
+      "role": "StampFly、StamPLC、CoreMatrix、CardputerZero 的当前 preview"
+    },
+    "history": {
+      "sha256": "4fb55dfbe40a2f4a07e020381553b86f26b862fc0714c69e7a975667be5a587e",
+      "bytes": 7261147,
+      "role": "旧蓝稿、早期失败试稿、CardputerZero Style A 改字前的稿",
+      "archive": "archive/history/"
+    }
+  },
+  "new_products_reserved": [
+    {
+      "slot": "CoreMatrix",
+      "official_product_name": "CoreMatrix",
+      "evidence": "research/hardware_catalog.csv H016；https://docs.m5stack.com/en/core/CoreMatrix",
+      "status": "preview_not_accepted"
+    },
+    {
+      "slot": "StamPLC",
+      "official_product_name": "StamPLC",
+      "evidence": "research/hardware_catalog.csv H041；https://docs.m5stack.com/en/core/StamPLC",
+      "status": "preview_not_accepted"
+    },
+    {
+      "slot": "StampFly",
+      "official_product_name": "StampFly",
+      "evidence": "https://docs.m5stack.com/en/app/StampFly 。设计包文件名使用 StampFly。",
+      "status": "preview_not_accepted"
+    },
+    {
+      "slot": "CardputerZero",
+      "official_product_name": "CardputerZero",
+      "evidence": "research/hardware_catalog.csv H050；https://docs.m5stack.com/en/CardputerZero",
+      "status": "preview_not_accepted",
+      "not_the_same_as": "Cardputer H031",
+      "previous_concepts": "asset/concepts/cardputerzero/ 为 superseded；asset/concepts/cardputerzero-template/ 为 needs_revision。都不是本次新设计，也不改为 accepted。"
+    }
+  ],
+  "previews": [
+    {
+      "path": "asset/char/style-a/StampFly.png",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-a",
+      "type": "char",
+      "format": "png",
+      "bytes": 426322,
+      "sha256": "c971ece7e7955de5dbb8515c3cee6a60aa3c2623bf6192cbf38aeaf7dc300e3f",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/card/style-a/StampFly.png",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-a",
+      "type": "card",
+      "format": "png",
+      "bytes": 284048,
+      "sha256": "4ddb9f6e50db1f0a68103678cc96ce32837b983fee0519b04d15524382d92ffb",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/card/style-a/StampFly.svg",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-a",
+      "type": "card",
+      "format": "svg",
+      "bytes": 647894,
+      "sha256": "40e16205f22ca6f931b6ef0846d3aba63f551eca56921b08537c971a977922a7",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/char/style-b/StampFly.png",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-b",
+      "type": "char",
+      "format": "png",
+      "bytes": 210832,
+      "sha256": "14bad4add73015c2dd8f9562e90a8ff78a0c75a7f9af72cfaa22f342a70e94b6",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": "#c73215"
+      }
+    },
+    {
+      "path": "asset/card/style-b/StampFly.png",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-b",
+      "type": "card",
+      "format": "png",
+      "bytes": 155570,
+      "sha256": "b3ca2ed5762c7a763addec465e2beef2ea7faca773ce8fd188f3569adc22e8fe",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": "#c73215"
+      }
+    },
+    {
+      "path": "asset/card/style-b/StampFly.svg",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-b",
+      "type": "card",
+      "format": "svg",
+      "bytes": 343359,
+      "sha256": "2d01203281104f11f5992d1aef09ed141cc4e50a4acb596d11afcde28eb39b6e",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": "#c73215"
+      }
+    },
+    {
+      "path": "asset/char/style-a/StamPLC.png",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-a",
+      "type": "char",
+      "format": "png",
+      "bytes": 326071,
+      "sha256": "aa66535ab45a8eeebc72f222c1c79ff80ef5f978e4dee31c1253dfc870637a51",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#d23331",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/card/style-a/StamPLC.png",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-a",
+      "type": "card",
+      "format": "png",
+      "bytes": 202405,
+      "sha256": "511532d23320ea90add03e8703935170bfc17e6b8f6a6f1fa698c03ad0728ad3",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#d23331",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/card/style-a/StamPLC.svg",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-a",
+      "type": "card",
+      "format": "svg",
+      "bytes": 514226,
+      "sha256": "3d10e93581dfdecea8d14e51f47ecc34d81c54d40ae0dc8168acf2dbfd11a824",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#d23331",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/char/style-b/StamPLC.png",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-b",
+      "type": "char",
+      "format": "png",
+      "bytes": 165634,
+      "sha256": "2af756fc044eb4542a342369958233ff87e2408093ff7ad65a112b574091e077",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#0884cc",
+        "shadow": "#066ca7"
+      }
+    },
+    {
+      "path": "asset/card/style-b/StamPLC.png",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-b",
+      "type": "card",
+      "format": "png",
+      "bytes": 135571,
+      "sha256": "df364a296b78d1982bb786fe3792d4f4c62f06d4f07a287c0b8df4ec4ac07044",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#0884cc",
+        "shadow": "#066ca7"
+      }
+    },
+    {
+      "path": "asset/card/style-b/StamPLC.svg",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-b",
+      "type": "card",
+      "format": "svg",
+      "bytes": 284148,
+      "sha256": "af6724bfa7e058536a1e29e0c5d3f86e53a74f18bf43876297016001ed6feb40",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#0884cc",
+        "shadow": "#066ca7"
+      }
+    },
+    {
+      "path": "asset/char/style-a/CoreMatrix.png",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-a",
+      "type": "char",
+      "format": "png",
+      "bytes": 561918,
+      "sha256": "34b232ea871a784646fc8226bbaefab453ce48a596129dddd7f27e3d20160842",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#b44343",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/card/style-a/CoreMatrix.png",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-a",
+      "type": "card",
+      "format": "png",
+      "bytes": 282612,
+      "sha256": "2e415ebde16204142589785a25516068e8edb692b58d782910c4837eadd777fc",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#b44343",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/card/style-a/CoreMatrix.svg",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-a",
+      "type": "card",
+      "format": "svg",
+      "bytes": 828686,
+      "sha256": "8d631003345a5dc4f7b6c5f97ef580ccb5c79f0e18cc06af1c55fb62335be572",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#b44343",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/char/style-b/CoreMatrix.png",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-b",
+      "type": "char",
+      "format": "png",
+      "bytes": 402315,
+      "sha256": "93ce6863b37693021b1ee43e6503aede1507d3cb99e7ec53e24916b800877d2c",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#5c7cbc",
+        "shadow": "#4b659a"
+      }
+    },
+    {
+      "path": "asset/card/style-b/CoreMatrix.png",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-b",
+      "type": "card",
+      "format": "png",
+      "bytes": 171811,
+      "sha256": "b50e634051a533759da40aa40c90c6596fdc6fb90b39624f2528f5cb400f68a2",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#5c7cbc",
+        "shadow": "#4b659a"
+      }
+    },
+    {
+      "path": "asset/card/style-b/CoreMatrix.svg",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-b",
+      "type": "card",
+      "format": "svg",
+      "bytes": 600763,
+      "sha256": "85030b7d786cfeff87bb3de5dd36b2d48d879a546a75d5e0bd16342928a4ba77",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#5c7cbc",
+        "shadow": "#4b659a"
+      }
+    },
+    {
+      "path": "asset/char/style-a/CardputerZero.png",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-a",
+      "type": "char",
+      "format": "png",
+      "bytes": 491913,
+      "sha256": "042f9e4ecf3735ac1dc2457b217e2f1476c2a536f20ae64c2d9cc3f8cba137be",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#c83711",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/card/style-a/CardputerZero.png",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-a",
+      "type": "card",
+      "format": "png",
+      "bytes": 230864,
+      "sha256": "1a1e328d58448181187ab1bcfe90ce374907ae6181953f62ee3b0f6cd50f8102",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#c83711",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/card/style-a/CardputerZero.svg",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-a",
+      "type": "card",
+      "format": "svg",
+      "bytes": 735346,
+      "sha256": "77793db0adf8ebf77fa148b29cb84cd7e0d5fb84b6cfdccb5a66b3bd6c8e929d",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#c83711",
+        "shadow": null
+      }
+    },
+    {
+      "path": "asset/char/style-b/CardputerZero.png",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-b",
+      "type": "char",
+      "format": "png",
+      "bytes": 243852,
+      "sha256": "0ef6414b081aa339e971f1f70b655a2493194042485ff60e67ce881a559679bc",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#ab419d",
+        "shadow": "#8c3580"
+      }
+    },
+    {
+      "path": "asset/card/style-b/CardputerZero.png",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-b",
+      "type": "card",
+      "format": "png",
+      "bytes": 131140,
+      "sha256": "6a8c1b75d02bf2bf7c3154fd30f35d505ca4a17ece622d5ee50b265475a40408",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#ab419d",
+        "shadow": "#8c3580"
+      }
+    },
+    {
+      "path": "asset/card/style-b/CardputerZero.svg",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-b",
+      "type": "card",
+      "format": "svg",
+      "bytes": 392262,
+      "sha256": "22d5f67ea36aa78c3463eef2c4143d175e8036f300fca0011c1f8e46d9f5d5f4",
+      "preview_status": "preview_not_accepted",
+      "color_tokens": {
+        "card_bg": "#ab419d",
+        "shadow": "#8c3580"
+      }
+    }
+  ],
+  "fixed_layer": {
+    "report": "asset/preview/validation/fixed_layer_report.json",
+    "all_identical": true,
+    "compared_pixels": 640552,
+    "cards": [
+      {
+        "product": "StampFly",
+        "style": "style-a",
+        "card_bg": "#f33e1a",
+        "shadow": null,
+        "diff_pixels": 0,
+        "identical": true
+      },
+      {
+        "product": "StampFly",
+        "style": "style-b",
+        "card_bg": "#f33e1a",
+        "shadow": "#c73215",
+        "diff_pixels": 0,
+        "identical": true
+      },
+      {
+        "product": "StamPLC",
+        "style": "style-a",
+        "card_bg": "#d23331",
+        "shadow": null,
+        "diff_pixels": 0,
+        "identical": true
+      },
+      {
+        "product": "StamPLC",
+        "style": "style-b",
+        "card_bg": "#0884cc",
+        "shadow": "#066ca7",
+        "diff_pixels": 0,
+        "identical": true
+      },
+      {
+        "product": "CoreMatrix",
+        "style": "style-a",
+        "card_bg": "#b44343",
+        "shadow": null,
+        "diff_pixels": 0,
+        "identical": true
+      },
+      {
+        "product": "CoreMatrix",
+        "style": "style-b",
+        "card_bg": "#5c7cbc",
+        "shadow": "#4b659a",
+        "diff_pixels": 0,
+        "identical": true
+      },
+      {
+        "product": "CardputerZero",
+        "style": "style-a",
+        "card_bg": "#c83711",
+        "shadow": null,
+        "diff_pixels": 0,
+        "identical": true
+      },
+      {
+        "product": "CardputerZero",
+        "style": "style-b",
+        "card_bg": "#ab419d",
+        "shadow": "#8c3580",
+        "diff_pixels": 0,
+        "identical": true
+      }
+    ]
+  },
+  "history_archive": "archive/history/",
+  "lettering_fix": {
+    "product": "CardputerZero",
+    "style": "style-a",
+    "current_char_sha256": "042f9e4ecf3735ac1dc2457b217e2f1476c2a536f20ae64c2d9cc3f8cba137be",
+    "before_char_sha256": "7e38bd9c2f7fe3ef99cb03d09d4b5b8e43b54090009271bb87360b23b53b4189",
+    "esc": "ESC HOME",
+    "lock": "LOCK",
+    "method": "局部像素修复，没有重跑 AIGC。Style B 与其余三款未改。"
+  },
+  "files": [
+    {
+      "source_file": "01_S3.png",
+      "official_card_label": "S3",
+      "filename": "S3.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "卡面标签是 S3，不写成 CoreS3。",
+      "bytes": 75593,
+      "sha256": "b3ad12ad7a24ce2a9ba40b516a85fc625652f7377895e095041b0175c7ec2900",
+      "kind": "card"
+    },
+    {
+      "source_file": "02_StickS3.png",
+      "official_card_label": "StickS3",
+      "filename": "StickS3.png",
+      "hardware_product_name": "StickS3",
+      "record_id": "H024",
+      "note": "卡面标签与目录产品名一致。记录 H024。",
+      "bytes": 57276,
+      "sha256": "ef03c7ad1b2917ee5597a3c1a8291363eac794d407fdb5dc0fed8be109fabe19",
+      "kind": "card"
+    },
+    {
+      "source_file": "03_AI_PYRAMID_PRO.png",
+      "official_card_label": "AI_PYRAMID_PRO",
+      "filename": "AI_PYRAMID_PRO.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留卡面标签，没有唯一硬件产品名。",
+      "bytes": 68832,
+      "sha256": "980faa0736301ff9991946dec32de2af1b68df200ee38279ac140721b320f881",
+      "kind": "card"
+    },
+    {
+      "source_file": "04_M5STACK_console_motif.png",
+      "official_card_label": "M5STACK_console_motif",
+      "filename": "M5STACK_console_motif.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留资源标签。不是 Cardputer，也不是 CardputerZero。",
+      "bytes": 102869,
+      "sha256": "479aef8990d1baddaf1bc69fefab7cb0d6ddaf6aceece317c3975385d2afef52",
+      "kind": "card"
+    },
+    {
+      "source_file": "05_M5STACK_ring_motif.png",
+      "official_card_label": "M5STACK_ring_motif",
+      "filename": "M5STACK_ring_motif.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留资源标签。",
+      "bytes": 106816,
+      "sha256": "9eac40c35b0d005d769ac7d27d1ec557ce9c2119a2db25ce601d877a401100a7",
+      "kind": "card"
+    },
+    {
+      "source_file": "06_VoiceS3R_ATOM.png",
+      "official_card_label": "VoiceS3R_ATOM",
+      "filename": "VoiceS3R_ATOM.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "卡面同时出现两个称呼，不收成一个硬件产品名。",
+      "bytes": 72327,
+      "sha256": "914cee2f128f1286f31e570be58886a239390452b03e18ee780d49832ead9d51",
+      "kind": "card"
+    },
+    {
+      "source_file": "07_NanoH2.png",
+      "official_card_label": "NanoH2",
+      "filename": "NanoH2.png",
+      "hardware_product_name": "NanoH2",
+      "record_id": "H047a",
+      "note": "卡面标签与目录产品名一致。记录 H047a。",
+      "bytes": 57344,
+      "sha256": "a86ccbc546247fa9db1b1882913daa51244271bbda4575b6a4a265189f19e242",
+      "kind": "card"
+    },
+    {
+      "source_file": "08_DUALKEY.png",
+      "official_card_label": "DUALKEY",
+      "filename": "DUALKEY.png",
+      "hardware_product_name": "Chain DualKey",
+      "record_id": "H048",
+      "note": "卡面标签保持 DUALKEY。硬件产品名是 Chain DualKey，记录 H048。",
+      "bytes": 81417,
+      "sha256": "1ba84d37555a4f1c21b0b0fd677668d69335ac730ee5dd6d18f1515c21355bfe",
+      "kind": "card"
+    },
+    {
+      "source_file": "09_StackChan.png",
+      "official_card_label": "StackChan",
+      "filename": "StackChan.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留卡面标签。目录没有同名官方产品记录。",
+      "bytes": 65362,
+      "sha256": "5c14ad177c16dc9de47bb01290e0a607ba784fd779747c65d13d2346b7d5f95f",
+      "kind": "card"
+    },
+    {
+      "source_file": "10_CORE.png",
+      "official_card_label": "CORE",
+      "filename": "CORE.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 CORE，不是某一款 Core 主机。",
+      "bytes": 47051,
+      "sha256": "4077f892dcca6d3287962af43346b59c9fabbee283cd94de498421bd042f05fa",
+      "kind": "card"
+    },
+    {
+      "source_file": "11_STICKC.png",
+      "official_card_label": "STICKC",
+      "filename": "STICKC.png",
+      "hardware_product_name": "StickC",
+      "record_id": "H020",
+      "note": "卡面标签保持 STICKC。硬件产品名是 StickC，记录 H020。",
+      "bytes": 52571,
+      "sha256": "c60f5edf108e87e310672cd57166eaf0af75cfac1868c52967cbe12e9263e463",
+      "kind": "card"
+    },
+    {
+      "source_file": "12_STICKV.png",
+      "official_card_label": "STICKV",
+      "filename": "STICKV.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留卡面标签。",
+      "bytes": 72516,
+      "sha256": "1fd5b3aa2c3fdbb1cf8bb3822772e4979f0d89f02bf405416d308f08f7e64ee0",
+      "kind": "card"
+    },
+    {
+      "source_file": "13_UNIT.png",
+      "official_card_label": "UNIT",
+      "filename": "UNIT.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 UNIT，不是某一个 Unit。",
+      "bytes": 63523,
+      "sha256": "bd85b0fdef09283363dcf24b1765880c7de8c40144d8a0ecf1b9fb449e573be7",
+      "kind": "card"
+    },
+    {
+      "source_file": "14_MODULE.png",
+      "official_card_label": "MODULE",
+      "filename": "MODULE.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 MODULE，不是某一个 Module。",
+      "bytes": 85652,
+      "sha256": "a61eb96fc00b276cf2a1161399b5ea281fab85068b8eedbfbde6ce91f3baeaf5",
+      "kind": "card"
+    },
+    {
+      "source_file": "15_BASE.png",
+      "official_card_label": "BASE",
+      "filename": "BASE.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 BASE，不是某一个 Base。",
+      "bytes": 83228,
+      "sha256": "25a1dae2a4e7b3e48cc1e00c67751207fde0ef325163e32611c55d189f55dc34",
+      "kind": "card"
+    },
+    {
+      "source_file": "16_BALA.png",
+      "official_card_label": "BALA",
+      "filename": "BALA.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留卡面标签。",
+      "bytes": 87451,
+      "sha256": "dc01a72f0e1a35a1cf405eed1d2e91cb105c9cb3cfb930253c94f8ac57734451",
+      "kind": "card"
+    },
+    {
+      "source_file": "17_HAT.png",
+      "official_card_label": "HAT",
+      "filename": "HAT.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 HAT，不是某一个 Hat。",
+      "bytes": 82501,
+      "sha256": "43f7509ac58d896338831bbee63a8504a5d01227ef96288fef6d432108f7d86b",
+      "kind": "card"
+    },
+    {
+      "source_file": "18_ATOM.png",
+      "official_card_label": "ATOM",
+      "filename": "ATOM.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 ATOM。不是 Atom Lite，也不是 Atom-Matrix v1.1。",
+      "bytes": 115011,
+      "sha256": "d8f1f78932c77c034c73863a046d70b5145eb5712f9a46ef7da58565951cb8db",
+      "kind": "card"
+    },
+    {
+      "source_file": "19_STICKC_PLUS.png",
+      "official_card_label": "STICKC_PLUS",
+      "filename": "STICKC_PLUS.png",
+      "hardware_product_name": "StickC-Plus",
+      "record_id": "H021",
+      "note": "卡面标签保持 STICKC_PLUS。硬件产品名是 StickC-Plus，记录 H021，不是 StickC-Plus2。",
+      "bytes": 102371,
+      "sha256": "0454f767954997094588f75fa17dea2fd794d52ae1b918036a0794a10a86c3a0",
+      "kind": "card"
+    },
+    {
+      "source_file": "20_CORE2.png",
+      "official_card_label": "CORE2",
+      "filename": "CORE2.png",
+      "hardware_product_name": "Core2",
+      "record_id": "H005",
+      "note": "卡面标签保持 CORE2。硬件产品名是 Core2，记录 H005。",
+      "bytes": 113127,
+      "sha256": "beb9db0c2952f57e42077b02c9e24787f66699a8417e9f843396c2c57e0038ab",
+      "kind": "card"
+    },
+    {
+      "source_file": "21_CORE_INK.png",
+      "official_card_label": "CORE_INK",
+      "filename": "CORE_INK.png",
+      "hardware_product_name": "CoreInk",
+      "record_id": "H045",
+      "note": "卡面标签保持 CORE_INK。硬件产品名是 CoreInk，记录 H045。",
+      "bytes": 116466,
+      "sha256": "8ab1a7a83979e6e31aa58438ccbded39f9005d673be62c953d5bc23c2ad9afb6",
+      "kind": "card"
+    },
+    {
+      "source_file": "22_M5PAPER.png",
+      "official_card_label": "M5PAPER",
+      "filename": "M5PAPER.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "卡面标签保持 M5PAPER，不猜 Paper、PaperS3 或 PaperMono。",
+      "bytes": 132202,
+      "sha256": "d97e09bc9d6eda6fb6d95e92ca6b206195ef7b35426801abd9835600dd0c3053",
+      "kind": "card"
+    },
+    {
+      "source_file": "01_S3.png",
+      "official_card_label": "S3",
+      "filename": "S3.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "卡面标签是 S3，不写成 CoreS3。",
+      "bytes": 68894,
+      "sha256": "441fd63d57237cdcb8398968d1e001be00a9b9b72d06c04282dab8890d313c89",
+      "kind": "char"
+    },
+    {
+      "source_file": "02_StickS3.png",
+      "official_card_label": "StickS3",
+      "filename": "StickS3.png",
+      "hardware_product_name": "StickS3",
+      "record_id": "H024",
+      "note": "卡面标签与目录产品名一致。记录 H024。",
+      "bytes": 42504,
+      "sha256": "2c2938fc025251b122193f4d7788ed2c86e6dcc7e45f8952f6322a2f232c9f6b",
+      "kind": "char"
+    },
+    {
+      "source_file": "03_AI_PYRAMID_PRO.png",
+      "official_card_label": "AI_PYRAMID_PRO",
+      "filename": "AI_PYRAMID_PRO.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留卡面标签，没有唯一硬件产品名。",
+      "bytes": 59137,
+      "sha256": "644a837869abc945dfc9bd9c07a040e231d28b181b5e751981b2ba1666b4ddeb",
+      "kind": "char"
+    },
+    {
+      "source_file": "04_M5STACK_console_motif.png",
+      "official_card_label": "M5STACK_console_motif",
+      "filename": "M5STACK_console_motif.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留资源标签。不是 Cardputer，也不是 CardputerZero。",
+      "bytes": 131741,
+      "sha256": "55df4e197b7aafa81708a0f545c5e2bb7ac93f8af85b66f602ecce62dff0259b",
+      "kind": "char"
+    },
+    {
+      "source_file": "05_M5STACK_ring_motif.png",
+      "official_card_label": "M5STACK_ring_motif",
+      "filename": "M5STACK_ring_motif.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留资源标签。",
+      "bytes": 153462,
+      "sha256": "018ccf5c99bf878439f6a261175c19682c1d5ba98b68a2dfd194b976c1c825c5",
+      "kind": "char"
+    },
+    {
+      "source_file": "06_VoiceS3R_ATOM.png",
+      "official_card_label": "VoiceS3R_ATOM",
+      "filename": "VoiceS3R_ATOM.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "卡面同时出现两个称呼，不收成一个硬件产品名。",
+      "bytes": 70703,
+      "sha256": "72926813d2b2e2ce74faccbc4a05bd75b4f8b39cc88e448e4c35f5d122976187",
+      "kind": "char"
+    },
+    {
+      "source_file": "07_NanoH2.png",
+      "official_card_label": "NanoH2",
+      "filename": "NanoH2.png",
+      "hardware_product_name": "NanoH2",
+      "record_id": "H047a",
+      "note": "卡面标签与目录产品名一致。记录 H047a。",
+      "bytes": 45482,
+      "sha256": "e512563061a4fa7d25057639c4cd594adb91406e3ab02289158c2ea94db1b18a",
+      "kind": "char"
+    },
+    {
+      "source_file": "08_DUALKEY.png",
+      "official_card_label": "DUALKEY",
+      "filename": "DUALKEY.png",
+      "hardware_product_name": "Chain DualKey",
+      "record_id": "H048",
+      "note": "卡面标签保持 DUALKEY。硬件产品名是 Chain DualKey，记录 H048。",
+      "bytes": 79831,
+      "sha256": "d49fe115e139aca178f577d35ead8a944fdf391753232af060fb97893d5a566d",
+      "kind": "char"
+    },
+    {
+      "source_file": "09_StackChan.png",
+      "official_card_label": "StackChan",
+      "filename": "StackChan.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留卡面标签。目录没有同名官方产品记录。",
+      "bytes": 59985,
+      "sha256": "a22b5cc7cacb2d6f5845666213579c65c70c061913ce273567d7f8addb6da0d4",
+      "kind": "char"
+    },
+    {
+      "source_file": "10_CORE.png",
+      "official_card_label": "CORE",
+      "filename": "CORE.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 CORE，不是某一款 Core 主机。",
+      "bytes": 23696,
+      "sha256": "f7e1396bed54af531a63f60c967be2d0dea3b3cfffe1786eae33f309afb74cd5",
+      "kind": "char"
+    },
+    {
+      "source_file": "11_STICKC.png",
+      "official_card_label": "STICKC",
+      "filename": "STICKC.png",
+      "hardware_product_name": "StickC",
+      "record_id": "H020",
+      "note": "卡面标签保持 STICKC。硬件产品名是 StickC，记录 H020。",
+      "bytes": 32099,
+      "sha256": "5c4f16a70b64e2ae983cf398df687a1880b3d53a9a1173b6fa86474186cf29a6",
+      "kind": "char"
+    },
+    {
+      "source_file": "12_STICKV.png",
+      "official_card_label": "STICKV",
+      "filename": "STICKV.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留卡面标签。",
+      "bytes": 58975,
+      "sha256": "3c41c3bb66242327b0211fba9da16ceac873ddb1e443457200d11af069e2e8ef",
+      "kind": "char"
+    },
+    {
+      "source_file": "13_UNIT.png",
+      "official_card_label": "UNIT",
+      "filename": "UNIT.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 UNIT，不是某一个 Unit。",
+      "bytes": 62110,
+      "sha256": "c8f6bfc64abb894744185a277722d840e2c8944c847467ffef2821354961be08",
+      "kind": "char"
+    },
+    {
+      "source_file": "14_MODULE.png",
+      "official_card_label": "MODULE",
+      "filename": "MODULE.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 MODULE，不是某一个 Module。",
+      "bytes": 75083,
+      "sha256": "7c51d7eca9e6037ba6a5fff128191fa512d841f3318e15799cfd3d8366676fe4",
+      "kind": "char"
+    },
+    {
+      "source_file": "15_BASE.png",
+      "official_card_label": "BASE",
+      "filename": "BASE.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 BASE，不是某一个 Base。",
+      "bytes": 81624,
+      "sha256": "49ae404c497ae4750b7837aaf6708447f1636460c27ecd04a65dd1f42e2b6a1c",
+      "kind": "char"
+    },
+    {
+      "source_file": "16_BALA.png",
+      "official_card_label": "BALA",
+      "filename": "BALA.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "只保留卡面标签。",
+      "bytes": 99820,
+      "sha256": "cb6b0e43cca090d75a7d1175de973955bb4347f37e8b701a24ac639aed245216",
+      "kind": "char"
+    },
+    {
+      "source_file": "17_HAT.png",
+      "official_card_label": "HAT",
+      "filename": "HAT.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 HAT，不是某一个 Hat。",
+      "bytes": 88328,
+      "sha256": "b2fe557604b0233718b26aa98ca2d73a2143378f79f4d46a72edc11da10e4bfa",
+      "kind": "char"
+    },
+    {
+      "source_file": "18_ATOM.png",
+      "official_card_label": "ATOM",
+      "filename": "ATOM.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "系列卡名 ATOM。不是 Atom Lite，也不是 Atom-Matrix v1.1。",
+      "bytes": 70298,
+      "sha256": "a81e84cdff6f684e7821d4b2b7a84130cc262c42dc08aa167cb25b633cf124b1",
+      "kind": "char"
+    },
+    {
+      "source_file": "19_STICKC_PLUS.png",
+      "official_card_label": "STICKC_PLUS",
+      "filename": "STICKC_PLUS.png",
+      "hardware_product_name": "StickC-Plus",
+      "record_id": "H021",
+      "note": "卡面标签保持 STICKC_PLUS。硬件产品名是 StickC-Plus，记录 H021，不是 StickC-Plus2。",
+      "bytes": 127257,
+      "sha256": "31ccea1975737afd063ee7c68450645a67e551840c506ef5a80a1b19da6d0e81",
+      "kind": "char"
+    },
+    {
+      "source_file": "20_CORE2.png",
+      "official_card_label": "CORE2",
+      "filename": "CORE2.png",
+      "hardware_product_name": "Core2",
+      "record_id": "H005",
+      "note": "卡面标签保持 CORE2。硬件产品名是 Core2，记录 H005。",
+      "bytes": 140966,
+      "sha256": "e27c1b95831fb6113cf3d4aa87bd2eb6d488c7c291e792e0d2c9bccc603daf38",
+      "kind": "char"
+    },
+    {
+      "source_file": "21_CORE_INK.png",
+      "official_card_label": "CORE_INK",
+      "filename": "CORE_INK.png",
+      "hardware_product_name": "CoreInk",
+      "record_id": "H045",
+      "note": "卡面标签保持 CORE_INK。硬件产品名是 CoreInk，记录 H045。",
+      "bytes": 138934,
+      "sha256": "f86cb7b5fd687c2ac6a9e95682363870a24507474d45b17c7b0d1ddb3b1f235b",
+      "kind": "char"
+    },
+    {
+      "source_file": "22_M5PAPER.png",
+      "official_card_label": "M5PAPER",
+      "filename": "M5PAPER.png",
+      "hardware_product_name": null,
+      "record_id": null,
+      "note": "卡面标签保持 M5PAPER，不猜 Paper、PaperS3 或 PaperMono。",
+      "bytes": 146051,
+      "sha256": "f2b19866d7e336034750f1bca0cbf9ac5631a947980556e472ce87f8af88a130",
+      "kind": "char"
+    }
+  ],
+  "byte_baseline": {
+    "card": {
+      "S3.png": {
+        "bytes": 75593,
+        "sha256": "b3ad12ad7a24ce2a9ba40b516a85fc625652f7377895e095041b0175c7ec2900",
+        "source_file": "01_S3.png"
+      },
+      "StickS3.png": {
+        "bytes": 57276,
+        "sha256": "ef03c7ad1b2917ee5597a3c1a8291363eac794d407fdb5dc0fed8be109fabe19",
+        "source_file": "02_StickS3.png"
+      },
+      "AI_PYRAMID_PRO.png": {
+        "bytes": 68832,
+        "sha256": "980faa0736301ff9991946dec32de2af1b68df200ee38279ac140721b320f881",
+        "source_file": "03_AI_PYRAMID_PRO.png"
+      },
+      "M5STACK_console_motif.png": {
+        "bytes": 102869,
+        "sha256": "479aef8990d1baddaf1bc69fefab7cb0d6ddaf6aceece317c3975385d2afef52",
+        "source_file": "04_M5STACK_console_motif.png"
+      },
+      "M5STACK_ring_motif.png": {
+        "bytes": 106816,
+        "sha256": "9eac40c35b0d005d769ac7d27d1ec557ce9c2119a2db25ce601d877a401100a7",
+        "source_file": "05_M5STACK_ring_motif.png"
+      },
+      "VoiceS3R_ATOM.png": {
+        "bytes": 72327,
+        "sha256": "914cee2f128f1286f31e570be58886a239390452b03e18ee780d49832ead9d51",
+        "source_file": "06_VoiceS3R_ATOM.png"
+      },
+      "NanoH2.png": {
+        "bytes": 57344,
+        "sha256": "a86ccbc546247fa9db1b1882913daa51244271bbda4575b6a4a265189f19e242",
+        "source_file": "07_NanoH2.png"
+      },
+      "DUALKEY.png": {
+        "bytes": 81417,
+        "sha256": "1ba84d37555a4f1c21b0b0fd677668d69335ac730ee5dd6d18f1515c21355bfe",
+        "source_file": "08_DUALKEY.png"
+      },
+      "StackChan.png": {
+        "bytes": 65362,
+        "sha256": "5c14ad177c16dc9de47bb01290e0a607ba784fd779747c65d13d2346b7d5f95f",
+        "source_file": "09_StackChan.png"
+      },
+      "CORE.png": {
+        "bytes": 47051,
+        "sha256": "4077f892dcca6d3287962af43346b59c9fabbee283cd94de498421bd042f05fa",
+        "source_file": "10_CORE.png"
+      },
+      "STICKC.png": {
+        "bytes": 52571,
+        "sha256": "c60f5edf108e87e310672cd57166eaf0af75cfac1868c52967cbe12e9263e463",
+        "source_file": "11_STICKC.png"
+      },
+      "STICKV.png": {
+        "bytes": 72516,
+        "sha256": "1fd5b3aa2c3fdbb1cf8bb3822772e4979f0d89f02bf405416d308f08f7e64ee0",
+        "source_file": "12_STICKV.png"
+      },
+      "UNIT.png": {
+        "bytes": 63523,
+        "sha256": "bd85b0fdef09283363dcf24b1765880c7de8c40144d8a0ecf1b9fb449e573be7",
+        "source_file": "13_UNIT.png"
+      },
+      "MODULE.png": {
+        "bytes": 85652,
+        "sha256": "a61eb96fc00b276cf2a1161399b5ea281fab85068b8eedbfbde6ce91f3baeaf5",
+        "source_file": "14_MODULE.png"
+      },
+      "BASE.png": {
+        "bytes": 83228,
+        "sha256": "25a1dae2a4e7b3e48cc1e00c67751207fde0ef325163e32611c55d189f55dc34",
+        "source_file": "15_BASE.png"
+      },
+      "BALA.png": {
+        "bytes": 87451,
+        "sha256": "dc01a72f0e1a35a1cf405eed1d2e91cb105c9cb3cfb930253c94f8ac57734451",
+        "source_file": "16_BALA.png"
+      },
+      "HAT.png": {
+        "bytes": 82501,
+        "sha256": "43f7509ac58d896338831bbee63a8504a5d01227ef96288fef6d432108f7d86b",
+        "source_file": "17_HAT.png"
+      },
+      "ATOM.png": {
+        "bytes": 115011,
+        "sha256": "d8f1f78932c77c034c73863a046d70b5145eb5712f9a46ef7da58565951cb8db",
+        "source_file": "18_ATOM.png"
+      },
+      "STICKC_PLUS.png": {
+        "bytes": 102371,
+        "sha256": "0454f767954997094588f75fa17dea2fd794d52ae1b918036a0794a10a86c3a0",
+        "source_file": "19_STICKC_PLUS.png"
+      },
+      "CORE2.png": {
+        "bytes": 113127,
+        "sha256": "beb9db0c2952f57e42077b02c9e24787f66699a8417e9f843396c2c57e0038ab",
+        "source_file": "20_CORE2.png"
+      },
+      "CORE_INK.png": {
+        "bytes": 116466,
+        "sha256": "8ab1a7a83979e6e31aa58438ccbded39f9005d673be62c953d5bc23c2ad9afb6",
+        "source_file": "21_CORE_INK.png"
+      },
+      "M5PAPER.png": {
+        "bytes": 132202,
+        "sha256": "d97e09bc9d6eda6fb6d95e92ca6b206195ef7b35426801abd9835600dd0c3053",
+        "source_file": "22_M5PAPER.png"
+      }
+    },
+    "char": {
+      "S3.png": {
+        "bytes": 68894,
+        "sha256": "441fd63d57237cdcb8398968d1e001be00a9b9b72d06c04282dab8890d313c89",
+        "source_file": "01_S3.png"
+      },
+      "StickS3.png": {
+        "bytes": 42504,
+        "sha256": "2c2938fc025251b122193f4d7788ed2c86e6dcc7e45f8952f6322a2f232c9f6b",
+        "source_file": "02_StickS3.png"
+      },
+      "AI_PYRAMID_PRO.png": {
+        "bytes": 59137,
+        "sha256": "644a837869abc945dfc9bd9c07a040e231d28b181b5e751981b2ba1666b4ddeb",
+        "source_file": "03_AI_PYRAMID_PRO.png"
+      },
+      "M5STACK_console_motif.png": {
+        "bytes": 131741,
+        "sha256": "55df4e197b7aafa81708a0f545c5e2bb7ac93f8af85b66f602ecce62dff0259b",
+        "source_file": "04_M5STACK_console_motif.png"
+      },
+      "M5STACK_ring_motif.png": {
+        "bytes": 153462,
+        "sha256": "018ccf5c99bf878439f6a261175c19682c1d5ba98b68a2dfd194b976c1c825c5",
+        "source_file": "05_M5STACK_ring_motif.png"
+      },
+      "VoiceS3R_ATOM.png": {
+        "bytes": 70703,
+        "sha256": "72926813d2b2e2ce74faccbc4a05bd75b4f8b39cc88e448e4c35f5d122976187",
+        "source_file": "06_VoiceS3R_ATOM.png"
+      },
+      "NanoH2.png": {
+        "bytes": 45482,
+        "sha256": "e512563061a4fa7d25057639c4cd594adb91406e3ab02289158c2ea94db1b18a",
+        "source_file": "07_NanoH2.png"
+      },
+      "DUALKEY.png": {
+        "bytes": 79831,
+        "sha256": "d49fe115e139aca178f577d35ead8a944fdf391753232af060fb97893d5a566d",
+        "source_file": "08_DUALKEY.png"
+      },
+      "StackChan.png": {
+        "bytes": 59985,
+        "sha256": "a22b5cc7cacb2d6f5845666213579c65c70c061913ce273567d7f8addb6da0d4",
+        "source_file": "09_StackChan.png"
+      },
+      "CORE.png": {
+        "bytes": 23696,
+        "sha256": "f7e1396bed54af531a63f60c967be2d0dea3b3cfffe1786eae33f309afb74cd5",
+        "source_file": "10_CORE.png"
+      },
+      "STICKC.png": {
+        "bytes": 32099,
+        "sha256": "5c4f16a70b64e2ae983cf398df687a1880b3d53a9a1173b6fa86474186cf29a6",
+        "source_file": "11_STICKC.png"
+      },
+      "STICKV.png": {
+        "bytes": 58975,
+        "sha256": "3c41c3bb66242327b0211fba9da16ceac873ddb1e443457200d11af069e2e8ef",
+        "source_file": "12_STICKV.png"
+      },
+      "UNIT.png": {
+        "bytes": 62110,
+        "sha256": "c8f6bfc64abb894744185a277722d840e2c8944c847467ffef2821354961be08",
+        "source_file": "13_UNIT.png"
+      },
+      "MODULE.png": {
+        "bytes": 75083,
+        "sha256": "7c51d7eca9e6037ba6a5fff128191fa512d841f3318e15799cfd3d8366676fe4",
+        "source_file": "14_MODULE.png"
+      },
+      "BASE.png": {
+        "bytes": 81624,
+        "sha256": "49ae404c497ae4750b7837aaf6708447f1636460c27ecd04a65dd1f42e2b6a1c",
+        "source_file": "15_BASE.png"
+      },
+      "BALA.png": {
+        "bytes": 99820,
+        "sha256": "cb6b0e43cca090d75a7d1175de973955bb4347f37e8b701a24ac639aed245216",
+        "source_file": "16_BALA.png"
+      },
+      "HAT.png": {
+        "bytes": 88328,
+        "sha256": "b2fe557604b0233718b26aa98ca2d73a2143378f79f4d46a72edc11da10e4bfa",
+        "source_file": "17_HAT.png"
+      },
+      "ATOM.png": {
+        "bytes": 70298,
+        "sha256": "a81e84cdff6f684e7821d4b2b7a84130cc262c42dc08aa167cb25b633cf124b1",
+        "source_file": "18_ATOM.png"
+      },
+      "STICKC_PLUS.png": {
+        "bytes": 127257,
+        "sha256": "31ccea1975737afd063ee7c68450645a67e551840c506ef5a80a1b19da6d0e81",
+        "source_file": "19_STICKC_PLUS.png"
+      },
+      "CORE2.png": {
+        "bytes": 140966,
+        "sha256": "e27c1b95831fb6113cf3d4aa87bd2eb6d488c7c291e792e0d2c9bccc603daf38",
+        "source_file": "20_CORE2.png"
+      },
+      "CORE_INK.png": {
+        "bytes": 138934,
+        "sha256": "f86cb7b5fd687c2ac6a9e95682363870a24507474d45b17c7b0d1ddb3b1f235b",
+        "source_file": "21_CORE_INK.png"
+      },
+      "M5PAPER.png": {
+        "bytes": 146051,
+        "sha256": "f2b19866d7e336034750f1bca0cbf9ac5631a947980556e472ce87f8af88a130",
+        "source_file": "22_M5PAPER.png"
+      }
+    }
+  }
+}

@@ -6,6 +6,8 @@
 
 卡面实验在 `docs/16_CARD_FACE_STYLES.md`。第一轮整卡生成在 `asset/concepts/cardputerzero/`，已放弃。当前模板预览在 `asset/concepts/cardputerzero-template/`，状态 needs_revision，不是验收稿。产品图见 `research/front_image_v5.md`。v3 的 3 张不是最新结论，也不是官方一共只有 3 张。
 
+原卡和角色图的序号已去掉，字节没有改。档案在 `asset/offical/`，工作副本在 `asset/card/` 和 `asset/char/`。StampFly、StamPLC、CoreMatrix、CardputerZero 的 style-a / style-b 预览已入库，状态是 preview_not_accepted，配色按产品分开，还没有验收。索引在 `asset/offical/README.md` 和 `asset/preview/README.md`。
+
 ## 进阶：实现与协议
 
 本目录仍是实现基线。它定义玩法、角色获取、玩家卡保存、跨平台对战、传输适配、版本兼容和互操作验证。显示名可以再改，协议字段、规则、序列化和黄金测试向量必须一致。
