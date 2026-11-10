@@ -25,3 +25,11 @@ PULSE 文字和原立方图形的组合只是概念处理，不是已经定稿�
 固定模板加主体的预览已经放在 `asset/concepts/cardputerzero-template/`。状态是 **needs_revision**。它不是验收稿，也不是风格已经一致。
 
 能说的只有：母版是 01_S3 和 10_CORE 的 SVG；隐藏动态槽后，以及角色/标题遮罩外面，CairoSVG 638×1004 的像素差是 0。主体是嵌进 SVG 的 PNG。A 的右上有平色修补，B 的标题是 Oswald 转曲的两行字，不是原 CORE 那套字形。模板上的 Tap to Build、NTAG215 和 M5STACK 仍是原卡文字，不是游戏的新标志。
+
+## 四产品预览
+
+StampFly、StamPLC、CoreMatrix、CardputerZero 的 style-a 与 style-b 在 `asset/char/` 和 `asset/card/` 的对应目录。合计 8 张透明角色 PNG、8 张卡面 PNG、8 张卡面 SVG，文件名是官方英文名，没有序号。CardputerZero 对应 H050。H031 Cardputer 仍是另一款产品。
+
+状态是 preview_not_accepted。每张卡用自己的产品特征色做满版底，色值在 `asset/preview/palette.json`。这些是预览 token，不是官方成品卡配色。固定层只和同一 token 参数化后的 01_S3 或 10_CORE 模板比较；八张卡隐藏槽位后的像素差是 0。复核脚本是 `asset/preview/scripts/verify_fixed_layer.py`。
+
+当前 CardputerZero Style A 角色图已把名牌写成 ESC HOME，电源条写成 LOCK。改字前的稿、旧蓝底预览和更早失败试稿在 `archive/history/`，不能当作当前文件。`asset/concepts/` 里的旧稿仍分别是 superseded 和 needs_revision。原 22 张卡的字节没有因为这批预览改动。

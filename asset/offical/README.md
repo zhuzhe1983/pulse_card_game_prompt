@@ -1,6 +1,6 @@
 # 官方素材档案
 
-目录名 `offical` 按指定拼法保留。22 张原卡和 22 张角色图已经按原字节复制到这里，原路径上的数字序号也已去掉。StampFly、StamPLC、CoreMatrix、CardputerZero 的新设计包还没到，所以这次还不是最终完成。
+目录名 `offical` 按指定拼法保留。22 张原卡和 22 张角色图已经按原字节复制到这里，原路径上的数字序号也已去掉。四产品预览已另外入库，状态是 preview_not_accepted，还没有验收。
 
 ## 文件名
 
@@ -22,15 +22,13 @@
 
 能填硬件产品名的只有：StickS3、NanoH2、Chain DualKey（卡面仍叫 DUALKEY）、StickC（卡面仍叫 STICKC）、StickC-Plus（卡面仍叫 STICKC_PLUS，不是 Plus2）、Core2（卡面仍叫 CORE2）、CoreInk（卡面仍叫 CORE_INK）。
 
-## 新设计还没到
+## 四产品预览
 
-新设计预览以后放在：
+当前预览在：
 
 `asset/card/style-a/`、`asset/card/style-b/`  
 `asset/char/style-a/`、`asset/char/style-b/`
 
-文件名仍不带序号。已留的名字是 CoreMatrix、StamPLC、CardputerZero。StampFly 的官方页是 https://docs.m5stack.com/en/app/StampFly ，文件名等设计包再核对。Cardputer 不是 CardputerZero。
+文件名是 StampFly、StamPLC、CoreMatrix、CardputerZero，没有序号。StampFly 的官方页是 https://docs.m5stack.com/en/app/StampFly 。Cardputer 与 CardputerZero 是两款产品。每张卡的背景 token 写在 `asset/preview/palette.json`。`#009ee0` 和 `#0079b4` 只是旧母版上的默认底色，不是这四款的预览底色。固定层已与同一 token 的模板比较，八张卡的像素差是 0。旧的 CardputerZero 概念稿仍是 needs_revision 或 superseded。纯蓝稿、失败试稿和改字前的错字稿在 `archive/history/`。
 
-新卡背景是可变 token，数值等设计包。不把 `#009ee0` 或 `#0079b4` 当成全部新卡的底色。固定层以后只和同一 token 的模板比较，不和蓝色母版比较。旧的 CardputerZero 概念稿仍是 needs_revision 或 superseded，不是本次新设计，也不改为 accepted。
-
-原图没有改色。
+原图没有改色。这批预览的状态是 preview_not_accepted。

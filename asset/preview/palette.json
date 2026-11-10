@@ -1,0 +1,115 @@
+{
+  "note": "These are design-preview tokens decided from official product photographs, expressed in the official 22-card language (one saturated solid field per card; Style B adds a darker same-hue ground oval). They are NOT official finished M5Stack product-card colors.",
+  "official_22_card_rule": {
+    "source": [
+      "/workspace/pulse-card-design/references/",
+      "/workspace/pulse_private/delivery/svg/"
+    ],
+    "finding": "Each official card uses its own full-bleed saturated solid background. 22 cards yield 20 unique backgrounds; only 01_S3/12_STICKV share #009ee0 and 16_BALA/20_CORE2 share #e30016. Style groups 01-09 and 10-22 are NOT locked to one blue. Official docs already state 配色是高饱和纯色满版底，每张一色.",
+    "official_backgrounds": {
+      "01_S3": "#009ee0",
+      "02_StickS3": "#c88dbb",
+      "03_AI_PYRAMID_PRO": "#dcbf31",
+      "04_M5STACK_console_motif": "#5cb2c5",
+      "05_M5STACK_ring_motif": "#f07c00",
+      "06_VoiceS3R_ATOM": "#7fcedc",
+      "07_NanoH2": "#c4c6c8",
+      "08_DUALKEY": "#e94662",
+      "09_StackChan": "#0080c6",
+      "10_CORE": "#0079b4",
+      "11_STICKC": "#f8a600",
+      "12_STICKV": "#009ee0",
+      "13_UNIT": "#c94b93",
+      "14_MODULE": "#e40044",
+      "15_BASE": "#565757",
+      "16_BALA": "#e30016",
+      "17_HAT": "#b9c170",
+      "18_ATOM": "#008bd0",
+      "19_STICKC_PLUS": "#000000",
+      "20_CORE2": "#e30016",
+      "21_CORE_INK": "#f88b24",
+      "22_M5PAPER": "#00a456"
+    },
+    "style_b_visible_tokens_on_10_CORE_template": {
+      "card_bg_old": "#0079b4",
+      "shadow_old": "#00679a",
+      "invisible_sunburst": "#005986 (fill-opacity 0; left untouched)",
+      "slogan": "#ffec00 (fixed, not a background token)"
+    },
+    "style_a_visible_tokens_on_01_S3_template": {
+      "card_bg_old": "#009ee0",
+      "note": "No ground oval. Do not retint the unused gradient stop that also contains #009ee0."
+    }
+  },
+  "products": {
+    "StampFly": {
+      "official_name": "StampFly",
+      "sku_note": "Family name StampFly; v1.1 also exists. Filename uses StampFly.",
+      "docs": "https://docs.m5stack.com/en/products",
+      "style_a": {
+        "card_bg": "#f33e1a",
+        "evidence": "Motor-hub / motor-can orange sampled from official top-down photo /workspace/stampfly-preview/official/orig/5.webp; tight orange median RGB (243, 62, 26) = #f33e1a.",
+        "why": "Orange hubs are the signature accent of StampFly (also visible on side views and the colorful flight-controller photos). Saturated solid matches official card language. White typography stays readable."
+      },
+      "style_b": {
+        "card_bg": "#f33e1a",
+        "shadow": "#c73215",
+        "evidence": "Same hub-orange signature. Style B mascot is white rotors + black body + orange hubs; a light duct-white field would wash out the rotors, so the same signature orange is used. Shadow is 0.82 darken of the field (#c73215), following the official CORE/STICKC pairing pattern (darker same-hue oval), not a second invented hue.",
+        "why": "This product's dominant characteristic color is the hub orange; black frame would hide the mascot body. Two styles share the signature hue but remain visually distinct because the char language differs."
+      }
+    },
+    "StamPLC": {
+      "official_name": "StamPLC",
+      "sku": "K141",
+      "docs": "https://docs.m5stack.com/en/core/StamPLC",
+      "operation_front": "/workspace/stamplc-preview/refs/operation_front_K141_02.png",
+      "style_a": {
+        "card_bg": "#d23331",
+        "evidence": "PWR-CAN red connector median RGB (210, 51, 49) = #d23331 sampled from official operation-front K141_02 (int16-safe threshold).",
+        "why": "The red XT-style power/CAN connector and the red RELAY markings are the most distinctive color blocks on the white industrial housing."
+      },
+      "style_b": {
+        "card_bg": "#0884cc",
+        "shadow": "#066ca7",
+        "evidence": "PWR-485 blue connector median RGB (8, 132, 204) = #0884cc from the same official front. This is the product's connector blue, not the old template lock colors #009ee0 / #0079b4.",
+        "why": "StamPLC pairs a red CAN connector with a blue 485 connector on the front panel; using those two signature colors for A/B keeps the set rich and product-true. Shadow #066ca7 is 0.82 darken."
+      }
+    },
+    "CoreMatrix": {
+      "official_name": "CoreMatrix",
+      "sku": "C158",
+      "docs": "https://docs.m5stack.com/en/core/CoreMatrix",
+      "operation_front": "/workspace/corematrix-preview/official/refs/operation_front_C158_09.png",
+      "style_a": {
+        "card_bg": "#b44343",
+        "evidence": "Red MX battery connector median RGB (180, 67, 67) = #b44343 sampled from official side photo C158_CoreMatrix_main_pictures_14.jpg (and visible in the 3/4 view 06, which was not used as a generation main reference).",
+        "why": "The shell is black and the face is a cool-white 16x16 LED matrix; the red battery connector is the only saturated body accent. Existing approved Style A char is kept; only the card field changes. Distinct from StamPLC's brighter connector red #d23331."
+      },
+      "style_b": {
+        "card_bg": "#5c7cbc",
+        "shadow": "#4b659a",
+        "evidence": "Official front LED bloom / cool halo median RGB (165, 173, 189). That gray-blue was saturation-boosted (HLS hue kept ~0.611, L=0.55, S=0.42) to a solid #5c7cbc so it matches official high-saturation card language while staying derived from the LED glow, not from the old #0079b4/#009ee0 locks. Shadow #4b659a is 0.82 darken.",
+        "why": "A black field would swallow the black mascot. The cool LED atmosphere gives Style B a light-wall identity and contrast for the white LED dots and eye rings. The approved v3 char is not regenerated."
+      }
+    },
+    "CardputerZero": {
+      "official_name": "CardputerZero",
+      "sku": "C154 / C154-B",
+      "family_row": "H050",
+      "do_not_use": "H031 Cardputer (different product).",
+      "docs": "https://docs.m5stack.com/en/CardputerZero",
+      "operation_front": "/workspace/pulse-card-design/product-refs/C154-CardputerZero-main-pictures_06.png",
+      "style_a": {
+        "card_bg": "#c83711",
+        "evidence": "Orange power-switch rocker median RGB (200, 55, 17) = #c83711 sampled from official H050 front C154-CardputerZero-main-pictures_06.png, top-right POWER SWITCH. Key-legend orange on the same face is a related but lighter (234, 102, 53).",
+        "why": "The orange rocker and orange function-key legends are the signature accents on the light-gray shell. This orange is warmer/darker than StampFly hub orange #f33e1a, so the two products stay distinguishable."
+      },
+      "style_b": {
+        "card_bg": "#ab419d",
+        "shadow": "#8c3580",
+        "evidence": "Purple Shift-key legend median RGB (171, 65, 157) = #ab419d from the same official H050 front.",
+        "why": "Shift purple is a unique keyboard-legend color on CardputerZero and gives Style B a second product-true hue (not merely a light/dark of the orange). Shadow #8c3580 is 0.82 darken. White type remains readable."
+      }
+    }
+  }
+}

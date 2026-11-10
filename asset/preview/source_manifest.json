@@ -1,0 +1,958 @@
+{
+  "title": "PULSE NFC card design preview archive (four products)",
+  "created_local": "2026-11-10 20:07:16 Asia/Shanghai (UTC+8)",
+  "status": "preview_not_accepted",
+  "official_names": {
+    "StampFly": "StampFly",
+    "StamPLC": "StamPLC",
+    "CoreMatrix": "CoreMatrix (not “Core Matrix”)",
+    "CardputerZero": "CardputerZero (H050 / C154; not H031 Cardputer, not “Cardputer Zero”)"
+  },
+  "naming": "No numeric prefixes. Official English product name. Styles in style-a / style-b parent folders. char and card are separate.",
+  "color_policy": "These are design-preview tokens decided from official product photographs, expressed in the official 22-card language (one saturated solid field per card; Style B adds a darker same-hue ground oval). They are NOT official finished M5Stack product-card colors.",
+  "validation_rule": "Same-color parameterized official template: hide slots vs template-only, diff must be 0. Layout, type, logos, clip unchanged (SVG identical except the 1–2 color token fills). Not compared against the old all-blue template-only after a color change.",
+  "all_same_color_diffs_zero": true,
+  "deliverables": [
+    {
+      "path": "asset/char/style-a/StampFly.png",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-a",
+      "type": "char",
+      "format": "png",
+      "sha256": "c971ece7e7955de5dbb8515c3cee6a60aa3c2623bf6192cbf38aeaf7dc300e3f",
+      "bytes": 426322,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/char/style-a/StampFly.png",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Motor-hub / motor-can orange sampled from official top-down photo /workspace/stampfly-preview/official/orig/5.webp; tight orange median RGB (243, 62, 26) = #f33e1a.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StampFly_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StampFly_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Style B uses the filled char that was actually embedded in the existing composite (rotor interiors were lime-holed in the unfilled key)."
+    },
+    {
+      "path": "asset/card/style-a/StampFly.png",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-a",
+      "type": "card",
+      "format": "png",
+      "sha256": "4ddb9f6e50db1f0a68103678cc96ce32837b983fee0519b04d15524382d92ffb",
+      "bytes": 284048,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-a/StampFly.png",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Motor-hub / motor-can orange sampled from official top-down photo /workspace/stampfly-preview/official/orig/5.webp; tight orange median RGB (243, 62, 26) = #f33e1a.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StampFly_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StampFly_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Style B uses the filled char that was actually embedded in the existing composite (rotor interiors were lime-holed in the unfilled key)."
+    },
+    {
+      "path": "asset/card/style-a/StampFly.svg",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-a",
+      "type": "card",
+      "format": "svg",
+      "sha256": "40e16205f22ca6f931b6ef0846d3aba63f551eca56921b08537c971a977922a7",
+      "bytes": 647894,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-a/StampFly.svg",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Motor-hub / motor-can orange sampled from official top-down photo /workspace/stampfly-preview/official/orig/5.webp; tight orange median RGB (243, 62, 26) = #f33e1a.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StampFly_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StampFly_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Style B uses the filled char that was actually embedded in the existing composite (rotor interiors were lime-holed in the unfilled key)."
+    },
+    {
+      "path": "asset/char/style-b/StampFly.png",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-b",
+      "type": "char",
+      "format": "png",
+      "sha256": "14bad4add73015c2dd8f9562e90a8ff78a0c75a7f9af72cfaa22f342a70e94b6",
+      "bytes": 210832,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/char/style-b/StampFly.png",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": "#c73215",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Same hub-orange signature. Style B mascot is white rotors + black body + orange hubs; a light duct-white field would wash out the rotors, so the same signature orange is used. Shadow is 0.82 darken of the field (#c73215), following the official CORE/STICKC pairing pattern (darker same-hue oval), not a second invented hue.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StampFly_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StampFly_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Style B uses the filled char that was actually embedded in the existing composite (rotor interiors were lime-holed in the unfilled key)."
+    },
+    {
+      "path": "asset/card/style-b/StampFly.png",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-b",
+      "type": "card",
+      "format": "png",
+      "sha256": "b3ca2ed5762c7a763addec465e2beef2ea7faca773ce8fd188f3569adc22e8fe",
+      "bytes": 155570,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-b/StampFly.png",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": "#c73215",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Same hub-orange signature. Style B mascot is white rotors + black body + orange hubs; a light duct-white field would wash out the rotors, so the same signature orange is used. Shadow is 0.82 darken of the field (#c73215), following the official CORE/STICKC pairing pattern (darker same-hue oval), not a second invented hue.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StampFly_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StampFly_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Style B uses the filled char that was actually embedded in the existing composite (rotor interiors were lime-holed in the unfilled key)."
+    },
+    {
+      "path": "asset/card/style-b/StampFly.svg",
+      "product": "StampFly",
+      "official_name": "StampFly",
+      "style": "style-b",
+      "type": "card",
+      "format": "svg",
+      "sha256": "2d01203281104f11f5992d1aef09ed141cc4e50a4acb596d11afcde28eb39b6e",
+      "bytes": 343359,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-b/StampFly.svg",
+      "color_tokens": {
+        "card_bg": "#f33e1a",
+        "shadow": "#c73215",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Same hub-orange signature. Style B mascot is white rotors + black body + orange hubs; a light duct-white field would wash out the rotors, so the same signature orange is used. Shadow is 0.82 darken of the field (#c73215), following the official CORE/STICKC pairing pattern (darker same-hue oval), not a second invented hue.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StampFly_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StampFly_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Style B uses the filled char that was actually embedded in the existing composite (rotor interiors were lime-holed in the unfilled key)."
+    },
+    {
+      "path": "asset/char/style-a/StamPLC.png",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-a",
+      "type": "char",
+      "format": "png",
+      "sha256": "aa66535ab45a8eeebc72f222c1c79ff80ef5f978e4dee31c1253dfc870637a51",
+      "bytes": 326071,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/char/style-a/StamPLC.png",
+      "color_tokens": {
+        "card_bg": "#d23331",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "PWR-CAN red connector median RGB (210, 51, 49) = #d23331 sampled from official operation-front K141_02 (int16-safe threshold).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StamPLC_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StamPLC_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Keyed this round from existing v1 raw AIGC; not redrawn."
+    },
+    {
+      "path": "asset/card/style-a/StamPLC.png",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-a",
+      "type": "card",
+      "format": "png",
+      "sha256": "511532d23320ea90add03e8703935170bfc17e6b8f6a6f1fa698c03ad0728ad3",
+      "bytes": 202405,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-a/StamPLC.png",
+      "color_tokens": {
+        "card_bg": "#d23331",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "PWR-CAN red connector median RGB (210, 51, 49) = #d23331 sampled from official operation-front K141_02 (int16-safe threshold).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StamPLC_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StamPLC_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Keyed this round from existing v1 raw AIGC; not redrawn."
+    },
+    {
+      "path": "asset/card/style-a/StamPLC.svg",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-a",
+      "type": "card",
+      "format": "svg",
+      "sha256": "3d10e93581dfdecea8d14e51f47ecc34d81c54d40ae0dc8168acf2dbfd11a824",
+      "bytes": 514226,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-a/StamPLC.svg",
+      "color_tokens": {
+        "card_bg": "#d23331",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "PWR-CAN red connector median RGB (210, 51, 49) = #d23331 sampled from official operation-front K141_02 (int16-safe threshold).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StamPLC_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StamPLC_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Keyed this round from existing v1 raw AIGC; not redrawn."
+    },
+    {
+      "path": "asset/char/style-b/StamPLC.png",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-b",
+      "type": "char",
+      "format": "png",
+      "sha256": "2af756fc044eb4542a342369958233ff87e2408093ff7ad65a112b574091e077",
+      "bytes": 165634,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/char/style-b/StamPLC.png",
+      "color_tokens": {
+        "card_bg": "#0884cc",
+        "shadow": "#066ca7",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "PWR-485 blue connector median RGB (8, 132, 204) = #0884cc from the same official front. This is the product's connector blue, not the old template lock colors #009ee0 / #0079b4.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StamPLC_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StamPLC_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Keyed this round from existing v1 raw AIGC; not redrawn."
+    },
+    {
+      "path": "asset/card/style-b/StamPLC.png",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-b",
+      "type": "card",
+      "format": "png",
+      "sha256": "df364a296b78d1982bb786fe3792d4f4c62f06d4f07a287c0b8df4ec4ac07044",
+      "bytes": 135571,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-b/StamPLC.png",
+      "color_tokens": {
+        "card_bg": "#0884cc",
+        "shadow": "#066ca7",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "PWR-485 blue connector median RGB (8, 132, 204) = #0884cc from the same official front. This is the product's connector blue, not the old template lock colors #009ee0 / #0079b4.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StamPLC_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StamPLC_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Keyed this round from existing v1 raw AIGC; not redrawn."
+    },
+    {
+      "path": "asset/card/style-b/StamPLC.svg",
+      "product": "StamPLC",
+      "official_name": "StamPLC",
+      "style": "style-b",
+      "type": "card",
+      "format": "svg",
+      "sha256": "af6724bfa7e058536a1e29e0c5d3f86e53a74f18bf43876297016001ed6feb40",
+      "bytes": 284148,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-b/StamPLC.svg",
+      "color_tokens": {
+        "card_bg": "#0884cc",
+        "shadow": "#066ca7",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "PWR-485 blue connector median RGB (8, 132, 204) = #0884cc from the same official front. This is the product's connector blue, not the old template lock colors #009ee0 / #0079b4.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/StamPLC_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/StamPLC_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Keyed this round from existing v1 raw AIGC; not redrawn."
+    },
+    {
+      "path": "asset/char/style-a/CoreMatrix.png",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-a",
+      "type": "char",
+      "format": "png",
+      "sha256": "34b232ea871a784646fc8226bbaefab453ce48a596129dddd7f27e3d20160842",
+      "bytes": 561918,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/char/style-a/CoreMatrix.png",
+      "color_tokens": {
+        "card_bg": "#b44343",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Red MX battery connector median RGB (180, 67, 67) = #b44343 sampled from official side photo C158_CoreMatrix_main_pictures_14.jpg (and visible in the 3/4 view 06, which was not used as a generation main reference).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CoreMatrix_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CoreMatrix_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Approved-preview chars reused; not regenerated when only the card field changed."
+    },
+    {
+      "path": "asset/card/style-a/CoreMatrix.png",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-a",
+      "type": "card",
+      "format": "png",
+      "sha256": "2e415ebde16204142589785a25516068e8edb692b58d782910c4837eadd777fc",
+      "bytes": 282612,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-a/CoreMatrix.png",
+      "color_tokens": {
+        "card_bg": "#b44343",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Red MX battery connector median RGB (180, 67, 67) = #b44343 sampled from official side photo C158_CoreMatrix_main_pictures_14.jpg (and visible in the 3/4 view 06, which was not used as a generation main reference).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CoreMatrix_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CoreMatrix_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Approved-preview chars reused; not regenerated when only the card field changed."
+    },
+    {
+      "path": "asset/card/style-a/CoreMatrix.svg",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-a",
+      "type": "card",
+      "format": "svg",
+      "sha256": "8d631003345a5dc4f7b6c5f97ef580ccb5c79f0e18cc06af1c55fb62335be572",
+      "bytes": 828686,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-a/CoreMatrix.svg",
+      "color_tokens": {
+        "card_bg": "#b44343",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Red MX battery connector median RGB (180, 67, 67) = #b44343 sampled from official side photo C158_CoreMatrix_main_pictures_14.jpg (and visible in the 3/4 view 06, which was not used as a generation main reference).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CoreMatrix_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CoreMatrix_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Approved-preview chars reused; not regenerated when only the card field changed."
+    },
+    {
+      "path": "asset/char/style-b/CoreMatrix.png",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-b",
+      "type": "char",
+      "format": "png",
+      "sha256": "93ce6863b37693021b1ee43e6503aede1507d3cb99e7ec53e24916b800877d2c",
+      "bytes": 402315,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/char/style-b/CoreMatrix.png",
+      "color_tokens": {
+        "card_bg": "#5c7cbc",
+        "shadow": "#4b659a",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Official front LED bloom / cool halo median RGB (165, 173, 189). That gray-blue was saturation-boosted (HLS hue kept ~0.611, L=0.55, S=0.42) to a solid #5c7cbc so it matches official high-saturation card language while staying derived from the LED glow, not from the old #0079b4/#009ee0 locks. Shadow #4b659a is 0.82 darken.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CoreMatrix_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CoreMatrix_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Approved-preview chars reused; not regenerated when only the card field changed."
+    },
+    {
+      "path": "asset/card/style-b/CoreMatrix.png",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-b",
+      "type": "card",
+      "format": "png",
+      "sha256": "b50e634051a533759da40aa40c90c6596fdc6fb90b39624f2528f5cb400f68a2",
+      "bytes": 171811,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-b/CoreMatrix.png",
+      "color_tokens": {
+        "card_bg": "#5c7cbc",
+        "shadow": "#4b659a",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Official front LED bloom / cool halo median RGB (165, 173, 189). That gray-blue was saturation-boosted (HLS hue kept ~0.611, L=0.55, S=0.42) to a solid #5c7cbc so it matches official high-saturation card language while staying derived from the LED glow, not from the old #0079b4/#009ee0 locks. Shadow #4b659a is 0.82 darken.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CoreMatrix_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CoreMatrix_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Approved-preview chars reused; not regenerated when only the card field changed."
+    },
+    {
+      "path": "asset/card/style-b/CoreMatrix.svg",
+      "product": "CoreMatrix",
+      "official_name": "CoreMatrix",
+      "style": "style-b",
+      "type": "card",
+      "format": "svg",
+      "sha256": "85030b7d786cfeff87bb3de5dd36b2d48d879a546a75d5e0bd16342928a4ba77",
+      "bytes": 600763,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-b/CoreMatrix.svg",
+      "color_tokens": {
+        "card_bg": "#5c7cbc",
+        "shadow": "#4b659a",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Official front LED bloom / cool halo median RGB (165, 173, 189). That gray-blue was saturation-boosted (HLS hue kept ~0.611, L=0.55, S=0.42) to a solid #5c7cbc so it matches official high-saturation card language while staying derived from the LED glow, not from the old #0079b4/#009ee0 locks. Shadow #4b659a is 0.82 darken.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CoreMatrix_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CoreMatrix_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Approved-preview chars reused; not regenerated when only the card field changed."
+    },
+    {
+      "path": "asset/char/style-a/CardputerZero.png",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-a",
+      "type": "char",
+      "format": "png",
+      "sha256": "042f9e4ecf3735ac1dc2457b217e2f1476c2a536f20ae64c2d9cc3f8cba137be",
+      "bytes": 491913,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/char/style-a/CardputerZero.png",
+      "color_tokens": {
+        "card_bg": "#c83711",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Orange power-switch rocker median RGB (200, 55, 17) = #c83711 sampled from official H050 front C154-CardputerZero-main-pictures_06.png, top-right POWER SWITCH. Key-legend orange on the same face is a related but lighter (234, 102, 53).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CardputerZero_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CardputerZero_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Must be a newly generated AIGC char of H050 CardputerZero, not a renamed old draft and not H031 Cardputer.",
+      "lettering_fix": "2026-11-10 Style A typo repair: ESC HAME→ESC HOME; padlock-O in LOCK replaced with O. Local pixel edit, not a redraw."
+    },
+    {
+      "path": "asset/card/style-a/CardputerZero.png",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-a",
+      "type": "card",
+      "format": "png",
+      "sha256": "1a1e328d58448181187ab1bcfe90ce374907ae6181953f62ee3b0f6cd50f8102",
+      "bytes": 230864,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-a/CardputerZero.png",
+      "color_tokens": {
+        "card_bg": "#c83711",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Orange power-switch rocker median RGB (200, 55, 17) = #c83711 sampled from official H050 front C154-CardputerZero-main-pictures_06.png, top-right POWER SWITCH. Key-legend orange on the same face is a related but lighter (234, 102, 53).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CardputerZero_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CardputerZero_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Must be a newly generated AIGC char of H050 CardputerZero, not a renamed old draft and not H031 Cardputer.",
+      "lettering_fix": "2026-11-10 Style A typo repair: ESC HAME→ESC HOME; padlock-O in LOCK replaced with O. Local pixel edit, not a redraw."
+    },
+    {
+      "path": "asset/card/style-a/CardputerZero.svg",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-a",
+      "type": "card",
+      "format": "svg",
+      "sha256": "77793db0adf8ebf77fa148b29cb84cd7e0d5fb84b6cfdccb5a66b3bd6c8e929d",
+      "bytes": 735346,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-a/CardputerZero.svg",
+      "color_tokens": {
+        "card_bg": "#c83711",
+        "shadow": null,
+        "old_card_bg": "#009ee0",
+        "old_shadow": null
+      },
+      "color_evidence": "Orange power-switch rocker median RGB (200, 55, 17) = #c83711 sampled from official H050 front C154-CardputerZero-main-pictures_06.png, top-right POWER SWITCH. Key-legend orange on the same face is a related but lighter (234, 102, 53).",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CardputerZero_style-a_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CardputerZero_style-a_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Must be a newly generated AIGC char of H050 CardputerZero, not a renamed old draft and not H031 Cardputer.",
+      "lettering_fix": "2026-11-10 Style A typo repair: ESC HAME→ESC HOME; padlock-O in LOCK replaced with O. Local pixel edit, not a redraw."
+    },
+    {
+      "path": "asset/char/style-b/CardputerZero.png",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-b",
+      "type": "char",
+      "format": "png",
+      "sha256": "0ef6414b081aa339e971f1f70b655a2493194042485ff60e67ce881a559679bc",
+      "bytes": 243852,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/char/style-b/CardputerZero.png",
+      "color_tokens": {
+        "card_bg": "#ab419d",
+        "shadow": "#8c3580",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Purple Shift-key legend median RGB (171, 65, 157) = #ab419d from the same official H050 front.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CardputerZero_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CardputerZero_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Must be a newly generated AIGC char of H050 CardputerZero, not a renamed old draft and not H031 Cardputer."
+    },
+    {
+      "path": "asset/card/style-b/CardputerZero.png",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-b",
+      "type": "card",
+      "format": "png",
+      "sha256": "6a8c1b75d02bf2bf7c3154fd30f35d505ca4a17ece622d5ee50b265475a40408",
+      "bytes": 131140,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-b/CardputerZero.png",
+      "color_tokens": {
+        "card_bg": "#ab419d",
+        "shadow": "#8c3580",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Purple Shift-key legend median RGB (171, 65, 157) = #ab419d from the same official H050 front.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CardputerZero_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CardputerZero_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Must be a newly generated AIGC char of H050 CardputerZero, not a renamed old draft and not H031 Cardputer."
+    },
+    {
+      "path": "asset/card/style-b/CardputerZero.svg",
+      "product": "CardputerZero",
+      "official_name": "CardputerZero",
+      "style": "style-b",
+      "type": "card",
+      "format": "svg",
+      "sha256": "22d5f67ea36aa78c3463eef2c4143d175e8036f300fca0011c1f8e46d9f5d5f4",
+      "bytes": 392262,
+      "preview_status": "preview_not_accepted",
+      "source_box_path": "/workspace/pulse-design-archive/asset/card/style-b/CardputerZero.svg",
+      "color_tokens": {
+        "card_bg": "#ab419d",
+        "shadow": "#8c3580",
+        "old_card_bg": "#0079b4",
+        "old_shadow": "#00679a"
+      },
+      "color_evidence": "Purple Shift-key legend median RGB (171, 65, 157) = #ab419d from the same official H050 front.",
+      "template_validation": {
+        "diff_pixels": 0,
+        "compared_pixels": 640552,
+        "identical": true,
+        "template_only": "/workspace/pulse-design-archive/validation/CardputerZero_style-b_template-only.png",
+        "hidden_slots": "/workspace/pulse-design-archive/validation/CardputerZero_style-b_hidden_slots.png",
+        "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+      },
+      "char_note": "Must be a newly generated AIGC char of H050 CardputerZero, not a renamed old draft and not H031 Cardputer."
+    }
+  ],
+  "history": [
+    {
+      "path": "history/all-blue-previews/CoreMatrix_style-a_card_all-blue.png",
+      "sha256": "7603c936fc0159492a4a45aab1709a6f6383baf1db709bc96d7e4f4f713fa65f",
+      "bytes": 281148,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/all-blue-previews/CoreMatrix_style-a_card_all-blue.png"
+    },
+    {
+      "path": "history/all-blue-previews/CoreMatrix_style-a_card_all-blue.svg",
+      "sha256": "bd651f9d0895006e147ac02082db52826cbc52ac8837fff09cf897311302ddfd",
+      "bytes": 828686,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/all-blue-previews/CoreMatrix_style-a_card_all-blue.svg"
+    },
+    {
+      "path": "history/all-blue-previews/CoreMatrix_style-b_card_all-blue.png",
+      "sha256": "dd64af5acfa5fd31df7ce0ac5ddcacc5918a930d089bd6e48b639d0c6b281660",
+      "bytes": 170597,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/all-blue-previews/CoreMatrix_style-b_card_all-blue.png"
+    },
+    {
+      "path": "history/all-blue-previews/CoreMatrix_style-b_card_all-blue.svg",
+      "sha256": "4ab4171136b3ecad32fa0aec87cfcda6d1100b1301862f227dd10c74aa7d097d",
+      "bytes": 601141,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/all-blue-previews/CoreMatrix_style-b_card_all-blue.svg"
+    },
+    {
+      "path": "history/all-blue-previews/StampFly_style-a_card_all-blue.png",
+      "sha256": "570e5f560f2e6e01a4ce6f34169b3dbf1e7c7fb16074942e690bb8bfe3e2b99b",
+      "bytes": 284137,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/all-blue-previews/StampFly_style-a_card_all-blue.png"
+    },
+    {
+      "path": "history/all-blue-previews/StampFly_style-a_card_all-blue.svg",
+      "sha256": "350a0e3d05851cb7185ed393d8f34f3d77ffad285a05435b149d840bef612a00",
+      "bytes": 647894,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/all-blue-previews/StampFly_style-a_card_all-blue.svg"
+    },
+    {
+      "path": "history/all-blue-previews/StampFly_style-b_card_all-blue.png",
+      "sha256": "1196e6a0c54724443b62cdd2822d209738090e41afa044ae717c3d5efd389a29",
+      "bytes": 156746,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/all-blue-previews/StampFly_style-b_card_all-blue.png"
+    },
+    {
+      "path": "history/all-blue-previews/StampFly_style-b_card_all-blue.svg",
+      "sha256": "a984c1abf74b8ba8ed128a01e80813c35133df20b8b55ba8269b0301beb12d8e",
+      "bytes": 343072,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/all-blue-previews/StampFly_style-b_card_all-blue.svg"
+    },
+    {
+      "path": "history/cardputerzero-needs_revision/styleA_cardputerzero.png",
+      "sha256": "1a30b1377bc5b48ae1556add3adb993d335db199fb3f689b2b02a2d6134674bf",
+      "bytes": 259913,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-needs_revision/styleA_cardputerzero.png"
+    },
+    {
+      "path": "history/cardputerzero-needs_revision/styleA_cardputerzero.svg",
+      "sha256": "1b6ce2129e6609e718db2376efad95bdc6a65935848b7783f0f3dd4d1b9c2c9c",
+      "bytes": 813294,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-needs_revision/styleA_cardputerzero.svg"
+    },
+    {
+      "path": "history/cardputerzero-needs_revision/styleA_cardputerzero_final.jpg",
+      "sha256": "ab6e469b3769dec19c51a4c2457141d17e92da32dc76ec9be4f835f8873fd009",
+      "bytes": 156173,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-needs_revision/styleA_cardputerzero_final.jpg"
+    },
+    {
+      "path": "history/cardputerzero-needs_revision/styleA_char_cardputerzero.png",
+      "sha256": "157ad7f5b3c242f4f0f6ca2201c508bc3ecebfc1539c5593351d7b347958b054",
+      "bytes": 550373,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-needs_revision/styleA_char_cardputerzero.png"
+    },
+    {
+      "path": "history/cardputerzero-needs_revision/styleB_cardputerzero.png",
+      "sha256": "d680de7ee1f63f9570f6df41df8ff66a9dfbd59a72887c2b49db31f61fcc3f15",
+      "bytes": 125389,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-needs_revision/styleB_cardputerzero.png"
+    },
+    {
+      "path": "history/cardputerzero-needs_revision/styleB_cardputerzero.svg",
+      "sha256": "02dea6672265433133c57d60987172e7fe1d51c5ffaa13d7e780383ca42062df",
+      "bytes": 329117,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-needs_revision/styleB_cardputerzero.svg"
+    },
+    {
+      "path": "history/cardputerzero-needs_revision/styleB_cardputerzero_final.jpg",
+      "sha256": "7ae239ca723ee696d7e3a747d1955af53997c3f77444000acf2105d872cc51dd",
+      "bytes": 106197,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-needs_revision/styleB_cardputerzero_final.jpg"
+    },
+    {
+      "path": "history/cardputerzero-needs_revision/styleB_char_cardputerzero.png",
+      "sha256": "723ee7a14e864fa53d3ca345607575c7cc8a0b624cf94c1616419d5a527c68b3",
+      "bytes": 196134,
+      "preview_status": "historical_superseded_or_all_blue",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-needs_revision/styleB_char_cardputerzero.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/NOTE.txt",
+      "sha256": "847c80f754f61f8b31a773ec1ff66289d7265588f160338e4cb6a35fb4bd351a",
+      "bytes": 437,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/NOTE.txt"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/card_CardputerZero.png",
+      "sha256": "c666c27f733a365e7073129f7adca56ca2314459ebec29be97d23a3499ac030c",
+      "bytes": 230853,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/card_CardputerZero.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/card_CardputerZero.svg",
+      "sha256": "e5093b7efffad7d9b62d97312e8292c14d656b5f84e6a6e92f1dc5763bffdfc4",
+      "bytes": 735302,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/card_CardputerZero.svg"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/char_CardputerZero.png",
+      "sha256": "7e38bd9c2f7fe3ef99cb03d09d4b5b8e43b54090009271bb87360b23b53b4189",
+      "bytes": 491879,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/char_CardputerZero.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/work_styleA_char_CardputerZero.png",
+      "sha256": "7e38bd9c2f7fe3ef99cb03d09d4b5b8e43b54090009271bb87360b23b53b4189",
+      "bytes": 491879,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/work_styleA_char_CardputerZero.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/qa_zooms/after_device_face.png",
+      "sha256": "c55821d8be75b25571404d74f0bb8d171f369bb16e06299abfcf53ad4c2280f9",
+      "bytes": 434700,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/qa_zooms/after_device_face.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/qa_zooms/after_esc_nameplate.png",
+      "sha256": "3408933b6fbef7385fafc0544ce8f3affd7e1af88aa882b9f5cb79bea518b3d5",
+      "bytes": 28869,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/qa_zooms/after_esc_nameplate.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/qa_zooms/after_lock_bar.png",
+      "sha256": "7848b0e56bb72f84e6ca66db84fd7626c7b9b65d2708a47c0a3abca68005ff6f",
+      "bytes": 9979,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/qa_zooms/after_lock_bar.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/qa_zooms/before_device_face.png",
+      "sha256": "59f9bcbe68ceaa83c76578284dbb7ce98b2759202f0b1b8779e47e6de71e4f2d",
+      "bytes": 434687,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/qa_zooms/before_device_face.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/qa_zooms/before_esc_nameplate.png",
+      "sha256": "cb3eb59520acded0bece5df882083d72333d334ed7c85711e725bc1f5071c06c",
+      "bytes": 28873,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/qa_zooms/before_esc_nameplate.png"
+    },
+    {
+      "path": "history/cardputerzero-style-a-before-lettering-fix/qa_zooms/before_lock_bar.png",
+      "sha256": "71180fd5909f65465cd796a087024980f4b9ed2b2f74bf1544cab085e77d3d9c",
+      "bytes": 9964,
+      "preview_status": "historical_typo_preview_before_lettering_fix",
+      "source_box_path": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix/qa_zooms/before_lock_bar.png"
+    }
+  ],
+  "pipeline_scripts": [
+    "scripts/README.md",
+    "scripts/chroma_key.py",
+    "scripts/recolor_template.py",
+    "scripts/compose_card.py",
+    "scripts/build_four_product_previews.py",
+    "palette.json",
+    "scripts/fix_cardputerzero_style_a_lettering.py"
+  ],
+  "not_included": [
+    "Official 22-card masters were used only as color/layout references and are not renamed or packaged as new work.",
+    "No all-product batch generation. Later batches wait for verified operation-front photos and a separate assignment.",
+    "asset/offical typo-directory backup is for the main assistant / cloud to copy from previous asset trees; this pack uses the new asset/{char,card}/{style-a,style-b}/ structure."
+  ],
+  "palette_file": "palette.json",
+  "updated_local": "2026-11-10 20:12:43 Asia/Shanghai (UTC+8)",
+  "lettering_fix": {
+    "when_local": "2026-11-10 20:12:43 Asia/Shanghai (UTC+8)",
+    "product": "CardputerZero",
+    "style": "style-a",
+    "scope": "typo/garbled lettering only; styles, palette, and other products unchanged",
+    "method": "Local pixel edit on the existing keyed Style A char PNG. For each typo glyph, near-black bar pixels were left alone; brighter glyph pixels in a tight bbox were filled with the bar’s median black; a supersampled (8×) elliptical O of matching stroke weight was downscaled with LANCZOS and composited in the same white as neighbouring letters. ESC / H / M / E, L / CK / TAB, white key-cap marks, the orange antenna icon, CARDPUTER ZERO, POWER SWITCH, and the rest of the badge were not redrawn. No AIGC regeneration. No template text or trademark edit.",
+    "esc": {
+      "from": "ESC HAME",
+      "to": "ESC HOME",
+      "op": "replace A with O at (163,302) 7x8 stroke 1.45"
+    },
+    "lock": {
+      "from": "L[padlock]CK TAB",
+      "to": "LOCK TAB",
+      "op": "replace padlock with O at (658,297) 9x11 stroke 2.0"
+    },
+    "char_changed_pixels": 172,
+    "change_bbox_xyxy": [
+      163,
+      297,
+      667,
+      310
+    ],
+    "outside_esc_and_lock_regions": 0,
+    "alpha_changed": 0,
+    "typo_backup_dir": "/workspace/pulse-design-archive/history/cardputerzero-style-a-before-lettering-fix",
+    "template_validation": {
+      "diff_pixels": 0,
+      "compared_pixels": 640552,
+      "identical": true,
+      "template_only": "/workspace/pulse-design-archive/validation/CardputerZero_style-a_template-only.png",
+      "hidden_slots": "/workspace/pulse-design-archive/validation/CardputerZero_style-a_hidden_slots.png",
+      "rule": "same-color parameterized master; slot-outside / hidden-slot render must be 0"
+    },
+    "char_embedded_in_card_sha_match": true,
+    "other_deliverables_unchanged": [
+      "asset/card/style-a/CoreMatrix.png",
+      "asset/card/style-a/CoreMatrix.svg",
+      "asset/card/style-a/StamPLC.png",
+      "asset/card/style-a/StamPLC.svg",
+      "asset/card/style-a/StampFly.png",
+      "asset/card/style-a/StampFly.svg",
+      "asset/card/style-b/CardputerZero.png",
+      "asset/card/style-b/CardputerZero.svg",
+      "asset/card/style-b/CoreMatrix.png",
+      "asset/card/style-b/CoreMatrix.svg",
+      "asset/card/style-b/StamPLC.png",
+      "asset/card/style-b/StamPLC.svg",
+      "asset/card/style-b/StampFly.png",
+      "asset/card/style-b/StampFly.svg",
+      "asset/char/style-a/CoreMatrix.png",
+      "asset/char/style-a/StamPLC.png",
+      "asset/char/style-a/StampFly.png",
+      "asset/char/style-b/CardputerZero.png",
+      "asset/char/style-b/CoreMatrix.png",
+      "asset/char/style-b/StamPLC.png",
+      "asset/char/style-b/StampFly.png"
+    ]
+  }
+}

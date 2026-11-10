@@ -6,7 +6,7 @@
 
 卡面实验在 `docs/16_CARD_FACE_STYLES.md`。第一轮整卡生成在 `asset/concepts/cardputerzero/`，已放弃。当前模板预览在 `asset/concepts/cardputerzero-template/`，状态 needs_revision，不是验收稿。产品图见 `research/front_image_v5.md`。v3 的 3 张不是最新结论，也不是官方一共只有 3 张。
 
-原卡和角色图的序号已去掉，字节没有改。档案在 `asset/offical/`，工作副本在 `asset/card/` 和 `asset/char/`。新设计包还没到，背景 token 仍空着，所以还不是最终完成。规则见 `asset/offical/README.md`。
+原卡和角色图的序号已去掉，字节没有改。档案在 `asset/offical/`，工作副本在 `asset/card/` 和 `asset/char/`。StampFly、StamPLC、CoreMatrix、CardputerZero 的 style-a / style-b 预览已入库，状态是 preview_not_accepted，配色按产品分开，还没有验收。索引在 `asset/offical/README.md` 和 `asset/preview/README.md`。
 
 ## 进阶：实现与协议
 

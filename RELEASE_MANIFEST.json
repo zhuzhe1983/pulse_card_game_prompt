@@ -8,13 +8,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 3937,
-      "sha256": "46fd969a09adb5fa54e81c9a5274ee570ae2e0a1760aa09834830ae6bb66b4e2"
+      "bytes": 4051,
+      "sha256": "498110917bed5389a24fd23891910dd003935645584ca63a751e5765d27dc9f7"
     },
     {
       "path": "REQUIREMENTS.html",
-      "bytes": 364808,
-      "sha256": "7025d59c8e4ce9cf9f10947feddaafcbe182b1288f15d4cbba81fd332b36aea5"
+      "bytes": 364871,
+      "sha256": "1d4a068c3f4e4986b3cb5ccd728be4d2cb9b715a621c37d1d4fe55a52947b7b0"
     },
     {
       "path": "START_HERE.txt",
@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 602245,
-      "sha256": "7726e81e7106e44d07f6fa8a74606ba1efac4ff6a3430bfdf65b8041258eda78"
+      "bytes": 603267,
+      "sha256": "903ef9520a6f211985e16850553377b6d461590097c5c43981de63a923947be4"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -318,8 +318,8 @@
     },
     {
       "path": "docs/16_CARD_FACE_STYLES.md",
-      "bytes": 2364,
-      "sha256": "4693edaef36c1ece80923c1393127e1dbb2a86bc813350728d0706505b4f5108"
+      "bytes": 3386,
+      "sha256": "e7376592b1038681132b18760cd1ab554e33ec56095d90b5f8fb5e425ccb0ffd"
     },
     {
       "path": "docs/visual/original_card_metrics.json",
@@ -378,8 +378,8 @@
     },
     {
       "path": "tests/test_draft_integrity.py",
-      "bytes": 15415,
-      "sha256": "7f0e85a10995d950753e659cf364f41701b9355a3e637ef6009bb01defc49b46"
+      "bytes": 18079,
+      "sha256": "61e5bcd0983a81f80449fbbe74cb1befda81c18b5be7ba24c0e3cf124f040ce7"
     },
     {
       "path": "content/en.json",
@@ -533,13 +533,13 @@
     },
     {
       "path": "asset/offical/README.md",
-      "bytes": 2033,
-      "sha256": "87cbc0e5cfd29358e0af6bf6e2afd5e4dc3e4573815b14b8998d86914f86c340"
+      "bytes": 2075,
+      "sha256": "075dcfe007a9159db34f20243c1ed47cfb0bff7cb8b89a6b9d44c3cd937af39a"
     },
     {
       "path": "asset/offical/MANIFEST.json",
-      "bytes": 26591,
-      "sha256": "9c50f97c2e9cbdbbad9102c715c92629890f5222ddef02c9cfe85c930b662709"
+      "bytes": 40865,
+      "sha256": "bd12c2a339ae81e0d32878331963e2c7e9069ccd020816a23acd8924ed094642"
     }
   ]
 }

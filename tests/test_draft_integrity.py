@@ -243,18 +243,25 @@ class WordingTests(unittest.TestCase):
         self.assertIn('"diff_pixels": 0', report)
         self.assertEqual(len(list((ROOT / "asset" / "card").glob("[0-9][0-9]_*.png"))), 0)
 
-    def test_offical_archive_spec_waits_for_package(self):
+    def test_offical_archive_and_four_product_previews(self):
         import hashlib
         spec = load("asset/offical/MANIFEST.json")
-        self.assertEqual(spec["archive_status"], "originals_archived_design_package_pending")
-        self.assertFalse(spec["design_package_received"])
+        self.assertEqual(spec["archive_status"], "previews_archived_not_accepted")
+        self.assertTrue(spec["design_package_received"])
+        self.assertEqual(spec["preview_status"], "preview_not_accepted")
+        self.assertFalse(spec["accepted"])
         self.assertIsNone(spec["background_token"]["value"])
+        self.assertEqual(spec["background_token"]["status"], "per_product")
         self.assertFalse(spec["original_assets_recolored"])
-        self.assertTrue(spec["copies_written"])
+        self.assertEqual(spec["packages"]["main"]["sha256"], "039c9a2d3a872164e3c2951c380cc0c9607c872ae05c814d4105e26d73cbe36e")
+        self.assertEqual(spec["packages"]["main"]["bytes"], 8922500)
+        self.assertEqual(spec["packages"]["history"]["sha256"], "4fb55dfbe40a2f4a07e020381553b86f26b862fc0714c69e7a975667be5a587e")
+        self.assertEqual(spec["packages"]["history"]["bytes"], 7261147)
         labels = {}
         for item in spec["files"]:
             self.assertNotRegex(item["filename"], r"^[0-9]{2}_")
             self.assertEqual(item["official_card_label"] + ".png", item["filename"])
+            self.assertIn(item["kind"], ("card", "char"))
             labels.setdefault(item["filename"], item["hardware_product_name"])
             self.assertEqual(labels[item["filename"]], item["hardware_product_name"])
         self.assertIsNone(labels["S3.png"])
@@ -279,10 +286,37 @@ class WordingTests(unittest.TestCase):
                 self.assertEqual(len(data), info["bytes"])
                 self.assertEqual(hashlib.sha256(data).hexdigest(), info["sha256"])
                 self.assertTrue(info["source_file"].startswith(tuple(str(i).zfill(2) for i in range(1, 23))))
+        products = ["StampFly", "StamPLC", "CoreMatrix", "CardputerZero"]
+        previews = spec["previews"]
+        self.assertEqual(len(previews), 24)
+        self.assertEqual(sum(1 for item in previews if item["type"] == "char"), 8)
+        self.assertEqual(sum(1 for item in previews if item["type"] == "card" and item["format"] == "png"), 8)
+        self.assertEqual(sum(1 for item in previews if item["format"] == "svg"), 8)
+        history_shas = {item["sha256"] for item in load("asset/preview/source_manifest.json")["history"]}
+        for item in previews:
+            self.assertEqual(item["preview_status"], "preview_not_accepted")
+            self.assertIn(item["official_name"], products)
+            self.assertNotRegex(Path(item["path"]).name, r"^[0-9]{2}_")
+            data = (ROOT / item["path"]).read_bytes()
+            self.assertEqual(len(data), item["bytes"])
+            self.assertEqual(hashlib.sha256(data).hexdigest(), item["sha256"])
+            self.assertNotIn(item["sha256"], history_shas)
+        current_char = hashlib.sha256((ROOT / "asset/char/style-a/CardputerZero.png").read_bytes()).hexdigest()
+        self.assertEqual(current_char, "042f9e4ecf3735ac1dc2457b217e2f1476c2a536f20ae64c2d9cc3f8cba137be")
+        typo = ROOT / "archive/history/cardputerzero-style-a-before-lettering-fix/char_CardputerZero.png"
+        self.assertEqual(hashlib.sha256(typo.read_bytes()).hexdigest(), "7e38bd9c2f7fe3ef99cb03d09d4b5b8e43b54090009271bb87360b23b53b4189")
+        history_files = [path for path in (ROOT / "archive/history").rglob("*") if path.is_file()]
+        self.assertEqual(len(history_files), 28)
+        report = load("asset/preview/validation/fixed_layer_report.json")
+        self.assertTrue(report["all_identical"])
+        self.assertEqual(len(report["cards"]), 8)
+        self.assertTrue(all(card["diff_pixels"] == 0 and card["compared_pixels"] == 640552 for card in report["cards"]))
         readme = (ROOT / "asset" / "offical" / "README.md").read_text(encoding="utf-8")
         self.assertIn("needs_revision", readme)
         self.assertIn("同一 token", readme)
-        self.assertIn("还不是最终完成", readme)
+        self.assertIn("preview_not_accepted", readme)
+        style = (ROOT / "docs" / "16_CARD_FACE_STYLES.md").read_text(encoding="utf-8")
+        self.assertIn("preview_not_accepted", style)
 
 
 if __name__ == "__main__":
