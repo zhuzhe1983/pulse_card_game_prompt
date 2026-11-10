@@ -244,6 +244,33 @@ class WordingTests(unittest.TestCase):
         diff = subprocess.check_output(["git", "diff", "--name-only", "HEAD", "--", "asset/card"], cwd=ROOT, text=True)
         self.assertEqual(diff.strip(), "")
 
+    def test_offical_archive_spec_waits_for_package(self):
+        import hashlib
+        spec = load("asset/offical/MANIFEST.json")
+        self.assertEqual(spec["archive_status"], "awaiting_design_package")
+        self.assertEqual(spec["directory_spelling"], "offical")
+        self.assertIsNone(spec["background_token"]["value"])
+        self.assertFalse(spec["copies_written"])
+        self.assertFalse(spec["original_assets_recolored"])
+        names = {item["slot"]: item for item in spec["new_products_reserved"]}
+        self.assertEqual(names["CardputerZero"]["official_product_name"], "CardputerZero")
+        self.assertIsNone(names["StampFly"]["official_product_name"])
+        blocked = [item for item in spec["legacy_filename_map"] if item["status"] == "blocked"]
+        self.assertGreaterEqual(len(blocked), 10)
+        for kind in ("card", "char"):
+            recorded = spec["byte_baseline"][kind]
+            files = list((ROOT / "asset" / kind).glob("*.png"))
+            self.assertEqual(len(files), 22)
+            for path in files:
+                info = recorded[path.name]
+                data = path.read_bytes()
+                self.assertEqual(len(data), info["bytes"])
+                self.assertEqual(hashlib.sha256(data).hexdigest(), info["sha256"])
+        readme = (ROOT / "asset" / "offical" / "README.md").read_text(encoding="utf-8")
+        self.assertIn("needs_revision", readme)
+        self.assertIn("同一 token", readme)
+        self.assertNotIn("归档完成稿", readme.split("还不是")[0])
+
 
 if __name__ == "__main__":
     unittest.main()

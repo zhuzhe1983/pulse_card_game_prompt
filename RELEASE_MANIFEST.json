@@ -8,8 +8,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3682,
-      "sha256": "15cd6599c3928bedaeeb332dff9fd4164f9ccff8ba23b38efe98dd59bc13bcfc"
+      "bytes": 3881,
+      "sha256": "2b5e1dde8f1f4767bd4c4c82939b815d8a7ef348caaea5eed24105ada8d04c79"
     },
     {
       "path": "REQUIREMENTS.html",
@@ -378,8 +378,8 @@
     },
     {
       "path": "tests/test_draft_integrity.py",
-      "bytes": 13144,
-      "sha256": "e85194a12148ba9ae6f1aeaa1cd5f4e49a593105d81264cdab9588aafd47ca6b"
+      "bytes": 14685,
+      "sha256": "51f4c072733b0f4484709d09d1b4971ae4ee2ff21495169bf1a48bbaadcb04c5"
     },
     {
       "path": "content/en.json",
@@ -530,6 +530,16 @@
       "path": "research/images/back_ortho/H031__img-e3288169-9100-44f4-becd-afe1556f56b0.webp",
       "bytes": 62622,
       "sha256": "c2dd9c051589a1964978ee961fe5e5b7ca83da039cd1f79da8f3292addaeddc2"
+    },
+    {
+      "path": "asset/offical/README.md",
+      "bytes": 2003,
+      "sha256": "70f7f3e3d25cc76133487ec9f0763280a7a93068768e9af5f08b3535244ed1b7"
+    },
+    {
+      "path": "asset/offical/MANIFEST.json",
+      "bytes": 10593,
+      "sha256": "dd52bea610394cef000b1783d05713378006b996082c10cb59034285fb5fdfd4"
     }
   ]
 }
