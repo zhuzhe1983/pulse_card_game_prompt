@@ -159,8 +159,37 @@ class WordingTests(unittest.TestCase):
                     continue
                 self.assertNotIn(item, text, path.name)
         style = (ROOT / "docs" / "16_CARD_FACE_STYLES.md").read_text(encoding="utf-8")
-        self.assertIn("模板重制进行中", style)
+        self.assertIn("needs_revision", style)
         self.assertNotIn("100%", style)
+
+    def test_template_preview_links_and_original_cards_unmodified(self):
+        import subprocess
+        preview = ROOT / "asset" / "concepts" / "cardputerzero-template"
+        readme = (preview / "README.md").read_text(encoding="utf-8")
+        self.assertIn("needs_revision", readme)
+        self.assertIn("不是 accepted", readme)
+        self.assertNotIn("状态：accepted", readme.lower())
+        for relative in (
+            "composites/styleA_cardputerzero.png",
+            "composites/styleA_cardputerzero.svg",
+            "composites/styleB_cardputerzero.png",
+            "composites/styleB_cardputerzero.svg",
+            "chars/styleA_char_cardputerzero.png",
+            "chars/styleB_char_cardputerzero.png",
+            "templates/slots.json",
+            "templates/styleA_template_01_S3.svg",
+            "templates/styleB_template_10_CORE.svg",
+            "source_masters/01_S3.svg",
+            "source_masters/10_CORE.svg",
+            "scripts/chroma_and_compose.py",
+            "validation/compare_report.json",
+        ):
+            self.assertTrue((preview / relative).is_file(), relative)
+        report = (preview / "validation" / "compare_report.json").read_text(encoding="utf-8")
+        self.assertNotIn("/workspace/", report)
+        self.assertIn('"diff_pixels": 0', report)
+        diff = subprocess.check_output(["git", "diff", "--name-only", "HEAD", "--", "asset/card"], cwd=ROOT, text=True)
+        self.assertEqual(diff.strip(), "")
 
 
 if __name__ == "__main__":

@@ -8,23 +8,23 @@
     },
     {
       "path": "README.md",
-      "bytes": 3511,
-      "sha256": "acd342652e4ccc88e6cc6a25251a2f21c4e7375d60ae8748d12d75f3ebf10fa1"
+      "bytes": 3569,
+      "sha256": "d127cba409c04db21834ad5272696d77b7fd84e3c7460bf48916f9890d74a0c3"
     },
     {
       "path": "REQUIREMENTS.html",
-      "bytes": 364796,
-      "sha256": "b2b17e4ac6fe2c2c47df6749390dc5dbca67ef1b26349b1ff15542fc6c7f6c10"
+      "bytes": 364808,
+      "sha256": "7025d59c8e4ce9cf9f10947feddaafcbe182b1288f15d4cbba81fd332b36aea5"
     },
     {
       "path": "START_HERE.txt",
-      "bytes": 6497,
-      "sha256": "572856fc5da036f3fb9520e76614fc3998c33de6427e1264b5c6723ba6e8ea7e"
+      "bytes": 6504,
+      "sha256": "b754146f0f56f6f2774976848ad04e6b481304b5fa4b6e0752029c21cb3e9651"
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 527448,
-      "sha256": "07315f185f4cd9dd9631fb509482a0f921a85749d4382d12c77635611be6bf98"
+      "bytes": 527880,
+      "sha256": "b32be1ed738fcb5fb67bd6dbfe10b34799d3821e1d2dbaca32ddcbc80368070d"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
-      "bytes": 28527,
-      "sha256": "f3796c630661d462afb9c8d58e8b1a6867bafc1f44fc7ad483becb0187f76ea6"
+      "bytes": 28533,
+      "sha256": "532f99a888b59883cb8317976068696552d0f55e4d48920d6530941735b166ea"
     },
     {
       "path": "docs/03_NFC_PLAYER_SAVE.md",
@@ -318,8 +318,8 @@
     },
     {
       "path": "docs/16_CARD_FACE_STYLES.md",
-      "bytes": 2039,
-      "sha256": "fb9cfffdd25389d84b7ccadbf0d569d2905705976c99ef484b6483553df1d79c"
+      "bytes": 2364,
+      "sha256": "4693edaef36c1ece80923c1393127e1dbb2a86bc813350728d0706505b4f5108"
     },
     {
       "path": "docs/visual/original_card_metrics.json",
@@ -378,8 +378,8 @@
     },
     {
       "path": "tests/test_draft_integrity.py",
-      "bytes": 8164,
-      "sha256": "b47747df4cb6dca68b43b2b6e4a82a1c941770b06ddd715f3d9719e6714777ac"
+      "bytes": 9639,
+      "sha256": "4cdaf637d6b98dece644a8b77e9b1af112e954df7fff2e054586c57e148473b4"
     },
     {
       "path": "content/en.json",

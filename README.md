@@ -4,7 +4,7 @@
 
 现在能打的是基础 14 张牌：10 张牌组、最多 3 个小局、每小局最多打出 5 张、可以停手、比整数战力。中文显示名在 `content/zh-CN.json`，英文显示名在 `content/en.json`，都不含官方型号。扩展目录在 `docs/13_WORLD_AND_FACTIONS.md`、`docs/14_EXPANSION_DRAFT.md` 和 `content/game_catalog.csv`，**还没有启用**。千里眼在现有规则里仍是角色；草案建议改成器具，卡包哈希没有因此改动。
 
-卡面实验在 `docs/16_CARD_FACE_STYLES.md`。第一轮 CardputerZero 生成稿已放弃，不推荐。固定模板重制还在进行，新稿还没进这个仓库。
+卡面实验在 `docs/16_CARD_FACE_STYLES.md`。第一轮整卡生成在 `asset/concepts/cardputerzero/`，已放弃。当前模板预览在 `asset/concepts/cardputerzero-template/`，状态 needs_revision，不是验收稿。
 
 ## 进阶：实现与协议
 

@@ -4,7 +4,7 @@
 
 完整 ZIP 另外包含 Python 参考实现、完整每步战局、二进制卡片文件和 85 项测试。单文件中没有附 Python 源码，不应声称已运行 ZIP 中的测试；可用随文的预期 hash 对照目标语言实现。上下文有限时优先使用完整开发包与 START_HERE，按章节读取，不截断协议或存档章节。
 
-阅读顺序：先看 docs/13 与 docs/14。现在能执行的只有基础 14 张和 pcg.core.v1。expansion_draft.json 是未启用草案。research/ 不在本文件里，里面的建议不是规则。asset/concepts/cardputerzero/ 是已放弃的第一轮卡面，不推荐。
+阅读顺序：先看 docs/13 与 docs/14。现在能执行的只有基础 14 张和 pcg.core.v1。expansion_draft.json 是未启用草案。research/ 不在本文件里，里面的建议不是规则。asset/concepts/cardputerzero/ 是已放弃的第一轮卡面，不推荐。asset/concepts/cardputerzero-template/ 是 needs_revision 的模板预览，不是验收稿。
 
 状态：可实施基线；数值待真人试玩；未完成真实硬件认证。
 
@@ -15,7 +15,7 @@
 
 【给读规则的人】
 先读 docs/13_WORLD_AND_FACTIONS.md，再读 docs/14_EXPANSION_DRAFT.md。现在能跑完的只有基础 14 张和 pcg.core.v1。族群草案没有进入 core_pack，也不要让旧引擎假装会放新技能。research/ 是资料摘录，里面的双行动占用和负分没有采用。
-卡面见 docs/16_CARD_FACE_STYLES.md。asset/concepts/cardputerzero/ 是第一轮弃稿，状态为 superseded，不推荐，不是验收稿。固定 SVG 与 char 层的重制还在进行，新包到来前不要把 v4 当成当前推荐。
+卡面见 docs/16_CARD_FACE_STYLES.md。asset/concepts/cardputerzero/ 是第一轮弃稿，superseded，不推荐。asset/concepts/cardputerzero-template/ 是当前模板预览，needs_revision，不是验收稿，也不能说风格已经一致。
 
 【进阶：给实现工程师】
 【给项目所有者】
@@ -269,7 +269,9 @@ PULSE 文字和原立方图形的组合只是概念处理，不是已经定稿�
 
 另外，成稿是 864×1152 JPEG，比例和原卡 638×1004 不一致，没有透明圆角，没有出血，不能印刷，也不能替换 `asset/card/` 或客户端正式卡图。A 路仍然像产品渲染，平面机械贴纸不够。B 路的立体掌机和外伸 USB 还需要按实物核对。
 
-下一轮应把本机 `card_export_v2_review` 的 SVG 和 char 层固定下来，只让生成模型画主体。那一包还没有进入这个仓库。在它到来之前，设计入口只说明：**模板重制进行中。**
+固定模板加主体的预览已经放在 `asset/concepts/cardputerzero-template/`。状态是 **needs_revision**。它不是验收稿，也不是风格已经一致。
+
+能说的只有：母版是 01_S3 和 10_CORE 的 SVG；隐藏动态槽后，以及角色/标题遮罩外面，CairoSVG 638×1004 的像素差是 0。主体是嵌进 SVG 的 PNG。A 的右上有平色修补，B 的标题是 Oswald 转曲的两行字，不是原 CORE 那套字形。模板上的 Tap to Build、NTAG215 和 M5STACK 仍是原卡文字，不是游戏的新标志。
 ===== END FILE: docs/16_CARD_FACE_STYLES.md =====
 
 
@@ -868,7 +870,7 @@ v1 的规则终局只由正常小局计分产生，不含 resign 或自动超时
 
 > 产品名：脉冲对决。英文显示名：PULSE。本文规定信息结构和交互语义，允许不同开发平台使用原生控件。所有页面消费同一份权威对局状态与卡包，不得在界面中重算出另一套规则。正式字段以 `CONTRACT.json`、协议规范及卡包为准。
 >
-> 视觉方向为“黑白电子漫画卡册”：清楚的硬件角色轮廓、漫画分格、短句效果、醒目的整数战力。彩色设备可以使用彩色主题，但不能增加黑白端看不到的战斗信息。界面战力来自规则，不从概念卡面读取。原卡两种面貌和已放弃的试做见 `docs/16_CARD_FACE_STYLES.md`；固定模板重制尚未进入仓库。
+> 视觉方向为“黑白电子漫画卡册”：清楚的硬件角色轮廓、漫画分格、短句效果、醒目的整数战力。彩色设备可以使用彩色主题，但不能增加黑白端看不到的战斗信息。界面战力来自规则，不从概念卡面读取。原卡两种面貌、已放弃的整卡试做，以及尚未验收的模板预览，见 `docs/16_CARD_FACE_STYLES.md`。
 
 ## 1. 体验目标
 

@@ -1,6 +1,6 @@
 # CardputerZero 概念实验（第一轮，已放弃）
 
-状态：**superseded / 不推荐。** 不是当前推荐稿，也不是视觉验收稿。模板重制进行中，新包尚未放入本仓库。
+状态：**superseded / 不推荐。** 不是当前预览。当前预览在 `../cardputerzero-template/`，状态 needs_revision，也还不是验收稿。
 
 本目录只保留第一轮生成实验，避免以后误当成最终卡面。`styleA/*_v4.jpg` 与 `styleB/*_v4.jpg` 就是该轮各自选过的一稿；没有再复制一份相同的 final 文件。
 

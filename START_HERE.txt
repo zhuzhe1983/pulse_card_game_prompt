@@ -3,7 +3,7 @@
 
 【给读规则的人】
 先读 docs/13_WORLD_AND_FACTIONS.md，再读 docs/14_EXPANSION_DRAFT.md。现在能跑完的只有基础 14 张和 pcg.core.v1。族群草案没有进入 core_pack，也不要让旧引擎假装会放新技能。research/ 是资料摘录，里面的双行动占用和负分没有采用。
-卡面见 docs/16_CARD_FACE_STYLES.md。asset/concepts/cardputerzero/ 是第一轮弃稿，状态为 superseded，不推荐，不是验收稿。固定 SVG 与 char 层的重制还在进行，新包到来前不要把 v4 当成当前推荐。
+卡面见 docs/16_CARD_FACE_STYLES.md。asset/concepts/cardputerzero/ 是第一轮弃稿，superseded，不推荐。asset/concepts/cardputerzero-template/ 是当前模板预览，needs_revision，不是验收稿，也不能说风格已经一致。
 
 【进阶：给实现工程师】
 【给项目所有者】
