@@ -1,0 +1,1713 @@
+{
+  "document_status": "design_draft_not_enabled",
+  "ruleset_id": "pcg.bonds.draft",
+  "does_not_replace": "pcg.core.v1",
+  "not_loaded_by_reference_engine": true,
+  "numbers_are_untested_suggestions": true,
+  "action_policy": "one_play_per_card",
+  "bond_cap": 3,
+  "chain_cap": 2,
+  "rejected": [
+    "每张牌行动占用 2",
+    "不配对就扣基础战力或写烧毁",
+    "免费把随从贴在英雄上且不占 5 次出牌",
+    "生命值或攻击对打",
+    "热瞳镜没有英雄时改按另一套分数",
+    "把未知组合写成克制"
+  ],
+  "factions": [
+    "堆叠",
+    "细刃",
+    "微核",
+    "面甲",
+    "链式",
+    "键使",
+    "印记",
+    "墨面",
+    "屏界",
+    "工坊",
+    "织网"
+  ],
+  "public_pool": "公共库",
+  "kept": [
+    {
+      "template_id": "core2_guard",
+      "name_zh": "核心守卫",
+      "kind": "hero",
+      "faction": "堆叠",
+      "base_power": 6,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "core2",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "frozen": true,
+      "research_name": "P005 触屏执政官",
+      "mapping": "异画。不另做一张会扣分的执政官。"
+    },
+    {
+      "template_id": "tough_guard",
+      "name_zh": "TOUGH · 护卫",
+      "kind": "hero",
+      "faction": "堆叠",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "P008 坚壳卫",
+      "mapping": "异画。不把双频堡垒做成 2 行动的更强卡。"
+    },
+    {
+      "template_id": "stickc_operator",
+      "name_zh": "StickC · 通讯员",
+      "kind": "hero",
+      "faction": "细刃",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "hat_host_full",
+        "grove_i2c"
+      ],
+      "frozen": true,
+      "research_name": "P013 细刃游侠",
+      "mapping": "异画。"
+    },
+    {
+      "template_id": "atom_scout",
+      "name_zh": "ATOM · 侦察兵",
+      "kind": "hero",
+      "faction": "微核",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "atom"
+      ],
+      "frozen": true,
+      "research_name": "P018 微火信使",
+      "mapping": "异画。"
+    },
+    {
+      "template_id": "atom_matrix_link",
+      "name_zh": "ATOM Matrix · 协作员",
+      "kind": "hero",
+      "faction": "微核",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "atom"
+      ],
+      "frozen": true,
+      "research_name": "P019 点阵小队",
+      "mapping": "异画。"
+    },
+    {
+      "template_id": "cardputer_hacker",
+      "name_zh": "Cardputer · 干扰员",
+      "kind": "hero",
+      "faction": "键使",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "one_grove",
+        "grove_i2c"
+      ],
+      "frozen": true,
+      "research_name": "P021 键使学士",
+      "mapping": "异画。只有第一件 Unit 能配对。"
+    },
+    {
+      "template_id": "dial_router",
+      "name_zh": "Dial · 调度员",
+      "kind": "hero",
+      "faction": "印记",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "P022 转盘祭司",
+      "mapping": "异画。延迟或旋转加分不另开。"
+    },
+    {
+      "template_id": "paper_archive",
+      "name_zh": "PaperMono · 档案官",
+      "kind": "hero",
+      "faction": "墨面",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "P025 墨面书记",
+      "mapping": "异画。不采用把分数记到下一小局。"
+    },
+    {
+      "template_id": "stamp_sentry",
+      "name_zh": "Stamp · 哨兵",
+      "kind": "hero",
+      "faction": "印记",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "裸 Stamp",
+      "mapping": "已有角色。裸模块不升第二英雄。"
+    },
+    {
+      "template_id": "echo_booster",
+      "name_zh": "Echo · 扩音手",
+      "kind": "hero",
+      "faction": "印记",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "",
+      "mapping": "研究目录没有同名设备，保留原卡。"
+    },
+    {
+      "template_id": "lora_relay",
+      "name_zh": "LoRa · 中继手",
+      "kind": "hero",
+      "faction": "织网",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "",
+      "mapping": "角色。中继羽是另一张器具。"
+    },
+    {
+      "template_id": "unit_cam_scout",
+      "name_zh": "Unit Cam · 观察员",
+      "kind": "hero",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "U012 U013",
+      "mapping": "相机宿主不另做堆叠将军。"
+    },
+    {
+      "template_id": "signal_boost",
+      "name_zh": "增益信号",
+      "kind": "tactic",
+      "faction": "公共库",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic"
+      ],
+      "frozen": true,
+      "research_name": "",
+      "mapping": "冻结战术。"
+    },
+    {
+      "template_id": "signal_jam",
+      "name_zh": "干扰信号",
+      "kind": "tactic",
+      "faction": "公共库",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic"
+      ],
+      "frozen": true,
+      "research_name": "",
+      "mapping": "冻结战术。"
+    }
+  ],
+  "cards": [
+    {
+      "template_id": "basic_warden",
+      "name_zh": "入门城主",
+      "kind": "hero",
+      "faction": "堆叠",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "mbus_gen1",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart",
+        "lonely"
+      ],
+      "skill_zh": "稳健。若这小局结束时你一个配对都没有，额外 +1。",
+      "product_trace": "Basic v2.7，K001-V27",
+      "catalog_ids": [
+        "H001"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "适合少带器具的牌组。",
+      "counter_zh": "对手用器具跟你抢分时，这张 +1 不会出现。"
+    },
+    {
+      "template_id": "gray_pathfinder",
+      "name_zh": "灰铠斥候",
+      "kind": "hero",
+      "faction": "堆叠",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "gray_sense",
+      "tags": [
+        "hero",
+        "mbus",
+        "mbus_gen1",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "skill_zh": "若打出时场上已有感知器具，且磁扰还没先落下，+2。",
+      "product_trace": "Gray，K002",
+      "catalog_ids": [
+        "H002"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "要让气候瓶或识别环先上场，或接受只吃到器具自己的配对。",
+      "counter_zh": "先出磁扰，感知配对就不会发生。"
+    },
+    {
+      "template_id": "fire_marshal",
+      "name_zh": "焰核将军",
+      "kind": "hero",
+      "faction": "堆叠",
+      "base_power": 6,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "mbus_gen1",
+        "fire",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "skill_zh": "自己不加配对。星轨模块能和它合拍，但定位羽若已经在场，星轨对不上。",
+      "product_trace": "Fire v2.7",
+      "catalog_ids": [
+        "H003"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "高基础战力，模块要按初代来拨。",
+      "counter_zh": "把定位羽留到星轨之后，挡不住已经结成的配对；想挡，就先放定位羽。"
+    },
+    {
+      "template_id": "go_captain",
+      "name_zh": "远行队长",
+      "kind": "hero",
+      "faction": "堆叠",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "mbus_gen1",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "skill_zh": "和箱底灯卫是一套。配对写在灯卫身上。",
+      "product_trace": "M5GO IoT Kit v2.7，K006-V27",
+      "catalog_ids": [
+        "H004"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "初代套件。",
+      "counter_zh": "灯卫不会跟核心守卫结伴。"
+    },
+    {
+      "template_id": "cores3_governor",
+      "name_zh": "三省都督",
+      "kind": "hero",
+      "faction": "堆叠",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "cores3",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "skill_zh": "感知器具在它已经在场时打出，配对是 +2 而不是 +1。磁扰先落则这次感知对不上。一次行动。",
+      "product_trace": "CoreS3",
+      "catalog_ids": [
+        "H009"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "相机、罗盘、麦克风只是同一类「感知」，不分成三次加分。",
+      "counter_zh": "磁扰。带磁的器具也不会额外扣血。"
+    },
+    {
+      "template_id": "stick_plus",
+      "name_zh": "加长刃",
+      "kind": "hero",
+      "faction": "细刃",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "stick_plus",
+        "hat_host_full",
+        "grove_i2c"
+      ],
+      "skill_zh": "能戴经典冠，也能让功放冠结成 I2S 冠位。",
+      "product_trace": "StickC-Plus",
+      "catalog_ids": [
+        "H021"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "比短刃多一种喇叭。",
+      "counter_zh": "功放冠戴到别的细刃上没有冠位。"
+    },
+    {
+      "template_id": "stick_plus2",
+      "name_zh": "自持刃",
+      "kind": "hero",
+      "faction": "细刃",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "hat_host_thin",
+        "grove_i2c"
+      ],
+      "skill_zh": "基础更高。经典冠仍能戴，但冠位只 +1。官方没有把它写成禁配。",
+      "product_trace": "StickC-Plus2",
+      "catalog_ids": [
+        "H022"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "想要更高的裸分。",
+      "counter_zh": "想要满额冠位时换回短刃或加长刃。"
+    },
+    {
+      "template_id": "stick_s3",
+      "name_zh": "新律细刃",
+      "kind": "hero",
+      "faction": "细刃",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "stick_s3",
+        "grove_i2c"
+      ],
+      "skill_zh": "只和新律映窗结冠。经典冠各自计自己的战力。点名的三顶冠同样不能结冠。",
+      "product_trace": "StickS3，Hat2-Bus",
+      "catalog_ids": [
+        "H024"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "新窗，不吃旧冠。",
+      "counter_zh": "把迷你摇杆冠放进这副牌，只会占一张牌。"
+    },
+    {
+      "template_id": "stick_t2",
+      "name_zh": "热瞳斥候",
+      "kind": "hero",
+      "faction": "细刃",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "stick_t2"
+      ],
+      "skill_zh": "打出时自带热瞳 +1。热瞳镜不再叠加同一种热。",
+      "product_trace": "StickT2",
+      "catalog_ids": [
+        "H025"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "不必再带热成像帽。",
+      "counter_zh": "热瞳镜对它没有第二次加成。"
+    },
+    {
+      "template_id": "atom_s3",
+      "name_zh": "微核先知",
+      "kind": "hero",
+      "faction": "微核",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "atom",
+        "atom_s3"
+      ],
+      "skill_zh": "底部仍只有一个座位。转接桥要按这一代的脚来接，桥本身会改脚。",
+      "product_trace": "AtomS3 / AtomS3R 一代，CAM 等为异画",
+      "catalog_ids": [
+        "H028",
+        "H029"
+      ],
+      "author_pack": "微核",
+      "fit_zh": "和微核信使一样能坐桥，体型故事不同。",
+      "counter_zh": "同一小局第二张底座没有座位。"
+    },
+    {
+      "template_id": "chain_warden",
+      "name_zh": "链式双钥",
+      "kind": "hero",
+      "faction": "链式",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "chain_master"
+      ],
+      "skill_zh": "两条链在本草案里先收成一条可计分的链：第一个链节 +1，光阵或回环再 +1，链路合计不超过 +2。",
+      "product_trace": "Chain DualKey",
+      "catalog_ids": [
+        "H048"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "链节要在它之后打出。",
+      "counter_zh": "没有链节时它只贡献基础战力。"
+    },
+    {
+      "template_id": "capsule_runner",
+      "name_zh": "胶囊信使",
+      "kind": "hero",
+      "faction": "印记",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "capsule"
+      ],
+      "skill_zh": "扩展口没核全。本小局只保留第一次器具或随从配对，后面的配对不算。",
+      "product_trace": "Capsule v1.1",
+      "catalog_ids": [
+        "H035"
+      ],
+      "author_pack": "印记",
+      "fit_zh": "便宜的随身角色。",
+      "counter_zh": "想叠很多器具时不要选它。"
+    },
+    {
+      "template_id": "din_meter",
+      "name_zh": "导轨计量官",
+      "kind": "hero",
+      "faction": "印记",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "din"
+      ],
+      "skill_zh": "结算时若没有冠、也没有堆叠模块，+2。",
+      "product_trace": "DinMeter v1.1",
+      "catalog_ids": [
+        "H036"
+      ],
+      "author_pack": "印记",
+      "fit_zh": "干净的计量回合。",
+      "counter_zh": "冠和模块会让这 +2 消失，它们仍保留自己的战力。"
+    },
+    {
+      "template_id": "coreink_clerk",
+      "name_zh": "简墨使者",
+      "kind": "hero",
+      "faction": "墨面",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "coreink"
+      ],
+      "skill_zh": "结算时若没有随从也没有器具，+2。",
+      "product_trace": "CoreInk",
+      "catalog_ids": [
+        "H045"
+      ],
+      "author_pack": "墨面",
+      "fit_zh": "空着手更强。",
+      "counter_zh": "档案官仍是另一张会稳定的墨面角色，这张不替代它。"
+    },
+    {
+      "template_id": "tab5_watcher",
+      "name_zh": "巡界屏君",
+      "kind": "hero",
+      "faction": "屏界",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "tab5",
+        "one_grove",
+        "grove_i2c"
+      ],
+      "skill_zh": "这一小局只有第一件 Unit 器具能配对。堆叠模块仍可按模块自己的规则配对。一次行动。",
+      "product_trace": "Tab5，C145 / K145",
+      "catalog_ids": [
+        "H015"
+      ],
+      "author_pack": "屏界",
+      "fit_zh": "模块比一串小器具更合算。",
+      "counter_zh": "第二件 Unit 只留下基础战力。"
+    },
+    {
+      "template_id": "nano_weaver",
+      "name_zh": "织网幼核",
+      "kind": "hero",
+      "faction": "织网",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "nano_relay",
+      "tags": [
+        "hero"
+      ],
+      "skill_zh": "中继羽已经在场时 +2。NanoH2 只做这张的异画，不开第二张强度。",
+      "product_trace": "NanoC6，NanoH2 为异画",
+      "catalog_ids": [
+        "H047"
+      ],
+      "author_pack": "织网",
+      "fit_zh": "和小无线电一起。",
+      "counter_zh": "没有中继羽就只有 3 点。"
+    },
+    {
+      "template_id": "station_clerk",
+      "name_zh": "驿站主事",
+      "kind": "hero",
+      "faction": "工坊",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "grove_uart",
+        "industrial_host"
+      ],
+      "skill_zh": "工业通信走 UART 器具自己的 +1，最多靠两件堆到配对上限。",
+      "product_trace": "Station-Bat / Station-485，同一行复合记录",
+      "catalog_ids": [
+        "H046"
+      ],
+      "author_pack": "工坊",
+      "fit_zh": "让中继羽、定位羽有宿主。",
+      "counter_zh": "它不是更强的付费城主。"
+    },
+    {
+      "template_id": "matrix_keeper",
+      "name_zh": "点阵城守",
+      "kind": "hero",
+      "faction": "屏界",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "matrix_keeper"
+      ],
+      "skill_zh": "结算时若没有屏幕类牌，+2。堆叠脚位未逐项核完，因此不给模块配对。",
+      "product_trace": "CoreMatrix，C158",
+      "catalog_ids": [
+        "H016"
+      ],
+      "author_pack": "屏界",
+      "fit_zh": "不靠屏幕。",
+      "counter_zh": "不要把未核实的底座写成能叠。"
+    },
+    {
+      "template_id": "workshop_lord",
+      "name_zh": "工控领主",
+      "kind": "hero",
+      "faction": "工坊",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "workshop",
+        "grove_uart"
+      ],
+      "skill_zh": "ESP32 模块可以打出，但不结配对。UART 通信器具仍可配对。一次行动，配对不减半。",
+      "product_trace": "CoreMP135",
+      "catalog_ids": [
+        "H018"
+      ],
+      "author_pack": "工坊",
+      "fit_zh": "另一套律法，不是禁插。",
+      "counter_zh": "树莓派底的 CM4Stack 不另做更高战力。"
+    },
+    {
+      "template_id": "lamp_retainer",
+      "name_zh": "箱底灯卫",
+      "kind": "retainer",
+      "faction": "堆叠",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "lamp",
+      "tags": [
+        "retainer",
+        "mbus_bottom"
+      ],
+      "skill_zh": "只和初代堆叠英雄结 +2。和核心守卫同场也不结。",
+      "product_trace": "初代 M5GO Bottom",
+      "catalog_ids": [
+        "S005"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "远行队长、焰核、城主、灰铠。",
+      "counter_zh": "不是二代箱底。"
+    },
+    {
+      "template_id": "bottom2_retainer",
+      "name_zh": "二代箱底",
+      "kind": "retainer",
+      "faction": "堆叠",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "bottom2",
+      "tags": [
+        "retainer",
+        "core2_bottom"
+      ],
+      "skill_zh": "只和核心守卫结 +2。叙事上它换下原来的电池底。",
+      "product_trace": "M5GO Bottom2 v1.3，A014-C-V13",
+      "catalog_ids": [
+        "S006"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "核心守卫。",
+      "counter_zh": "不能当成普通底座的升级惩罚。"
+    },
+    {
+      "template_id": "plain_base",
+      "name_zh": "普通底座",
+      "kind": "retainer",
+      "faction": "堆叠",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "plain_base",
+      "tags": [
+        "retainer",
+        "base_series"
+      ],
+      "skill_zh": "代表已点名的 Base 系列底座，不是某一只未查型号的万能底。只和初代堆叠结 +1。跟核心守卫不结。",
+      "product_trace": "Dual 16340 / LAN / AAA 等复合行",
+      "catalog_ids": [
+        "S007"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "初代英雄的便宜随从。",
+      "counter_zh": "不要为了扣分去打它。"
+    },
+    {
+      "template_id": "faces_chassis",
+      "name_zh": "面甲底盘",
+      "kind": "retainer",
+      "faction": "面甲",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "faces_chassis",
+      "tags": [
+        "retainer",
+        "faces_chassis"
+      ],
+      "skill_zh": "场上有堆叠英雄，且只有一张面板时 +2。两张写着同一块地址牌的面板同场时，底盘也不结。",
+      "product_trace": "Faces Bottom3。官方写明可接 Core1 / Core2 / CoreS3",
+      "catalog_ids": [
+        "S008"
+      ],
+      "author_pack": "面甲",
+      "fit_zh": "核心守卫可以带它。这不是普通底座禁令。",
+      "counter_zh": "两张键板式面板会让这套脸散掉。"
+    },
+    {
+      "template_id": "faces_scribe",
+      "name_zh": "面甲键士",
+      "kind": "retainer",
+      "faction": "面甲",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "faces_08",
+      "tags": [
+        "retainer",
+        "faces_panel",
+        "addr08"
+      ],
+      "skill_zh": "有底盘和堆叠英雄时 +1。与面甲御手同场则两张面板都不结。地址牌相同，所以不能一起算。",
+      "product_trace": "Faces Keyboard3，A003-V3，辅助芯片不是英雄",
+      "catalog_ids": [
+        "S009"
+      ],
+      "author_pack": "面甲",
+      "fit_zh": "单一面板。",
+      "counter_zh": "御手。"
+    },
+    {
+      "template_id": "faces_hand",
+      "name_zh": "面甲御手",
+      "kind": "retainer",
+      "faction": "面甲",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "faces_08",
+      "tags": [
+        "retainer",
+        "faces_panel",
+        "addr08"
+      ],
+      "skill_zh": "规则同键士。",
+      "product_trace": "Faces Gamepad3，A004-V3",
+      "catalog_ids": [
+        "S010"
+      ],
+      "author_pack": "面甲",
+      "fit_zh": "想要操作叙事时换这张，不叠数值。",
+      "counter_zh": "键士。"
+    },
+    {
+      "template_id": "faces_abacus",
+      "name_zh": "面甲算士",
+      "kind": "retainer",
+      "faction": "面甲",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "faces_unknown",
+      "tags": [
+        "retainer",
+        "faces_panel",
+        "addr_unknown"
+      ],
+      "skill_zh": "有底盘和堆叠英雄时 +1。地址未知，所以不跟键士互相取消。",
+      "product_trace": "Faces Calculator3，A005-V3",
+      "catalog_ids": [
+        "S011"
+      ],
+      "author_pack": "面甲",
+      "fit_zh": "未知不是冲突。",
+      "counter_zh": "不要写成已经证实的双面板共鸣。"
+    },
+    {
+      "template_id": "hat_range",
+      "name_zh": "测距冠",
+      "kind": "retainer",
+      "faction": "细刃",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "hat_on_stick",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_classic"
+      ],
+      "skill_zh": "满额宿主 +2，自持刃 +1，新律细刃不结。",
+      "product_trace": "Hat ToF",
+      "catalog_ids": [
+        "A004"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "短刃、加长刃。",
+      "counter_zh": "新律细刃还没核对，先不结冠。"
+    },
+    {
+      "template_id": "hat_ambush",
+      "name_zh": "伏击冠",
+      "kind": "retainer",
+      "faction": "细刃",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "hat_on_stick",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_classic"
+      ],
+      "skill_zh": "冠位规则同测距冠，但它不是 I2C 冠。",
+      "product_trace": "Hat PIR",
+      "catalog_ids": [
+        "A005"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "便宜的冠。",
+      "counter_zh": "不要把它当气候瓶。"
+    },
+    {
+      "template_id": "hat_joy",
+      "name_zh": "迷你摇杆冠",
+      "kind": "retainer",
+      "faction": "细刃",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "hat_on_stick",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_classic",
+        "named_ban"
+      ],
+      "skill_zh": "经典宿主上冠位照常。新律细刃被官方点名结构合不上，不结冠，也不扣基础战力。",
+      "product_trace": "Hat Mini JoyC，U156",
+      "catalog_ids": [
+        "A006"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "短刃上是高基础冠。",
+      "counter_zh": "放进新律牌组只是占额。"
+    },
+    {
+      "template_id": "hat_voice",
+      "name_zh": "功放冠",
+      "kind": "retainer",
+      "faction": "细刃",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "hat_i2s",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_i2s"
+      ],
+      "skill_zh": "只有加长刃能结 +2。它吃的是 I2S，不是普通 I2C 冠。",
+      "product_trace": "Hat SPK2",
+      "catalog_ids": [
+        "A002"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "加长刃。",
+      "counter_zh": "其他细刃不结。"
+    },
+    {
+      "template_id": "hat_weather",
+      "name_zh": "环境冠",
+      "kind": "retainer",
+      "faction": "细刃",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_classic",
+        "env"
+      ],
+      "skill_zh": "冠位宿主按 I2C 器具结 +1。若气候瓶已经在场且分路匣还没上场，这张不再结。",
+      "product_trace": "Hat ENV III",
+      "catalog_ids": [
+        "A010"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "和气候瓶二选一，或先放分路匣。",
+      "counter_zh": "后手的环境牌对不上同一条路。"
+    },
+    {
+      "template_id": "hat_cell",
+      "name_zh": "供电冠",
+      "kind": "retainer",
+      "faction": "细刃",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "hat_power",
+      "tags": [
+        "retainer",
+        "hat"
+      ],
+      "skill_zh": "只和短刃、加长刃结 +1。自持刃和新律没有写明，不结。",
+      "product_trace": "Hat PowerC",
+      "catalog_ids": [
+        "A015"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "短刃的小续航。",
+      "counter_zh": "不要写成所有 Stick 都能戴。"
+    },
+    {
+      "template_id": "chain_key",
+      "name_zh": "链节键",
+      "kind": "retainer",
+      "faction": "链式",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "chain_node",
+      "tags": [
+        "retainer",
+        "chain_node"
+      ],
+      "skill_zh": "链主已经在场，且这是第一个链节时 +1。摇杆和编码器只做异画。",
+      "product_trace": "Chain Key，代表一类输入节点",
+      "catalog_ids": [
+        "C001"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "双钥，或先坐上转接桥的微核。",
+      "counter_zh": "第二个链节不会指数变强。"
+    },
+    {
+      "template_id": "chain_lantern",
+      "name_zh": "链节光阵",
+      "kind": "retainer",
+      "faction": "链式",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "chain_lantern",
+      "tags": [
+        "retainer",
+        "chain_node"
+      ],
+      "skill_zh": "已经有链节配对时再 +1，链路合计不超过 +2。",
+      "product_trace": "Chain RGB / 单色屏节点",
+      "catalog_ids": [
+        "C001"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "接在链节后面做回声。",
+      "counter_zh": "单独上场没有链路配对。"
+    },
+    {
+      "template_id": "tochain",
+      "name_zh": "转接桥",
+      "kind": "retainer",
+      "faction": "微核",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "atomic_seat",
+      "tags": [
+        "retainer",
+        "atomic",
+        "tochain"
+      ],
+      "skill_zh": "微核的第一个底座 +2，并让之后的链节把它当成链主。经典微核和微核先知都能坐，桥负责改脚。",
+      "product_trace": "Atomic ToChain Base",
+      "catalog_ids": [
+        "C003"
+      ],
+      "author_pack": "微核",
+      "fit_zh": "跨族只比这一条链。",
+      "counter_zh": "它不变成第二名英雄。"
+    },
+    {
+      "template_id": "atom_seat",
+      "name_zh": "原子声座",
+      "kind": "retainer",
+      "faction": "微核",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "atomic_seat",
+      "tags": [
+        "retainer",
+        "atomic"
+      ],
+      "skill_zh": "第一个底座 +2。同一小局另一张底座不再结。",
+      "product_trace": "Atomic 底座族的声音代表，复合行不逐个拆强度",
+      "catalog_ids": [
+        "C004"
+      ],
+      "author_pack": "微核",
+      "fit_zh": "不想跨链时的座位。",
+      "counter_zh": "和转接桥只能留一个座位。"
+    },
+    {
+      "template_id": "tab_keys",
+      "name_zh": "平板键从",
+      "kind": "retainer",
+      "faction": "屏界",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "tab_keys",
+      "tags": [
+        "retainer"
+      ],
+      "skill_zh": "只和巡界屏君结 +2。不能放进面甲底盘。",
+      "product_trace": "Tab5 Keyboard",
+      "catalog_ids": [
+        "U015"
+      ],
+      "author_pack": "屏界",
+      "fit_zh": "屏君的专用键。",
+      "counter_zh": "不是面甲面板。"
+    },
+    {
+      "template_id": "s3_window",
+      "name_zh": "新律映窗",
+      "kind": "retainer",
+      "faction": "细刃",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "s3_window",
+      "tags": [
+        "retainer",
+        "stick_s3_unique"
+      ],
+      "skill_zh": "只和新律细刃结 +2。",
+      "product_trace": "Display 1.14 For StickS3，A183",
+      "catalog_ids": [
+        "A014"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "新律的正确窗口。",
+      "counter_zh": "旧冠不能拿它来冒充。"
+    },
+    {
+      "template_id": "climate_vial",
+      "name_zh": "气候瓶",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "env",
+        "sense"
+      ],
+      "skill_zh": "有 I2C 口的英雄在场时 +1。三省都督在场且没有先手磁扰时，这次改为 +2。",
+      "product_trace": "Unit ENV-III",
+      "catalog_ids": [
+        "U001"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "堆叠英雄的感知件。",
+      "counter_zh": "环境冠已经占用时，后一张要对上分路匣。"
+    },
+    {
+      "template_id": "range_nail",
+      "name_zh": "测距钉",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "tof"
+      ],
+      "skill_zh": "I2C 口 +1。第二枚要等分路匣先上场。",
+      "product_trace": "Unit ToF 家族，复合行",
+      "catalog_ids": [
+        "U002"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "公共测距。",
+      "counter_zh": "和测距冠不是同一张牌。"
+    },
+    {
+      "template_id": "echo_mallet",
+      "name_zh": "回声锤",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "要 I2C 口。",
+      "product_trace": "Unit Ultrasonic-I2C",
+      "catalog_ids": [
+        "U003"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "和回声钉成对，教人接口不是万能的。",
+      "counter_zh": "不能插到只认 GPIO 的故事上就假装合拍。"
+    },
+    {
+      "template_id": "echo_pin",
+      "name_zh": "回声钉",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_gpio",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "要 GPIO 口。",
+      "product_trace": "Unit Ultrasonic-IO",
+      "catalog_ids": [
+        "U003"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "初代和二代堆叠有这类口。",
+      "counter_zh": "键使只有一条 I2C，对不上。"
+    },
+    {
+      "template_id": "split_case",
+      "name_zh": "分路匣",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "gear",
+        "unit",
+        "split_case"
+      ],
+      "skill_zh": "自己不配对。它先上场后，后一张同址的环境器具或测距钉可以再配一次。",
+      "product_trace": "PaHub",
+      "catalog_ids": [
+        "U007"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "你真的要带两件会抢地址的器具时。",
+      "counter_zh": "它不解除结构上合不上的冠。"
+    },
+    {
+      "template_id": "name_ring",
+      "name_zh": "识别环",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "sense"
+      ],
+      "skill_zh": "I2C 感知件，规则同气候瓶。",
+      "product_trace": "Unit RFID2",
+      "catalog_ids": [
+        "U004"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "灰铠和三省的感知。",
+      "counter_zh": "磁扰先落则这次感知不结。"
+    },
+    {
+      "template_id": "locate_feather",
+      "name_zh": "定位羽",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_uart",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "locate_feather"
+      ],
+      "skill_zh": "要 UART 口。若焰核已经在场，之后打出的星轨会对不上。",
+      "product_trace": "UART GPS 一类，复合行",
+      "catalog_ids": [
+        "U006"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "驿站、堆叠的 UART。",
+      "counter_zh": "它不是已有的 LoRa·中继手。"
+    },
+    {
+      "template_id": "star_module",
+      "name_zh": "星轨模块",
+      "kind": "gear",
+      "faction": "堆叠",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "star_module",
+      "tags": [
+        "gear",
+        "module",
+        "esp32_module"
+      ],
+      "skill_zh": "堆叠英雄已在场时 +2。焰核与定位羽都已在场则不结。工控领主在场也不结。拨错不会倒扣。",
+      "product_trace": "Module GPS v2",
+      "catalog_ids": [
+        "S001"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "城垛的大模块。",
+      "counter_zh": "总线仲裁只能补「英雄还没入场」的错过，不能压过焰核的暗线。"
+    },
+    {
+      "template_id": "heat_lens",
+      "name_zh": "热瞳镜",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "heat_lens",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "I2C 口 +1。热瞳斥候在场时不再加第二层热。不单独变成英雄。",
+      "product_trace": "Unit Thermal2",
+      "catalog_ids": [
+        "U011"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "普通宿主的热成像。",
+      "counter_zh": "官方允许独立使用，本草案不另开一套计分。"
+    },
+    {
+      "template_id": "eight_arm",
+      "name_zh": "八腕",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "I2C 口 +1。不能在场上改成链环。",
+      "product_trace": "8Servos2-I2C，U222",
+      "catalog_ids": [
+        "U009"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "和八腕链环是两件武器。",
+      "counter_zh": "链主对不上这张。"
+    },
+    {
+      "template_id": "eight_arm_chain",
+      "name_zh": "八腕链环",
+      "kind": "gear",
+      "faction": "链式",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "eight_chain",
+      "tags": [
+        "gear",
+        "chain_node"
+      ],
+      "skill_zh": "链主已在场时 +1，仍算进链路 +2 的上限。",
+      "product_trace": "8Servos2-Chain，U223",
+      "catalog_ids": [
+        "C005"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "链上的重武器。",
+      "counter_zh": "不能当 I2C 八腕用。"
+    },
+    {
+      "template_id": "key_slate",
+      "name_zh": "键板",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "I2C 口 +1。CardKB2 只做异画。",
+      "product_trace": "Unit CardKB / CardKB2",
+      "catalog_ids": [
+        "U010"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "键使的第一件器具。",
+      "counter_zh": "有芯片也不升成英雄。"
+    },
+    {
+      "template_id": "relay_feather",
+      "name_zh": "中继羽",
+      "kind": "gear",
+      "faction": "公共库",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_uart",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "relay_feather"
+      ],
+      "skill_zh": "UART 口 +1。织网幼核会因为它再结自己的网。",
+      "product_trace": "LoRaWAN / CatM / RS485 一类复合行",
+      "catalog_ids": [
+        "U006"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "驿站和织网。",
+      "counter_zh": "不是 LoRa·中继手那张角色。"
+    },
+    {
+      "template_id": "thought_case",
+      "name_zh": "思核匣",
+      "kind": "gear",
+      "faction": "堆叠",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "thought_case",
+      "tags": [
+        "gear",
+        "module",
+        "esp32_module"
+      ],
+      "skill_zh": "堆叠英雄 +1。不算第二名英雄，也不能再带随从。工控领主不与它配对。",
+      "product_trace": "Module LLM",
+      "catalog_ids": [
+        "S004"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "城垛的伴生算力。",
+      "counter_zh": "巡界屏君可以带它，但它仍是模块不是 Unit。"
+    },
+    {
+      "template_id": "bus_token",
+      "name_zh": "总线仲裁",
+      "kind": "tactic",
+      "faction": "公共库",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "restore_star",
+      "tags": [
+        "tactic"
+      ],
+      "skill_zh": "若星轨已经打出但当时没有堆叠英雄，这张补上那一次 +2。补不上焰核加定位羽，也补不上结构合不上的冠。",
+      "product_trace": "拨码与脚位代差",
+      "catalog_ids": [
+        "R01",
+        "R03"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "模块打早了的时候。",
+      "counter_zh": "它不改写已经结成的配对。"
+    },
+    {
+      "template_id": "quiet_pulse",
+      "name_zh": "脉冲静默",
+      "kind": "tactic",
+      "faction": "公共库",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic",
+        "quiet"
+      ],
+      "skill_zh": "结算时，若你打出的张数少于对手，你的总分 +2。不回收手牌。",
+      "product_trace": "留牌语气，不是新的战斗模型",
+      "catalog_ids": [],
+      "author_pack": "公共",
+      "fit_zh": "你打算少打几张。",
+      "counter_zh": "对手出得不比你多，它就是 0。"
+    },
+    {
+      "template_id": "magnet_haze",
+      "name_zh": "磁扰",
+      "kind": "tactic",
+      "faction": "公共库",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic",
+        "magnet_haze"
+      ],
+      "skill_zh": "它先上场后，之后的感知配对不发生。不追回已经结成的，也不扣基础战力。",
+      "product_trace": "CoreS3 磁强计注意",
+      "catalog_ids": [
+        "R07"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "对着三省和灰铠。",
+      "counter_zh": "不是毁坏装备。"
+    },
+    {
+      "template_id": "overload_bell",
+      "name_zh": "过载示警",
+      "kind": "tactic",
+      "faction": "公共库",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic",
+        "overload"
+      ],
+      "skill_zh": "你指定的对手本小局配对上限从 +3 变成 +2。",
+      "product_trace": "电源和总线预算的设计，不是实测功耗",
+      "catalog_ids": [],
+      "author_pack": "公共",
+      "fit_zh": "对付连携很多的牌组。",
+      "counter_zh": "它不动基础战力。"
+    },
+    {
+      "template_id": "chain_return",
+      "name_zh": "寻址回环",
+      "kind": "tactic",
+      "faction": "链式",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "chain_return",
+      "tags": [
+        "tactic"
+      ],
+      "skill_zh": "已经有链节配对时，链路再 +1，仍不超过链路 +2 和全局 +3。",
+      "product_trace": "Chain 的回程叙事",
+      "catalog_ids": [
+        "R15"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "链已经接上的时候。",
+      "counter_zh": "没有链节就只有 1 点基础。"
+    }
+  ],
+  "examples": [
+    {
+      "id": "stick_crown",
+      "note": "短刃加测距冠 8，对上新律加摇杆冠 7",
+      "a": {
+        "base": 6,
+        "bonds": 2,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 8,
+        "total": 8,
+        "plays": [
+          "stickc_operator",
+          "hat_range"
+        ],
+        "bond_cap": 3
+      },
+      "b": {
+        "base": 7,
+        "bonds": 0,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 7,
+        "total": 7,
+        "plays": [
+          "stick_s3",
+          "hat_joy"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "core2_bottoms",
+      "note": "二代箱底 10，对上普通底座 7",
+      "a": {
+        "base": 8,
+        "bonds": 2,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 10,
+        "total": 10,
+        "plays": [
+          "core2_guard",
+          "bottom2_retainer"
+        ],
+        "bond_cap": 3
+      },
+      "b": {
+        "base": 7,
+        "bonds": 0,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 7,
+        "total": 7,
+        "plays": [
+          "core2_guard",
+          "plain_base"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "faces_one",
+      "note": "一张面板 13，两张 0x08 面板 12",
+      "a": {
+        "base": 10,
+        "bonds": 3,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 13,
+        "total": 13,
+        "plays": [
+          "core2_guard",
+          "faces_chassis",
+          "faces_scribe"
+        ],
+        "bond_cap": 3
+      },
+      "b": {
+        "base": 12,
+        "bonds": 0,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 12,
+        "total": 12,
+        "plays": [
+          "core2_guard",
+          "faces_chassis",
+          "faces_scribe",
+          "faces_hand"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "atom_chain",
+      "note": "微核桥链节光阵，配对收到 +3 后总分 12",
+      "a": {
+        "base": 9,
+        "bonds": 3,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 12,
+        "total": 12,
+        "plays": [
+          "atom_scout",
+          "tochain",
+          "chain_key",
+          "chain_lantern"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "quiet",
+      "note": "静默方 8，城垛三张 14",
+      "a": {
+        "base": 5,
+        "bonds": 0,
+        "skills": 1,
+        "quiet": 2,
+        "total_before_quiet": 6,
+        "total": 8,
+        "plays": [
+          "quiet_pulse",
+          "basic_warden"
+        ],
+        "bond_cap": 3
+      },
+      "b": {
+        "base": 11,
+        "bonds": 3,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 14,
+        "total": 14,
+        "plays": [
+          "fire_marshal",
+          "star_module",
+          "thought_case"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "plus2_crown",
+      "note": "自持刃加测距冠 8",
+      "a": {
+        "base": 7,
+        "bonds": 1,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 8,
+        "total": 8,
+        "plays": [
+          "stick_plus2",
+          "hat_range"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "fire_order",
+      "note": "先定位羽则星轨不结，总分 12；先星轨则 14",
+      "blocked": {
+        "base": 11,
+        "bonds": 1,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 12,
+        "total": 12,
+        "plays": [
+          "fire_marshal",
+          "locate_feather",
+          "star_module"
+        ],
+        "bond_cap": 3
+      },
+      "open": {
+        "base": 11,
+        "bonds": 3,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 14,
+        "total": 14,
+        "plays": [
+          "fire_marshal",
+          "star_module",
+          "locate_feather"
+        ],
+        "bond_cap": 3
+      }
+    }
+  ],
+  "counts": {
+    "hardware_rows": 95,
+    "research_candidate_cards": 74,
+    "compatibility_rules": 20,
+    "frozen_cards": 14,
+    "new_draft_cards": 57,
+    "factions": 11
+  }
+}

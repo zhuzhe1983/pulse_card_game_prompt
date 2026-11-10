@@ -1,0 +1,1058 @@
+[
+  {
+    "file": "01_S3.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 75593,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      0,
+      146,
+      208
+    ],
+    "inner_mean_rgb": [
+      61.3,
+      143.0,
+      177.0
+    ],
+    "inner_stddev": [
+      96.7,
+      75.7,
+      88.2
+    ],
+    "inner_gray_mean": 122.3,
+    "inner_gray_stddev": 74.2
+  },
+  {
+    "file": "02_StickS3.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 57276,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      186,
+      131,
+      173
+    ],
+    "inner_mean_rgb": [
+      179.2,
+      143.2,
+      171.7
+    ],
+    "inner_stddev": [
+      69.7,
+      64.0,
+      66.8
+    ],
+    "inner_gray_mean": 157.2,
+    "inner_gray_stddev": 64.5
+  },
+  {
+    "file": "03_AI_PYRAMID_PRO.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 68832,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      204,
+      177,
+      45
+    ],
+    "inner_mean_rgb": [
+      199.4,
+      185.9,
+      100.9
+    ],
+    "inner_stddev": [
+      63.9,
+      52.7,
+      81.8
+    ],
+    "inner_gray_mean": 180.0,
+    "inner_gray_stddev": 53.2
+  },
+  {
+    "file": "04_M5STACK_console_motif.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 102869,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      85,
+      165,
+      183
+    ],
+    "inner_mean_rgb": [
+      121.5,
+      167.9,
+      179.3
+    ],
+    "inner_stddev": [
+      75.0,
+      64.1,
+      66.3
+    ],
+    "inner_gray_mean": 155.1,
+    "inner_gray_stddev": 64.0
+  },
+  {
+    "file": "05_M5STACK_ring_motif.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 106816,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      223,
+      115,
+      0
+    ],
+    "inner_mean_rgb": [
+      199.1,
+      133.8,
+      55.3
+    ],
+    "inner_stddev": [
+      82.4,
+      61.2,
+      92.1
+    ],
+    "inner_gray_mean": 144.5,
+    "inner_gray_stddev": 60.1
+  },
+  {
+    "file": "06_VoiceS3R_ATOM.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 72327,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      118,
+      191,
+      204
+    ],
+    "inner_mean_rgb": [
+      136.7,
+      189.7,
+      199.2
+    ],
+    "inner_stddev": [
+      64.0,
+      64.6,
+      66.8
+    ],
+    "inner_gray_mean": 174.9,
+    "inner_gray_stddev": 62.2
+  },
+  {
+    "file": "07_NanoH2.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 57344,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      182,
+      184,
+      186
+    ],
+    "inner_mean_rgb": [
+      183.4,
+      187.1,
+      189.3
+    ],
+    "inner_stddev": [
+      63.8,
+      60.2,
+      60.0
+    ],
+    "inner_gray_mean": 186.5,
+    "inner_gray_stddev": 60.8
+  },
+  {
+    "file": "08_DUALKEY.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 81417,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      216,
+      65,
+      91
+    ],
+    "inner_mean_rgb": [
+      210.9,
+      112.0,
+      129.5
+    ],
+    "inner_stddev": [
+      64.8,
+      75.8,
+      67.7
+    ],
+    "inner_gray_mean": 143.6,
+    "inner_gray_stddev": 61.7
+  },
+  {
+    "file": "09_StackChan.png",
+    "group": "A_01-09",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 65362,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      0,
+      118,
+      184
+    ],
+    "inner_mean_rgb": [
+      56.6,
+      122.7,
+      158.4
+    ],
+    "inner_stddev": [
+      92.1,
+      72.8,
+      83.2
+    ],
+    "inner_gray_mean": 107.1,
+    "inner_gray_stddev": 72.9
+  },
+  {
+    "file": "10_CORE.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 47051,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      0,
+      112,
+      167
+    ],
+    "inner_mean_rgb": [
+      71.7,
+      127.7,
+      154.5
+    ],
+    "inner_stddev": [
+      106.2,
+      82.7,
+      85.6
+    ],
+    "inner_gray_mean": 114.0,
+    "inner_gray_stddev": 85.3
+  },
+  {
+    "file": "11_STICKC.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 52571,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      230,
+      154,
+      0
+    ],
+    "inner_mean_rgb": [
+      223.1,
+      151.3,
+      13.6
+    ],
+    "inner_stddev": [
+      64.3,
+      53.3,
+      50.6
+    ],
+    "inner_gray_mean": 157.3,
+    "inner_gray_stddev": 49.7
+  },
+  {
+    "file": "12_STICKV.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 72516,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      0,
+      146,
+      208
+    ],
+    "inner_mean_rgb": [
+      29.8,
+      156.9,
+      204.5
+    ],
+    "inner_stddev": [
+      65.2,
+      49.2,
+      59.3
+    ],
+    "inner_gray_mean": 124.1,
+    "inner_gray_stddev": 46.8
+  },
+  {
+    "file": "13_UNIT.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 63523,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      186,
+      69,
+      136
+    ],
+    "inner_mean_rgb": [
+      200.9,
+      128.2,
+      163.0
+    ],
+    "inner_stddev": [
+      57.0,
+      84.0,
+      65.0
+    ],
+    "inner_gray_mean": 154.0,
+    "inner_gray_stddev": 69.0
+  },
+  {
+    "file": "14_MODULE.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 85652,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      211,
+      0,
+      63
+    ],
+    "inner_mean_rgb": [
+      211.6,
+      97.3,
+      123.8
+    ],
+    "inner_stddev": [
+      65.6,
+      112.6,
+      93.3
+    ],
+    "inner_gray_mean": 134.5,
+    "inner_gray_stddev": 85.9
+  },
+  {
+    "file": "15_BASE.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 83228,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      79,
+      80,
+      80
+    ],
+    "inner_mean_rgb": [
+      125.2,
+      125.0,
+      124.2
+    ],
+    "inner_stddev": [
+      91.6,
+      92.1,
+      92.5
+    ],
+    "inner_gray_mean": 125.0,
+    "inner_gray_stddev": 92.0
+  },
+  {
+    "file": "16_BALA.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 87451,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      210,
+      0,
+      20
+    ],
+    "inner_mean_rgb": [
+      184.2,
+      64.5,
+      74.1
+    ],
+    "inner_stddev": [
+      71.5,
+      88.8,
+      80.3
+    ],
+    "inner_gray_mean": 101.2,
+    "inner_gray_stddev": 66.0
+  },
+  {
+    "file": "17_HAT.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 82501,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      171,
+      179,
+      104
+    ],
+    "inner_mean_rgb": [
+      191.3,
+      193.8,
+      136.1
+    ],
+    "inner_stddev": [
+      53.4,
+      48.9,
+      69.7
+    ],
+    "inner_gray_mean": 186.3,
+    "inner_gray_stddev": 49.2
+  },
+  {
+    "file": "18_ATOM.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 115011,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      0,
+      129,
+      193
+    ],
+    "inner_mean_rgb": [
+      58.4,
+      143.2,
+      180.2
+    ],
+    "inner_stddev": [
+      92.6,
+      47.3,
+      60.9
+    ],
+    "inner_gray_mean": 121.9,
+    "inner_gray_stddev": 50.8
+  },
+  {
+    "file": "19_STICKC_PLUS.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 102371,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      0,
+      0,
+      0
+    ],
+    "inner_mean_rgb": [
+      56.7,
+      43.3,
+      15.9
+    ],
+    "inner_stddev": [
+      99.4,
+      82.5,
+      52.1
+    ],
+    "inner_gray_mean": 44.2,
+    "inner_gray_stddev": 80.0
+  },
+  {
+    "file": "20_CORE2.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 113127,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      210,
+      0,
+      20
+    ],
+    "inner_mean_rgb": [
+      185.9,
+      75.3,
+      76.8
+    ],
+    "inner_stddev": [
+      83.7,
+      104.2,
+      94.2
+    ],
+    "inner_gray_mean": 108.4,
+    "inner_gray_stddev": 82.1
+  },
+  {
+    "file": "21_CORE_INK.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 116466,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      230,
+      129,
+      33
+    ],
+    "inner_mean_rgb": [
+      210.4,
+      156.2,
+      103.8
+    ],
+    "inner_stddev": [
+      76.8,
+      69.5,
+      93.2
+    ],
+    "inner_gray_mean": 166.5,
+    "inner_gray_stddev": 62.8
+  },
+  {
+    "file": "22_M5PAPER.png",
+    "group": "B_10-22",
+    "w": 638,
+    "h": 1004,
+    "ratio": 0.6355,
+    "mode": "RGBA",
+    "bytes": 132202,
+    "corners": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "border_avg": [
+      0,
+      151,
+      79
+    ],
+    "inner_mean_rgb": [
+      109.5,
+      180.9,
+      150.3
+    ],
+    "inner_stddev": [
+      107.9,
+      56.4,
+      77.6
+    ],
+    "inner_gray_mean": 156.0,
+    "inner_gray_stddev": 67.5
+  }
+]

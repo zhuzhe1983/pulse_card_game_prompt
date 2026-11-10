@@ -99,13 +99,14 @@ h1{font-size:30px;line-height:1.4;padding-top:46px;padding-bottom:16px;border-bo
 </style>
 </head>
 <body>
-<div class="cover"><div class="eyebrow">PULSE · PRODUCT &amp; IMPLEMENTATION CONTRACT</div><h1>脉冲对决<br>跨平台游戏需求与开发契约</h1><p>用实体卡建立身份与收藏，用同一套规则连接不同硬件。<br>面向 ESP32、Android、iOS、macOS 与 Web 的可实施规格。</p><div class="badges"><span class="badge"><b>v1.0</b> 实施基线</span><span class="badge"><b>14</b> 基础模板</span><span class="badge"><b>10</b> 张牌组</span><span class="badge"><b>3</b> 小局上限</span><span class="badge"><b>2</b> 类 NFC 卡</span></div></div>
+<div class="cover"><div class="eyebrow">PULSE · 脉冲对决</div><h1>脉冲对决<br>先读游戏，再读实现</h1><p>现在能打的是基础 14 张牌。族群扩展还没启用。<br>卡面模板正在重制，第一轮生成稿不推荐。</p><div class="badges"><span class="badge"><b>v1.0</b> 实施基线</span><span class="badge"><b>14</b> 基础模板</span><span class="badge"><b>10</b> 张牌组</span><span class="badge"><b>3</b> 小局上限</span><span class="badge"><b>2</b> 类 NFC 卡</span></div></div>
 <header id="title-block-header">
 <h1 class="title">脉冲对决 · 需求与开发契约 v1.0</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">章节导航</h2>
 <ul>
+<li><a href="#read-first" id="toc-read-first">先读这里</a></li>
 <li><a href="#overview" id="toc-overview">阅读导航</a></li>
 <li><a href="#chapter-00" id="toc-chapter-00">00 ·
 产品目标、冻结决策与范围</a>
@@ -448,11 +449,15 @@ API</a></li>
 读头、实体卡、各平台客户端与真实射频尚未认证；平衡性也需要真人试玩。</p>
 <p>本 HTML 为完整需求阅读版；完整开发包还包含主提示词、JSON、参考
 Python、二进制样例、测试与目标配置模板。阅读版可离线打开和打印。</p>
+<h1 id="read-first">先读这里</h1>
+<p>现在能跑完的是基础 14 张牌和 <code>pcg.core.v1</code>。族群草案在
+<code>docs/14_EXPANSION_DRAFT.md</code>，没有进入卡包，参考裁判也不会执行。第一轮
+CardputerZero 生成稿已放弃，固定模板重制尚未进入仓库。后面的章节仍是实现和验收底线。</p>
 <h1 id="chapter-00">00 · 产品目标、冻结决策与范围</h1>
 <p>版本：1.0.0；状态：可实施基线，尚未完成真实硬件认证与充分平衡测试。中文产品名「脉冲对决」，英文显示名
 PULSE，技术 slug
 <code>pulse-card</code>。角色视觉和卡片印刷稿可以更换；更换显示名不能隐式改协议
-ID。</p>
+ID。族群扩展是未启用草案。本章的冻结决策仍然只覆盖现有基础牌。</p>
 <h2 id="要做成什么">1. 要做成什么</h2>
 <p>一个以 M5 设备为角色灵感、用 NFC
 实体卡建立收藏与身份、在不同屏幕和通信硬件上共享同一种策略对战的游戏。玩家拿起玩家卡登录，刷英雄卡认识新角色，使用收藏或公共借用模板组出
@@ -657,6 +662,7 @@ Grove/USB 桥。协议已预留观战投影，但客户端不必首版实现完�
 <p>试玩重点记录：玩家是否为了下一局主动放弃一局、是否能复述输在哪里、是否连续再来一局、战术牌是否成为必弃选项。不能用抽卡次数或页面停留替代玩法验证。每一项数值改动都发布新内容
 hash，已经开始的对局继续锁定原包。</p>
 <h1 id="chapter-01">01 · 核心玩法与内容规格</h1>
+<p>现在能执行的玩法就是本章。族群、冠位和链式配对未启用。</p>
 <blockquote>
 <p>版本：玩法设计 v1。规则集标识为
 <code>pcg.core.v1</code>。本文是开发可执行规格，不是对现有工程已经实现的描述。正式协议、卡包
@@ -1563,7 +1569,7 @@ fixtures 和各端资源，不得只改某一端的显示文字。</p>
 <blockquote>
 <p>产品名：脉冲对决。英文显示名：PULSE。本文规定信息结构和交互语义，允许不同开发平台使用原生控件。所有页面消费同一份权威对局状态与卡包，不得在界面中重算出另一套规则。正式字段以
 <code>CONTRACT.json</code>、协议规范及卡包为准。</p>
-<p>视觉方向为“黑白电子漫画卡册”：清楚的硬件角色轮廓、漫画分格、短句效果、醒目的整数战力。彩色设备可以使用彩色主题，但不能增加黑白端看不到的战斗信息。</p>
+<p>视觉方向为“黑白电子漫画卡册”：清楚的硬件角色轮廓、漫画分格、短句效果、醒目的整数战力。彩色设备可以使用彩色主题，但不能增加黑白端看不到的战斗信息。界面战力来自规则，不从概念卡面读取。固定模板重制尚未进入仓库，第一轮生成稿不推荐。</p>
 </blockquote>
 <h2 id="体验目标">1. 体验目标</h2>
 <p>用户应在任何设备上回答以下五个问题，而不需要打开说明书：</p>
