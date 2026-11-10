@@ -64,13 +64,10 @@ class DraftTests(unittest.TestCase):
 
     def test_product_image_fields_are_empty_pending(self):
         import csv
-        with (ROOT / "research" / "hardware_catalog.csv").open(encoding="utf-8", newline="") as handle:
+        with (ROOT / "research" / "history" / "hardware_catalog_95.csv").open(encoding="utf-8", newline="") as handle:
             rows = list(csv.DictReader(handle))
         self.assertEqual(len(rows), 95)
-        for row in rows:
-            self.assertEqual(row["image_status"], "awaiting_official_image")
-            self.assertEqual(row["image_url"], "")
-            self.assertTrue(row["independent_runtime"])
+        self.assertIn("host_or_peripheral", rows[0])
 
     def test_status_and_counts(self):
         draft = self.draft
@@ -125,7 +122,7 @@ class DraftTests(unittest.TestCase):
 
     def test_research_tables_have_the_recorded_rows(self):
         import csv
-        for name, count in (("hardware_catalog.csv", 95), ("compatibility.csv", 20), ("card_candidates.csv", 74)):
+        for name, count in (("hardware_catalog.csv", 258), ("compatibility.csv", 20), ("card_candidates.csv", 74)):
             with (ROOT / "research" / name).open(encoding="utf-8", newline="") as handle:
                 rows = list(csv.DictReader(handle))
             self.assertEqual(len(rows), count, name)
@@ -161,6 +158,49 @@ class WordingTests(unittest.TestCase):
         style = (ROOT / "docs" / "16_CARD_FACE_STYLES.md").read_text(encoding="utf-8")
         self.assertIn("needs_revision", style)
         self.assertNotIn("100%", style)
+
+    def test_front_image_catalog_is_strict(self):
+        import csv
+        catalog_path = ROOT / "research" / "hardware_catalog.csv"
+        with catalog_path.open(encoding="utf-8", newline="") as handle:
+            catalog = list(csv.DictReader(handle))
+        self.assertEqual(len(catalog), 258)
+        roles = {}
+        for row in catalog:
+            roles[row["row_role"]] = roles.get(row["row_role"], 0) + 1
+            for key in ("front_image_path", "front_image_url", "reference_image_path", "reference_image_url"):
+                self.assertNotIn("/workspace", row.get(key) or "")
+                self.assertFalse((row.get(key) or "").startswith("/"))
+        self.assertEqual(roles, {"original": 95, "split_specific": 161, "extra": 2})
+        fronts = [row for row in catalog if row["front_verification_status"] == "已核对正面（单张放大）"]
+        self.assertEqual(sorted(row["record_id"] for row in fronts), ["H015", "H050", "U109"])
+        for row in fronts:
+            self.assertEqual(row["view_type"], "正面")
+            self.assertTrue((ROOT / row["front_image_path"]).is_file())
+        self.assertEqual(sum(1 for row in catalog if row["view_type"] == "正面"), 3)
+        self.assertEqual(sum(1 for row in catalog if row["view_type"] == "缺正面图"), 255)
+        self.assertEqual(sum(1 for row in catalog if row["reference_view_type"].startswith("备用视角")), 220)
+        self.assertTrue(all(not row["reference_image_path"] for row in catalog))
+        history = ROOT / "research" / "history" / "hardware_catalog_95.csv"
+        with history.open(encoding="utf-8", newline="") as handle:
+            old_rows = list(csv.DictReader(handle))
+        self.assertEqual(len(old_rows), 95)
+        text = (ROOT / "research" / "README.md").read_text(encoding="utf-8")
+        self.assertIn("不是当前目录", text)
+        game = load("content/expansion_draft.json")
+        cards = {card["stable_id"]: card for card in game["kept"] + game["cards"]}
+        self.assertEqual(cards["tab5_watcher"]["mapped_record_id"], "H015")
+        self.assertTrue(cards["tab5_watcher"]["has_verified_front"])
+        self.assertEqual(cards["unit_cam_scout"]["mapped_record_id"], "U109")
+        self.assertEqual(cards["unit_cam_scout"]["design_role"], "器具")
+        self.assertTrue(cards["unit_cam_scout"]["has_verified_front"])
+        self.assertEqual(cards["cardputer_hacker"]["mapped_record_id"], "H031")
+        self.assertFalse(cards["cardputer_hacker"]["has_verified_front"])
+        self.assertEqual(cards["cardputer_hacker"]["front_image_path"], "")
+        self.assertEqual(sum(1 for card in cards.values() if card["has_verified_front"]), 2)
+        for card in cards.values():
+            if card["non_product"]:
+                self.assertFalse(card["has_verified_front"])
 
     def test_template_preview_links_and_original_cards_unmodified(self):
         import subprocess

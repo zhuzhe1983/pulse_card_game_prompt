@@ -77,7 +77,20 @@
         "H005"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H005",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/core2/core2_02.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "tough_guard",
@@ -121,7 +134,20 @@
         "H013"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H013",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/tough/tough_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "stickc_operator",
@@ -167,7 +193,20 @@
         "H020"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H020",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5stickc/m5stickc_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "atom_scout",
@@ -212,7 +251,20 @@
         "H026"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H026",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/673/C008.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "atom_matrix_link",
@@ -257,7 +309,20 @@
         "H027"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H027",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "cardputer_hacker",
@@ -302,7 +367,20 @@
         "H031"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H031",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/Cardputer/img-60261bcd-a23f-40e6-994d-ad97477dcec4.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "dial_router",
@@ -346,7 +424,20 @@
         "H034"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H034",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5Dial/img-2afd549e-8af8-47b4-823a-e90e063a0139.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "paper_archive",
@@ -391,7 +482,20 @@
         "H044"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H044a",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1267/C153_PaperMono_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "stamp_sentry",
@@ -435,7 +539,20 @@
         "H038"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "echo_booster",
@@ -472,7 +589,20 @@
       "non_product": false,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "lora_relay",
@@ -509,7 +639,20 @@
       "non_product": false,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "unit_cam_scout",
@@ -548,7 +691,20 @@
       "non_product": false,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U109",
+      "has_verified_front": true,
+      "front_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/unit_cam/unit_cam_02.webp",
+      "front_image_path": "research/images/front/U109__Unit_CAM__unit_cam_02.webp",
+      "front_image_local_status": "packaged",
+      "front_source_page": "https://docs.m5stack.com/en/unit/Unit_CAM",
+      "front_view_type": "正面",
+      "front_verification_status": "已核对正面（单张放大）",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/unit_cam/unit_cam_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "signal_boost",
@@ -585,7 +741,20 @@
       "non_product": true,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "signal_jam",
@@ -622,7 +791,20 @@
       "non_product": true,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     }
   ],
   "cards": [
@@ -679,7 +861,20 @@
         "H001"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H001",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/basic_v2.7/basic_v2.7_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "gray_pathfinder",
@@ -733,7 +928,20 @@
         "H002"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H002",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/gray/gray_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "fire_marshal",
@@ -786,7 +994,20 @@
         "H003"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H003",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/fire_v2.7/fire_v2.6_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "go_captain",
@@ -840,7 +1061,20 @@
         "H004"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H004",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5go_v2.7/m5go_v2.7_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "cores3_governor",
@@ -893,7 +1127,20 @@
         "H009"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H009",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/CoreS3/img-96063e2a-637a-4d11-ac47-1ce4f1cdfd3e.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "stick_plus",
@@ -944,7 +1191,20 @@
         "H021"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H021",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5stickc_plus/m5stickc_plus_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "stick_plus2",
@@ -994,7 +1254,20 @@
         "H022"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H022",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/docs/products/core/M5StickC%20PLUS2/4.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "stick_s3",
@@ -1044,7 +1317,20 @@
         "H024"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H024",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1207/K150-stickS3_main-products_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "stick_t2",
@@ -1092,7 +1378,20 @@
         "H025"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H025",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5stickt/m5stickt_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "atom_s3",
@@ -1146,7 +1445,20 @@
         "H029"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "chain_warden",
@@ -1195,7 +1507,20 @@
         "H048"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H048",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1176/C147_chain-dualkey-mainpicture_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "capsule_runner",
@@ -1243,7 +1568,20 @@
         "H035"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H035",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5Capsule/img-2456a4fc-6a0c-4dcd-9998-ddfee4d62674.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "din_meter",
@@ -1291,7 +1629,20 @@
         "H036"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H036",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5DinMeter/img-ae5aaf34-6458-47c7-89ee-280ec06fb542.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "coreink_clerk",
@@ -1339,7 +1690,20 @@
         "H045"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H045",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/coreink/coreink_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "tab5_watcher",
@@ -1390,7 +1754,20 @@
         "H015"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H015",
+      "has_verified_front": true,
+      "front_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1132/C145_02.webp",
+      "front_image_path": "research/images/front/H015__Tab5__C145_02.webp",
+      "front_image_local_status": "packaged",
+      "front_source_page": "https://docs.m5stack.com/en/core/Tab5",
+      "front_view_type": "正面",
+      "front_verification_status": "已核对正面（单张放大）",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1132/C145_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "nano_weaver",
@@ -1437,7 +1814,20 @@
         "H047"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H047",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5NanoC6/img-9809b895-c90a-43d4-8f51-e0de80b60503.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "station_clerk",
@@ -1486,7 +1876,20 @@
         "H046"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "matrix_keeper",
@@ -1535,7 +1938,20 @@
         "H016"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H016",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1274/C158_CoreMatrix_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "workshop_lord",
@@ -1585,7 +2001,20 @@
         "H018"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "H018",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5CoreMP135/img-e1972b35-73c9-4a6c-a91f-adcd915b7771.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "lamp_retainer",
@@ -1635,7 +2064,20 @@
         "S005"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "S005",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/base/m5go_bottom/m5go_bottom_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "bottom2_retainer",
@@ -1685,7 +2127,20 @@
         "S006"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "S006",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1227/A014-C-V13_Base_M5GO_Bottom2_v1.3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "plain_base",
@@ -1734,7 +2189,20 @@
         "S007"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "faces_chassis",
@@ -1782,7 +2250,20 @@
         "S008"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "S008",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1273/A168_Faces_Bottom3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "faces_scribe",
@@ -1832,7 +2313,20 @@
         "S009"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "S009",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1270/A003-V3_Faces_Keyboard3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "faces_hand",
@@ -1882,7 +2376,20 @@
         "S010"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "S010",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1271/A004-V3_Faces_Gamepad3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "faces_abacus",
@@ -1932,7 +2439,20 @@
         "S011"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "S011",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1272/A005-V3_Faces_Calculator3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "hat_range",
@@ -1981,7 +2501,20 @@
         "A004"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "A004",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat-tof/hat-tof_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "hat_ambush",
@@ -2031,7 +2564,20 @@
         "A005"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "A005",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat-pir/hat-pir_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "hat_joy",
@@ -2082,7 +2628,20 @@
         "A006"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "A006",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/MiniJoyC/img-5f9e97ba-2ad4-482a-8ed0-5c5551514558.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "hat_voice",
@@ -2131,7 +2690,20 @@
         "A002"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "A002",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat-spk/hat-spk_02.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "hat_weather",
@@ -2182,7 +2754,20 @@
         "A010"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "A010",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat_envIII/hat_envIII_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "hat_cell",
@@ -2230,7 +2815,20 @@
         "A015"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "A015",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat-powerc/hat-powerc_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "chain_key",
@@ -2280,7 +2878,20 @@
         "C001"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "C001z",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1192/U206-Chain-key-main-pictures-01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "chain_lantern",
@@ -2330,7 +2941,20 @@
         "C001"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "tochain",
@@ -2380,7 +3004,20 @@
         "C003"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "C003",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1193/A163_main-picture-01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "atom_seat",
@@ -2429,7 +3066,20 @@
         "C004"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "C004z",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/903/A149_Atomic_Voice_Base_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "tab_keys",
@@ -2476,7 +3126,20 @@
         "U015"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U015",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1241/A164_tab5_keyboard_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "s3_window",
@@ -2525,7 +3188,20 @@
         "A014"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "A014",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1278/A183_Display_1.14_For_StickS3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "climate_vial",
@@ -2577,7 +3253,20 @@
         "U001"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U001",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/envIII/envIII_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "range_nail",
@@ -2627,7 +3316,20 @@
         "U002"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "echo_mallet",
@@ -2676,7 +3378,20 @@
         "U003"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U003",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "echo_pin",
@@ -2725,7 +3440,20 @@
         "U003"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U003a",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "split_case",
@@ -2775,7 +3503,20 @@
         "U007"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U007",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/pahub2/pahub2_02.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "name_ring",
@@ -2827,7 +3568,20 @@
         "U004"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U004z",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/rfid2/rfid2_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "locate_feather",
@@ -2878,7 +3632,20 @@
         "U006"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "star_module",
@@ -2929,7 +3696,20 @@
         "S001"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "S001",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/module/gps/gps_03.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "heat_lens",
@@ -2978,7 +3758,20 @@
         "U011"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U011",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "eight_arm",
@@ -3028,7 +3821,20 @@
         "U009"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U009z",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1281/U222_Unit_8Servos2-I2C_main_pictures_01.jpg",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "eight_arm_chain",
@@ -3077,7 +3883,20 @@
         "C005"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "C005",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1280/U223_Unit_8Servos2-Chain_main_pictures_01.jpg",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "key_slate",
@@ -3127,7 +3946,20 @@
         "U010"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "U010",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1225/U215_main-pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "relay_feather",
@@ -3178,7 +4010,20 @@
         "U006"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "thought_case",
@@ -3227,7 +4072,20 @@
         "S004"
       ],
       "image_status": "awaiting_official_image",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "S004",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "缺正面图",
+      "front_verification_status": "缺正面图",
+      "reference_image_url": "https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/docs/products/module/Module%20LLM/4.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "bus_token",
@@ -3269,7 +4127,20 @@
       "non_product": true,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "quiet_pulse",
@@ -3309,7 +4180,20 @@
       "non_product": true,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "magnet_haze",
@@ -3351,7 +4235,20 @@
       "non_product": true,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "overload_bell",
@@ -3391,7 +4288,20 @@
       "non_product": true,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     },
     {
       "template_id": "chain_return",
@@ -3432,7 +4342,20 @@
       "non_product": true,
       "image_record_ids": [],
       "image_status": "not_a_product",
-      "image_url": ""
+      "image_url": "",
+      "mapped_record_id": "",
+      "has_verified_front": false,
+      "front_image_url": "",
+      "front_image_path": "",
+      "front_image_local_status": "",
+      "front_source_page": "",
+      "front_view_type": "非实体产品",
+      "front_verification_status": "非实体产品，无图",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面或宣传资产。"
     }
   ],
   "examples": [

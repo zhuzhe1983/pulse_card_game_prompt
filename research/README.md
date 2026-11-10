@@ -1,13 +1,25 @@
 # 研究记录
 
-这里是 2026-11-10 的公开资料摘录，不是已经启用的规则。
+这里的表是资料，不是已经启用的规则。采用结论以 [../docs/14_EXPANSION_DRAFT.md](../docs/14_EXPANSION_DRAFT.md) 为准。
 
-- `hardware_catalog.csv`：95 条硬件记录。不是产品线穷尽清单。`medium` 多半只说明官方目录或索引里看得到，不是逐项插拔验证。
+## 当前产品目录
+
+`hardware_catalog.csv` 是当前目录，258 行，正视审核 v3。读图规则在 [front_image_v3.md](front_image_v3.md)。
+
+- 95 条是拆分前的父记录，161 条是从复合行拆出的具体型号，用 `parent_record_id` 指回原来的 ID。
+- H050 是 CardputerZero，U109 是 Unit CAM。这两条是新增。
+- 严格正面图只有 3 张。220 条备用图不是正面。255 行仍然没有正面图。
+
+`history/hardware_catalog_95.csv` 只是旧的 95 条，不是当前目录。
+
+`image_review_v3.csv` 是逐张审核记录。`verified_front=true` 只有 3 行。备用图的本地文件没有入库，本地路径已清空，官方 URL 还在。
+
+`card_product_image_map.csv` 把 71 张游戏卡对到目录。游戏中文名、英文名和千里眼的器具建议没有退回旧文案。
+
+## 玩法研究笔记
+
 - `compatibility.csv`：20 条组合规则。没写到的组合保持未知。
-- `card_candidates.csv`：74 条研究候选。其中的双行动占用、负分和独立计分没有被草案采用。
-- 同目录的 markdown 是当时的研究笔记，保留原句，避免把证据改写成结论。
+- `card_candidates.csv`：74 条旧候选。双行动占用和负分没有被草案采用。不要用这张表覆盖 `content/game_catalog.csv`。
+- 同目录其他 markdown 是当时的笔记，保留原句。
 
-采用哪些、如何处理 Core2 与 Faces Bottom3 的表述冲突，只看 [../docs/14_EXPANSION_DRAFT.md](../docs/14_EXPANSION_DRAFT.md)。参考裁判不读这些表。
-
-图片字段 `image_status`、`image_url`、`image_local_path` 已留在硬件表上，用记录 id 关联。现在全部是 awaiting_official_image，没有填写网址。官方正面图由后续资料补入，这里不编造。
-`independent_runtime` 只转写原表里已经写明的独立运行情况，不把辅助芯片升成英雄。
+Core2 与 Faces Bottom3 的处理只看第 14 章。参考裁判不读这些表。

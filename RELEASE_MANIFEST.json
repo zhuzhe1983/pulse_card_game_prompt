@@ -8,8 +8,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3569,
-      "sha256": "d127cba409c04db21834ad5272696d77b7fd84e3c7460bf48916f9890d74a0c3"
+      "bytes": 3666,
+      "sha256": "deae60ea93156bbba70b1abc86b8185ba33ce2de5441a3f4bad60a8da1b957e1"
     },
     {
       "path": "REQUIREMENTS.html",
@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 527880,
-      "sha256": "b32be1ed738fcb5fb67bd6dbfe10b34799d3821e1d2dbaca32ddcbc80368070d"
+      "bytes": 575478,
+      "sha256": "9a5915a6e4859715976bf1d83a983bee87d0bffc29c51dd0c6873791b0b85aa3"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -303,8 +303,8 @@
     },
     {
       "path": "content/expansion_draft.json",
-      "bytes": 119803,
-      "sha256": "7b591757c62d8097781b42323b025338f1068eb3f779be2fcfe4b4f1d7ccb2d2"
+      "bytes": 166842,
+      "sha256": "c4fede3f4e1a1209a8f34ae8367873e6c8d8f5376814fd74887a76c3caefe0ca"
     },
     {
       "path": "docs/13_WORLD_AND_FACTIONS.md",
@@ -313,8 +313,8 @@
     },
     {
       "path": "docs/14_EXPANSION_DRAFT.md",
-      "bytes": 10956,
-      "sha256": "1d809104e429d0a02710ecc6896237d2d9b192066129474dea61f9d3984eede9"
+      "bytes": 11515,
+      "sha256": "cc74ae6ca84128ee0e7b9afbee8ea44cdbe8634286644c615694190c1356dfbb"
     },
     {
       "path": "docs/16_CARD_FACE_STYLES.md",
@@ -328,13 +328,13 @@
     },
     {
       "path": "research/README.md",
-      "bytes": 1073,
-      "sha256": "6332d7cc2633126da94d67004c8609323f8efe1be20face48088298345a0c878"
+      "bytes": 1389,
+      "sha256": "05a7333df63a6e082aac4f50be942f14e7a4ec0511e3c4747975365508de9c61"
     },
     {
       "path": "research/hardware_catalog.csv",
-      "bytes": 63889,
-      "sha256": "05e99cdeb85079fe2fa70bef19bbce3eaf161142283d80d5361b3c3bf476817c"
+      "bytes": 150762,
+      "sha256": "4d559130a05da0893226d9a592d2fb8f89c3b26f6e09e6e8dd32ed218d80f5d6"
     },
     {
       "path": "research/hardware_catalog.md",
@@ -378,8 +378,8 @@
     },
     {
       "path": "tests/test_draft_integrity.py",
-      "bytes": 9639,
-      "sha256": "4cdaf637d6b98dece644a8b77e9b1af112e954df7fff2e054586c57e148473b4"
+      "bytes": 12325,
+      "sha256": "897b912254d8a072615bb9a26a19173bd82b9435e78915f7a69be1a74eb4221b"
     },
     {
       "path": "content/en.json",
@@ -388,8 +388,53 @@
     },
     {
       "path": "content/game_catalog.csv",
-      "bytes": 37713,
-      "sha256": "beb0b2c3dd57589f2dab67ff75b7b98740e027168a1ee1cf53f6d77c521f6d2d"
+      "bytes": 53079,
+      "sha256": "4829a7ad221289572309bb0d9dc20553c7897bc1afac90dab3862d9b74404a06"
+    },
+    {
+      "path": "research/history/README.md",
+      "bytes": 219,
+      "sha256": "4a152ca702627e24656628af95b3b8f9d69d1e284c1f495e44c16f96465624da"
+    },
+    {
+      "path": "research/history/hardware_catalog_95.csv",
+      "bytes": 63889,
+      "sha256": "05e99cdeb85079fe2fa70bef19bbce3eaf161142283d80d5361b3c3bf476817c"
+    },
+    {
+      "path": "research/front_image_v3.md",
+      "bytes": 1512,
+      "sha256": "d529dea32f00e42d5e1ad3d3c9e9952fe5049ae4c641a41748731b0db1d06e4c"
+    },
+    {
+      "path": "research/card_product_image_map.csv",
+      "bytes": 29753,
+      "sha256": "6e7710f3bb10b5422393caac17de1dc0b96f4b073dbfca748a41dc45a1824b9a"
+    },
+    {
+      "path": "research/image_review_v3.csv",
+      "bytes": 128991,
+      "sha256": "e2256b7baae08e3f87eb7ffed1fcb51d52e6a9154049846ccb547e9012bd84b4"
+    },
+    {
+      "path": "research/images/verified_fronts_only.jpg",
+      "bytes": 46353,
+      "sha256": "e18fd5cc586183ae9b44eac0ef2615c936d9055515211807a7cf2893900c2a3c"
+    },
+    {
+      "path": "research/images/front/H015__Tab5__C145_02.webp",
+      "bytes": 82630,
+      "sha256": "5866a3d16da96c116d66d82bf45e1a1ad68769a3619896c3812423a13a1131ee"
+    },
+    {
+      "path": "research/images/front/H050__CardputerZero__main-pictures_06.webp",
+      "bytes": 99428,
+      "sha256": "b41b1ca19789f7990d195f23f8cce1a815331fba2fd2305e8b58d99f18b38415"
+    },
+    {
+      "path": "research/images/front/U109__Unit_CAM__unit_cam_02.webp",
+      "bytes": 80962,
+      "sha256": "0295a1934034b984ae4f95551291aa5ae0aa7316bda7d67f047b8feee1a3fe3b"
     }
   ]
 }
