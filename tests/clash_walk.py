@@ -287,23 +287,26 @@ class Game:
         else:
             raise ClashError("未知战术")
 
-    def recall(self, seat, host_id):
+    def support(self, seat):
+        """小印支援：把墓地里的厚壳工控复活到空位。小印自己留在场上。"""
         self.require_main(seat)
-        host_id = self.resolve_iid(seat, host_id)
-        host_seat, _slot, host = self.find(host_id)
-        if host_seat != seat or host["card_id"] != "hou_ke":
-            raise ClashError("只有己方在场的厚壳工控能唤回")
-        if self.ability_used[seat].get("hou_ke"):
-            raise ClashError("本回合已经唤回过")
-        if "xiao_yin" not in self.graves[seat]:
-            raise ClashError("墓地里没有小印")
+        sources = [unit for unit in self.units(seat) if unit["card_id"] == "xiao_yin"]
+        if len(sources) != 1:
+            raise ClashError("场上要有一台小印才能支援")
+        if self.ability_used[seat].get("xiao_yin"):
+            raise ClashError("本回合已经支援过")
+        if "hou_ke" not in self.graves[seat]:
+            raise ClashError("墓地里没有厚壳工控")
         if self.alive_count(seat) >= 5:
             raise ClashError("场上没有空位")
+        if self.supply[seat] < 2:
+            raise ClashError("供电不足")
         self.pay(seat, 2)
-        self.ability_used[seat]["hou_ke"] = 1
-        self.graves[seat].remove("xiao_yin")
-        self.event("厚壳工控唤回墓地里的小印")
-        self.place_new(seat, "xiao_yin")
+        self.ability_used[seat]["xiao_yin"] = 1
+        self.graves[seat].remove("hou_ke")
+        self.event("小印支援，厚壳工控离开墓地")
+        revived = self.place_new(seat, "hou_ke")
+        return revived
 
     def knob(self, seat, host_id, target):
         self.require_main(seat)
@@ -429,8 +432,8 @@ def replay(cards, deck0, deck1, steps):
             game.start_turn()
         elif kind == "play":
             game.play(seat, step["card"], step.get("target"), step.get("mode"))
-        elif kind == "recall":
-            game.recall(seat, step["host"])
+        elif kind == "support":
+            game.support(seat)
         elif kind == "knob":
             game.knob(seat, step["host"], step["target"])
         elif kind == "attack":

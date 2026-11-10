@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 551955,
-      "sha256": "c286af02878b32a93e6a10cacebb6660ee4918e78d8330e00381f648ecab569e"
+      "bytes": 553504,
+      "sha256": "4bde4298173f3c04ce1303cdfa508f1fdd9d687f3c8cf3eb0b0556521d9bc5a6"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -48,13 +48,13 @@
     },
     {
       "path": "docs/00_PRODUCT_AND_DECISIONS.md",
-      "bytes": 8694,
-      "sha256": "78438d39efcd6fb73ed187242c8095fe6f4111c84718a53d1e325049d7458656"
+      "bytes": 8706,
+      "sha256": "19a4ce5120691156c0399ee9af26795327eb2e63ed3ab3e255045ee878a79ee3"
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 16740,
-      "sha256": "084c307a4c785b51950b54188bf4d989d75d863df74d83991e7c7840d0612bbd"
+      "bytes": 18091,
+      "sha256": "445afdd508034501af74fe0c0a32df524ca656e891ff33d9a566870ce20f6e7c"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
@@ -93,8 +93,8 @@
     },
     {
       "path": "docs/09_TUTORIAL_AND_PLAYTEST.md",
-      "bytes": 1554,
-      "sha256": "8a7e7b55e3645301e1c151d8c6ee55dcbe6f96d72f04a8ff9408d8e5713ee500"
+      "bytes": 1740,
+      "sha256": "fab58b5f1a57c5a246934a2540c671e0691f1c14aa7c022170e0d3e936753af3"
     },
     {
       "path": "docs/10_SOURCES_AND_MATERIALS.md",
@@ -543,8 +543,8 @@
     },
     {
       "path": "content/clash_playtest.json",
-      "bytes": 7584,
-      "sha256": "205f7a1bc40fc6aeeee75ba772daa3f5991c098ee9d19b7d88a99fcb5d8bf358"
+      "bytes": 8626,
+      "sha256": "5dbcd4692c6846891bcc530eef2ce060a8fc664d5a45bb82a6002dccac895909"
     },
     {
       "path": "docs/history/README.md",
@@ -563,13 +563,13 @@
     },
     {
       "path": "tests/clash_walk.py",
-      "bytes": 18140,
-      "sha256": "edfac2d2d348fb42c32f8a9da96ab46941582154392d7390bec684ac81029220"
+      "bytes": 18289,
+      "sha256": "97368ac558b791a8d27a9d59fbfc5cf9571934f561b01aa3cb36c90377ae25ad"
     },
     {
       "path": "tests/test_clash_playtest.py",
-      "bytes": 9238,
-      "sha256": "d0c737b771eca458946d47ac6c7ff2ef2fb51cdc889cdba15afa060a34dbccff"
+      "bytes": 10841,
+      "sha256": "2b4bc62ef6995ba53f3179257d4fbac03af64bf5b2335c8eb4e4b4590a2e81a6"
     }
   ]
 }
