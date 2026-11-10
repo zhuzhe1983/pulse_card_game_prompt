@@ -168,39 +168,52 @@ class WordingTests(unittest.TestCase):
         roles = {}
         for row in catalog:
             roles[row["row_role"]] = roles.get(row["row_role"], 0) + 1
-            for key in ("front_image_path", "front_image_url", "reference_image_path", "reference_image_url"):
-                self.assertNotIn("/workspace", row.get(key) or "")
-                self.assertFalse((row.get(key) or "").startswith("/"))
+            for key, value in row.items():
+                self.assertNotIn("/workspace", value or "")
+                self.assertFalse((value or "").startswith("/"))
         self.assertEqual(roles, {"original": 95, "split_specific": 161, "extra": 2})
-        fronts = [row for row in catalog if row["front_verification_status"] == "已核对正面（单张放大）"]
-        self.assertEqual(sorted(row["record_id"] for row in fronts), ["H015", "H050", "U109"])
+        fronts = [row for row in catalog if row["operation_front_verification_status"] == "已核对操作面正视"]
+        self.assertEqual(sorted(row["record_id"] for row in fronts),
+                         ["H005", "H015", "H027", "H027a", "H028", "H031", "H050", "U109"])
         for row in fronts:
-            self.assertEqual(row["view_type"], "正面")
-            self.assertTrue((ROOT / row["front_image_path"]).is_file())
-        self.assertEqual(sum(1 for row in catalog if row["view_type"] == "正面"), 3)
-        self.assertEqual(sum(1 for row in catalog if row["view_type"] == "缺正面图"), 255)
-        self.assertEqual(sum(1 for row in catalog if row["reference_view_type"].startswith("备用视角")), 220)
+            self.assertEqual(row["view_orientation"], "正视")
+            self.assertEqual(row["surface"], "操作面")
+            self.assertTrue((ROOT / row["operation_front_image_path"]).is_file(), row["record_id"])
+        backs = [row for row in catalog if row["back_ortho_view_orientation"] == "正视"]
+        self.assertEqual(len(backs), 8)
+        lite = next(row for row in catalog if row["record_id"] == "H026")
+        self.assertEqual(lite["back_ortho_surface"], "背夹/USB面")
+        self.assertNotEqual(lite["surface"], "操作面")
+        self.assertTrue((ROOT / lite["back_ortho_image_path"]).is_file())
         self.assertTrue(all(not row["reference_image_path"] for row in catalog))
+        self.assertIn("未找到/未核验", {row["operation_front_verification_status"] for row in catalog})
         history = ROOT / "research" / "history" / "hardware_catalog_95.csv"
         with history.open(encoding="utf-8", newline="") as handle:
             old_rows = list(csv.DictReader(handle))
         self.assertEqual(len(old_rows), 95)
         text = (ROOT / "research" / "README.md").read_text(encoding="utf-8")
         self.assertIn("不是当前目录", text)
+        self.assertIn("front_image_v5.md", text)
         game = load("content/expansion_draft.json")
         cards = {card["stable_id"]: card for card in game["kept"] + game["cards"]}
-        self.assertEqual(cards["tab5_watcher"]["mapped_record_id"], "H015")
-        self.assertTrue(cards["tab5_watcher"]["has_verified_front"])
-        self.assertEqual(cards["unit_cam_scout"]["mapped_record_id"], "U109")
-        self.assertEqual(cards["unit_cam_scout"]["design_role"], "器具")
-        self.assertTrue(cards["unit_cam_scout"]["has_verified_front"])
+        linked = {"core2_guard": "H005", "atom_matrix_link": "H027", "cardputer_hacker": "H031",
+                  "tab5_watcher": "H015", "unit_cam_scout": "U109"}
+        for stable_id, record_id in linked.items():
+            self.assertEqual(cards[stable_id]["mapped_record_id"], record_id)
+            self.assertTrue(cards[stable_id]["has_operation_front"])
+            self.assertEqual(cards[stable_id]["surface"], "操作面")
+            self.assertTrue((ROOT / cards[stable_id]["operation_front_image_path"]).is_file())
         self.assertEqual(cards["cardputer_hacker"]["mapped_record_id"], "H031")
-        self.assertFalse(cards["cardputer_hacker"]["has_verified_front"])
-        self.assertEqual(cards["cardputer_hacker"]["front_image_path"], "")
-        self.assertEqual(sum(1 for card in cards.values() if card["has_verified_front"]), 2)
+        self.assertNotEqual(cards["cardputer_hacker"]["mapped_record_id"], "H050")
+        self.assertEqual(cards["unit_cam_scout"]["design_role"], "器具")
+        self.assertEqual(cards["atom_s3"]["has_operation_front"], False)
+        self.assertEqual(cards["atom_s3"]["operation_front_image_path"], "")
+        self.assertEqual(cards["atom_scout"]["back_ortho_surface"], "背夹/USB面")
+        self.assertEqual(cards["atom_scout"]["surface"], "")
+        self.assertEqual(sum(1 for card in cards.values() if card["has_operation_front"]), 5)
         for card in cards.values():
-            if card["non_product"]:
-                self.assertFalse(card["has_verified_front"])
+            if card.get("non_product"):
+                self.assertFalse(card["has_operation_front"])
 
     def test_template_preview_links_and_original_cards_unmodified(self):
         import subprocess

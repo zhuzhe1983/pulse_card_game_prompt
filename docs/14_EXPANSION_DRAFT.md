@@ -134,9 +134,7 @@ CardputerZero（官方文档名 CardputerZero，SKU C154 / C154-B）不在这 95
 
 ## 6.1 正面图
 
-产品目录的当前版本是 `research/hardware_catalog.csv`（258 行）。严格正视并且仓库里有文件的，只有 3 张：大平板用的 Tab5（H015）、还没有做成游戏卡的 CardputerZero（H050）、千里眼用的 Unit CAM（U109）。敲键仍是普通 Cardputer（H031），不借用 Zero 的图。
-
-其余主机没有合格正视图。备用官方图有 220 条，只记在 `reference_image_url`，不叫正面。战术牌不是实物，没有图。官方图只供认产品，没有授权前不是正式卡面。
+产品目录的当前版本是 `research/hardware_catalog.csv`，读图规则在 `research/front_image_v5.md`。重点核过的操作面正视有 8 张。71 张游戏卡里接到操作面的是 5 张：厚壳、点阵、敲键、大平板、千里眼。敲键是原版 Cardputer，不借用 CardputerZero。新小块是复合型号，不自动套 ATOM S3 的单张图。探子没有操作面正视；它有一张背夹/USB 面的正视，不能当成按键面。斜视图只是备用，不能当生成主参考。战术牌没有图。官方图未授权前不是正式卡面。其余大约 248 行没有搜完。
 
 ## 7. 还没定
 

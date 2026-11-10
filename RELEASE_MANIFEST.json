@@ -8,8 +8,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3666,
-      "sha256": "deae60ea93156bbba70b1abc86b8185ba33ce2de5441a3f4bad60a8da1b957e1"
+      "bytes": 3682,
+      "sha256": "15cd6599c3928bedaeeb332dff9fd4164f9ccff8ba23b38efe98dd59bc13bcfc"
     },
     {
       "path": "REQUIREMENTS.html",
@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 575478,
-      "sha256": "9a5915a6e4859715976bf1d83a983bee87d0bffc29c51dd0c6873791b0b85aa3"
+      "bytes": 602245,
+      "sha256": "7726e81e7106e44d07f6fa8a74606ba1efac4ff6a3430bfdf65b8041258eda78"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -303,8 +303,8 @@
     },
     {
       "path": "content/expansion_draft.json",
-      "bytes": 166842,
-      "sha256": "c4fede3f4e1a1209a8f34ae8367873e6c8d8f5376814fd74887a76c3caefe0ca"
+      "bytes": 193537,
+      "sha256": "b159494c360a9946ba80aca57be6eb671ecdeaa656c89643728e630c06dd0765"
     },
     {
       "path": "docs/13_WORLD_AND_FACTIONS.md",
@@ -313,8 +313,8 @@
     },
     {
       "path": "docs/14_EXPANSION_DRAFT.md",
-      "bytes": 11515,
-      "sha256": "cc74ae6ca84128ee0e7b9afbee8ea44cdbe8634286644c615694190c1356dfbb"
+      "bytes": 11587,
+      "sha256": "f7efd2b380cae2d279a10ebf3acb64592763b6be182d63434cc8e513cce14539"
     },
     {
       "path": "docs/16_CARD_FACE_STYLES.md",
@@ -328,13 +328,13 @@
     },
     {
       "path": "research/README.md",
-      "bytes": 1389,
-      "sha256": "05a7333df63a6e082aac4f50be942f14e7a4ec0511e3c4747975365508de9c61"
+      "bytes": 1537,
+      "sha256": "825a03534a86e6ce1d550eef9a31850b62d6f43ff2c2cb660181a07e821c88d2"
     },
     {
       "path": "research/hardware_catalog.csv",
-      "bytes": 150762,
-      "sha256": "4d559130a05da0893226d9a592d2fb8f89c3b26f6e09e6e8dd32ed218d80f5d6"
+      "bytes": 157368,
+      "sha256": "d88b14046aa8544406094876eae2714f112f543113fe14356096f86043545f0d"
     },
     {
       "path": "research/hardware_catalog.md",
@@ -378,8 +378,8 @@
     },
     {
       "path": "tests/test_draft_integrity.py",
-      "bytes": 12325,
-      "sha256": "897b912254d8a072615bb9a26a19173bd82b9435e78915f7a69be1a74eb4221b"
+      "bytes": 13144,
+      "sha256": "e85194a12148ba9ae6f1aeaa1cd5f4e49a593105d81264cdab9588aafd47ca6b"
     },
     {
       "path": "content/en.json",
@@ -388,13 +388,13 @@
     },
     {
       "path": "content/game_catalog.csv",
-      "bytes": 53079,
-      "sha256": "4829a7ad221289572309bb0d9dc20553c7897bc1afac90dab3862d9b74404a06"
+      "bytes": 58649,
+      "sha256": "8966a1fd7246c00a2e2af7fbd39532681266a37d4009f43805c924747ff6cdf5"
     },
     {
       "path": "research/history/README.md",
-      "bytes": 219,
-      "sha256": "4a152ca702627e24656628af95b3b8f9d69d1e284c1f495e44c16f96465624da"
+      "bytes": 368,
+      "sha256": "5b51635e8b00b1a765d099a3fdd13f21fbed119112588eb77b687e5103e67710"
     },
     {
       "path": "research/history/hardware_catalog_95.csv",
@@ -403,13 +403,13 @@
     },
     {
       "path": "research/front_image_v3.md",
-      "bytes": 1512,
-      "sha256": "d529dea32f00e42d5e1ad3d3c9e9952fe5049ae4c641a41748731b0db1d06e4c"
+      "bytes": 1813,
+      "sha256": "f17d62e31aa9a91923dab4154eaa2278eb2046a7a47dc356cfd21274921ae6a9"
     },
     {
       "path": "research/card_product_image_map.csv",
-      "bytes": 29753,
-      "sha256": "6e7710f3bb10b5422393caac17de1dc0b96f4b073dbfca748a41dc45a1824b9a"
+      "bytes": 42966,
+      "sha256": "1d868cdd0700a90e3ab9ecb62a223b5ce341d5794a4bfdecee373178e4b68173"
     },
     {
       "path": "research/image_review_v3.csv",
@@ -435,6 +435,101 @@
       "path": "research/images/front/U109__Unit_CAM__unit_cam_02.webp",
       "bytes": 80962,
       "sha256": "0295a1934034b984ae4f95551291aa5ae0aa7316bda7d67f047b8feee1a3fe3b"
+    },
+    {
+      "path": "research/front_image_v5.md",
+      "bytes": 2298,
+      "sha256": "8de4bcc0d2a1d59810796b6f808217e0f2d50b85a1e32c0877b00386b9dc97d2"
+    },
+    {
+      "path": "research/gallery_urls_raw.json",
+      "bytes": 23928,
+      "sha256": "e7dac7bd541a343bd0900d932e669043d92da17b6ec28f195c4ea9eeafdf8ce2"
+    },
+    {
+      "path": "research/history/hardware_catalog_v3_258.csv",
+      "bytes": 150762,
+      "sha256": "4d559130a05da0893226d9a592d2fb8f89c3b26f6e09e6e8dd32ed218d80f5d6"
+    },
+    {
+      "path": "research/images/operation_front/U109__Unit_CAM__unit_cam_02.webp",
+      "bytes": 80962,
+      "sha256": "0295a1934034b984ae4f95551291aa5ae0aa7316bda7d67f047b8feee1a3fe3b"
+    },
+    {
+      "path": "research/images/operation_front/H031__img-60261bcd-a23f-40e6-994d-ad97477dcec4.webp",
+      "bytes": 63852,
+      "sha256": "6eb1c09c00fca9e629231610c0918b48a8148d2adf09dc161fc67f7384a33801"
+    },
+    {
+      "path": "research/images/operation_front/H027__img-ae3786cd-7586-44db-bfff-cd2cb2159a9b.webp",
+      "bytes": 37486,
+      "sha256": "b64d2099170c59a4c101a8d626dfd04745f445430fdfc6d5d5d903bbd55fe47c"
+    },
+    {
+      "path": "research/images/operation_front/H005__core2_04.webp",
+      "bytes": 25308,
+      "sha256": "efcbe0a3b2e0fdbd2e710f8e7444afd6f3c5dca1b57c170b7660ef197d3e5092"
+    },
+    {
+      "path": "research/images/operation_front/H027a__C008-B-V11-Atom-Matrix-v1.1-main-pictures_05.webp",
+      "bytes": 59728,
+      "sha256": "a6e2bf58c257bee6b7abaa4da293f20cc5669a7b1cce46186c159a06adc1d137"
+    },
+    {
+      "path": "research/images/operation_front/H050__CardputerZero__main-pictures_06.webp",
+      "bytes": 99428,
+      "sha256": "b41b1ca19789f7990d195f23f8cce1a815331fba2fd2305e8b58d99f18b38415"
+    },
+    {
+      "path": "research/images/operation_front/H028__6.webp",
+      "bytes": 28414,
+      "sha256": "c77b532fad9ace7936a0bdfab9f817bed68011bcd4aae2e1c6078075449e18d7"
+    },
+    {
+      "path": "research/images/operation_front/H015__Tab5__C145_02.webp",
+      "bytes": 82630,
+      "sha256": "5866a3d16da96c116d66d82bf45e1a1ad68769a3619896c3812423a13a1131ee"
+    },
+    {
+      "path": "research/images/back_ortho/H028__8.webp",
+      "bytes": 48682,
+      "sha256": "c05d43310020b2a75e2fee1ab2ec47803274fe64b35384c11fef16daa68d941d"
+    },
+    {
+      "path": "research/images/back_ortho/H026__img-d066cf3f-63a8-4866-bed2-2c2a6d9c034e.webp",
+      "bytes": 46858,
+      "sha256": "893cbc0db5219160f736d45fdd1d71e19fc2ab6c5117450e7d8901e2f6e80763"
+    },
+    {
+      "path": "research/images/back_ortho/H020__m5stickc_02.webp",
+      "bytes": 99972,
+      "sha256": "9aef19c4f7e48c94a719a707cc1766f6c7f91ffd26cc34b8966aeee405c7e6dc"
+    },
+    {
+      "path": "research/images/back_ortho/H027a__C008-B-V11-Atom-Matrix-v1.1-main-pictures_07.webp",
+      "bytes": 55296,
+      "sha256": "a270cf184186830e312e432d430f5913b68aa9a7a7c9a3a8f636ed7d2fe7c88f"
+    },
+    {
+      "path": "research/images/back_ortho/H009__img-3e707c18-8110-47f9-af1c-ae3c056447d2.webp",
+      "bytes": 35670,
+      "sha256": "4bdadc07df3c07418a7798d029478e613cd0bdf4dee36ffe5bdcf88830863231"
+    },
+    {
+      "path": "research/images/back_ortho/H005__core2_05.webp",
+      "bytes": 69826,
+      "sha256": "b0317a54bda6b2a00421ada4c39cd45bc397f33e488b799b0ab81dd0202d60b2"
+    },
+    {
+      "path": "research/images/back_ortho/H027__img-00b551c1-39bd-4ff5-bf92-9488afb74efc.webp",
+      "bytes": 46286,
+      "sha256": "498517bd6a933f9571c116a0f024c961cadab362610eb40510151ba9207259c0"
+    },
+    {
+      "path": "research/images/back_ortho/H031__img-e3288169-9100-44f4-becd-afe1556f56b0.webp",
+      "bytes": 62622,
+      "sha256": "c2dd9c051589a1964978ee961fe5e5b7ca83da039cd1f79da8f3292addaeddc2"
     }
   ]
 }

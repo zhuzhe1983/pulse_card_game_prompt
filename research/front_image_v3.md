@@ -1,6 +1,8 @@
-# 正视审核 v3
+# 正视审核 v3（历史）
 
-日期：2026-11-10。这是当前产品图目录的读图规则。`history/hardware_catalog_95.csv` 是拆分前的 95 条，不是当前目录。
+这不是当前结论。当前规则见 [front_image_v5.md](front_image_v5.md)。v3 只在当时的全库表里标出 3 张操作面正视；后来发现部分官方图片地址带空格，抽取时漏过了，所以这 3 张不能理解成官方一共只有 3 张。
+
+日期：2026-11-10。`history/hardware_catalog_v3_258.csv` 是这一版的表。`history/hardware_catalog_95.csv` 是更早的 95 条。两份都不是当前目录。
 
 ## 数字不要混
 

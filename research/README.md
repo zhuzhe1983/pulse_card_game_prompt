@@ -4,11 +4,11 @@
 
 ## 当前产品目录
 
-`hardware_catalog.csv` 是当前目录，258 行，正视审核 v3。读图规则在 [front_image_v3.md](front_image_v3.md)。
+`hardware_catalog.csv` 是当前目录，258 行，正视审核 v5。读图规则在 [front_image_v5.md](front_image_v5.md)。v3 的说明还在 [front_image_v3.md](front_image_v3.md)，只作历史。
 
 - 95 条是拆分前的父记录，161 条是从复合行拆出的具体型号，用 `parent_record_id` 指回原来的 ID。
 - H050 是 CardputerZero，U109 是 Unit CAM。这两条是新增。
-- 严格正面图只有 3 张。220 条备用图不是正面。255 行仍然没有正面图。
+- 这一轮只逐张核过重点 10 条记录。操作面正视 8 张，其他面正视另有 8 张。其余约 248 行没有搜完，未找到不等于官方没有。
 
 `history/hardware_catalog_95.csv` 只是旧的 95 条，不是当前目录。
 
