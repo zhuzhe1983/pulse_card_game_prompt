@@ -1,8 +1,14 @@
-# 脉冲对决跨平台开发规范
+# 脉冲对决
 
 中文显示名为「脉冲对决」，英文显示名为 PULSE。技术标识保持 `pulse-card` 与协议 `pcg`。
 
-本目录是面向 AI coding agent 的实现基线。它定义游戏玩法、角色获取、玩家卡保存、跨平台对战、传输适配、版本兼容和互操作验证。显示名可以再改，协议字段、规则、序列化和黄金测试向量必须一致。
+现在能打的是基础 14 张牌：10 张牌组、最多 3 个小局、每小局最多打出 5 张、可以停手、比整数战力。中文显示名在 `content/zh-CN.json`，英文显示名在 `content/en.json`，都不含官方型号。扩展目录在 `docs/13_WORLD_AND_FACTIONS.md`、`docs/14_EXPANSION_DRAFT.md` 和 `content/game_catalog.csv`，**还没有启用**。千里眼在现有规则里仍是角色；草案建议改成器具，卡包哈希没有因此改动。
+
+卡面实验在 `docs/16_CARD_FACE_STYLES.md`。第一轮整卡生成在 `asset/concepts/cardputerzero/`，已放弃。当前模板预览在 `asset/concepts/cardputerzero-template/`，状态 needs_revision，不是验收稿。产品图见 `research/front_image_v5.md`。v3 的 3 张不是最新结论，也不是官方一共只有 3 张。
+
+## 进阶：实现与协议
+
+本目录仍是实现基线。它定义玩法、角色获取、玩家卡保存、跨平台对战、传输适配、版本兼容和互操作验证。显示名可以再改，协议字段、规则、序列化和黄金测试向量必须一致。
 
 ## 使用方法
 

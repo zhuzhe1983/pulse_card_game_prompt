@@ -1,0 +1,309 @@
+{
+  "chroma": {
+    "A": {
+      "file": "chars/styleA_char_cardputerzero.png",
+      "size": [
+        906,
+        642
+      ],
+      "source_corners_rgb": [
+        [
+          158,
+          226,
+          15
+        ],
+        [
+          154,
+          224,
+          16
+        ],
+        [
+          154,
+          226,
+          18
+        ],
+        [
+          155,
+          236,
+          11
+        ]
+      ],
+      "opaque_pixels": 533141,
+      "partial_alpha_pixels": 0,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "method": "Corner flood-fill of screen-similar pixels (RGB dist<55 OR green-dominant). Interior lime (e.g. ZERO text) is kept if not connected to the canvas. Edge despill only. JPEG source is not lossless.",
+      "post_cleanup": true
+    },
+    "B": {
+      "file": "chars/styleB_char_cardputerzero.png",
+      "size": [
+        792,
+        524
+      ],
+      "source_corners_rgb": [
+        [
+          172,
+          213,
+          55
+        ],
+        [
+          174,
+          216,
+          56
+        ],
+        [
+          175,
+          215,
+          56
+        ],
+        [
+          168,
+          248,
+          39
+        ]
+      ],
+      "opaque_pixels": 401692,
+      "partial_alpha_pixels": 0,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "method": "Corner flood-fill of screen-similar pixels (RGB dist<55 OR green-dominant). Interior lime (e.g. ZERO text) is kept if not connected to the canvas. Edge despill only. JPEG source is not lossless."
+    }
+  },
+  "cleanup": {
+    "A": {
+      "applied": true,
+      "wipes": [
+        {
+          "box": [
+            684,
+            92,
+            786,
+            136
+          ],
+          "marks": 1915,
+          "thresh": 18
+        },
+        {
+          "box": [
+            724,
+            90,
+            788,
+            112
+          ],
+          "marks": 92,
+          "thresh": 22
+        },
+        {
+          "box": [
+            696,
+            128,
+            774,
+            154
+          ],
+          "marks": 765,
+          "thresh": 22
+        },
+        {
+          "box": [
+            718,
+            146,
+            764,
+            168
+          ],
+          "marks": 205,
+          "thresh": 24
+        },
+        {
+          "box": [
+            748,
+            158,
+            778,
+            184
+          ],
+          "marks": 231,
+          "thresh": 24
+        },
+        {
+          "box": [
+            686,
+            166,
+            732,
+            198
+          ],
+          "marks": 672,
+          "thresh": 22
+        },
+        {
+          "box": [
+            714,
+            178,
+            762,
+            206
+          ],
+          "marks": 688,
+          "thresh": 22
+        },
+        {
+          "box": [
+            748,
+            176,
+            800,
+            206
+          ],
+          "marks": 681,
+          "thresh": 22
+        },
+        {
+          "box": [
+            684,
+            92,
+            786,
+            152
+          ],
+          "plate_fill": 6118
+        }
+      ],
+      "lack_tab_letters_painted": 591,
+      "replacement": "two unlabeled rounded dark key marks in the original LACK TAB pill",
+      "kept": [
+        "CARDPUTER ZERO",
+        "ZERO",
+        "Python",
+        "STORE",
+        "CLI",
+        "M5STACK",
+        "orange rocker + ON",
+        "screw",
+        "USB graphic",
+        "cyan badge",
+        "gray shell",
+        "black keys"
+      ],
+      "removed": [
+        "LACK TAB",
+        "POWER SWITCH",
+        "USB C2",
+        "5V ONLY CHG"
+      ]
+    }
+  },
+  "title": {
+    "method": "identical-glyph-paths-stroke-then-fill",
+    "font": "Oswald variable @ wght 700 (max axis value)",
+    "layout": "two lines CARDPUTER / ZERO fitted to original CORE title slot",
+    "slot_pt": [
+      42.207,
+      190.863,
+      110.863,
+      215.346
+    ],
+    "stroke_width_pt": 1.95,
+    "not_original_outlined_glyphs": true,
+    "previous_bug": "two <text> nodes (black larger+offset, white on top) caused a wide black ghost"
+  },
+  "template_compare": {
+    "A": {
+      "diff_pixels": 0,
+      "compared_pixels": 640552,
+      "identical": true,
+      "old": "templates/styleA_template-only.png",
+      "new": "validation/styleA_new_template-only.png"
+    },
+    "B": {
+      "diff_pixels": 0,
+      "compared_pixels": 640552,
+      "identical": true,
+      "old": "templates/styleB_template-only.png",
+      "new": "validation/styleB_new_template-only.png"
+    }
+  },
+  "fullcard_masked_compare": {
+    "A": {
+      "diff_pixels_outside_masks": 0,
+      "compared_pixels": 418848,
+      "identical_outside_masks": true,
+      "masks_pt": [
+        [
+          14.855,
+          52.442,
+          138.216,
+          154.49
+        ]
+      ],
+      "masks_px": [
+        [
+          61.92,
+          218.52,
+          576.08,
+          643.75
+        ]
+      ],
+      "mask_note": "Union of official char bbox and (Style B) original title bbox only. Title no longer uses an expanded rectangle."
+    },
+    "B": {
+      "diff_pixels_outside_masks": 0,
+      "compared_pixels": 406250,
+      "identical_outside_masks": true,
+      "masks_pt": [
+        [
+          23.026,
+          59.652,
+          130.546,
+          167.171
+        ],
+        [
+          42.207,
+          190.863,
+          110.863,
+          215.346
+        ]
+      ],
+      "masks_px": [
+        [
+          95.97,
+          248.57,
+          544.12,
+          696.59
+        ],
+        [
+          175.92,
+          795.31,
+          462.08,
+          897.33
+        ]
+      ],
+      "mask_note": "Union of official char bbox and (Style B) original title bbox only. Title no longer uses an expanded rectangle."
+    }
+  },
+  "chosen": {
+    "A": {
+      "composite_png": "composites/styleA_cardputerzero.png",
+      "composite_svg": "composites/styleA_cardputerzero.svg",
+      "char_png": "chars/styleA_char_cardputerzero.png",
+      "template_svg": "templates/styleA_template_01_S3.svg",
+      "template_only_png": "templates/styleA_template-only.png",
+      "master": "01_S3",
+      "raster_embed": true,
+      "subject_is_not_pure_vector": true
+    },
+    "B": {
+      "composite_png": "composites/styleB_cardputerzero.png",
+      "composite_svg": "composites/styleB_cardputerzero.svg",
+      "char_png": "chars/styleB_char_cardputerzero.png",
+      "template_svg": "templates/styleB_template_10_CORE.svg",
+      "template_only_png": "templates/styleB_template-only.png",
+      "master": "10_CORE",
+      "raster_embed": true,
+      "subject_is_not_pure_vector": true
+    }
+  }
+}

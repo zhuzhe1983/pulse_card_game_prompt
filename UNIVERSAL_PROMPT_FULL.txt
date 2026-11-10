@@ -4,13 +4,20 @@
 
 完整 ZIP 另外包含 Python 参考实现、完整每步战局、二进制卡片文件和 85 项测试。单文件中没有附 Python 源码，不应声称已运行 ZIP 中的测试；可用随文的预期 hash 对照目标语言实现。上下文有限时优先使用完整开发包与 START_HERE，按章节读取，不截断协议或存档章节。
 
+阅读顺序：先看 docs/13 与 docs/14。现在能执行的只有基础 14 张和 pcg.core.v1。expansion_draft.json 是未启用草案。research/ 不在本文件里，里面的建议不是规则。asset/concepts/cardputerzero/ 是已放弃的第一轮卡面，不推荐。asset/concepts/cardputerzero-template/ 是 needs_revision 的模板预览，不是验收稿。
+
 状态：可实施基线；数值待真人试玩；未完成真实硬件认证。
 
 
 ===== BEGIN FILE: START_HERE.txt =====
-脉冲对决 · 通用开发提示词入口 · v1.0.0
+脉冲对决 · 先读游戏，再读实现 · v1.0.0
 英文显示名：PULSE。协议、slug 与 MIME 仍为 pcg / pulse-card / vnd.pulsecard，不随显示名改变。
 
+【给读规则的人】
+先读 docs/13_WORLD_AND_FACTIONS.md，再读 docs/14_EXPANSION_DRAFT.md。现在能跑完的只有基础 14 张和 pcg.core.v1。族群草案没有进入 core_pack，也不要让旧引擎假装会放新技能。research/ 是资料摘录，里面的双行动占用和负分没有采用。
+卡面见 docs/16_CARD_FACE_STYLES.md。asset/concepts/cardputerzero/ 是第一轮弃稿，superseded，不推荐。asset/concepts/cardputerzero-template/ 是当前模板预览，needs_revision，不是验收稿，也不能说风格已经一致。
+
+【进阶：给实现工程师】
 【给项目所有者】
 把本文件与完整规格包一起交给 coding agent。把下一段中的目标换成具体平台；能提供硬件型号/卡片扫描报告时一并附上。若系统只接受一份文本，用 UNIVERSAL_PROMPT_FULL.txt。完整 ZIP 还包含可运行的裁判参考实现、机器 Schema 与黄金向量，开发时优先使用它。
 
@@ -43,6 +50,233 @@
 
 完成定义：能从玩家登录（或明显标注试玩）进入收藏和组牌，完成一场 core v1 本地战与跨客户端联机战，正确执行每日领取、本机自动持久化、再次刷玩家卡显式导出与异机导入，按目标真实 NFC 能力报告范围，且与同版本参考向量一致。
 ===== END FILE: START_HERE.txt =====
+
+
+===== BEGIN FILE: docs/13_WORLD_AND_FACTIONS.md =====
+# 13 · 脉冲对决：现在能玩什么
+
+中文名「脉冲对决」，英文显示名 PULSE。这一章给读规则的人。协议、存档和验收仍在后面的章节，不在这里改。
+
+一句话：现在能跑完的是基础 14 张牌，规则集 `pcg.core.v1`。后面的出身、帽子、串线和换脸是设计草案，没有放进 `content/core_pack.json`，参考裁判也不会执行它们。
+
+## 一局在做什么
+
+每人带 10 张牌，最多打 3 个小局。每小局最多打出 5 张，也可以停手。比的是场上的整数战力。打出去的牌这局不回来，没打的留到下一小局。没有生命值，也没有攻击条。
+
+基础 14 张已经能打完这种局：12 个角色加「加一把」「压一下」。教学牌组不用实体英雄卡，也不用任何扩展。
+
+## 人看见的是族群
+
+玩家只看见出身，不看见资源包、固件或接口手册。
+
+| 出身 | 好认的地方 | 现在就能打到的脸 |
+| --- | --- | --- |
+| 叠层 | 能叠底板和模块 | 厚壳、硬壳 |
+| 细棍 | 细长，头上能戴小帽子 | 细条 |
+| 小块 | 很小，脚下只有一个位子 | 探子、点阵 |
+| 换脸 | 架子上换一块面板 | 还没有 |
+| 串线 | 一节一节往后接 | 还没有 |
+| 键盘 | 带键盘的掌机 | 敲键 |
+| 表壳 | 已经是一个完整小壳 | 旋钮、立岗 |
+| 墨屏 | 电子纸 | 存页 |
+| 大屏 | 屏幕大，口少 | 还没有 |
+| 工位 | 放在桌上的另一类主机 | 还没有 |
+| 小无线 | 负责把信号送远 | 远呼 |
+
+公共牌里还有帮腔、千里眼、加一把、压一下。千里眼在现有规则里仍是角色；草案建议改成器具，这一步还没进卡包。
+
+公共库是谁都能带的器具和战术，不是第十二个出身。Unit 一类的东西放在这里。
+
+卡面表达身份和收藏。草案卡不在图上写战力，正式基础卡的战力以卡包为准，不画进宣传卡。原卡两种面貌见第 16 章。第一轮生成试做已经放弃；固定模板的重制还没进入仓库。
+
+## 草案若启用，配对怎么说
+
+现实里接得上，游戏里才有资格结成配对。没查到，就各自计自己的战力，不写成克制。官方点名合不上的结构，不能结成那一档配对，也不扣基础战力，更不写烧毁。
+
+每张牌仍只占 1 次出牌，随从和器具都算进 10 张牌和 5 次出牌。没有免费贴装。
+
+数字都是未实测的建议。完整方案、例牌和取舍在 [14_EXPANSION_DRAFT.md](14_EXPANSION_DRAFT.md)。
+===== END FILE: docs/13_WORLD_AND_FACTIONS.md =====
+
+
+===== BEGIN FILE: docs/14_EXPANSION_DRAFT.md =====
+# 14 · 族群扩展草案（未启用）
+
+状态：**设计草案，未进入冻结契约。** 参考裁判、`content/core_pack.json` 和黄金向量都不执行本章。数字是未实测建议，不能写成平衡已验收。
+
+现在能打的仍是基础 14 张，规则集 `pcg.core.v1`：10 张牌、最多 3 个小局、每小局最多打出 5 张、可以停手、比整数总战力、打出不回收、没有生命值。本章只提议在这套骨架上增加「配对」。
+
+研究原文在 `research/`。95 条硬件记录不是 95 张卡，74 条候选也不是已经采用的卡表。
+
+## 1. 建议就这一套，不并列多套规则
+
+若以后要做扩展，采用下面这一套，不要和「双行动」「免费装备」「扣血」混用。
+
+- 每张牌，包括随从、器具和战术，都占 10 张牌里的 1 张，打出时占 5 次里的 1 次。研究稿里「一体机占 2 次行动」会改掉「最多 5 张」的含义，本草案不采用。
+- 配对在打出时看已经在场的牌，结成一次，不回头改已经结成的结果，也不让一张牌再触发别的牌。
+- 换脸是例外：小局结算前看整组面板一次。两张写着同一块地址牌的面板同场时，架子和这两张面板的配对都取消。基础战力保留。这样不会谁先打出谁占便宜。
+- 一条链路上的链式配对合计最多 +2。一名玩家本小局全部配对合计最多 +3。超出的部分从后结成的配对里去掉。
+- 胶囊信使在场时，只保留第一次器具或随从配对。
+- 少出一张、常客的「没有配对就 +1」、小墨屏、轨上表和灯墙的结算加分，都在配对上限算完之后另算，不叫作配对。
+- 过载示警若已打出，对方的配对上限改为 +2。
+- 小局结束清场，配对一起结束。本草案没有中途让宿主离场。同名在牌组里仍然最多 1 张。
+- 未知组合：不配对。官方点名结构合不上：不配对。两种情况都不扣基础战力，不写烧毁。
+
+研究稿里的负分、热瞳镜无人时改按另一套分数、以及把随从免费贴在英雄上，都不采用。
+
+## 2. 硬件事实怎样变成羁绊
+
+证据状态留在研究表里。`high` 表示读过对应产品页或教程里的明确句子，不是实验室插拔。`medium` 多半只说明官方目录、历史页或地址索引里看得到。目录没有穷尽产品线。带斜线的行是复合记录，不能当成已经逐个验证。
+
+### Core2 与底座
+
+Core2 产品页禁止和 **Base 系列功能底座**叠装，理由是内置震动马达和这类底座结构干涉，并建议拆下原电池底、改用 M5GO Bottom2。这是对 Base 系列的警告，不是「凡是底盘都不能用」。
+
+Faces Bottom3 自己的页面写明可以接 Core1 / Core2 / CoreS3，并接面板。它不是那条 Base 禁令点名的普通底座。草案因此：
+
+- 厚壳 + 厚底板：可以配对。底板是换下原来的电池底。
+- 厚壳 + 普通底：不配对。普通底只代表研究里的 Base 系列复合行。
+- 厚壳 + 脸架子：可以配对。没有把家族禁令盖过 Bottom3 的明确支持，也不把未写明的缝隙写成损坏。
+
+### 其他已核过的边界
+
+- StickS3 用 Hat2-Bus。官方点名结构不兼容的是 Mini JoyC U156、Mini EncoderC U157、18650C U080。其他经典冠对 StickS3 **未知**，草案不配对，也不写成禁配。
+- 官方仍把 StickC-Plus2 写成能配 HAT。麦克风和帽子可能共用一条线，所以帽子只加 1，不是禁配。游戏里的对应角色叫自带电。
+- 功放冠是 I2S，只和加长刃配对。
+- Grove 不是任意口都能用。回声锤要细口（I2C），回声钉要宽口（GPIO）。外观相同的 Chain 线是 UART 链，不是 Unit。
+- 定位模块要按主控对好位置。火头若已经和定位针同场，之后的定位模块不加；先打出的模块不追回。
+- 键帽脸和手柄脸是同一块地址牌。算盘脸的地址未知，不强迫冲突。面板上的辅助芯片不是英雄。
+- M5-Bus 的电源脚位置固定，其余脚随宿主变化。交互式堆叠工具本轮没有逐条导出，没导出的组合保持未知。
+- 链节听双头指挥，或听已经坐下「接上串」的小块指挥。两种小块的默认脚不同，接上串负责把脚对上，不因此再加一次分。
+
+## 3. 卡从哪来
+
+| 处理 | 数量 | 说明 |
+| --- | --- | --- |
+| 冻结保留 | 14 | 现有 12 个角色 + 2 张战术，协议 ID 和战力不动 |
+| 其中设计改定位 | 1 | 千里眼。现有规则仍是角色；草案建议改成器具 |
+| 草案新卡 | 57 | 19 个角色、19 个随从、14 件器具、5 张战术 |
+| 硬件记录 | 95 | 含复合行，不是 95 张卡 |
+| 研究候选 | 74 | 双行动、负分和重复身份没有成卡 |
+
+每张卡都有同一组字段：稳定 ID、中文短名、英文显示名、一句介绍、中文技能、英文技能、官方产品名、型号、出身、现行类型、设计类型、基础战力、出牌次数、配对对象、限制、研究记录号、来源。非实体战术的产品名留空。导出表是 `content/game_catalog.csv`。中英文显示名也写在 `content/zh-CN.json` 和 `content/en.json`，不改 `template_id`。
+
+出身 11 个：叠层、细棍、小块、换脸、串线、键盘、表壳、墨屏、大屏、工位、小无线。公共牌另计，不是出身。
+
+异画或不另开卡的对应：
+
+| 稳定 ID | 现在的中文名 | 官方产品 | 处理 |
+| --- | --- | --- | --- |
+| core2_guard | 厚壳 | Core2 | 保留角色。不另做一张会扣分的卡 |
+| tough_guard | 硬壳 | Tough | 保留。不把双频款做成打两次的更强卡 |
+| stickc_operator | 细条 | StickC | 保留 |
+| atom_scout | 探子 | Atom Lite | 保留 |
+| atom_matrix_link | 点阵 | Atom Matrix | 保留 |
+| cardputer_hacker | 敲键 | Cardputer | 保留。草案里只有第一件小器具能配对 |
+| dial_router | 旋钮 | M5Dial | 保留 |
+| paper_archive | 存页 | PaperMono | 保留。不把分数记到下一小局 |
+| stamp_sentry | 立岗 | 无唯一单品 | 保留。复合 Stamp 记录不升成第二张英雄 |
+| echo_booster | 帮腔 | 无已核单品 | 保留。不借用 ATOM Echo 的产品名 |
+| lora_relay | 远呼 | 无唯一单品 | 保留。远程针是另一张器具 |
+| unit_cam_scout | 千里眼 | Unit CAM，SKU U109 | 现有规则仍是角色。草案改成器具，见下一节 |
+| signal_boost / signal_jam | 加一把 / 压一下 | 非实体产品 | 保留 |
+
+## 3.1 千里眼为什么建议改成器具
+
+现行卡 `unit_cam_scout` 的显示名曾经写成 Unit Cam。核对官方页面 https://docs.m5stack.com/en/unit/unit_cam ：产品名是 Unit CAM，SKU U109，主控 ESP32-WROOM-32E，传感器 OV2640，用 UART 或 Wi-Fi 传图，也能运行自己的程序。它是插在宿主上的摄像头单元。
+
+它不是 UnitV、UnitV2、TimerCamera，也不是 Unit CamS3。研究目录里的 U012 把好几款相机写在一行，不能拿来替换这张卡。
+
+能自己跑程序，只说明原始表要保留这件事，不说明它在游戏里必须当英雄。它的现行技能是盯住对面一个单位并让战力 -2。这更像一件侦察器具。草案因此把设计类型写成器具，英文名 Lookout，中文名千里眼。效果数字、一次出牌都不改。
+
+`content/core_pack.json` 里它的 `template_id` 和单位类型没有改，内容哈希也不变。现在打开游戏，它仍按角色结算。表格里的「现行类型」和「设计类型」必须同时看得见，不能只改其中一个却假装已经降级。
+
+CardputerZero（官方文档名 CardputerZero，SKU C154 / C154-B）不在这 95 条里，本草案不给它战力。它是 Linux 口袋机，不是上面的敲键。
+
+机器可读的同一份名单在 `content/expansion_draft.json`，字段 `document_status` 为 `design_draft_not_enabled`。
+
+## 4. 例牌
+
+基础教学 10 张不变，不需要任何草案卡：厚壳、探子、细条、旋钮、存页、帮腔、敲键、立岗、加一把、压一下。
+
+草案牌组仍然是 10 张，用来看取舍，不是已平衡套牌。
+
+**叠层。** 厚壳、火头、常客、厚底板、普通底、温湿计、定位模块、加一把、压一下、少出一张。普通底便宜，但经常不加分，只是占一张牌。
+
+**细棍。** 细条、长条、自带电、新细条、测距帽、小摇杆、小喇叭、细条小屏、电池帽、压一下。小摇杆在细条上更厚，在新细条上只剩自己的 3 点。小喇叭只认长条。
+
+**换脸。** 厚壳、脸架子、键帽脸、手柄脸、算盘脸、厚底板、磁铁靠近、少出一张、加一把、压一下。键帽脸和手柄脸不要一起打。
+
+**串线。** 探子、新小块、接上串、双头、一节键、一节灯、串线舵机、往回传、少出一张、压一下。接上串要先于链节。不要指望两头加成相乘。
+
+## 5. 可复算的小局
+
+下列总分由 `tests/draft_bond_math.py` 按本章规则算出，只验证草案自洽，不是对战验收。
+
+| 场面 | 总分 | 在比较什么 |
+| --- | --- | --- |
+| 细条 + 测距帽 | 8 | 细条的帽子加满 |
+| 新细条 + 小摇杆 | 7 | 点名装不上，只留基础战力 |
+| 厚壳 + 厚底板 | 10 | 写明能配的底板 |
+| 厚壳 + 普通底 | 7 | 普通底不加 |
+| 厚壳 + 脸架子 + 键帽脸 | 13 | 一张脸 |
+| 厚壳 + 脸架子 + 键帽脸 + 手柄脸 | 12 | 多打一张同地址的脸，配对取消，反而更低 |
+| 探子 + 接上串 + 一节键 + 一节灯 | 12 | 配对原为 +4，收到 +3 |
+| 少出一张 + 常客，对手打出 3 张 | 8 | 少出牌 +2，再加上没有配对时的 +1 |
+| 火头 + 定位模块 + 算力盒 | 14 | 模块配对打满上限 |
+| 自带电 + 测距帽 | 8 | 能戴，但只加 1 |
+| 火头 + 定位针 + 定位模块 | 12 | 定位针先在场，模块不加 |
+| 火头 + 定位模块 + 定位针 | 14 | 模块先加上，之后不追回 |
+
+## 6. 先认识哪一族
+
+先打基础 14 张，确认留牌和停手。然后只加一族：细棍最容易看出「同一族也不一定配对」，换脸最容易看出「多一张可能更差」，串线最容易看出顺序。小块的接上串，要等链节已经存在再理解。其余出身是新的配法，不是更贵的分数。
+
+作者注：以后若要按所选出身装入文字，只需基础公共牌加这一族。玩家界面不要出现资源包或 DLC 字样。这里不设计固件和下载服务。
+
+## 6.1 正面图
+
+产品目录的当前版本是 `research/hardware_catalog.csv`，读图规则在 `research/front_image_v5.md`。重点核过的操作面正视有 8 张。71 张游戏卡里接到操作面的是 5 张：厚壳、点阵、敲键、大平板、千里眼。敲键是原版 Cardputer，不借用 CardputerZero。新小块是复合型号，不自动套 ATOM S3 的单张图。探子没有操作面正视；它有一张背夹/USB 面的正视，不能当成按键面。斜视图只是备用，不能当生成主参考。战术牌没有图。官方图未授权前不是正式卡面。其余大约 248 行没有搜完。
+
+## 7. 还没定
+
+- 真实卡片容量、第一台设备和读卡器仍空着。
+- StickS3 对未点名经典冠的物理能否插入：未知。
+- Faces 算士的地址、Bottom3 与 Core2 马达的实际间隙：页面没有写成禁令，也没有实验室记录。
+- 交互式堆叠工具没有逐条导出。
+- 57 张草案的手感没有人试过。启用前要另发规则版本，不能改黄金向量来迁就它们。
+===== END FILE: docs/14_EXPANSION_DRAFT.md =====
+
+
+===== BEGIN FILE: docs/16_CARD_FACE_STYLES.md =====
+# 16 · 原卡两种面貌，以及一轮已经放弃的试做
+
+卡面用来认出设备和收藏。不要在卡面上加攻击、生命或未定稿的战力数字。战力若需要，以冻结卡包或草案正文为准，不画进宣传图。
+
+## 原卡
+
+`asset/card/` 的 22 张都是 638×1004、RGBA、圆角。测量见 `docs/visual/original_card_metrics.json`。它们是两组商品/宣传卡，不是已经填好数值的对战卡。
+
+**01–09** 是居中的技术贴纸：顶上短句，中间厚白边的扁平插画，下面两行说明和一个白胶囊。几乎没有地面影子。04 画的是 Cardputer ADV，不能当作 CardputerZero。
+
+**10–22** 是拟人海报：左上标志，角色加粗白边和椭圆影子，底部大标题，多数还有黑底黄字胶囊。10–17 更像产品变成生物，18–22 加上戏曲和节庆服饰，仍是同一套版式。
+
+这是对原图的观察，不是「已经有一套生成流程可以百分百复刻」。两组内部也有底色和外形差别。
+
+PULSE 文字和原立方图形的组合只是概念处理，不是已经定稿的原创标志，也不要写成官方新品牌。
+
+## 试做状态
+
+第一轮用生成图直接模仿整张卡，两种面貌各做了 v1 到 v4，共三轮修改。这些文件在 `asset/concepts/cardputerzero/`。
+
+这一轮 **已经放弃，不推荐，也不是验收稿**。它没有使用固定的 SVG 模板和角色层，主体和版式都由生成模型一起画出，不能当成风格已经复刻。
+
+另外，成稿是 864×1152 JPEG，比例和原卡 638×1004 不一致，没有透明圆角，没有出血，不能印刷，也不能替换 `asset/card/` 或客户端正式卡图。A 路仍然像产品渲染，平面机械贴纸不够。B 路的立体掌机和外伸 USB 还需要按实物核对。
+
+固定模板加主体的预览已经放在 `asset/concepts/cardputerzero-template/`。状态是 **needs_revision**。它不是验收稿，也不是风格已经一致。
+
+能说的只有：母版是 01_S3 和 10_CORE 的 SVG；隐藏动态槽后，以及角色/标题遮罩外面，CairoSVG 638×1004 的像素差是 0。主体是嵌进 SVG 的 PNG。A 的右上有平色修补，B 的标题是 Oswald 转曲的两行字，不是原 CORE 那套字形。模板上的 Tap to Build、NTAG215 和 M5STACK 仍是原卡文字，不是游戏的新标志。
+===== END FILE: docs/16_CARD_FACE_STYLES.md =====
 
 
 ===== BEGIN FILE: CONTRACT.json =====
@@ -89,6 +323,8 @@
 # 00 · 产品目标、冻结决策与范围
 
 版本：1.0.0；状态：可实施基线，尚未完成真实硬件认证与充分平衡测试。中文产品名「脉冲对决」，英文显示名 PULSE，技术 slug `pulse-card`。角色视觉和卡片印刷稿可以更换；更换显示名不能隐式改协议 ID。
+
+族群扩展是未启用草案，见第 13、14 章。本章的冻结决策仍然只覆盖现有基础牌。
 
 ## 1. 要做成什么
 
@@ -176,6 +412,8 @@ A 设备读到卡 S0 → 本地玩到 S3 → 不导出时，B 仍只能读 S0 �
 ===== BEGIN FILE: docs/01_GAMEPLAY.md =====
 # 01 · 核心玩法与内容规格
 
+现在能执行的玩法就是本章。族群、冠位和链式配对在 `docs/14_EXPANSION_DRAFT.md`，未启用。
+
 > 版本：玩法设计 v1。规则集标识为 `pcg.core.v1`。本文是开发可执行规格，不是对现有工程已经实现的描述。正式协议、卡包 JSON Schema、冻结契约与本文出现字段或枚举冲突时，以项目的冻结契约为准；开发者应记录冲突，不得自行形成另一套网络规则。
 >
 > 本章只规定玩法语义。卡包中的字段拼写、存档格式、身份校验和网络消息格式由对应契约文档定义。文中的大写状态名是说明用逻辑标签，不能直接当成新增协议字段。
@@ -188,25 +426,25 @@ A 设备读到卡 S0 → 本地玩到 S3 → 不导出时，B 仍只能读 S0 �
 
 | 模板 ID | 展示名／角色原型 | 基础分 | 合法排位 | effect.op | traits | 精确语义 | 默认教学牌组 |
 |---|---|---:|---|---|---|---|---|
-| `core2_guard` | CORE2 · 核心守卫 | 6 | front | NONE | 无 | 无入场效果；高基础分的收尾牌。 | 是 |
-| `atom_scout` | ATOM · 侦察兵 | 4 | front | NONE | 无 | 无入场效果；适合先投入较低价值的牌。 | 是 |
-| `stickc_operator` | StickC · 通讯员 | 4 | rear | NONE | 无 | 无入场效果；提供后排部署与稳定分数。 | 是 |
-| `dial_router` | Dial · 调度员 | 3 | front 或 rear | SELF_BOOST_OTHER_ROW | 无 | 入场时，己方另一排已有至少 1 个单位，则自身立即 +2；只检查一次。 | 是 |
-| `paper_archive` | PaperMono · 档案官 | 5 | rear | NONE | stable | 本单位的当前分数不受任何增分或减分效果改变。 | 是 |
-| `echo_booster` | Echo · 扩音手 | 3 | rear | BOOST | 无 | 入场时，选择 1 个已经在己方场上的其他单位，使其 +2；不限制目标排。 | 是 |
-| `cardputer_hacker` | Cardputer · 干扰员 | 3 | rear | DAMAGE | 无 | 入场时，选择 1 个敌方单位，使其 -2，最低为 0；不限制目标排。 | 是 |
-| `lora_relay` | LoRa · 中继手 | 3 | front | SELF_BOOST_OTHER_ROW | 无 | 入场时，己方后排已有至少 1 个单位，则自身立即 +2；只检查一次。 | 否，替换测试牌 |
-| `stamp_sentry` | Stamp · 哨兵 | 4 | front 或 rear | NONE | shield_once | 首次成为 DAMAGE 目标时阻挡该效果并消耗防护。 | 是 |
-| `tough_guard` | TOUGH · 护卫 | 5 | front | NONE | shield_once | 首次成为 DAMAGE 目标时阻挡该效果并消耗防护。 | 否，替换测试牌 |
-| `atom_matrix_link` | ATOM Matrix · 协作员 | 3 | front | BOOST | 无 | 入场时，选择 1 个已经在己方场上的其他单位，使其 +2；不限制目标排。 | 否，替换测试牌 |
-| `unit_cam_scout` | Unit Cam · 观察员 | 2 | rear | DAMAGE | 无 | 入场时，选择 1 个敌方单位，使其 -2，最低为 0；不限制目标排。 | 否，替换测试牌 |
+| `core2_guard` | 厚壳 | 6 | front | NONE | 无 | 无入场效果；高基础分的收尾牌。 | 是 |
+| `atom_scout` | 探子 | 4 | front | NONE | 无 | 无入场效果；适合先投入较低价值的牌。 | 是 |
+| `stickc_operator` | 细条 | 4 | rear | NONE | 无 | 无入场效果；提供后排部署与稳定分数。 | 是 |
+| `dial_router` | 旋钮 | 3 | front 或 rear | SELF_BOOST_OTHER_ROW | 无 | 入场时，己方另一排已有至少 1 个单位，则自身立即 +2；只检查一次。 | 是 |
+| `paper_archive` | 存页 | 5 | rear | NONE | stable | 本单位的当前分数不受任何增分或减分效果改变。 | 是 |
+| `echo_booster` | 帮腔 | 3 | rear | BOOST | 无 | 入场时，选择 1 个已经在己方场上的其他单位，使其 +2；不限制目标排。 | 是 |
+| `cardputer_hacker` | 敲键 | 3 | rear | DAMAGE | 无 | 入场时，选择 1 个敌方单位，使其 -2，最低为 0；不限制目标排。 | 是 |
+| `lora_relay` | 远呼 | 3 | front | SELF_BOOST_OTHER_ROW | 无 | 入场时，己方后排已有至少 1 个单位，则自身立即 +2；只检查一次。 | 否，替换测试牌 |
+| `stamp_sentry` | 立岗 | 4 | front 或 rear | NONE | shield_once | 首次成为 DAMAGE 目标时阻挡该效果并消耗防护。 | 是 |
+| `tough_guard` | 硬壳 | 5 | front | NONE | shield_once | 首次成为 DAMAGE 目标时阻挡该效果并消耗防护。 | 否，替换测试牌 |
+| `atom_matrix_link` | 点阵 | 3 | front | BOOST | 无 | 入场时，选择 1 个已经在己方场上的其他单位，使其 +2；不限制目标排。 | 否，替换测试牌 |
+| `unit_cam_scout` | 千里眼 | 2 | rear | DAMAGE | 无 | 入场时，选择 1 个敌方单位，使其 -2，最低为 0；不限制目标排。 | 否，替换测试牌 |
 
 ### 1.2 两张通用战术
 
 | 模板 ID | 展示名 | kind | 基础分／排位 | effect.op | 精确语义 | 默认教学牌组 |
 |---|---|---|---|---|---|---|
-| `signal_boost` | 增益信号 | tactic | 0；不占排，row=null | BOOST | 选择 1 个己方在场单位 +2；没有目标不能出。成功打出占 1 次投入，立即进入弃牌区。 | 是 |
-| `signal_jam` | 干扰信号 | tactic | 0；不占排，row=null | DAMAGE | 选择 1 个敌方在场单位 -2，最低 0；没有目标不能出。成功打出占 1 次投入，立即进入弃牌区。 | 是 |
+| `signal_boost` | 加一把 | tactic | 0；不占排，row=null | BOOST | 选择 1 个己方在场单位 +2；没有目标不能出。成功打出占 1 次投入，立即进入弃牌区。 | 是 |
+| `signal_jam` | 压一下 | tactic | 0；不占排，row=null | DAMAGE | 选择 1 个敌方在场单位 -2，最低 0；没有目标不能出。成功打出占 1 次投入，立即进入弃牌区。 | 是 |
 
 两张战术没有单位特性、没有身体战力，不参与“另一排有单位”的判断，也不能成为单位效果的目标。模板 ID 与正式卡包保持一致，不允许客户端保留另一组别名。
 
@@ -215,7 +453,7 @@ A 设备读到卡 S0 → 本地玩到 S3 → 不导出时，B 仍只能读 S0 �
 - 上表名称是以 M5 设备为灵感的游戏角色名，不表示某款真实设备在游戏中提供算力加成，也不要求购买对应硬件。
 - 所有有效出牌，包括战术，均占本小局 5 次投入中的 1 次；单位自带的入场效果不额外占次数。
 - 英雄卡盲盒池仅含 12 种角色；两张通用战术为公共规则内容，不通过盲盒提供稀有数值版本。
-- 这套数值是可复算的首测基线，不是经过足量对战验证的竞技平衡结果。需要验证 CORE2 的 6 分、TOUGH 的防护收益、双排牌灵活性与先后手差异。
+- 这套数值是可复算的首测基线，不是经过足量对战验证的竞技平衡结果。需要验证厚壳的 6 分、硬壳的防护收益、双排牌灵活性与先后手差异。
 - 必须公开记录一个平衡假设：只提供 +2／-2 的零基础分战术，在 5 次投入上限下通常比带身体的角色贡献低。它们可以用于小幅追分、学习目标选择和保留强牌，但在开放构筑时可能总被替换。不要把它们宣称为已经平衡的必需战术，也不要为补强而在客户端擅自加效果。
 
 ### 1.4 免费教学牌组：8 个角色 + 2 张战术
@@ -380,7 +618,7 @@ v1 客户端必需恢复的是 `round_results` 中的可信比分／积分，以
 
 这里的“合格目标”按阵营和是否为已经在场的其他单位判定。BOOST 可以选择任意排的己方已在场单位，DAMAGE 可以选择任意排的敌方已在场单位；v1 不设额外目标排位限制。stable 单位和带防护的单位仍可以成为规则上合格的目标；它们可能抵消效果。玩家可以选择它们，但预览必须说明实际变化为 0，不能让对手从无效选择中获得隐藏信息。
 
-自己刚打出的单位不是 `BOOST` 的“其他己方单位”，因为目标候选在它入场之前确定。禁止让 Echo 给自己 +2，也禁止把尚未提交的另一张手牌当成目标。
+自己刚打出的单位不是 `BOOST` 的“其他己方单位”，因为目标候选在它入场之前确定。禁止让帮腔给自己 +2，也禁止把尚未提交的另一张手牌当成目标。
 
 ### 5.4 唯一结算顺序
 
@@ -405,7 +643,7 @@ v1 客户端必需恢复的是 `round_results` 中的可信比分／积分，以
 - 若目标 stable，实际增加 0。
 - shield_once 不阻挡友方增分，也不会因此消耗。
 - 两张不同卡可以分别给同一个普通单位 +2，增益线性叠加。没有倍增、二次触发或“收到增益时再增益”。
-- 默认免费 10 张有 Echo 与增益信号两个定向增分来源；完整内容池还包括 ATOM Matrix。不要新增未写入数据卡包的隐性增益。
+- 默认免费 10 张有帮腔与加一把两个定向增分来源；完整内容池还包括点阵。不要新增未写入数据卡包的隐性增益。
 - 增加的是当前战力，不改变卡包基础分，也不写回个人收藏条目。
 
 ### 6.2 DAMAGE（-2）
@@ -423,7 +661,7 @@ v1 客户端必需恢复的是 `round_results` 中的可信比分／积分，以
 - 如果己方另一排至少存在 1 个在场单位，自己 +2；0 分单位也满足“存在”。
 - 如果另一排为空，不增加；以后另一排再来牌也不会补发。
 - 该单位可以先被增到 5，再被对方减到 3；它不会自动回到 5。
-- 对可放双排的 Dial，判断基于玩家这次实际选择的排。例如己方只有前排单位时，Dial 放后排获得 +2，放前排不获得。
+- 对可放双排的旋钮，判断基于玩家这次实际选择的排。例如己方只有前排单位时，旋钮放后排获得 +2，放前排不获得。
 
 ### 6.4 shield_once
 
@@ -438,7 +676,7 @@ v1 客户端必需恢复的是 `round_results` 中的可信比分／积分，以
 - 该单位的当前战力不受任何增分或减分效果改变，包括己方增分和敌方减分。
 - 可以合法部署、计分、占投入名额，并参与“另一排有单位”的存在性判断。
 - 并非“只能免疫敌方效果”，不得给它加 +2 后再保留免疫。
-- 首发卡包只把这一特性赋予 PaperMono 档案官，基础分 5。
+- 首发卡包只把这一特性赋予存页，基础分 5。
 
 ### 6.6 一张卡只有一条基础效果
 
@@ -478,15 +716,15 @@ PASS 是本小局不可撤销的投入结束。按钮文案为“停止本局出
 
 | 行动顺序 | 行动 | A 总战力 | B 总战力 | 说明 |
 |---:|---|---:|---:|---|
-| 1 | B 打 ATOM 到前排 | 0 | 4 | B 先低投入。 |
-| 2 | A 打 CORE2 到前排 | 6 | 4 | A 保持领先。 |
-| 3 | B 打 StickC 到后排 | 6 | 8 | B 使用第二张。 |
-| 4 | A 打 PaperMono 到后排 | 11 | 8 | PaperMono 5 分。 |
-| 5 | B 打增益信号，给 ATOM +2 | 11 | 10 | B 第三次投入；战术立即弃置。 |
-| 6 | A 打 Dial 到后排 | 16 | 10 | 己方前排已有 CORE2，Dial 3+2=5。 |
+| 1 | B 打探子到前排 | 0 | 4 | B 先低投入。 |
+| 2 | A 打厚壳到前排 | 6 | 4 | A 保持领先。 |
+| 3 | B 打细条到后排 | 6 | 8 | B 使用第二张。 |
+| 4 | A 打存页到后排 | 11 | 8 | 存页 5 分。 |
+| 5 | B 打加一把，给探子 +2 | 11 | 10 | B 第三次投入；战术立即弃置。 |
+| 6 | A 打旋钮到后排 | 16 | 10 | 己方前排已有厚壳，旋钮 3+2=5。 |
 | 7 | B 打 Stamp 到前排 | 16 | 14 | B 已投入 4 张，但场上只有 3 个单位。 |
 | 8 | A PASS | 16 | 14 | A 保留 7 张，接受可能输这一局。 |
-| 9 | B 打 Echo 到后排，给 ATOM +2 | 16 | 19 | Echo 身体 3 分、增益 2 分；B 第 5 次投入，自动 PASS。 |
+| 9 | B 打帮腔到后排，给探子 +2 | 16 | 19 | 帮腔身体 3 分、增益 2 分；B 第 5 次投入，自动 PASS。 |
 
 本小局 B 胜，局积分 A 0、B 2；A 剩 7 张，B 剩 5 张。下一小局 B 先手。A 得到了更多后续选择，但 A 必须赢下后两小局才能赢整场；不能把这个示例解释成 A 已经必胜。
 
@@ -494,10 +732,10 @@ PASS 是本小局不可撤销的投入结束。按钮文案为“停止本局出
 
 ### 8.2 同两张牌，顺序不同
 
-己方场地为空，只比较 StickC 与 LoRa：
+己方场地为空，只比较细条与远呼：
 
-- StickC 先到后排：4 分；LoRa 后到前排，另一排有单位，自身 3+2=5；总战力 9。
-- LoRa 先到前排：3 分；StickC 后到后排：4 分；LoRa 不补发入场增分；总战力 7。
+- 细条先到后排：4 分；远呼后到前排，另一排有单位，自身 3+2=5；总战力 9。
+- 远呼先到前排：3 分；细条后到后排：4 分；远呼不补发入场增分；总战力 7。
 
 这不是屏幕刷新造成的先后差异，而是所有客户端共享的入场时机规则。
 
@@ -636,7 +874,7 @@ v1 的规则终局只由正常小局计分产生，不含 resign 或自动超时
 
 > 产品名：脉冲对决。英文显示名：PULSE。本文规定信息结构和交互语义，允许不同开发平台使用原生控件。所有页面消费同一份权威对局状态与卡包，不得在界面中重算出另一套规则。正式字段以 `CONTRACT.json`、协议规范及卡包为准。
 >
-> 视觉方向为“黑白电子漫画卡册”：清楚的硬件角色轮廓、漫画分格、短句效果、醒目的整数战力。彩色设备可以使用彩色主题，但不能增加黑白端看不到的战斗信息。
+> 视觉方向为“黑白电子漫画卡册”：清楚的硬件角色轮廓、漫画分格、短句效果、醒目的整数战力。彩色设备可以使用彩色主题，但不能增加黑白端看不到的战斗信息。界面战力来自规则，不从概念卡面读取。原卡两种面貌、已放弃的整卡试做，以及尚未验收的模板预览，见 `docs/16_CARD_FACE_STYLES.md`。
 
 ## 1. 体验目标
 
@@ -798,7 +1036,7 @@ NFC 的角色分两层：玩家卡负责身份与可携带保存，英雄卡负�
 ### 6.5 确认摘要示例
 
 - “Dial → 后排；另一排已有单位，获得 +2。我的战力 11 → 16；手牌 8 → 7；投入 2/5 → 3/5。”
-- “增益信号 → ATOM；目标战力 4 → 6。战术不留场；投入 2/5 → 3/5。”
+- “加一把 → 探子；目标战力 4 → 6。战术不留场；投入 2/5 → 3/5。”
 - “Cardputer → 后排，干扰 PaperMono。目标具有稳定，减分不会生效；仍消耗这张牌，Cardputer 提供 3 分。”
 - “干扰信号 → Stamp；消耗目标防护，本次战力不变。仍消耗这张战术牌。”
 - “这是本局第 5 次投入，成功出牌后将自动停止本局出牌。”
@@ -2363,7 +2601,7 @@ ESP32 可使用 LittleFS 文件与原子重命名/双记录 journal；Android/iO
 
 ### 3.1 不允许另写一套演出规则
 
-教程可以限定玩家当前可选择的学习项、脚本控制 AI、展示预告和重开同一题，但所有接受后的行动都必须经过正式 reducer。不能让教学关的 Dial 永远 +2、让战术免费出，或用动画直接改总分。
+教程可以限定玩家当前可选择的学习项、脚本控制 AI、展示预告和重开同一题，但所有接受后的行动都必须经过正式 reducer。不能让教学关的旋钮永远 +2、让战术免费出，或用动画直接改总分。
 
 每个教学练习使用正常的合法 10 张牌组。没有教学需要的其他牌可以被提示层暂时收起，但不能把它们从引擎手牌删除后仍声称是在标准对战。处于教学限制时页面标明“练习题”，结束后恢复完整自由选择。
 
@@ -2381,7 +2619,7 @@ ESP32 可使用 LittleFS 文件与原子重命名/双记录 journal；Android/iO
 
 显示双方 0 战力、双方 10 张手牌、双方投入 0/5、局积分 0:0、第 1/3 局。只用一句话说明：“本局比战力；整场还要把牌留给后面的局。”
 
-让玩家通过数字手牌选择 ATOM 到前排，再确认。
+让玩家通过数字手牌选择探子到前排，再确认。
 
 预期：己方战力为 4；手牌为 9；本局投入为 1/5；场上 1 个前排单位；局积分仍为 0。不要因一张牌超过对手就马上增加局积分。
 
@@ -2395,23 +2633,23 @@ ESP32 可使用 LittleFS 文件与原子重命名/双记录 journal；Android/iO
 
 此题可使用默认教学牌组。脚本对手在空场先 PASS，玩家可以连续投入两张牌。其他手牌保留，只是教程先聚焦这两张。
 
-### 路线一：先 ATOM，后 Dial
+### 路线一：先探子，后旋钮
 
 | 动作 | 计算 | 己方场上战力 |
 |---|---|---:|
-| ATOM → front | ATOM 基础分 4 | 4 |
-| Dial → rear | Dial 基础 3；另一排已有 ATOM，立即 +2 | 9 |
+| 探子 → front | 探子基础分 4 | 4 |
+| 旋钮 → rear | 旋钮基础 3；另一排已有探子，立即 +2 | 9 |
 
-结束说明：“先有前排，再放后排的 Dial，获得一次 +2。”
+结束说明：“先有前排，再放后排的旋钮，获得一次 +2。”
 
-### 路线二：先 Dial，后 ATOM
+### 路线二：先旋钮，后探子
 
 | 动作 | 计算 | 己方场上战力 |
 |---|---|---:|
-| Dial → rear | 另一排为空，只得基础分 3 | 3 |
-| ATOM → front | ATOM 4；Dial 不补发过去的入场效果 | 7 |
+| 旋钮 → rear | 另一排为空，只得基础分 3 | 3 |
+| 探子 → front | 探子 4；旋钮不补发过去的入场效果 | 7 |
 
-两条路线投入都是 2 张、余牌都是 8 张，差异只有入场顺序。练习完成后让玩家用自己的话选一句：“以后再放另一排，不会补发 Dial 的入场奖励。”
+两条路线投入都是 2 张、余牌都是 8 张，差异只有入场顺序。练习完成后让玩家用自己的话选一句：“以后再放另一排，不会补发旋钮的入场奖励。”
 
 此题不要展示 2 点生命伤害、能量消耗或回合充能；那些都不属于当前玩法。
 
@@ -2423,19 +2661,19 @@ ESP32 可使用 LittleFS 文件与原子重命名/双记录 journal；Android/iO
 
 | 顺序 | 行动 | A 战力 | B 战力 | 需要展示的理由 |
 |---:|---|---:|---:|---|
-| 1 | A：ATOM → front | 4 | 0 | 一个 4 分单位 |
+| 1 | A：探子 → front | 4 | 0 | 一个 4 分单位 |
 | 2 | B：PaperMono → rear | 4 | 5 | stable 单位 |
-| 3 | A：Echo → rear，BOOST 指向 ATOM | 9 | 5 | Echo 身体 3；ATOM 4→6 |
-| 4 | B：Cardputer → rear，DAMAGE 指向 ATOM | 7 | 8 | ATOM 6→4；Cardputer 身体 3 |
+| 3 | A：帮腔 → rear，加分指向探子 | 9 | 5 | 帮腔身体 3；探子 4→6 |
+| 4 | B：敲键 → rear，减分指向探子 | 7 | 8 | 探子 6→4；敲键身体 3 |
 
-此时 A 选择“干扰信号”：
+此时 A 选择“压一下”：
 
 - 选择 B 的 Cardputer：其 3→1，B 总战力 8→6；A 保持 7，因此场上暂时领先 7:6。
 - 选择 B 的 PaperMono：stable 抵消减分，B 仍为 8；这张战术仍然被消耗，A 暂时落后 7:8。
 
 两条分支都是合法动作。教程应先让玩家看到确认预览，再决定；不能把 stable 目标在规则层判成非法来掩盖真实规则。
 
-无论分支如何，A 此时都已投入 3 张、手牌 7 张，但场上只有 ATOM 和 Echo 两个单位；干扰信号已在弃牌区。要求玩家回答：“战术也占一次投入吗？”答案为“占”。
+无论分支如何，A 此时都已投入 3 张、手牌 7 张，但场上只有探子和帮腔两个单位；压一下已在弃牌区。要求玩家回答：“战术也占一次投入吗？”答案为“占”。
 
 ### 6.2 防护练习
 
@@ -2445,8 +2683,8 @@ ESP32 可使用 LittleFS 文件与原子重命名/双记录 journal；Android/iO
 |---:|---|---:|---:|---|
 | 1 | A：Stamp → front | 4 | 0 | Stamp 有 1 次防护 |
 | 2 | B：Cardputer → rear，DAMAGE 指向 Stamp | 4 | 3 | 防护被消耗；本次未减分 |
-| 3 | A：ATOM → front | 8 | 3 | Stamp 不会自动恢复防护 |
-| 4 | B：干扰信号 → Stamp | 6 | 3 | Stamp 4→2；不退场 |
+| 3 | A：探子 → front | 8 | 3 | 立岗不会自动恢复防护 |
+| 4 | B：压一下 → 立岗 | 6 | 3 | 立岗 4→2；不退场 |
 
 完成说明：“第一次挡住了，第二次会减分。防护保护自己一次，不保护整排。”
 
@@ -2454,13 +2692,13 @@ ESP32 可使用 LittleFS 文件与原子重命名/双记录 journal；Android/iO
 
 己方场地为空时：
 
-- Echo 作为单位可以进入后排，获得自身 3 分，BOOST 效果略过。
-- 增益信号作为战术没有己方单位目标，不能打出。
+- 帮腔作为单位可以进入后排，获得自身 3 分，加分效果略过。
+- 加一把作为战术没有己方单位目标，不能打出。
 
 敌方场地为空时：
 
 - Cardputer 作为单位可以进入后排，获得自身 3 分，DAMAGE 效果略过。
-- 干扰信号没有敌方单位目标，不能打出。
+- 压一下没有敌方单位目标，不能打出。
 
 界面必须解释为什么，不应让玩家把战术拖到场上后静默无反应。只有无目标的战术留在手里时，PASS 仍然可用。
 
@@ -2472,17 +2710,17 @@ ESP32 可使用 LittleFS 文件与原子重命名/双记录 journal；Android/iO
 
 | 顺序 | 行动 | A 战力 | B 战力 | A／B 投入 |
 |---:|---|---:|---:|---|
-| 1 | B：ATOM → front | 0 | 4 | 0／1 |
-| 2 | A：CORE2 → front | 6 | 4 | 1／1 |
-| 3 | B：StickC → rear | 6 | 8 | 1／2 |
+| 1 | B：探子 → front | 0 | 4 | 0／1 |
+| 2 | A：厚壳 → front | 6 | 4 | 1／1 |
+| 3 | B：细条 → rear | 6 | 8 | 1／2 |
 | 4 | A：PaperMono → rear | 11 | 8 | 2／2 |
-| 5 | B：增益信号 → 自己 ATOM | 11 | 10 | 2／3 |
-| 6 | A：Dial → rear；另一排有 CORE2，自身 +2 | 16 | 10 | 3／3 |
+| 5 | B：加一把 → 自己的探子 | 11 | 10 | 2／3 |
+| 6 | A：旋钮 → rear；另一排有厚壳，自身 +2 | 16 | 10 | 3／3 |
 | 7 | B：Stamp → front | 16 | 14 | 3／4 |
 
 停在这里，让玩家选择：继续出牌，或停止本小局。
 
-选 PASS 的示例后续：B 打 Echo 到后排，给 ATOM +2，B 从 14 变为 19。B 这是第 5 次投入，自动 PASS；双方均 PASS，立即结算。
+选 PASS 的示例后续：B 打帮腔到后排，给探子 +2，B 从 14 变为 19。B 这是第 5 次投入，自动 PASS；双方均 PASS，立即结算。
 
 结果：本小局 A 16、B 19；局积分 A 0、B 2；A 剩 7 张手牌，B 剩 5 张；下一局 B 先手。
 
@@ -2576,8 +2814,8 @@ ESP32 可使用 LittleFS 文件与原子重命名/双记录 journal；Android/iO
 | G12 | BOOST 或 DAMAGE 目标 stable | 实际变化 0；牌仍消耗，投入仍增加 |
 | G13 | 受控边界 fixture 同时有 stable 与可用防护 | stable 优先；本次变化 0，防护不消耗 |
 | G14 | 受控边界 fixture：0 分、可用防护单位收到 DAMAGE | 仍 0 分，防护消耗；按参考裁判的“收到减分操作”语义 |
-| G15 | Dial 入场，己方另一排已有 0 分单位 | 条件成立，Dial 自身 +2 |
-| G16 | Dial 先入场未加分，之后另一排入场 | 不补发 Dial 的过去奖励 |
+| G15 | 旋钮入场，己方另一排已有 0 分单位 | 条件成立，旋钮自身 +2 |
+| G16 | 旋钮先入场未加分，之后另一排入场 | 不补发旋钮的过去奖励 |
 | G17 | 同一单位先后接受两张不同 BOOST | 线性 +2、再 +2；不倍增、不级联 |
 | G18 | 有效战术打出 | 投入 +1、手牌 -1、立即入弃牌；不增加场上单位／排位 |
 | G19 | 当前行动方主动 PASS | 该方本局不能再出牌；未用手牌保留 |
@@ -3592,7 +3830,8 @@ authority 检查令牌对应房间、席位、有效期；成功返回：
   "canonical_encoding": "PCG-C14N-1",
   "payload_file": "core_pack.json",
   "presentation_files": [
-    "zh-CN.json"
+    "zh-CN.json",
+    "en.json"
   ],
   "pool_hashes": {
     "m5.roles.v1": "8180eebdab6f9992a8589d4b47e48db3ac8b24e7da23651c10e64c3bd1cfc4ff"
@@ -3605,21 +3844,67 @@ authority 检查令牌对应房间、席位、有效期；成功返回：
 {
   "locale": "zh-CN",
   "names": {
-    "core2_guard": "CORE2 · 核心守卫",
-    "atom_scout": "ATOM · 侦察兵",
-    "stickc_operator": "StickC · 通讯员",
-    "dial_router": "Dial · 调度员",
-    "paper_archive": "PaperMono · 档案官",
-    "echo_booster": "Echo · 扩音手",
-    "cardputer_hacker": "Cardputer · 干扰员",
-    "lora_relay": "LoRa · 中继手",
-    "stamp_sentry": "Stamp · 哨兵",
-    "tough_guard": "TOUGH · 护卫",
-    "atom_matrix_link": "ATOM Matrix · 协作员",
-    "unit_cam_scout": "Unit Cam · 观察员",
-    "signal_boost": "增益信号",
-    "signal_jam": "干扰信号"
+    "core2_guard": "厚壳",
+    "tough_guard": "硬壳",
+    "stickc_operator": "细条",
+    "atom_scout": "探子",
+    "atom_matrix_link": "点阵",
+    "cardputer_hacker": "敲键",
+    "dial_router": "旋钮",
+    "paper_archive": "存页",
+    "stamp_sentry": "立岗",
+    "echo_booster": "帮腔",
+    "lora_relay": "远呼",
+    "unit_cam_scout": "千里眼",
+    "signal_boost": "加一把",
+    "signal_jam": "压一下"
   },
+  "intros": {
+    "core2_guard": "一块带触摸屏的厚主控，靠自己的分数站前排。",
+    "tough_guard": "外壳更扛造的主控，第一次被压分时能挡一下。",
+    "stickc_operator": "一根细长的小主机，适合待在后排。",
+    "atom_scout": "最小的一块主控，先拿出来占个位置。",
+    "atom_matrix_link": "自带点阵灯的小主控，能给已经在场的队友加分。",
+    "cardputer_hacker": "一台带键盘的掌机，打出时能压低对面一个人。",
+    "dial_router": "带旋钮的小设备，另一排已经有人时自己更有用。",
+    "paper_archive": "一块电子纸，分数摆上以后不再被加减。",
+    "stamp_sentry": "可以嵌进别的壳里的小主控，第一次被压分时能挡一下。",
+    "echo_booster": "专门给已经在场的队友加一把劲。",
+    "lora_relay": "后排已经有人时，自己打到前排会更有用。",
+    "unit_cam_scout": "一块插在主机上的小摄像头，用来盯住对面一个人。",
+    "signal_boost": "没有实物产品，用来给队友加分。",
+    "signal_jam": "没有实物产品，用来压低对面一个人。"
+  },
+  "skills": {
+    "core2_guard": "没有额外效果。打出后提供 6 点战力，放前排。",
+    "tough_guard": "提供 5 点战力，放前排。本小局第一次成为战力 -2 的目标时，这次减分不生效，然后防护用掉。",
+    "stickc_operator": "没有额外效果。打出后提供 4 点战力，放后排。",
+    "atom_scout": "没有额外效果。打出后提供 4 点战力，放前排。",
+    "atom_matrix_link": "打出时指定一个已经在我方场上的其他单位，它 +2。不能选自己。只这一次。自己提供 3 点，放前排。",
+    "cardputer_hacker": "打出时指定一个对方单位，战力 -2，最低 0。只这一次。自己提供 3 点，放后排。",
+    "dial_router": "前排或后排都能放。打出时看一次：如果我方另一排已经有单位，自己立刻 +2。自己基础 3 点。",
+    "paper_archive": "提供 5 点战力，放后排。本小局自己的战力不能被加分或减分改变。",
+    "stamp_sentry": "提供 4 点，前排或后排都能放。本小局第一次成为战力 -2 的目标时，这次减分不生效，然后防护用掉。",
+    "echo_booster": "打出时指定一个已经在我方场上的其他单位，它 +2。不能选自己。只这一次。自己提供 3 点，放后排。",
+    "lora_relay": "放前排。打出时看一次：如果我方后排已经有单位，自己立刻 +2。自己基础 3 点。",
+    "unit_cam_scout": "现行：打出时指定一个对方单位，战力 -2，最低 0。只这一次。自己提供 2 点，放后排。现在仍是角色，占单位名额。",
+    "signal_boost": "指定一个我方在场单位，它 +2。没有目标就不能打出。占 1 次出牌，不留在场上。",
+    "signal_jam": "指定一个对方在场单位，它 -2，最低 0。没有目标就不能打出。占 1 次出牌，不留在场上。"
+  },
+  "factions": {
+    "叠层": "Stack",
+    "细棍": "Slim",
+    "小块": "Block",
+    "换脸": "Swap Face",
+    "串线": "Chain",
+    "键盘": "Keyboard",
+    "表壳": "Shell",
+    "墨屏": "Ink Screen",
+    "大屏": "Big Screen",
+    "工位": "Bench",
+    "小无线": "Tiny Radio"
+  },
+  "note": "显示名是原创游戏名，不含官方型号。unit_cam_scout 的中文名是千里眼，但 v1 里它仍是角色；草案建议改为器具。稀有度不改变战力。",
   "skin_names": {
     "base": "原型",
     "ink": "墨线"
@@ -3627,10 +3912,5160 @@ authority 检查令牌对应房间、席位、有效期；成功返回：
   "rarity_names": {
     "ordinary": "伙伴",
     "hero": "英雄"
-  },
-  "note": "英雄为收藏分类；standard14全部模板免费借用，稀有度不改变同模板战力。"
+  }
 }
 ===== END FILE: content/zh-CN.json =====
+
+
+===== BEGIN FILE: content/en.json =====
+{
+  "locale": "en",
+  "names": {
+    "core2_guard": "Thick Shell",
+    "tough_guard": "Hard Case",
+    "stickc_operator": "Slim",
+    "atom_scout": "Scout",
+    "atom_matrix_link": "Dot Face",
+    "cardputer_hacker": "Key Tap",
+    "dial_router": "Knob",
+    "paper_archive": "Kept Page",
+    "stamp_sentry": "On Watch",
+    "echo_booster": "Cheer",
+    "lora_relay": "Far Call",
+    "unit_cam_scout": "Lookout",
+    "signal_boost": "Lend a Hand",
+    "signal_jam": "Lean On"
+  },
+  "intros": {},
+  "skills": {
+    "core2_guard": "No extra effect. Gives 6 power on the front row.",
+    "tough_guard": "Gives 5 power on the front row. The first time it would lose 2 power this round, that loss does not happen. The guard is then used up.",
+    "stickc_operator": "No extra effect. Gives 4 power on the rear row.",
+    "atom_scout": "No extra effect. Gives 4 power on the front row.",
+    "atom_matrix_link": "When played, choose one other ally already on the board and give it +2. Not itself. Once. Gives 3 power on the front row.",
+    "cardputer_hacker": "When played, choose one enemy unit. Its power -2, minimum 0. Once. Gives 3 power on the rear row.",
+    "dial_router": "May stand in either row. When played, if your other row already has a unit, gain +2 once. Base power 3.",
+    "paper_archive": "Gives 5 power on the rear row. Its power cannot be raised or lowered this round.",
+    "stamp_sentry": "Gives 4 power in either row. The first time it would lose 2 power this round, that loss does not happen. The guard is then used up.",
+    "echo_booster": "When played, choose one other ally already on the board and give it +2. Not itself. Once. Gives 3 power on the rear row.",
+    "lora_relay": "Played to the front row. When played, if your rear row already has a unit, gain +2 once. Base power 3.",
+    "unit_cam_scout": "Current rule: when played, choose one enemy unit. Its power -2, minimum 0. Once. Gives 2 power on the rear row. It is still a character.",
+    "signal_boost": "Choose one ally on the board and give it +2. Cannot be played without a target. Costs one play and does not stay on the board.",
+    "signal_jam": "Choose one enemy unit on the board. Its power -2, minimum 0. Cannot be played without a target. Costs one play and does not stay on the board."
+  },
+  "factions": {
+    "叠层": "Stack",
+    "细棍": "Slim",
+    "小块": "Block",
+    "换脸": "Swap Face",
+    "串线": "Chain",
+    "键盘": "Keyboard",
+    "表壳": "Shell",
+    "墨屏": "Ink Screen",
+    "大屏": "Big Screen",
+    "工位": "Bench",
+    "小无线": "Tiny Radio"
+  },
+  "note": "English display names are original copy, not literal translations. Official product names stay in the catalog.",
+  "skin_names": {
+    "base": "Base",
+    "ink": "Ink"
+  },
+  "rarity_names": {
+    "ordinary": "Companion",
+    "hero": "Hero"
+  }
+}
+===== END FILE: content/en.json =====
+
+
+===== BEGIN FILE: content/expansion_draft.json =====
+{
+  "document_status": "design_draft_not_enabled",
+  "ruleset_id": "pcg.bonds.draft",
+  "does_not_replace": "pcg.core.v1",
+  "not_loaded_by_reference_engine": true,
+  "numbers_are_untested_suggestions": true,
+  "action_policy": "one_play_per_card",
+  "bond_cap": 3,
+  "chain_cap": 2,
+  "rejected": [
+    "每张牌行动占用 2",
+    "不配对就扣基础战力或写烧毁",
+    "免费把随从贴在英雄上且不占 5 次出牌",
+    "生命值或攻击对打",
+    "热瞳镜没有英雄时改按另一套分数",
+    "把未知组合写成克制"
+  ],
+  "factions": [
+    "叠层",
+    "细棍",
+    "小块",
+    "换脸",
+    "串线",
+    "键盘",
+    "表壳",
+    "墨屏",
+    "大屏",
+    "工位",
+    "小无线"
+  ],
+  "public_pool": "公共牌",
+  "kept": [
+    {
+      "template_id": "core2_guard",
+      "name_zh": "厚壳",
+      "kind": "hero",
+      "faction": "叠层",
+      "base_power": 6,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "core2",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "frozen": true,
+      "research_name": "P005 触屏执政官",
+      "mapping": "异画。不另做一张会扣分的执政官。",
+      "stable_id": "core2_guard",
+      "game_name_zh": "厚壳",
+      "game_name_en": "Thick Shell",
+      "intro_zh": "一块带触摸屏的厚主控，靠自己的分数站前排。",
+      "skill_zh": "没有额外效果。打出后提供 6 点战力，放前排。",
+      "skill_en": "No extra effect. Gives 6 power on the front row.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "草案里可与厚底板、脸架子配对。",
+      "pair_limit_zh": "与普通底不配对，也不扣这 6 点。",
+      "product_record_ids": [
+        "H005"
+      ],
+      "official_product_name": "M5Stack Core2",
+      "official_model": "Core2",
+      "sources": [
+        "https://docs.m5stack.com/en/core/Core2",
+        "https://docs.m5stack.com/en/guide/common/dip_switch"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H005"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H005",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/644/core2_01.jpg",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/core2/core2_04.webp",
+      "operation_front_image_path": "research/images/operation_front/H005__core2_04.webp",
+      "operation_front_local_status": "packaged",
+      "operation_front_source_page": "https://docs.m5stack.com/en/core/core2",
+      "view_orientation": "正视",
+      "surface": "操作面",
+      "operation_front_verification_status": "已核对操作面正视",
+      "back_ortho_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/core2/core2_05.webp",
+      "back_ortho_image_path": "research/images/back_ortho/H005__core2_05.webp",
+      "back_ortho_local_status": "packaged",
+      "back_ortho_surface": "背面/针脚标注底板",
+      "reference_view_orientation": "斜视",
+      "reference_note": "core2_01 宣传标注拼图",
+      "has_operation_front": true
+    },
+    {
+      "template_id": "tough_guard",
+      "name_zh": "硬壳",
+      "kind": "hero",
+      "faction": "叠层",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "P008 坚壳卫",
+      "mapping": "异画。不把双频堡垒做成 2 行动的更强卡。",
+      "stable_id": "tough_guard",
+      "game_name_zh": "硬壳",
+      "game_name_en": "Hard Case",
+      "intro_zh": "外壳更扛造的主控，第一次被压分时能挡一下。",
+      "skill_zh": "提供 5 点战力，放前排。本小局第一次成为战力 -2 的目标时，这次减分不生效，然后防护用掉。",
+      "skill_en": "Gives 5 power on the front row. The first time it would lose 2 power this round, that loss does not happen. The guard is then used up.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "现行规则没有额外配对。",
+      "pair_limit_zh": "防护只挡第一次。",
+      "product_record_ids": [
+        "H013"
+      ],
+      "official_product_name": "M5Stack Tough",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/start"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H013"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H013",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/tough/tough_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "stickc_operator",
+      "name_zh": "细条",
+      "kind": "hero",
+      "faction": "细棍",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "hat_host_full",
+        "grove_i2c"
+      ],
+      "frozen": true,
+      "research_name": "P013 细刃游侠",
+      "mapping": "异画。",
+      "stable_id": "stickc_operator",
+      "game_name_zh": "细条",
+      "game_name_en": "Slim",
+      "intro_zh": "一根细长的小主机，适合待在后排。",
+      "skill_zh": "没有额外效果。打出后提供 4 点战力，放后排。",
+      "skill_en": "No extra effect. Gives 4 power on the rear row.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "草案里，经典小帽子在它已在场时打出，帽子 +2。",
+      "pair_limit_zh": "帽子自己结算，细条不再加一次。",
+      "product_record_ids": [
+        "H020"
+      ],
+      "official_product_name": "M5StickC",
+      "official_model": "StickC",
+      "sources": [
+        "https://docs.m5stack.com/en/hat/Hat_DAC2",
+        "https://docs.m5stack.com/en/start"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H020"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H020",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5stickc/m5stickc_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5stickc/m5stickc_02.webp",
+      "back_ortho_image_path": "research/images/back_ortho/H020__m5stickc_02.webp",
+      "back_ortho_local_status": "packaged",
+      "back_ortho_surface": "背面/针脚贴纸面",
+      "reference_view_orientation": "斜视",
+      "reference_note": "m5stickc_01 宣传标注拼图；m5stickc_04 为贴纸图放大，非实物屏幕",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "atom_scout",
+      "name_zh": "探子",
+      "kind": "hero",
+      "faction": "小块",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "atom"
+      ],
+      "frozen": true,
+      "research_name": "P018 微火信使",
+      "mapping": "异画。",
+      "stable_id": "atom_scout",
+      "game_name_zh": "探子",
+      "game_name_en": "Scout",
+      "intro_zh": "最小的一块主控，先拿出来占个位置。",
+      "skill_zh": "没有额外效果。打出后提供 4 点战力，放前排。",
+      "skill_en": "No extra effect. Gives 4 power on the front row.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Block",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "草案里，第一张底座在它在场时 +2。先打出接上串，后面的链节把它当串线的头。",
+      "pair_limit_zh": "同一小局只认第一张底座。",
+      "product_record_ids": [
+        "H026"
+      ],
+      "official_product_name": "M5Atom Lite",
+      "official_model": "Atom Lite",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/accessory/Atomic_ToChain_Base"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H026"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H026",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/ATOM%20Lite/img-b87e8051-87c6-41d7-a710-eb27f62eb785.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/ATOM%20Lite/img-d066cf3f-63a8-4866-bed2-2c2a6d9c034e.webp",
+      "back_ortho_image_path": "research/images/back_ortho/H026__img-d066cf3f-63a8-4866-bed2-2c2a6d9c034e.webp",
+      "back_ortho_local_status": "packaged",
+      "back_ortho_surface": "背夹/USB面",
+      "reference_view_orientation": "斜视",
+      "reference_note": "b87e8051 为标注拼图。C008.webp 是电子秤称重图（约5.5g），不能当正面或操作面。用户指出的 d066cf3f 已收入正视背面列，标签为背夹/USB面正视，不是按键/LED操作面。",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "atom_matrix_link",
+      "name_zh": "点阵",
+      "kind": "hero",
+      "faction": "小块",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "atom"
+      ],
+      "frozen": true,
+      "research_name": "P019 点阵小队",
+      "mapping": "异画。",
+      "stable_id": "atom_matrix_link",
+      "game_name_zh": "点阵",
+      "game_name_en": "Dot Face",
+      "intro_zh": "自带点阵灯的小主控，能给已经在场的队友加分。",
+      "skill_zh": "打出时指定一个已经在我方场上的其他单位，它 +2。不能选自己。只这一次。自己提供 3 点，放前排。",
+      "skill_en": "When played, choose one other ally already on the board and give it +2. Not itself. Once. Gives 3 power on the front row.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Block",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "现行规则只做这一次加分。",
+      "pair_limit_zh": "没有其他我方单位就不能加。",
+      "product_record_ids": [
+        "H027"
+      ],
+      "official_product_name": "M5Atom Matrix",
+      "official_model": "Atom Matrix",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/product_i2c_addr"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H027"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H027",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/ATOM%20Matrix/img-bc9c8013-4f56-43ff-9dc5-0f6b8558790c.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/ATOM%20Matrix/img-ae3786cd-7586-44db-bfff-cd2cb2159a9b.webp",
+      "operation_front_image_path": "research/images/operation_front/H027__img-ae3786cd-7586-44db-bfff-cd2cb2159a9b.webp",
+      "operation_front_local_status": "packaged",
+      "operation_front_source_page": "https://docs.m5stack.com/en/core/Atom-Matrix",
+      "view_orientation": "正视",
+      "surface": "操作面",
+      "operation_front_verification_status": "已核对操作面正视",
+      "back_ortho_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/ATOM%20Matrix/img-00b551c1-39bd-4ff5-bf92-9488afb74efc.webp",
+      "back_ortho_image_path": "research/images/back_ortho/H027__img-00b551c1-39bd-4ff5-bf92-9488afb74efc.webp",
+      "back_ortho_local_status": "packaged",
+      "back_ortho_surface": "背面/针脚贴纸面",
+      "reference_view_orientation": "斜视",
+      "reference_note": "bc9c8013 宣传标注拼图；操作面为正视熄灭的 5x5 LED 阵（原版 Matrix，贴纸为 MPU6886，勿与 v1.1 混淆）",
+      "has_operation_front": true
+    },
+    {
+      "template_id": "cardputer_hacker",
+      "name_zh": "敲键",
+      "kind": "hero",
+      "faction": "键盘",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "one_grove",
+        "grove_i2c"
+      ],
+      "frozen": true,
+      "research_name": "P021 键使学士",
+      "mapping": "异画。只有第一件 Unit 能配对。",
+      "stable_id": "cardputer_hacker",
+      "game_name_zh": "敲键",
+      "game_name_en": "Key Tap",
+      "intro_zh": "一台带键盘的掌机，打出时能压低对面一个人。",
+      "skill_zh": "打出时指定一个对方单位，战力 -2，最低 0。只这一次。自己提供 3 点，放后排。",
+      "skill_en": "When played, choose one enemy unit. Its power -2, minimum 0. Once. Gives 3 power on the rear row.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Keyboard",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "草案里只有一条细口，本小局第一件小器具能配对。",
+      "pair_limit_zh": "第二件小器具仍留下基础战力。",
+      "product_record_ids": [
+        "H031"
+      ],
+      "official_product_name": "M5Stack Cardputer",
+      "official_model": "Cardputer",
+      "sources": [
+        "https://docs.m5stack.com/en/core/Cardputer"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H031"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H031",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/481/K132-main-pictures_01.jpg",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/Cardputer/img-60261bcd-a23f-40e6-994d-ad97477dcec4.webp",
+      "operation_front_image_path": "research/images/operation_front/H031__img-60261bcd-a23f-40e6-994d-ad97477dcec4.webp",
+      "operation_front_local_status": "packaged",
+      "operation_front_source_page": "https://docs.m5stack.com/en/core/Cardputer",
+      "view_orientation": "正视",
+      "surface": "操作面",
+      "operation_front_verification_status": "已核对操作面正视",
+      "back_ortho_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/Cardputer/img-e3288169-9100-44f4-becd-afe1556f56b0.webp",
+      "back_ortho_image_path": "research/images/back_ortho/H031__img-e3288169-9100-44f4-becd-afe1556f56b0.webp",
+      "back_ortho_local_status": "packaged",
+      "back_ortho_surface": "背面/功能标注面",
+      "reference_view_orientation": "斜视",
+      "reference_note": "K132-main-pictures_01 宣传标注拼图；60261bcd 为键盘+屏幕操作面正视",
+      "has_operation_front": true
+    },
+    {
+      "template_id": "dial_router",
+      "name_zh": "旋钮",
+      "kind": "hero",
+      "faction": "表壳",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "P022 转盘祭司",
+      "mapping": "异画。延迟或旋转加分不另开。",
+      "stable_id": "dial_router",
+      "game_name_zh": "旋钮",
+      "game_name_en": "Knob",
+      "intro_zh": "带旋钮的小设备，另一排已经有人时自己更有用。",
+      "skill_zh": "前排或后排都能放。打出时看一次：如果我方另一排已经有单位，自己立刻 +2。自己基础 3 点。",
+      "skill_en": "May stand in either row. When played, if your other row already has a unit, gain +2 once. Base power 3.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shell",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "现行规则只看另一排。",
+      "pair_limit_zh": "另一排没人则不加。",
+      "product_record_ids": [
+        "H034"
+      ],
+      "official_product_name": "M5Dial",
+      "official_model": "Dial",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/start"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H034"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H034",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5Dial/img-2afd549e-8af8-47b4-823a-e90e063a0139.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "paper_archive",
+      "name_zh": "存页",
+      "kind": "hero",
+      "faction": "墨屏",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "P025 墨面书记",
+      "mapping": "异画。不采用把分数记到下一小局。",
+      "stable_id": "paper_archive",
+      "game_name_zh": "存页",
+      "game_name_en": "Kept Page",
+      "intro_zh": "一块电子纸，分数摆上以后不再被加减。",
+      "skill_zh": "提供 5 点战力，放后排。本小局自己的战力不能被加分或减分改变。",
+      "skill_en": "Gives 5 power on the rear row. Its power cannot be raised or lowered this round.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Ink Screen",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "现行规则没有额外配对。",
+      "pair_limit_zh": "稳定只保护自己。",
+      "product_record_ids": [
+        "H044"
+      ],
+      "official_product_name": "PaperMono",
+      "official_model": "PaperMono",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/product_i2c_addr",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "研究行 H044 同时列出多款纸屏。这张卡对应已有的 PaperMono 面孔，不把整行都当成它。",
+      "non_product": false,
+      "image_record_ids": [
+        "H044"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H044a",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1267/C153_PaperMono_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "stamp_sentry",
+      "name_zh": "立岗",
+      "kind": "hero",
+      "faction": "表壳",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "裸 Stamp",
+      "mapping": "已有角色。裸模块不升第二英雄。",
+      "stable_id": "stamp_sentry",
+      "game_name_zh": "立岗",
+      "game_name_en": "On Watch",
+      "intro_zh": "可以嵌进别的壳里的小主控，第一次被压分时能挡一下。",
+      "skill_zh": "提供 4 点，前排或后排都能放。本小局第一次成为战力 -2 的目标时，这次减分不生效，然后防护用掉。",
+      "skill_en": "Gives 4 power in either row. The first time it would lose 2 power this round, that loss does not happen. The guard is then used up.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shell",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "没有核到唯一官方单品。",
+      "pair_limit_zh": "防护只挡第一次。",
+      "product_record_ids": [
+        "H038"
+      ],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/start"
+      ],
+      "mapping_note": "H038 是多款 Stamp 的复合记录。游戏名是原创，不是官方译名。",
+      "non_product": false,
+      "image_record_ids": [
+        "H038"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "echo_booster",
+      "name_zh": "帮腔",
+      "kind": "hero",
+      "faction": "公共牌",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "",
+      "mapping": "研究目录没有同名设备，保留原卡。",
+      "stable_id": "echo_booster",
+      "game_name_zh": "帮腔",
+      "game_name_en": "Cheer",
+      "intro_zh": "专门给已经在场的队友加一把劲。",
+      "skill_zh": "打出时指定一个已经在我方场上的其他单位，它 +2。不能选自己。只这一次。自己提供 3 点，放后排。",
+      "skill_en": "When played, choose one other ally already on the board and give it +2. Not itself. Once. Gives 3 power on the rear row.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "现行规则只做这一次加分。",
+      "pair_limit_zh": "没有其他我方单位就不能打出这次加分。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "非已核单品。官方另有 ATOM Echo（SKU C008-C），本仓库没有把它核成这张卡。",
+      "non_product": false,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "lora_relay",
+      "name_zh": "远呼",
+      "kind": "hero",
+      "faction": "小无线",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "",
+      "mapping": "角色。中继羽是另一张器具。",
+      "stable_id": "lora_relay",
+      "game_name_zh": "远呼",
+      "game_name_en": "Far Call",
+      "intro_zh": "后排已经有人时，自己打到前排会更有用。",
+      "skill_zh": "放前排。打出时看一次：如果我方后排已经有单位，自己立刻 +2。自己基础 3 点。",
+      "skill_en": "Played to the front row. When played, if your rear row already has a unit, gain +2 once. Base power 3.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Tiny Radio",
+      "v1_role": "角色",
+      "design_role": "角色",
+      "pair_with_zh": "现行规则只看后排有没有人。",
+      "pair_limit_zh": "后排没人则不加。远程针是另一张器具。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "灵感来自远距离通信，不是某一颗电台的官方名字。",
+      "non_product": false,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "unit_cam_scout",
+      "name_zh": "千里眼",
+      "kind": "hero",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero"
+      ],
+      "frozen": true,
+      "research_name": "U012 U013",
+      "mapping": "相机宿主不另做堆叠将军。",
+      "stable_id": "unit_cam_scout",
+      "game_name_zh": "千里眼",
+      "game_name_en": "Lookout",
+      "intro_zh": "一块插在主机上的小摄像头，用来盯住对面一个人。",
+      "skill_zh": "现行：打出时指定一个对方单位，战力 -2，最低 0。只这一次。自己提供 2 点，放后排。现在仍是角色，占单位名额。",
+      "skill_en": "Current rule: when played, choose one enemy unit. Its power -2, minimum 0. Once. Gives 2 power on the rear row. It is still a character.",
+      "design_skill_zh": "草案改为器具，数字不变：打出时指定一个对方已在场单位，战力 -2，最低 0，只这一次。仍占 1 张牌和 1 次出牌，不再算角色。",
+      "design_skill_en": "Draft: it becomes a tool with the same numbers. Choose one enemy unit already on the board. Power -2, minimum 0, once. It still costs one card and one play, and is no longer a character.",
+      "faction_en": "Shared",
+      "v1_role": "角色",
+      "design_role": "器具",
+      "pair_with_zh": "不靠主机配对，直接指定对面一个人。",
+      "pair_limit_zh": "没有对方单位就不能结算这次 -2。",
+      "product_record_ids": [],
+      "official_product_name": "M5Stack Unit CAM",
+      "official_model": "U109",
+      "sources": [
+        "https://docs.m5stack.com/en/unit/unit_cam"
+      ],
+      "mapping_note": "官方 Unit CAM，SKU U109，ESP32-WROOM-32E 与 OV2640，可用 UART 或 Wi-Fi 传图，也能运行自己的程序。不是 UnitV、UnitV2、TimerCamera、Unit CamS3。研究行 U012 是多款相机的复合记录。",
+      "non_product": false,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "U109",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/unit_cam/unit_cam_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/unit_cam/unit_cam_02.webp",
+      "operation_front_image_path": "research/images/operation_front/U109__Unit_CAM__unit_cam_02.webp",
+      "operation_front_local_status": "packaged",
+      "operation_front_source_page": "https://docs.m5stack.com/en/unit/Unit_CAM",
+      "view_orientation": "正视",
+      "surface": "操作面",
+      "operation_front_verification_status": "已核对操作面正视",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": true
+    },
+    {
+      "template_id": "signal_boost",
+      "name_zh": "加一把",
+      "kind": "tactic",
+      "faction": "公共牌",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic"
+      ],
+      "frozen": true,
+      "research_name": "",
+      "mapping": "冻结战术。",
+      "stable_id": "signal_boost",
+      "game_name_zh": "加一把",
+      "game_name_en": "Lend a Hand",
+      "intro_zh": "没有实物产品，用来给队友加分。",
+      "skill_zh": "指定一个我方在场单位，它 +2。没有目标就不能打出。占 1 次出牌，不留在场上。",
+      "skill_en": "Choose one ally on the board and give it +2. Cannot be played without a target. Costs one play and does not stay on the board.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "战术",
+      "design_role": "战术",
+      "pair_with_zh": "任何我方在场单位。",
+      "pair_limit_zh": "没有目标就不能打。非实体产品。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "",
+      "non_product": true,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "signal_jam",
+      "name_zh": "压一下",
+      "kind": "tactic",
+      "faction": "公共牌",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic"
+      ],
+      "frozen": true,
+      "research_name": "",
+      "mapping": "冻结战术。",
+      "stable_id": "signal_jam",
+      "game_name_zh": "压一下",
+      "game_name_en": "Lean On",
+      "intro_zh": "没有实物产品，用来压低对面一个人。",
+      "skill_zh": "指定一个对方在场单位，它 -2，最低 0。没有目标就不能打出。占 1 次出牌，不留在场上。",
+      "skill_en": "Choose one enemy unit on the board. Its power -2, minimum 0. Cannot be played without a target. Costs one play and does not stay on the board.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "战术",
+      "design_role": "战术",
+      "pair_with_zh": "任何对方在场单位。",
+      "pair_limit_zh": "没有目标就不能打。非实体产品。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "",
+      "non_product": true,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    }
+  ],
+  "cards": [
+    {
+      "template_id": "basic_warden",
+      "name_zh": "常客",
+      "kind": "hero",
+      "faction": "叠层",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "mbus_gen1",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart",
+        "lonely"
+      ],
+      "skill_zh": "提供 5 点。结算时如果你本小局一个配对都没有，额外 +1。只这一次。",
+      "product_trace": "Basic v2.7，K001-V27",
+      "catalog_ids": [
+        "H001"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "适合少带器具的牌组。",
+      "counter_zh": "对手用器具跟你抢分时，这张 +1 不会出现。",
+      "stable_id": "basic_warden",
+      "game_name_zh": "常客",
+      "game_name_en": "Regular",
+      "intro_zh": "最常见的一块主控，不搞搭配时反而稳一点。",
+      "skill_en": "Gives 5 power. At scoring, if you formed no bonds, gain +1 once.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "不主动配对。",
+      "pair_limit_zh": "一旦有配对，这 +1 就不出现。",
+      "product_record_ids": [
+        "H001"
+      ],
+      "official_product_name": "M5Stack Basic v2.7",
+      "official_model": "K001-V27",
+      "sources": [
+        "https://docs.m5stack.com/en/core/Basic_v2.7",
+        "https://docs.m5stack.com/en/product_i2c_addr",
+        "https://docs.m5stack.com/en/guide/common/dip_switch"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H001"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H001",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/basic_v2.7/basic_v2.7_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "宣传标注拼图，可见壳体厚度，非正视",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "gray_pathfinder",
+      "name_zh": "指南",
+      "kind": "hero",
+      "faction": "叠层",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "gray_sense",
+      "tags": [
+        "hero",
+        "mbus",
+        "mbus_gen1",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "skill_zh": "提供 4 点。打出时如果感知器具已经在场，并且磁铁靠近还没打出，自己 +2。之后才来的器具不补这 +2。",
+      "product_trace": "Gray，K002",
+      "catalog_ids": [
+        "H002"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "要让气候瓶或识别环先上场，或接受只吃到器具自己的配对。",
+      "counter_zh": "先出磁扰，感知配对就不会发生。",
+      "stable_id": "gray_pathfinder",
+      "game_name_zh": "指南",
+      "game_name_en": "Guide",
+      "intro_zh": "带着方向感的主控，要等测量工具先摆上。",
+      "skill_en": "Gives 4. When played, if a sensing tool is already out and Magnet Near is not, gain +2. Later tools do not add this again.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "温湿计、刷卡圈。",
+      "pair_limit_zh": "磁铁靠近先打出则不加。",
+      "product_record_ids": [
+        "H002"
+      ],
+      "official_product_name": "M5Stack Gray",
+      "official_model": "K002",
+      "sources": [
+        "https://docs.m5stack.com/en/product_i2c_addr",
+        "https://docs.m5stack.com/en/core/Gray",
+        "https://docs.m5stack.com/en/start"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H002"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H002",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/gray/gray_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "fire_marshal",
+      "name_zh": "火头",
+      "kind": "hero",
+      "faction": "叠层",
+      "base_power": 6,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "mbus_gen1",
+        "fire",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "skill_zh": "自己提供 6 点，没有自己的加分。",
+      "product_trace": "Fire v2.7",
+      "catalog_ids": [
+        "H003"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "高基础战力，模块要按初代来拨。",
+      "counter_zh": "把定位羽留到星轨之后，挡不住已经结成的配对；想挡，就先放定位羽。",
+      "stable_id": "fire_marshal",
+      "game_name_zh": "火头",
+      "game_name_en": "Spark",
+      "intro_zh": "内存更大的主控。定位模块能配合，但别和定位针挤在前面。",
+      "skill_en": "Gives 6 power and no bond of its own.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "定位模块。",
+      "pair_limit_zh": "火头和定位针都已在场时，再打出的定位模块不加。已经结成的不追回。",
+      "product_record_ids": [
+        "H003"
+      ],
+      "official_product_name": "M5Stack Fire v2.7",
+      "official_model": "Fire v2.7",
+      "sources": [
+        "https://docs.m5stack.com/en/core/Fire_v2.7"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H003"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H003",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/fire_v2.7/fire_v2.6_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "go_captain",
+      "name_zh": "套装",
+      "kind": "hero",
+      "faction": "叠层",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "mbus_gen1",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "skill_zh": "提供 5 点。加分在灯底板上。",
+      "product_trace": "M5GO IoT Kit v2.7，K006-V27",
+      "catalog_ids": [
+        "H004"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "初代套件。",
+      "counter_zh": "灯卫不会跟核心守卫结伴。",
+      "stable_id": "go_captain",
+      "game_name_zh": "套装",
+      "game_name_en": "Kit",
+      "intro_zh": "一整套带走的主控，和灯底板是一对。",
+      "skill_en": "Gives 5 power. The bonus is on the light base.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "灯底板。",
+      "pair_limit_zh": "厚壳不是初代，灯底板不跟它加。",
+      "product_record_ids": [
+        "H004"
+      ],
+      "official_product_name": "M5GO IoT Kit v2.7",
+      "official_model": "K006-V27",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/product_i2c_addr",
+        "https://docs.m5stack.com/en/core/M5GO_IoT_Kit_v2.7"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H004"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H004",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5go_v2.7/m5go_v2.7_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "cores3_governor",
+      "name_zh": "三件套",
+      "kind": "hero",
+      "faction": "叠层",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "cores3",
+        "grove_i2c",
+        "grove_gpio",
+        "grove_uart"
+      ],
+      "skill_zh": "提供 5 点，只占 1 次出牌。感知器具在它已经在场、且磁铁靠近还没出现时打出，那次配对是 +2 而不是 +1。",
+      "product_trace": "CoreS3",
+      "catalog_ids": [
+        "H009"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "相机、罗盘、麦克风只是同一类「感知」，不分成三次加分。",
+      "counter_zh": "磁扰。带磁的器具也不会额外扣血。",
+      "stable_id": "cores3_governor",
+      "game_name_zh": "三件套",
+      "game_name_en": "Three Piece",
+      "intro_zh": "能看、能听、能辨方向的主控。感知工具在它之后打出更值。",
+      "skill_en": "Gives 5 and costs one play. A sensing tool played while it is out, before Magnet Near, bonds for +2 instead of +1.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "温湿计、刷卡圈。",
+      "pair_limit_zh": "不分成三次加分。",
+      "product_record_ids": [
+        "H009"
+      ],
+      "official_product_name": "M5Stack CoreS3",
+      "official_model": "CoreS3",
+      "sources": [
+        "https://docs.m5stack.com/en/core/CoreS3",
+        "https://docs.m5stack.com/en/guide/common/dip_switch"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H009"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H009",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/CoreS3/img-96063e2a-637a-4d11-ac47-1ce4f1cdfd3e.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/CoreS3/img-3e707c18-8110-47f9-af1c-ae3c056447d2.webp",
+      "back_ortho_image_path": "research/images/back_ortho/H009__img-3e707c18-8110-47f9-af1c-ae3c056447d2.webp",
+      "back_ortho_local_status": "packaged",
+      "back_ortho_surface": "DIN BASE安装面/底面",
+      "reference_view_orientation": "斜视",
+      "reference_note": "96063e2a 宣传标注拼图；另有多张 DIN BASE 侧面正视未写入主图",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "stick_plus",
+      "name_zh": "长条",
+      "kind": "hero",
+      "faction": "细棍",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "stick_plus",
+        "hat_host_full",
+        "grove_i2c"
+      ],
+      "skill_zh": "提供 4 点。",
+      "product_trace": "StickC-Plus",
+      "catalog_ids": [
+        "H021"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "比短刃多一种喇叭。",
+      "counter_zh": "功放冠戴到别的细刃上没有冠位。",
+      "stable_id": "stick_plus",
+      "game_name_zh": "长条",
+      "game_name_en": "Long Slim",
+      "intro_zh": "细条的加长版，小喇叭只认它。",
+      "skill_en": "Gives 4 power.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "经典帽子在它在场且没有新细条时 +2。小喇叭只有它 +2。",
+      "pair_limit_zh": "新细条也在场时，经典帽子不加。",
+      "product_record_ids": [
+        "H021"
+      ],
+      "official_product_name": "M5StickC Plus",
+      "official_model": "StickC Plus",
+      "sources": [
+        "https://docs.m5stack.com/en/core/StickC-Plus2 (comparison table)",
+        "https://docs.m5stack.com/en/hat/Hat_DAC2"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H021"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H021",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5stickc_plus/m5stickc_plus_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "stick_plus2",
+      "name_zh": "自带电",
+      "kind": "hero",
+      "faction": "细棍",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "hat_host_thin",
+        "grove_i2c"
+      ],
+      "skill_zh": "提供 5 点。",
+      "product_trace": "StickC-Plus2",
+      "catalog_ids": [
+        "H022"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "想要更高的裸分。",
+      "counter_zh": "想要满额冠位时换回短刃或加长刃。",
+      "stable_id": "stick_plus2",
+      "game_name_zh": "自带电",
+      "game_name_en": "Own Battery",
+      "intro_zh": "自己带着电的细棍，帽子还能戴，但加得少。",
+      "skill_en": "Gives 5 power.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "经典帽子在它当宿主时 +1。",
+      "pair_limit_zh": "官方没写成禁配。小喇叭和电池帽不认它。",
+      "product_record_ids": [
+        "H022"
+      ],
+      "official_product_name": "M5StickC Plus2",
+      "official_model": "StickC Plus2",
+      "sources": [
+        "https://docs.m5stack.com/en/core/StickC-Plus2",
+        "https://docs.m5stack.com/en/hat/Hat_DAC2"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H022"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H022",
+      "reference_image_url": "https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/docs/products/core/M5StickC%20PLUS2/4.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "stick_s3",
+      "name_zh": "新细条",
+      "kind": "hero",
+      "faction": "细棍",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "stick_s3",
+        "grove_i2c"
+      ],
+      "skill_zh": "提供 4 点。",
+      "product_trace": "StickS3，Hat2-Bus",
+      "catalog_ids": [
+        "H024"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "新窗，不吃旧冠。",
+      "counter_zh": "把迷你摇杆冠放进这副牌，只会占一张牌。",
+      "stable_id": "stick_s3",
+      "game_name_zh": "新细条",
+      "game_name_en": "New Slim",
+      "intro_zh": "换了新接头的细棍，只跟自己的小屏配对。",
+      "skill_en": "Gives 4 power.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "细条小屏在它在场时 +2。",
+      "pair_limit_zh": "经典帽子未知则不加。小摇杆被点名装不上，不加，也不扣分。",
+      "product_record_ids": [
+        "H024"
+      ],
+      "official_product_name": "M5StickS3",
+      "official_model": "StickS3",
+      "sources": [
+        "https://docs.m5stack.com/en/core/StickS3",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H024"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H024",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1207/K150-stickS3_main-products_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "stick_t2",
+      "name_zh": "热眼睛",
+      "kind": "hero",
+      "faction": "细棍",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "stick_t2"
+      ],
+      "skill_zh": "打出时自己 +1，并提供 5 点基础。热像头同时在场时不再加第二层。",
+      "product_trace": "StickT2",
+      "catalog_ids": [
+        "H025"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "不必再带热成像帽。",
+      "counter_zh": "热瞳镜对它没有第二次加成。",
+      "stable_id": "stick_t2",
+      "game_name_zh": "热眼睛",
+      "game_name_en": "Heat Eye",
+      "intro_zh": "自己就能看热度，不必再加一个热像头。",
+      "skill_en": "When played, gain +1 plus 5 base power. Heat Head adds no second heat bonus.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "不需要热像头。",
+      "pair_limit_zh": "热像头对它不加。",
+      "product_record_ids": [
+        "H025"
+      ],
+      "official_product_name": "M5StickT2",
+      "official_model": "StickT2",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H025"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H025",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/m5stickt/m5stickt_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "atom_s3",
+      "name_zh": "新小块",
+      "kind": "hero",
+      "faction": "小块",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "atom",
+        "atom_s3"
+      ],
+      "skill_zh": "提供 4 点。第一张底座 +2。接上串只负责把脚对上，不因此再加一次。",
+      "product_trace": "AtomS3 / AtomS3R 一代，CAM 等为异画",
+      "catalog_ids": [
+        "H028",
+        "H029"
+      ],
+      "author_pack": "微核",
+      "fit_zh": "和微核信使一样能坐桥，体型故事不同。",
+      "counter_zh": "同一小局第二张底座没有座位。",
+      "stable_id": "atom_s3",
+      "game_name_zh": "新小块",
+      "game_name_en": "New Block",
+      "intro_zh": "新一代小块，底座仍然只有一个位子。",
+      "skill_en": "Gives 4. The first base gains +2. Chain Seat remaps pins and does not add another bonus for that.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Block",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "响座或接上串。",
+      "pair_limit_zh": "第二张底座不加。",
+      "product_record_ids": [
+        "H028",
+        "H029"
+      ],
+      "official_product_name": "M5AtomS3 / AtomS3R",
+      "official_model": "AtomS3；AtomS3R",
+      "sources": [
+        "https://docs.m5stack.com/en/product_i2c_addr",
+        "https://docs.m5stack.com/en/accessory/Atomic_ToChain_Base",
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H028",
+        "H029"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "chain_warden",
+      "name_zh": "双头",
+      "kind": "hero",
+      "faction": "串线",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "chain_master"
+      ],
+      "skill_zh": "提供 5 点。它在场后，第一个链节 +1，一节灯或往回传可再 +1。这条链合计不超过 +2。",
+      "product_trace": "Chain DualKey",
+      "catalog_ids": [
+        "H048"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "链节要在它之后打出。",
+      "counter_zh": "没有链节时它只贡献基础战力。",
+      "stable_id": "chain_warden",
+      "game_name_zh": "双头",
+      "game_name_en": "Two Ends",
+      "intro_zh": "左右都能往后串。草案先收成一条可计分的链。",
+      "skill_en": "Gives 5. After it is out, the first link gains +1, and a lamp or send-back may add +1, up to +2 on the line.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Chain",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "一节键、一节灯、串线舵机、往回传。",
+      "pair_limit_zh": "链节要在它之后打出。",
+      "product_record_ids": [
+        "H048"
+      ],
+      "official_product_name": "Chain DualKey",
+      "official_model": "Chain DualKey",
+      "sources": [
+        "https://docs.m5stack.com/en/chain/Chain_DualKey",
+        "https://docs.m5stack.com/en/arduino/projects/chain/chain_bus"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H048"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H048",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1176/C147_chain-dualkey-mainpicture_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "capsule_runner",
+      "name_zh": "小胶囊",
+      "kind": "hero",
+      "faction": "表壳",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "capsule"
+      ],
+      "skill_zh": "提供 3 点。本小局只保留第一次器具或随从的配对。",
+      "product_trace": "Capsule v1.1",
+      "catalog_ids": [
+        "H035"
+      ],
+      "author_pack": "印记",
+      "fit_zh": "便宜的随身角色。",
+      "counter_zh": "想叠很多器具时不要选它。",
+      "stable_id": "capsule_runner",
+      "game_name_zh": "小胶囊",
+      "game_name_en": "Capsule",
+      "intro_zh": "封得很紧，一件外设就够它忙。",
+      "skill_en": "Gives 3. Only the first tool or retainer bond counts this round.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shell",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "第一件器具或随从。",
+      "pair_limit_zh": "后面的配对不算。",
+      "product_record_ids": [
+        "H035"
+      ],
+      "official_product_name": "M5Capsule",
+      "official_model": "Capsule",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H035"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H035",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5Capsule/img-2456a4fc-6a0c-4dcd-9998-ddfee4d62674.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "din_meter",
+      "name_zh": "轨上表",
+      "kind": "hero",
+      "faction": "表壳",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "din"
+      ],
+      "skill_zh": "提供 4 点。结算时如果没有帽子也没有堆叠模块，额外 +2。",
+      "product_trace": "DinMeter v1.1",
+      "catalog_ids": [
+        "H036"
+      ],
+      "author_pack": "印记",
+      "fit_zh": "干净的计量回合。",
+      "counter_zh": "冠和模块会让这 +2 消失，它们仍保留自己的战力。",
+      "stable_id": "din_meter",
+      "game_name_zh": "轨上表",
+      "game_name_en": "Rail Meter",
+      "intro_zh": "卡在导轨上的表，旁边别再堆帽子和模块。",
+      "skill_en": "Gives 4. At scoring, if no cap and no stack module are out, gain +2.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shell",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "不跟帽子和模块配对。",
+      "pair_limit_zh": "有它们时这 +2 消失，它们自己的分数还在。",
+      "product_record_ids": [
+        "H036"
+      ],
+      "official_product_name": "M5DinMeter",
+      "official_model": "DinMeter",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H036"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H036",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5DinMeter/img-ae5aaf34-6458-47c7-89ee-280ec06fb542.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "coreink_clerk",
+      "name_zh": "小墨屏",
+      "kind": "hero",
+      "faction": "墨屏",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "coreink"
+      ],
+      "skill_zh": "提供 4 点。结算时如果没有随从也没有器具，额外 +2。",
+      "product_trace": "CoreInk",
+      "catalog_ids": [
+        "H045"
+      ],
+      "author_pack": "墨面",
+      "fit_zh": "空着手更强。",
+      "counter_zh": "档案官仍是另一张会稳定的墨面角色，这张不替代它。",
+      "stable_id": "coreink_clerk",
+      "game_name_zh": "小墨屏",
+      "game_name_en": "Pocket Ink",
+      "intro_zh": "巴掌大的墨水屏，空着手更合适。",
+      "skill_en": "Gives 4. At scoring, if no retainer and no tool were played, gain +2.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Ink Screen",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "不跟附件配对。",
+      "pair_limit_zh": "这不是存页。存页是分数不能被改的那张。",
+      "product_record_ids": [
+        "H045"
+      ],
+      "official_product_name": "M5Stack CoreInk",
+      "official_model": "CoreInk",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H045"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H045",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/coreink/coreink_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "tab5_watcher",
+      "name_zh": "大平板",
+      "kind": "hero",
+      "faction": "大屏",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "tab5",
+        "one_grove",
+        "grove_i2c"
+      ],
+      "skill_zh": "提供 5 点，只占 1 次出牌。本小局只有第一件小器具能配对。堆叠模块仍按自己的规则。",
+      "product_trace": "Tab5，C145 / K145",
+      "catalog_ids": [
+        "H015"
+      ],
+      "author_pack": "屏界",
+      "fit_zh": "模块比一串小器具更合算。",
+      "counter_zh": "第二件 Unit 只留下基础战力。",
+      "stable_id": "tab5_watcher",
+      "game_name_zh": "大平板",
+      "game_name_en": "Wide Screen",
+      "intro_zh": "屏幕很大，随身小口只有一个。",
+      "skill_en": "Gives 5 and costs one play. Only the first small tool bonds. Stack modules keep their own rule.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Big Screen",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "第一件小器具，或定位模块、算力盒。",
+      "pair_limit_zh": "第二件小器具只留基础战力。",
+      "product_record_ids": [
+        "H015"
+      ],
+      "official_product_name": "M5Stack Tab5",
+      "official_model": "C145 / K145",
+      "sources": [
+        "https://docs.m5stack.com/en/core/Tab5"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H015"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H015",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1132/C145_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1132/C145_02.webp",
+      "operation_front_image_path": "research/images/operation_front/H015__Tab5__C145_02.webp",
+      "operation_front_local_status": "packaged",
+      "operation_front_source_page": "https://docs.m5stack.com/en/core/Tab5",
+      "view_orientation": "正视",
+      "surface": "操作面",
+      "operation_front_verification_status": "已核对操作面正视",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": true
+    },
+    {
+      "template_id": "nano_weaver",
+      "name_zh": "小天线",
+      "kind": "hero",
+      "faction": "小无线",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "nano_relay",
+      "tags": [
+        "hero"
+      ],
+      "skill_zh": "提供 3 点。打出时如果远程针已经在场，自己 +2。只这一次。",
+      "product_trace": "NanoC6，NanoH2 为异画",
+      "catalog_ids": [
+        "H047"
+      ],
+      "author_pack": "织网",
+      "fit_zh": "和小无线电一起。",
+      "counter_zh": "没有中继羽就只有 3 点。",
+      "stable_id": "nano_weaver",
+      "game_name_zh": "小天线",
+      "game_name_en": "Tiny Antenna",
+      "intro_zh": "很小的无线节点，等远程针先到。",
+      "skill_en": "Gives 3. When played, if Radio Pin is already out, gain +2 once.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Tiny Radio",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "远程针。",
+      "pair_limit_zh": "没有它就只有 3 点。同系列另一只小无线只是这张的另一种画法。",
+      "product_record_ids": [
+        "H047"
+      ],
+      "official_product_name": "NanoC6",
+      "official_model": "NanoC6",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "NanoH2 只作异画，不开第二张分数。",
+      "non_product": false,
+      "image_record_ids": [
+        "H047"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H047",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5NanoC6/img-9809b895-c90a-43d4-8f51-e0de80b60503.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "station_clerk",
+      "name_zh": "机柜",
+      "kind": "hero",
+      "faction": "工位",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "grove_uart",
+        "industrial_host"
+      ],
+      "skill_zh": "提供 5 点。长口器具在它已在场时打出，那件器具 +1。",
+      "product_trace": "Station-Bat / Station-485，同一行复合记录",
+      "catalog_ids": [
+        "H046"
+      ],
+      "author_pack": "工坊",
+      "fit_zh": "让中继羽、定位羽有宿主。",
+      "counter_zh": "它不是更强的付费城主。",
+      "stable_id": "station_clerk",
+      "game_name_zh": "机柜",
+      "game_name_en": "Rack",
+      "intro_zh": "工位上的通信主机，远程针和定位针能接上。",
+      "skill_en": "Gives 5. A long-port tool played while it is out gains +1.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Bench",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "远程针、定位针。",
+      "pair_limit_zh": "它不是更贵的厚壳。研究行把两款工位机写在一起。",
+      "product_record_ids": [
+        "H046"
+      ],
+      "official_product_name": "Station 电池款 / 485 款",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H046"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "matrix_keeper",
+      "name_zh": "灯墙",
+      "kind": "hero",
+      "faction": "大屏",
+      "base_power": 4,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "matrix_keeper"
+      ],
+      "skill_zh": "提供 4 点。结算时如果没有屏幕类牌，额外 +2。不给未核实的模块配对。",
+      "product_trace": "CoreMatrix，C158",
+      "catalog_ids": [
+        "H016"
+      ],
+      "author_pack": "屏界",
+      "fit_zh": "不靠屏幕。",
+      "counter_zh": "不要把未核实的底座写成能叠。",
+      "stable_id": "matrix_keeper",
+      "game_name_zh": "灯墙",
+      "game_name_en": "Light Wall",
+      "intro_zh": "一整面灯，不靠普通屏幕。堆叠细节还没逐条核完。",
+      "skill_en": "Gives 4. At scoring, if no screen card is out, gain +2. Unverified modules do not bond.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Big Screen",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "不跟屏幕牌配对。",
+      "pair_limit_zh": "只确认到产品存在。",
+      "product_record_ids": [
+        "H016"
+      ],
+      "official_product_name": "M5Stack CoreMatrix",
+      "official_model": "C158",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H016"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H016",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1274/C158_CoreMatrix_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "workshop_lord",
+      "name_zh": "另一块板",
+      "kind": "hero",
+      "faction": "工位",
+      "base_power": 5,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "hero",
+        "mbus",
+        "workshop",
+        "grove_uart"
+      ],
+      "skill_zh": "提供 5 点，只占 1 次出牌。原套芯片的堆叠模块可以打出，但不配对。长口器具仍可 +1。配对不减半。",
+      "product_trace": "CoreMP135",
+      "catalog_ids": [
+        "H018"
+      ],
+      "author_pack": "工坊",
+      "fit_zh": "另一套律法，不是禁插。",
+      "counter_zh": "树莓派底的 CM4Stack 不另做更高战力。",
+      "stable_id": "workshop_lord",
+      "game_name_zh": "另一块板",
+      "game_name_en": "Other Board",
+      "intro_zh": "不是同一套芯片的主控。模块能带上，只是对不上原来的加分。",
+      "skill_en": "Gives 5 and costs one play. Old-style stack modules may be played but do not bond. Long-port tools can still gain +1. Bonds are not halved.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Bench",
+      "v1_role": "无",
+      "design_role": "角色",
+      "pair_with_zh": "远程针、定位针。",
+      "pair_limit_zh": "定位模块和算力盒在它身边不加。",
+      "product_record_ids": [
+        "H018"
+      ],
+      "official_product_name": "M5Stack CoreMP135",
+      "official_model": "CoreMP135",
+      "sources": [
+        "https://docs.m5stack.com/en/core/CoreMP135"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "H018"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "H018",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/core/M5CoreMP135/img-e1972b35-73c9-4a6c-a91f-adcd915b7771.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "lamp_retainer",
+      "name_zh": "灯底板",
+      "kind": "retainer",
+      "faction": "叠层",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "lamp",
+      "tags": [
+        "retainer",
+        "mbus_bottom"
+      ],
+      "skill_zh": "提供 2 点。打出时如果初代叠层英雄已经在场，自己 +2。只这一次。",
+      "product_trace": "初代 M5GO Bottom",
+      "catalog_ids": [
+        "S005"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "远行队长、焰核、城主、灰铠。",
+      "counter_zh": "不是二代箱底。",
+      "stable_id": "lamp_retainer",
+      "game_name_zh": "灯底板",
+      "game_name_en": "Light Base",
+      "intro_zh": "带灯的初代底板。",
+      "skill_en": "Gives 2. When played, if a first-generation stack hero is already out, gain +2 once.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "常客、指南、火头、套装。",
+      "pair_limit_zh": "厚壳在场也不加。",
+      "product_record_ids": [
+        "S005"
+      ],
+      "official_product_name": "M5GO Bottom",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/core/Fire_v2.7",
+        "https://docs.m5stack.com/en/core/Core2",
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "S005"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "S005",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/base/m5go_bottom/m5go_bottom_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "bottom2_retainer",
+      "name_zh": "厚底板",
+      "kind": "retainer",
+      "faction": "叠层",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "bottom2",
+      "tags": [
+        "retainer",
+        "core2_bottom"
+      ],
+      "skill_zh": "提供 2 点。打出时如果厚壳已经在场，自己 +2。只这一次。",
+      "product_trace": "M5GO Bottom2 v1.3，A014-C-V13",
+      "catalog_ids": [
+        "S006"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "核心守卫。",
+      "counter_zh": "不能当成普通底座的升级惩罚。",
+      "stable_id": "bottom2_retainer",
+      "game_name_zh": "厚底板",
+      "game_name_en": "Thick Base",
+      "intro_zh": "专门换到厚壳下面的底板。",
+      "skill_en": "Gives 2. When played, if Thick Shell is already out, gain +2 once.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "厚壳。",
+      "pair_limit_zh": "它是换下原来的电池底，不是叠在普通底上。",
+      "product_record_ids": [
+        "S006"
+      ],
+      "official_product_name": "M5GO Bottom2 v1.3",
+      "official_model": "A014-C-V13",
+      "sources": [
+        "https://docs.m5stack.com/en/base/Base_M5GO_Bottom2_v1.3",
+        "https://docs.m5stack.com/en/core/Core2",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "S006"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "S006",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1227/A014-C-V13_Base_M5GO_Bottom2_v1.3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "plain_base",
+      "name_zh": "普通底",
+      "kind": "retainer",
+      "faction": "叠层",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "plain_base",
+      "tags": [
+        "retainer",
+        "base_series"
+      ],
+      "skill_zh": "提供 1 点。打出时如果初代叠层英雄已经在场，自己 +1。厚壳不算。",
+      "product_trace": "Dual 16340 / LAN / AAA 等复合行",
+      "catalog_ids": [
+        "S007"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "初代英雄的便宜随从。",
+      "counter_zh": "不要为了扣分去打它。",
+      "stable_id": "plain_base",
+      "game_name_zh": "普通底",
+      "game_name_en": "Plain Base",
+      "intro_zh": "一类普通底板的代表，不是某一只没查过的万能底。",
+      "skill_en": "Gives 1. When played, if a first-generation stack hero is already out, gain +1. Thick Shell does not count.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "常客、指南、火头、套装。",
+      "pair_limit_zh": "跟厚壳不配对，也不扣分。",
+      "product_record_ids": [
+        "S007"
+      ],
+      "official_product_name": "Base 系列（多种型号写在同一行）",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/core/Core2",
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "S007 是复合行，不能当成某一个型号已经单独验证。",
+      "non_product": false,
+      "image_record_ids": [
+        "S007"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "faces_chassis",
+      "name_zh": "脸架子",
+      "kind": "retainer",
+      "faction": "换脸",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "faces_chassis",
+      "tags": [
+        "retainer",
+        "faces_chassis"
+      ],
+      "skill_zh": "提供 2 点。结算时一起看：有叠层英雄且只有一张脸，自己 +2。键帽脸和手柄脸都在时，这次不加。",
+      "product_trace": "Faces Bottom3。官方写明可接 Core1 / Core2 / CoreS3",
+      "catalog_ids": [
+        "S008"
+      ],
+      "author_pack": "面甲",
+      "fit_zh": "核心守卫可以带它。这不是普通底座禁令。",
+      "counter_zh": "两张键板式面板会让这套脸散掉。",
+      "stable_id": "faces_chassis",
+      "game_name_zh": "脸架子",
+      "game_name_en": "Face Frame",
+      "intro_zh": "换脸用的架子。官方写明可以接到厚壳上。",
+      "skill_en": "Gives 2. At scoring, if a stack hero is out and there is exactly one face, gain +2. If both same-address faces are out, gain nothing.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Swap Face",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "一张脸。",
+      "pair_limit_zh": "这不是普通底那条禁令。",
+      "product_record_ids": [
+        "S008"
+      ],
+      "official_product_name": "Faces Bottom3",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/faces/Faces_Bottom3"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "S008"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "S008",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1273/A168_Faces_Bottom3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "faces_scribe",
+      "name_zh": "键帽脸",
+      "kind": "retainer",
+      "faction": "换脸",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "faces_08",
+      "tags": [
+        "retainer",
+        "faces_panel",
+        "addr08"
+      ],
+      "skill_zh": "提供 2 点。结算时如果架子和叠层英雄都在，且手柄脸不在，自己 +1。",
+      "product_trace": "Faces Keyboard3，A003-V3，辅助芯片不是英雄",
+      "catalog_ids": [
+        "S009"
+      ],
+      "author_pack": "面甲",
+      "fit_zh": "单一面板。",
+      "counter_zh": "御手。",
+      "stable_id": "faces_scribe",
+      "game_name_zh": "键帽脸",
+      "game_name_en": "Key Face",
+      "intro_zh": "一块按键面板。辅助芯片听宿主的，自己不是英雄。",
+      "skill_en": "Gives 2. At scoring, if the frame and a stack hero are out and Pad Face is not, gain +1.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Swap Face",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "脸架子。",
+      "pair_limit_zh": "和手柄脸同时在场时，两张脸和架子的配对都取消。",
+      "product_record_ids": [
+        "S009"
+      ],
+      "official_product_name": "Faces Keyboard3",
+      "official_model": "A003-V3",
+      "sources": [
+        "https://docs.m5stack.com/en/faces/Faces_Keyboard3",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "S009"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "S009",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1270/A003-V3_Faces_Keyboard3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "faces_hand",
+      "name_zh": "手柄脸",
+      "kind": "retainer",
+      "faction": "换脸",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "faces_08",
+      "tags": [
+        "retainer",
+        "faces_panel",
+        "addr08"
+      ],
+      "skill_zh": "提供 2 点。结算规则与键帽脸相同。两张同时在场则都不加。",
+      "product_trace": "Faces Gamepad3，A004-V3",
+      "catalog_ids": [
+        "S010"
+      ],
+      "author_pack": "面甲",
+      "fit_zh": "想要操作叙事时换这张，不叠数值。",
+      "counter_zh": "键士。",
+      "stable_id": "faces_hand",
+      "game_name_zh": "手柄脸",
+      "game_name_en": "Pad Face",
+      "intro_zh": "一块手柄面板，和键帽脸用的是同一块地址牌。",
+      "skill_en": "Gives 2. Same scoring rule as Key Face. If both are out, neither bonds.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Swap Face",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "脸架子。",
+      "pair_limit_zh": "不要和键帽脸一起打。",
+      "product_record_ids": [
+        "S010"
+      ],
+      "official_product_name": "Faces Gamepad3",
+      "official_model": "A004-V3",
+      "sources": [
+        "https://docs.m5stack.com/en/faces/Faces_Gamepad3",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "S010"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "S010",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1271/A004-V3_Faces_Gamepad3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "faces_abacus",
+      "name_zh": "算盘脸",
+      "kind": "retainer",
+      "faction": "换脸",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "faces_unknown",
+      "tags": [
+        "retainer",
+        "faces_panel",
+        "addr_unknown"
+      ],
+      "skill_zh": "提供 2 点。结算时如果架子和叠层英雄都在，自己 +1。不因为键帽脸在场而取消。",
+      "product_trace": "Faces Calculator3，A005-V3",
+      "catalog_ids": [
+        "S011"
+      ],
+      "author_pack": "面甲",
+      "fit_zh": "未知不是冲突。",
+      "counter_zh": "不要写成已经证实的双面板共鸣。",
+      "stable_id": "faces_abacus",
+      "game_name_zh": "算盘脸",
+      "game_name_en": "Calc Face",
+      "intro_zh": "一块数字键面板。地址还没核到，所以不跟别的脸互相取消。",
+      "skill_en": "Gives 2. At scoring, if the frame and a stack hero are out, gain +1. Key Face does not cancel it.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Swap Face",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "脸架子。",
+      "pair_limit_zh": "两张脸都在时架子不加，这张仍可 +1。",
+      "product_record_ids": [
+        "S011"
+      ],
+      "official_product_name": "Faces Calculator3",
+      "official_model": "A005-V3",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "地址未知，不能写成已经冲突或已经共鸣。",
+      "non_product": false,
+      "image_record_ids": [
+        "S011"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "S011",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1272/A005-V3_Faces_Calculator3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "hat_range",
+      "name_zh": "测距帽",
+      "kind": "retainer",
+      "faction": "细棍",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "hat_on_stick",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_classic"
+      ],
+      "skill_zh": "提供 2 点。打出时：新细条在场则不加；否则细条或长条在场 +2；只有自带电则 +1。只这一次。",
+      "product_trace": "Hat ToF",
+      "catalog_ids": [
+        "A004"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "短刃、加长刃。",
+      "counter_zh": "新律细刃还没核对，先不结冠。",
+      "stable_id": "hat_range",
+      "game_name_zh": "测距帽",
+      "game_name_en": "Range Cap",
+      "intro_zh": "戴在细棍上的测距帽子。",
+      "skill_en": "Gives 2. When played: no bond if New Slim is out; otherwise +2 with Slim or Long Slim, or +1 with only Own Battery. Once.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "细条、长条、自带电。",
+      "pair_limit_zh": "新细条是还没核到的搭配，不加，也不扣分。",
+      "product_record_ids": [
+        "A004"
+      ],
+      "official_product_name": "Hat ToF",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "A004"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "A004",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat-tof/hat-tof_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "hat_ambush",
+      "name_zh": "感应帽",
+      "kind": "retainer",
+      "faction": "细棍",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "hat_on_stick",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_classic"
+      ],
+      "skill_zh": "提供 1 点。配对规则和测距帽相同。",
+      "product_trace": "Hat PIR",
+      "catalog_ids": [
+        "A005"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "便宜的冠。",
+      "counter_zh": "不要把它当气候瓶。",
+      "stable_id": "hat_ambush",
+      "game_name_zh": "感应帽",
+      "game_name_en": "Sense Cap",
+      "intro_zh": "靠人体感应的帽子，不是测温那种。",
+      "skill_en": "Gives 1. Uses the same host check as Range Cap.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "细条、长条、自带电。",
+      "pair_limit_zh": "新细条不加。",
+      "product_record_ids": [
+        "A005"
+      ],
+      "official_product_name": "Hat PIR",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://shop.m5stack.com/collections/for-stick"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "A005"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "A005",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat-pir/hat-pir_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "hat_joy",
+      "name_zh": "小摇杆",
+      "kind": "retainer",
+      "faction": "细棍",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "hat_on_stick",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_classic",
+        "named_ban"
+      ],
+      "skill_zh": "提供 3 点。宿主判断与测距帽相同。新细条在场时不加，也不扣这 3 点。",
+      "product_trace": "Hat Mini JoyC，U156",
+      "catalog_ids": [
+        "A006"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "短刃上是高基础冠。",
+      "counter_zh": "放进新律牌组只是占额。",
+      "stable_id": "hat_joy",
+      "game_name_zh": "小摇杆",
+      "game_name_en": "Mini Stick",
+      "intro_zh": "小摇杆帽。官方点名装不到新细条上。",
+      "skill_en": "Gives 3. Same host check as Range Cap. With New Slim there is no bond and no loss of this 3.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "细条、长条上是较厚的帽子。",
+      "pair_limit_zh": "放进新细条牌组只是占一张牌。",
+      "product_record_ids": [
+        "A006"
+      ],
+      "official_product_name": "Hat Mini JoyC",
+      "official_model": "U156",
+      "sources": [
+        "https://docs.m5stack.com/en/core/StickS3",
+        "https://docs.m5stack.com/en/arduino/projects/hat/hat_mini_joyc"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "A006"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "A006",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/MiniJoyC/img-5f9e97ba-2ad4-482a-8ed0-5c5551514558.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "hat_voice",
+      "name_zh": "小喇叭",
+      "kind": "retainer",
+      "faction": "细棍",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "hat_i2s",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_i2s"
+      ],
+      "skill_zh": "提供 2 点。打出时只有长条已经在场才 +2。",
+      "product_trace": "Hat SPK2",
+      "catalog_ids": [
+        "A002"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "加长刃。",
+      "counter_zh": "其他细刃不结。",
+      "stable_id": "hat_voice",
+      "game_name_zh": "小喇叭",
+      "game_name_en": "Tiny Speaker",
+      "intro_zh": "走声音线的小喇叭，不是普通传感帽。",
+      "skill_en": "Gives 2. When played, gain +2 only if Long Slim is already out.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "长条。",
+      "pair_limit_zh": "其他细棍不加。",
+      "product_record_ids": [
+        "A002"
+      ],
+      "official_product_name": "Hat SPK2",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/hat/Hat_SPK2"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "A002"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "A002",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat-spk/hat-spk_02.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "hat_weather",
+      "name_zh": "天气帽",
+      "kind": "retainer",
+      "faction": "细棍",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "retainer",
+        "hat",
+        "hat_classic",
+        "env"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有细口英雄，+1。三件套已在场且磁铁靠近还没打出，则改为 +2。温湿计已在场且分线器还没上场，则不加。",
+      "product_trace": "Hat ENV III",
+      "catalog_ids": [
+        "A010"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "和气候瓶二选一，或先放分路匣。",
+      "counter_zh": "后手的环境牌对不上同一条路。",
+      "stable_id": "hat_weather",
+      "game_name_zh": "天气帽",
+      "game_name_en": "Weather Cap",
+      "intro_zh": "看温湿度的帽子。",
+      "skill_en": "Gives 2. Bonds +1 with a slim-port hero, or +2 if Three Piece is out and Magnet Near is not. No bond if Climate Tube is already out and Splitter is not.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "细条、长条、三件套。",
+      "pair_limit_zh": "和温湿计二选一，或先放分线器。",
+      "product_record_ids": [
+        "A010"
+      ],
+      "official_product_name": "Hat ENV III",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://shop.m5stack.com/collections/for-stick"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "A010"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "A010",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat_envIII/hat_envIII_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "hat_cell",
+      "name_zh": "电池帽",
+      "kind": "retainer",
+      "faction": "细棍",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "hat_power",
+      "tags": [
+        "retainer",
+        "hat"
+      ],
+      "skill_zh": "提供 1 点。打出时若细条或长条已在场，+1。自带电和新细条不加。",
+      "product_trace": "Hat PowerC",
+      "catalog_ids": [
+        "A015"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "短刃的小续航。",
+      "counter_zh": "不要写成所有 Stick 都能戴。",
+      "stable_id": "hat_cell",
+      "game_name_zh": "电池帽",
+      "game_name_en": "Battery Cap",
+      "intro_zh": "给细棍补电的帽子。",
+      "skill_en": "Gives 1. When played, gain +1 if Slim or Long Slim is already out. Not with Own Battery or New Slim.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "细条、长条。",
+      "pair_limit_zh": "没写明的型号不加。",
+      "product_record_ids": [
+        "A015"
+      ],
+      "official_product_name": "Hat PowerC",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/hat/Hat_PowerC"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "A015"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "A015",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/hat/hat-powerc/hat-powerc_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "chain_key",
+      "name_zh": "一节键",
+      "kind": "retainer",
+      "faction": "串线",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "chain_node",
+      "tags": [
+        "retainer",
+        "chain_node"
+      ],
+      "skill_zh": "提供 2 点。打出时如果链的头已经在场，而且还没有别的链节拿过 +1，自己 +1。",
+      "product_trace": "Chain Key，代表一类输入节点",
+      "catalog_ids": [
+        "C001"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "双钥，或先坐上转接桥的微核。",
+      "counter_zh": "第二个链节不会指数变强。",
+      "stable_id": "chain_key",
+      "game_name_zh": "一节键",
+      "game_name_en": "Chain Key",
+      "intro_zh": "串在线上的一节按键。摇杆和编码器只是这张的另一种画法。",
+      "skill_en": "Gives 2. When played, if a chain head is already out and no other link has taken +1, gain +1.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Chain",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "双头，或已经打出接上串的小块。",
+      "pair_limit_zh": "第二个链节不会越加越多。",
+      "product_record_ids": [
+        "C001"
+      ],
+      "official_product_name": "Chain Key",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/arduino/projects/chain/chain_bus",
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/start"
+      ],
+      "mapping_note": "C001 把多种链节写在一行。摇杆、编码器不另开分数。",
+      "non_product": false,
+      "image_record_ids": [
+        "C001"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "C001z",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1192/U206-Chain-key-main-pictures-01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "chain_lantern",
+      "name_zh": "一节灯",
+      "kind": "retainer",
+      "faction": "串线",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "chain_lantern",
+      "tags": [
+        "retainer",
+        "chain_node"
+      ],
+      "skill_zh": "提供 2 点。已经有链节拿过配对，且这条链还没到 +2 时，自己 +1。",
+      "product_trace": "Chain RGB / 单色屏节点",
+      "catalog_ids": [
+        "C001"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "接在链节后面做回声。",
+      "counter_zh": "单独上场没有链路配对。",
+      "stable_id": "chain_lantern",
+      "game_name_zh": "一节灯",
+      "game_name_en": "Chain Lamp",
+      "intro_zh": "串在后面的一节灯。",
+      "skill_en": "Gives 2. If a link has already bonded and the line is still under +2, gain +1.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Chain",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "接在一节键后面。",
+      "pair_limit_zh": "单独上场没有链路加分。",
+      "product_record_ids": [
+        "C001"
+      ],
+      "official_product_name": "Chain 灯节点",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/arduino/projects/chain/chain_bus",
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/start"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "C001"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "tochain",
+      "name_zh": "接上串",
+      "kind": "retainer",
+      "faction": "小块",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "atomic_seat",
+      "tags": [
+        "retainer",
+        "atomic",
+        "tochain"
+      ],
+      "skill_zh": "提供 1 点。小块已在场且这是第一张底座时 +2，并让之后的链节把它当成头。",
+      "product_trace": "Atomic ToChain Base",
+      "catalog_ids": [
+        "C003"
+      ],
+      "author_pack": "微核",
+      "fit_zh": "跨族只比这一条链。",
+      "counter_zh": "它不变成第二名英雄。",
+      "stable_id": "tochain",
+      "game_name_zh": "接上串",
+      "game_name_en": "Chain Seat",
+      "intro_zh": "把小块接到串线上的底座。",
+      "skill_en": "Gives 1. If a block hero is out and this is the first base, gain +2, and later links treat it as the head.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Block",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "探子、新小块。",
+      "pair_limit_zh": "不因此再加第二次。第二张底座不加。",
+      "product_record_ids": [
+        "C003"
+      ],
+      "official_product_name": "Atomic ToChain Base",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/accessory/Atomic_ToChain_Base",
+        "https://docs.m5stack.com/en/arduino/projects/chain/chain_bus"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "C003"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "C003",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1193/A163_main-picture-01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "atom_seat",
+      "name_zh": "响座",
+      "kind": "retainer",
+      "faction": "小块",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "atomic_seat",
+      "tags": [
+        "retainer",
+        "atomic"
+      ],
+      "skill_zh": "提供 2 点。小块已在场且这是第一张底座时 +2。",
+      "product_trace": "Atomic 底座族的声音代表，复合行不逐个拆强度",
+      "catalog_ids": [
+        "C004"
+      ],
+      "author_pack": "微核",
+      "fit_zh": "不想跨链时的座位。",
+      "counter_zh": "和转接桥只能留一个座位。",
+      "stable_id": "atom_seat",
+      "game_name_zh": "响座",
+      "game_name_en": "Sound Seat",
+      "intro_zh": "带声音的小底座。",
+      "skill_en": "Gives 2. If a block hero is out and this is the first base, gain +2.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Block",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "探子、新小块。",
+      "pair_limit_zh": "和接上串只能留一个座位。",
+      "product_record_ids": [
+        "C004"
+      ],
+      "official_product_name": "Atomic 底座中的声音款",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/accessory/Atomic_ToUnit_Base"
+      ],
+      "mapping_note": "C004 是多种底座的复合行，这张只代表声音座位。",
+      "non_product": false,
+      "image_record_ids": [
+        "C004"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "C004z",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/903/A149_Atomic_Voice_Base_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "tab_keys",
+      "name_zh": "平板键盘",
+      "kind": "retainer",
+      "faction": "大屏",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "tab_keys",
+      "tags": [
+        "retainer"
+      ],
+      "skill_zh": "提供 2 点。打出时如果大平板已经在场，自己 +2。",
+      "product_trace": "Tab5 Keyboard",
+      "catalog_ids": [
+        "U015"
+      ],
+      "author_pack": "屏界",
+      "fit_zh": "屏君的专用键。",
+      "counter_zh": "不是面甲面板。",
+      "stable_id": "tab_keys",
+      "game_name_zh": "平板键盘",
+      "game_name_en": "Tablet Keys",
+      "intro_zh": "只配大平板的键盘，不能安到脸架子上。",
+      "skill_en": "Gives 2. When played, if Wide Screen is already out, gain +2.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Big Screen",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "大平板。",
+      "pair_limit_zh": "不是换脸面板。",
+      "product_record_ids": [
+        "U015"
+      ],
+      "official_product_name": "Tab5 Keyboard",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U015"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U015",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1241/A164_tab5_keyboard_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "s3_window",
+      "name_zh": "细条小屏",
+      "kind": "retainer",
+      "faction": "细棍",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "s3_window",
+      "tags": [
+        "retainer",
+        "stick_s3_unique"
+      ],
+      "skill_zh": "提供 2 点。打出时如果新细条已经在场，自己 +2。",
+      "product_trace": "Display 1.14 For StickS3，A183",
+      "catalog_ids": [
+        "A014"
+      ],
+      "author_pack": "细刃",
+      "fit_zh": "新律的正确窗口。",
+      "counter_zh": "旧冠不能拿它来冒充。",
+      "stable_id": "s3_window",
+      "game_name_zh": "细条小屏",
+      "game_name_en": "Strip Screen",
+      "intro_zh": "新细条专用的小屏幕。",
+      "skill_en": "Gives 2. When played, if New Slim is already out, gain +2.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Slim",
+      "v1_role": "无",
+      "design_role": "随从",
+      "pair_with_zh": "新细条。",
+      "pair_limit_zh": "旧帽子不能拿它冒充。",
+      "product_record_ids": [
+        "A014"
+      ],
+      "official_product_name": "Display 1.14 For StickS3",
+      "official_model": "A183",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "A014"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "A014",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1278/A183_Display_1.14_For_StickS3_main_pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "climate_vial",
+      "name_zh": "温湿计",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "env",
+        "sense"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有细口英雄，+1。三件套已在场且磁铁靠近还没打出，则改为 +2。天气帽已在且分线器未在，则不加。",
+      "product_trace": "Unit ENV-III",
+      "catalog_ids": [
+        "U001"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "堆叠英雄的感知件。",
+      "counter_zh": "环境冠已经占用时，后一张要对上分路匣。",
+      "stable_id": "climate_vial",
+      "game_name_zh": "温湿计",
+      "game_name_en": "Climate Tube",
+      "intro_zh": "插在细口上的温湿度计。",
+      "skill_en": "Gives 2. +1 with a slim-port hero, or +2 if Three Piece is out before Magnet Near. No bond if Weather Cap is already out without Splitter.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "叠层英雄、三件套。",
+      "pair_limit_zh": "和天气帽二选一，或先放分线器。",
+      "product_record_ids": [
+        "U001"
+      ],
+      "official_product_name": "Unit ENV-III",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/start"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U001"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U001",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/envIII/envIII_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "range_nail",
+      "name_zh": "测距头",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "tof"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有细口英雄，+1。已经有另一只测距头且分线器还没上场，则不加。",
+      "product_trace": "Unit ToF 家族，复合行",
+      "catalog_ids": [
+        "U002"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "公共测距。",
+      "counter_zh": "和测距冠不是同一张牌。",
+      "stable_id": "range_nail",
+      "game_name_zh": "测距头",
+      "game_name_en": "Range Head",
+      "intro_zh": "插在细口上的测距头。",
+      "skill_en": "Gives 2. +1 if a slim-port hero is out. No bond if another range head is already out and Splitter is not.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "有细口的英雄。",
+      "pair_limit_zh": "第二只要等分线器先上场。",
+      "product_record_ids": [
+        "U002"
+      ],
+      "official_product_name": "Unit ToF 家族",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "U002 是复合行。",
+      "non_product": false,
+      "image_record_ids": [
+        "U002"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "echo_mallet",
+      "name_zh": "超声头",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有细口英雄，+1。只这一次。",
+      "product_trace": "Unit Ultrasonic-I2C",
+      "catalog_ids": [
+        "U003"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "和回声钉成对，教人接口不是万能的。",
+      "counter_zh": "不能插到只认 GPIO 的故事上就假装合拍。",
+      "stable_id": "echo_mallet",
+      "game_name_zh": "超声头",
+      "game_name_en": "Sonic Head",
+      "intro_zh": "走细口的超声探头。",
+      "skill_en": "Gives 2. When played, gain +1 if a slim-port hero is already out. Once.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "有细口的英雄。",
+      "pair_limit_zh": "不能拿去配只有宽口的牌。",
+      "product_record_ids": [
+        "U003"
+      ],
+      "official_product_name": "Unit Ultrasonic-I2C",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U003"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U003",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "echo_pin",
+      "name_zh": "超声针",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_gpio",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有宽口英雄，+1。只这一次。",
+      "product_trace": "Unit Ultrasonic-IO",
+      "catalog_ids": [
+        "U003"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "初代和二代堆叠有这类口。",
+      "counter_zh": "键使只有一条 I2C，对不上。",
+      "stable_id": "echo_pin",
+      "game_name_zh": "超声针",
+      "game_name_en": "Sonic Pin",
+      "intro_zh": "走宽口的超声探头，和超声头不能互换。",
+      "skill_en": "Gives 2. When played, gain +1 if a wide-port hero is already out. Once.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "初代叠层和厚壳这类有宽口的主控。",
+      "pair_limit_zh": "敲键没有宽口，对不上。",
+      "product_record_ids": [
+        "U003"
+      ],
+      "official_product_name": "Unit Ultrasonic-IO",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U003"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U003a",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "split_case",
+      "name_zh": "分线器",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "gear",
+        "unit",
+        "split_case"
+      ],
+      "skill_zh": "提供 1 点。自己不加分。它已经在场后，后打出的第二件温湿计、天气帽或测距头可以再配一次。",
+      "product_trace": "PaHub",
+      "catalog_ids": [
+        "U007"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "你真的要带两件会抢地址的器具时。",
+      "counter_zh": "它不解除结构上合不上的冠。",
+      "stable_id": "split_case",
+      "game_name_zh": "分线器",
+      "game_name_en": "Splitter",
+      "intro_zh": "先放上，后面第二件抢地址的小器具才接得上。",
+      "skill_en": "Gives 1 and no bond of its own. After it is out, a later second climate or range tool may bond.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "要带两件会抢地址的器具时才值得打。",
+      "pair_limit_zh": "不能让结构上装不上的帽子变得能配。",
+      "product_record_ids": [
+        "U007"
+      ],
+      "official_product_name": "Unit PaHub",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/unit/Unit_PaHub_v2.1",
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U007"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U007",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/pahub2/pahub2_02.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "name_ring",
+      "name_zh": "刷卡圈",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "sense"
+      ],
+      "skill_zh": "提供 2 点。配对与温湿计相同，也算感知器具。",
+      "product_trace": "Unit RFID2",
+      "catalog_ids": [
+        "U004"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "灰铠和三省的感知。",
+      "counter_zh": "磁扰先落则这次感知不结。",
+      "stable_id": "name_ring",
+      "game_name_zh": "刷卡圈",
+      "game_name_en": "Name Tap",
+      "intro_zh": "细口上的感应圈，用来认一张卡。",
+      "skill_en": "Gives 2. Bonds like Climate Tube and counts as a sensing tool.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "指南、三件套。",
+      "pair_limit_zh": "磁铁靠近先打出则这次感知不加。",
+      "product_record_ids": [
+        "U004"
+      ],
+      "official_product_name": "Unit RFID2",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/product_i2c_addr",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U004"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U004z",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/unit/rfid2/rfid2_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "locate_feather",
+      "name_zh": "定位针",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_uart",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "locate_feather"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有长口英雄，+1。",
+      "product_trace": "UART GPS 一类，复合行",
+      "catalog_ids": [
+        "U006"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "驿站、堆叠的 UART。",
+      "counter_zh": "它不是已有的 LoRa·中继手。",
+      "stable_id": "locate_feather",
+      "game_name_zh": "定位针",
+      "game_name_en": "Locator",
+      "intro_zh": "走长口的定位针。",
+      "skill_en": "Gives 2. When played, gain +1 if a long-port hero is already out.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "火头、机柜、另一块板。",
+      "pair_limit_zh": "它若已在场，之后的定位模块对火头不加。",
+      "product_record_ids": [
+        "U006"
+      ],
+      "official_product_name": "UART GPS 一类",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/core/Fire_v2.7"
+      ],
+      "mapping_note": "U006 是多种通信器具的复合行。这不是角色远呼。",
+      "non_product": false,
+      "image_record_ids": [
+        "U006"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "star_module",
+      "name_zh": "定位模块",
+      "kind": "gear",
+      "faction": "叠层",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "star_module",
+      "tags": [
+        "gear",
+        "module",
+        "esp32_module"
+      ],
+      "skill_zh": "提供 3 点。打出时若叠层英雄已在场，+2。火头和定位针都已在场则不加。另一块板在场也不加。",
+      "product_trace": "Module GPS v2",
+      "catalog_ids": [
+        "S001"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "城垛的大模块。",
+      "counter_zh": "总线仲裁只能补「英雄还没入场」的错过，不能压过焰核的暗线。",
+      "stable_id": "star_module",
+      "game_name_zh": "定位模块",
+      "game_name_en": "Locator Block",
+      "intro_zh": "要按主控对好位置的定位模块。",
+      "skill_en": "Gives 3. +2 if a stack hero is already out. No bond if Spark and Locator are both already out, or if Other Board is out.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "常客、厚壳、三件套、火头。",
+      "pair_limit_zh": "对不上不加，也不倒扣。对一下脚只能补英雄当时还没上场的情况。",
+      "product_record_ids": [
+        "S001"
+      ],
+      "official_product_name": "Module GPS v2",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/guide/common/dip_switch",
+        "https://docs.m5stack.com/en/guide/module_gps_v2/pins_change",
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "S001"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "S001",
+      "reference_image_url": "https://static-cdn.m5stack.com/resource/docs/products/module/gps/gps_03.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "heat_lens",
+      "name_zh": "热像头",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "heat_lens",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "提供 2 点。热眼睛在场则不加。否则有细口英雄时 +1。",
+      "product_trace": "Unit Thermal2",
+      "catalog_ids": [
+        "U011"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "普通宿主的热成像。",
+      "counter_zh": "官方允许独立使用，本草案不另开一套计分。",
+      "stable_id": "heat_lens",
+      "game_name_zh": "热像头",
+      "game_name_en": "Heat Head",
+      "intro_zh": "细口上的热成像头。默认当器具，不当第二个英雄。",
+      "skill_en": "Gives 2. No bond if Heat Eye is out. Otherwise +1 if a slim-port hero is out.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "有细口的英雄。",
+      "pair_limit_zh": "官方允许它自己运行，草案不另开一套计分。",
+      "product_record_ids": [
+        "U011"
+      ],
+      "official_product_name": "Unit Thermal2",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/unit/Unit_Thermal2"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U011"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U011",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "eight_arm",
+      "name_zh": "八路舵机",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有细口英雄，+1。不能在场上改成串线那张。",
+      "product_trace": "8Servos2-I2C，U222",
+      "catalog_ids": [
+        "U009"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "和八腕链环是两件武器。",
+      "counter_zh": "链主对不上这张。",
+      "stable_id": "eight_arm",
+      "game_name_zh": "八路舵机",
+      "game_name_en": "Eight Servos",
+      "intro_zh": "走细口的八路舵机。",
+      "skill_en": "Gives 2. +1 if a slim-port hero is out. It cannot become the chain version on the board.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "有细口的英雄。",
+      "pair_limit_zh": "串线的头对不上这张。",
+      "product_record_ids": [
+        "U009"
+      ],
+      "official_product_name": "Unit 8Servos2-I2C",
+      "official_model": "U222",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U009"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U009z",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1281/U222_Unit_8Servos2-I2C_main_pictures_01.jpg",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "eight_arm_chain",
+      "name_zh": "串线舵机",
+      "kind": "gear",
+      "faction": "串线",
+      "base_power": 3,
+      "plays": 1,
+      "bond_rule": "eight_chain",
+      "tags": [
+        "gear",
+        "chain_node"
+      ],
+      "skill_zh": "提供 3 点。链的头已经在场时 +1，并算进这条链最多 +2。",
+      "product_trace": "8Servos2-Chain，U223",
+      "catalog_ids": [
+        "C005"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "链上的重武器。",
+      "counter_zh": "不能当 I2C 八腕用。",
+      "stable_id": "eight_arm_chain",
+      "game_name_zh": "串线舵机",
+      "game_name_en": "Chain Servos",
+      "intro_zh": "串在链上的八路舵机，和细口那张不是同一件。",
+      "skill_en": "Gives 3. Gain +1 if a chain head is already out, inside the line cap of +2.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Chain",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "双头，或已经接上串的小块。",
+      "pair_limit_zh": "不能当八路舵机用。",
+      "product_record_ids": [
+        "C005"
+      ],
+      "official_product_name": "Unit 8Servos2-Chain",
+      "official_model": "U223",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/history"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "C005"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "C005",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1280/U223_Unit_8Servos2-Chain_main_pictures_01.jpg",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "key_slate",
+      "name_zh": "小键盘",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_i2c",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有细口英雄，+1。",
+      "product_trace": "Unit CardKB / CardKB2",
+      "catalog_ids": [
+        "U010"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "键使的第一件器具。",
+      "counter_zh": "有芯片也不升成英雄。",
+      "stable_id": "key_slate",
+      "game_name_zh": "小键盘",
+      "game_name_en": "Key Pad",
+      "intro_zh": "插在细口上的小键盘。",
+      "skill_en": "Gives 2. +1 if a slim-port hero is out.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "敲键的第一件小器具。",
+      "pair_limit_zh": "有芯片也不升成英雄。后一版键盘只是这张的另一种画法。",
+      "product_record_ids": [
+        "U010"
+      ],
+      "official_product_name": "Unit CardKB / CardKB2",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/unit/Unit_CardKB2",
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "U010"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "U010",
+      "reference_image_url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1225/U215_main-pictures_01.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "relay_feather",
+      "name_zh": "远程针",
+      "kind": "gear",
+      "faction": "公共牌",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "unit_uart",
+      "tags": [
+        "gear",
+        "unit",
+        "grove_part",
+        "relay_feather"
+      ],
+      "skill_zh": "提供 2 点。打出时若已有长口英雄，+1。小天线会因为它再加自己的分。",
+      "product_trace": "LoRaWAN / CatM / RS485 一类复合行",
+      "catalog_ids": [
+        "U006"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "驿站和织网。",
+      "counter_zh": "不是 LoRa·中继手那张角色。",
+      "stable_id": "relay_feather",
+      "game_name_zh": "远程针",
+      "game_name_en": "Radio Pin",
+      "intro_zh": "走长口的远程通信针。",
+      "skill_en": "Gives 2. +1 if a long-port hero is out. Tiny Antenna can gain its own bonus from it.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "机柜、另一块板、小天线。",
+      "pair_limit_zh": "这不是角色远呼。",
+      "product_record_ids": [
+        "U006"
+      ],
+      "official_product_name": "LoRaWAN / CatM / RS485 一类",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products",
+        "https://docs.m5stack.com/en/core/Fire_v2.7"
+      ],
+      "mapping_note": "与定位针共用研究复合行 U006，玩法上是两张牌。",
+      "non_product": false,
+      "image_record_ids": [
+        "U006"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "thought_case",
+      "name_zh": "算力盒",
+      "kind": "gear",
+      "faction": "叠层",
+      "base_power": 2,
+      "plays": 1,
+      "bond_rule": "thought_case",
+      "tags": [
+        "gear",
+        "module",
+        "esp32_module"
+      ],
+      "skill_zh": "提供 2 点。打出时若叠层英雄已在场，+1。另一块板在场则不加。它不能再带随从。",
+      "product_trace": "Module LLM",
+      "catalog_ids": [
+        "S004"
+      ],
+      "author_pack": "堆叠",
+      "fit_zh": "城垛的伴生算力。",
+      "counter_zh": "巡界屏君可以带它，但它仍是模块不是 Unit。",
+      "stable_id": "thought_case",
+      "game_name_zh": "算力盒",
+      "game_name_en": "Think Box",
+      "intro_zh": "跟在主控旁边的计算盒，不是第二个英雄。",
+      "skill_en": "Gives 2. +1 if a stack hero is out. No bond if Other Board is out. It cannot bring its own retainers.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Stack",
+      "v1_role": "无",
+      "design_role": "器具",
+      "pair_with_zh": "叠层英雄、大平板。",
+      "pair_limit_zh": "不算第二名英雄。",
+      "product_record_ids": [
+        "S004"
+      ],
+      "official_product_name": "Module LLM",
+      "official_model": "",
+      "sources": [
+        "https://docs.m5stack.com/en/products"
+      ],
+      "mapping_note": "",
+      "non_product": false,
+      "image_record_ids": [
+        "S004"
+      ],
+      "image_status": "awaiting_official_image",
+      "image_url": "",
+      "mapped_record_id": "S004",
+      "reference_image_url": "https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/docs/products/module/Module%20LLM/4.webp",
+      "reference_image_path": "",
+      "reference_image_local_status": "unavailable",
+      "reference_view_type": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "未找到/未核验",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "斜视",
+      "reference_note": "备用视角（宣传首图/斜视/包装/拼图，非正面）",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "bus_token",
+      "name_zh": "对一下脚",
+      "kind": "tactic",
+      "faction": "公共牌",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "restore_star",
+      "tags": [
+        "tactic"
+      ],
+      "skill_zh": "提供 1 点。若定位模块已经打出但当时没配对，而现在有叠层英雄，又不是火头加定位针挡住的情况，补上那一次 +2。只补一次。",
+      "product_trace": "拨码与脚位代差",
+      "catalog_ids": [
+        "R01",
+        "R03"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "模块打早了的时候。",
+      "counter_zh": "它不改写已经结成的配对。",
+      "stable_id": "bus_token",
+      "game_name_zh": "对一下脚",
+      "game_name_en": "Match Pins",
+      "intro_zh": "没有实物产品。模块打早了，用它把位置补上。",
+      "skill_en": "Gives 1. If Locator Block was played with no bond, and a stack hero is now out, and it is not blocked by Spark plus Locator, restore that +2 once.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "战术",
+      "pair_with_zh": "定位模块打早了的时候。",
+      "pair_limit_zh": "不能让装不上的帽子变得能配。非实体产品。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "对应拨码说明，不是一件官方单品。",
+      "non_product": true,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "quiet_pulse",
+      "name_zh": "少出一张",
+      "kind": "tactic",
+      "faction": "公共牌",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic",
+        "quiet"
+      ],
+      "skill_zh": "提供 0 点。结算时如果你打出的张数少于对手，总分 +2。不把手牌拿回来。",
+      "product_trace": "留牌语气，不是新的战斗模型",
+      "catalog_ids": [],
+      "author_pack": "公共",
+      "fit_zh": "你打算少打几张。",
+      "counter_zh": "对手出得不比你多，它就是 0。",
+      "stable_id": "quiet_pulse",
+      "game_name_zh": "少出一张",
+      "game_name_en": "Play Fewer",
+      "intro_zh": "没有实物产品。少打几张，结算时可能拿一点补偿。",
+      "skill_en": "Gives 0. At scoring, if you played fewer cards than the opponent, your total gains +2. Cards are not returned to hand.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "战术",
+      "pair_with_zh": "和停手搭配。",
+      "pair_limit_zh": "对手出的不比你少，它就是 0。非实体产品。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "",
+      "non_product": true,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "magnet_haze",
+      "name_zh": "磁铁靠近",
+      "kind": "tactic",
+      "faction": "公共牌",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic",
+        "magnet_haze"
+      ],
+      "skill_zh": "提供 0 点。它打出之后，再打出的感知配对不发生。不追回已经结成的，也不扣基础战力。",
+      "product_trace": "CoreS3 磁强计注意",
+      "catalog_ids": [
+        "R07"
+      ],
+      "author_pack": "公共",
+      "fit_zh": "对着三省和灰铠。",
+      "counter_zh": "不是毁坏装备。",
+      "stable_id": "magnet_haze",
+      "game_name_zh": "磁铁靠近",
+      "game_name_en": "Magnet Near",
+      "intro_zh": "没有实物产品。先放上，后面的感知配对就不发生。",
+      "skill_en": "Gives 0. Sensing bonds played after it do not happen. It does not undo earlier bonds or reduce base power.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "战术",
+      "pair_with_zh": "对着指南和三件套。",
+      "pair_limit_zh": "要打在感知器具之前才有用。非实体产品。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "依据是 CoreS3 磁强计会被磁铁干扰的官方说明，不是一张传感器商品。",
+      "non_product": true,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "overload_bell",
+      "name_zh": "别接太多",
+      "kind": "tactic",
+      "faction": "公共牌",
+      "base_power": 0,
+      "plays": 1,
+      "bond_rule": "none",
+      "tags": [
+        "tactic",
+        "overload"
+      ],
+      "skill_zh": "提供 0 点。你指定的对手本小局配对上限从 +3 变成 +2。不动基础战力。",
+      "product_trace": "电源和总线预算的设计，不是实测功耗",
+      "catalog_ids": [],
+      "author_pack": "公共",
+      "fit_zh": "对付连携很多的牌组。",
+      "counter_zh": "它不动基础战力。",
+      "stable_id": "overload_bell",
+      "game_name_zh": "别接太多",
+      "game_name_en": "Too Many",
+      "intro_zh": "没有实物产品。让对方本小局的配对上限变紧。",
+      "skill_en": "Gives 0. The chosen opponent's bond cap this round becomes +2 instead of +3. Base power is unchanged.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Shared",
+      "v1_role": "无",
+      "design_role": "战术",
+      "pair_with_zh": "对付配对很多的牌。",
+      "pair_limit_zh": "非实体产品。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "",
+      "non_product": true,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    },
+    {
+      "template_id": "chain_return",
+      "name_zh": "往回传",
+      "kind": "tactic",
+      "faction": "串线",
+      "base_power": 1,
+      "plays": 1,
+      "bond_rule": "chain_return",
+      "tags": [
+        "tactic"
+      ],
+      "skill_zh": "提供 1 点。已经有链节拿过配对，且这条链还没到 +2 时，再 +1。",
+      "product_trace": "Chain 的回程叙事",
+      "catalog_ids": [
+        "R15"
+      ],
+      "author_pack": "链式",
+      "fit_zh": "链已经接上的时候。",
+      "counter_zh": "没有链节就只有 1 点基础。",
+      "stable_id": "chain_return",
+      "game_name_zh": "往回传",
+      "game_name_en": "Send Back",
+      "intro_zh": "链已经接上以后，再把信号传回来一次。",
+      "skill_en": "Gives 1. If a link has already bonded and the line is under +2, gain +1.",
+      "design_skill_zh": "",
+      "design_skill_en": "",
+      "faction_en": "Chain",
+      "v1_role": "无",
+      "design_role": "战术",
+      "pair_with_zh": "双头或接上串之后。",
+      "pair_limit_zh": "没有链节就只有这 1 点。",
+      "product_record_ids": [],
+      "official_product_name": "",
+      "official_model": "",
+      "sources": [],
+      "mapping_note": "来自串线回程说明，不是一件单独商品。",
+      "non_product": true,
+      "image_record_ids": [],
+      "image_status": "not_a_product",
+      "image_url": "",
+      "mapped_record_id": "",
+      "reference_image_url": "",
+      "reference_image_path": "",
+      "reference_image_local_status": "",
+      "reference_view_type": "",
+      "image_usage": "官方图只作产品参考，未授权前不是正式游戏卡面。备用斜视图不能当作生成主参考。",
+      "operation_front_image_url": "",
+      "operation_front_image_path": "",
+      "operation_front_local_status": "",
+      "operation_front_source_page": "",
+      "view_orientation": "",
+      "surface": "",
+      "operation_front_verification_status": "",
+      "back_ortho_image_url": "",
+      "back_ortho_image_path": "",
+      "back_ortho_local_status": "",
+      "back_ortho_surface": "",
+      "reference_view_orientation": "",
+      "reference_note": "",
+      "has_operation_front": false
+    }
+  ],
+  "examples": [
+    {
+      "id": "stick_crown",
+      "note": "细条加测距帽 8，对新细条加小摇杆 7",
+      "a": {
+        "base": 6,
+        "bonds": 2,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 8,
+        "total": 8,
+        "plays": [
+          "stickc_operator",
+          "hat_range"
+        ],
+        "bond_cap": 3
+      },
+      "b": {
+        "base": 7,
+        "bonds": 0,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 7,
+        "total": 7,
+        "plays": [
+          "stick_s3",
+          "hat_joy"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "core2_bottoms",
+      "note": "厚壳加厚底板 10，对普通底 7",
+      "a": {
+        "base": 8,
+        "bonds": 2,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 10,
+        "total": 10,
+        "plays": [
+          "core2_guard",
+          "bottom2_retainer"
+        ],
+        "bond_cap": 3
+      },
+      "b": {
+        "base": 7,
+        "bonds": 0,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 7,
+        "total": 7,
+        "plays": [
+          "core2_guard",
+          "plain_base"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "faces_one",
+      "note": "一张脸 13，键帽脸加手柄脸 12",
+      "a": {
+        "base": 10,
+        "bonds": 3,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 13,
+        "total": 13,
+        "plays": [
+          "core2_guard",
+          "faces_chassis",
+          "faces_scribe"
+        ],
+        "bond_cap": 3
+      },
+      "b": {
+        "base": 12,
+        "bonds": 0,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 12,
+        "total": 12,
+        "plays": [
+          "core2_guard",
+          "faces_chassis",
+          "faces_scribe",
+          "faces_hand"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "atom_chain",
+      "note": "探子、接上串、一节键、一节灯，配对收到 +3 后总分 12",
+      "a": {
+        "base": 9,
+        "bonds": 3,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 12,
+        "total": 12,
+        "plays": [
+          "atom_scout",
+          "tochain",
+          "chain_key",
+          "chain_lantern"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "quiet",
+      "note": "少出一张加常客为 8；火头、定位模块、算力盒为 14",
+      "a": {
+        "base": 5,
+        "bonds": 0,
+        "skills": 1,
+        "quiet": 2,
+        "total_before_quiet": 6,
+        "total": 8,
+        "plays": [
+          "quiet_pulse",
+          "basic_warden"
+        ],
+        "bond_cap": 3
+      },
+      "b": {
+        "base": 11,
+        "bonds": 3,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 14,
+        "total": 14,
+        "plays": [
+          "fire_marshal",
+          "star_module",
+          "thought_case"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "plus2_crown",
+      "note": "自带电加测距帽 8",
+      "a": {
+        "base": 7,
+        "bonds": 1,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 8,
+        "total": 8,
+        "plays": [
+          "stick_plus2",
+          "hat_range"
+        ],
+        "bond_cap": 3
+      }
+    },
+    {
+      "id": "fire_order",
+      "note": "先定位针再定位模块为 12；先定位模块再定位针为 14",
+      "blocked": {
+        "base": 11,
+        "bonds": 1,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 12,
+        "total": 12,
+        "plays": [
+          "fire_marshal",
+          "locate_feather",
+          "star_module"
+        ],
+        "bond_cap": 3
+      },
+      "open": {
+        "base": 11,
+        "bonds": 3,
+        "skills": 0,
+        "quiet": 0,
+        "total_before_quiet": 14,
+        "total": 14,
+        "plays": [
+          "fire_marshal",
+          "star_module",
+          "locate_feather"
+        ],
+        "bond_cap": 3
+      }
+    }
+  ],
+  "counts": {
+    "hardware_rows": 95,
+    "research_candidate_cards": 74,
+    "compatibility_rules": 20,
+    "frozen_cards": 14,
+    "new_draft_cards": 57,
+    "factions": 11
+  },
+  "faction_en": {
+    "叠层": "Stack",
+    "细棍": "Slim",
+    "小块": "Block",
+    "换脸": "Swap Face",
+    "串线": "Chain",
+    "键盘": "Keyboard",
+    "表壳": "Shell",
+    "墨屏": "Ink Screen",
+    "大屏": "Big Screen",
+    "工位": "Bench",
+    "小无线": "Tiny Radio"
+  },
+  "wording_revision": {
+    "rule_fields_unchanged": [
+      "bond_rule",
+      "base_power",
+      "plays",
+      "tags",
+      "template_id"
+    ],
+    "display_change": "游戏中文名改为不含官方型号的原创短名。英文显示名单独写，不逐字翻译。官方产品名和型号另列。",
+    "semantic_change": "只有 unit_cam_scout 的设计推荐类型从角色改为器具。效果仍是一次战力 -2。v1 卡包没有改，content_hash 不变。",
+    "port_words": "玩家说明里的细口、宽口、长口分别对应研究记录中的 I2C、GPIO、UART，避免把地址手册写进技能。"
+  }
+}
+===== END FILE: content/expansion_draft.json =====
 
 
 ===== BEGIN FILE: schemas/battle-state.schema.json =====

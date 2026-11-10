@@ -8,23 +8,23 @@
     },
     {
       "path": "README.md",
-      "bytes": 2883,
-      "sha256": "56266079bc0520e1db8de0cc4a115d909adabf8275eba48f11cad3dca277923d"
+      "bytes": 3682,
+      "sha256": "15cd6599c3928bedaeeb332dff9fd4164f9ccff8ba23b38efe98dd59bc13bcfc"
     },
     {
       "path": "REQUIREMENTS.html",
-      "bytes": 364288,
-      "sha256": "9a24ae0e582e0fc6b45254f6336cc817cf1942e96e97497e2164d83321a8cb66"
+      "bytes": 364808,
+      "sha256": "7025d59c8e4ce9cf9f10947feddaafcbe182b1288f15d4cbba81fd332b36aea5"
     },
     {
       "path": "START_HERE.txt",
-      "bytes": 5907,
-      "sha256": "26986178e05f90f38d11bf1a7fe0468b363f592368f13f5457709b8b5a2ae1cc"
+      "bytes": 6504,
+      "sha256": "b754146f0f56f6f2774976848ad04e6b481304b5fa4b6e0752029c21cb3e9651"
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 384373,
-      "sha256": "d7454a093bf67c1deefe2f40ff23a1e5caec18db148efa4fbdc6b812b00fec75"
+      "bytes": 602245,
+      "sha256": "7726e81e7106e44d07f6fa8a74606ba1efac4ff6a3430bfdf65b8041258eda78"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -38,28 +38,28 @@
     },
     {
       "path": "content/manifest.json",
-      "bytes": 484,
-      "sha256": "51a60c099d0d34f066148f57e33e0d5ada0080fd73ca3d250004dda6ebd89303"
+      "bytes": 499,
+      "sha256": "b4f21d5402a1abf2e1a91d866926cc7d2531f29aefe4a576a33e24966df3b331"
     },
     {
       "path": "content/zh-CN.json",
-      "bytes": 881,
-      "sha256": "d91d73f68caf11693754a2de615bdad87b02030dd84b817369e8804107704983"
+      "bytes": 4167,
+      "sha256": "abdd19ea01ed28da76167bdb46d3cc9b97a26306390a5c3d8107447c24eb7f8c"
     },
     {
       "path": "docs/00_PRODUCT_AND_DECISIONS.md",
-      "bytes": 8325,
-      "sha256": "22ee75ecbb13117216c54539491c536f530faa26c7e286c9b6b80a852fb1ba67"
+      "bytes": 8435,
+      "sha256": "d3be535d930d303eae6fb78b4f008c82b9c87553cb37c24a6d27ff563c542cac"
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 38313,
-      "sha256": "c94dddff6531a5c9799357cc652fb9b46e94b4e45d019f616f7b70624e76be5e"
+      "bytes": 38242,
+      "sha256": "036da4114efa1b1c14457523d64d0a593552ad54bcaf8eea07e5f7cca73c125c"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
-      "bytes": 28360,
-      "sha256": "5cfdb1b27f207147aae78e1950e8885e5f39fd809287ebd3d3e0015295a784ac"
+      "bytes": 28533,
+      "sha256": "532f99a888b59883cb8317976068696552d0f55e4d48920d6530941735b166ea"
     },
     {
       "path": "docs/03_NFC_PLAYER_SAVE.md",
@@ -93,8 +93,8 @@
     },
     {
       "path": "docs/09_TUTORIAL_AND_PLAYTEST.md",
-      "bytes": 32550,
-      "sha256": "029b3a29c201e5cb66ccbef12ef40b79f772f31f39505677673897628110d547"
+      "bytes": 32572,
+      "sha256": "2900714e9b7b321c21748a440471a45b9aa15eb729a299e01c7ba9fe62e750bf"
     },
     {
       "path": "docs/10_SOURCES_AND_MATERIALS.md",
@@ -300,6 +300,236 @@
       "path": "tests/validate_schemas.py",
       "bytes": 8002,
       "sha256": "4b52270bade891d7f1c5a0670bd21f0f080aafb57fc51cdd4c0d0336957b28fd"
+    },
+    {
+      "path": "content/expansion_draft.json",
+      "bytes": 193537,
+      "sha256": "b159494c360a9946ba80aca57be6eb671ecdeaa656c89643728e630c06dd0765"
+    },
+    {
+      "path": "docs/13_WORLD_AND_FACTIONS.md",
+      "bytes": 2533,
+      "sha256": "961d2ed9702614054d4986cb5e8b2d96328fb7d9530482fcf56a24cb30ceb17f"
+    },
+    {
+      "path": "docs/14_EXPANSION_DRAFT.md",
+      "bytes": 11587,
+      "sha256": "f7efd2b380cae2d279a10ebf3acb64592763b6be182d63434cc8e513cce14539"
+    },
+    {
+      "path": "docs/16_CARD_FACE_STYLES.md",
+      "bytes": 2364,
+      "sha256": "4693edaef36c1ece80923c1393127e1dbb2a86bc813350728d0706505b4f5108"
+    },
+    {
+      "path": "docs/visual/original_card_metrics.json",
+      "bytes": 13699,
+      "sha256": "8eefcafb862d83dd439e5c299e26a31a999dabb697ae7db58b5d3cacf5e84a0c"
+    },
+    {
+      "path": "research/README.md",
+      "bytes": 1537,
+      "sha256": "825a03534a86e6ce1d550eef9a31850b62d6f43ff2c2cb660181a07e821c88d2"
+    },
+    {
+      "path": "research/hardware_catalog.csv",
+      "bytes": 157368,
+      "sha256": "d88b14046aa8544406094876eae2714f112f543113fe14356096f86043545f0d"
+    },
+    {
+      "path": "research/hardware_catalog.md",
+      "bytes": 5614,
+      "sha256": "df55cf44b4e52e2639977a0922450061fb46a7f5d49f0f8089718f1ff023c41c"
+    },
+    {
+      "path": "research/compatibility.csv",
+      "bytes": 9886,
+      "sha256": "c3cd7b295063b572e936d611f5732f209e0ce597585e4dc52527ba538ce7a147"
+    },
+    {
+      "path": "research/compatibility.md",
+      "bytes": 9025,
+      "sha256": "f028ef117b5f11f209f50b8b4aa8a4db69d2996945d433e59ee6f8c1c0a54c54"
+    },
+    {
+      "path": "research/card_candidates.csv",
+      "bytes": 28353,
+      "sha256": "b911fb618d9cca281cf156fe91c9a4d14aeb401d7f60c1568e7af8e13e875808"
+    },
+    {
+      "path": "research/game_design.md",
+      "bytes": 7646,
+      "sha256": "6c73402f869742678726954f2565320aeee4382070e74bd2b26d181ab5397bf1"
+    },
+    {
+      "path": "research/expansion_plan.md",
+      "bytes": 5420,
+      "sha256": "c436ca5d1d6b1710d1d7244e1bfb949e4c3f66b74b0c7d99e3b29a995857b0ca"
+    },
+    {
+      "path": "research/sources.md",
+      "bytes": 7657,
+      "sha256": "1dc8a157fad5a8feaa3c754d3504c090457c7c63a4d0a6f9ef2ba854d8e4faa6"
+    },
+    {
+      "path": "tests/draft_bond_math.py",
+      "bytes": 8917,
+      "sha256": "23246a035311dfc9305f54e78ec22e7bf20d0d33404e38fa94e51cba6389a665"
+    },
+    {
+      "path": "tests/test_draft_integrity.py",
+      "bytes": 13144,
+      "sha256": "e85194a12148ba9ae6f1aeaa1cd5f4e49a593105d81264cdab9588aafd47ca6b"
+    },
+    {
+      "path": "content/en.json",
+      "bytes": 2846,
+      "sha256": "c2a962a374d5ff523eaf1bdd1781a0c679fc4853834472cba309e2b3156d2614"
+    },
+    {
+      "path": "content/game_catalog.csv",
+      "bytes": 58649,
+      "sha256": "8966a1fd7246c00a2e2af7fbd39532681266a37d4009f43805c924747ff6cdf5"
+    },
+    {
+      "path": "research/history/README.md",
+      "bytes": 368,
+      "sha256": "5b51635e8b00b1a765d099a3fdd13f21fbed119112588eb77b687e5103e67710"
+    },
+    {
+      "path": "research/history/hardware_catalog_95.csv",
+      "bytes": 63889,
+      "sha256": "05e99cdeb85079fe2fa70bef19bbce3eaf161142283d80d5361b3c3bf476817c"
+    },
+    {
+      "path": "research/front_image_v3.md",
+      "bytes": 1813,
+      "sha256": "f17d62e31aa9a91923dab4154eaa2278eb2046a7a47dc356cfd21274921ae6a9"
+    },
+    {
+      "path": "research/card_product_image_map.csv",
+      "bytes": 42966,
+      "sha256": "1d868cdd0700a90e3ab9ecb62a223b5ce341d5794a4bfdecee373178e4b68173"
+    },
+    {
+      "path": "research/image_review_v3.csv",
+      "bytes": 128991,
+      "sha256": "e2256b7baae08e3f87eb7ffed1fcb51d52e6a9154049846ccb547e9012bd84b4"
+    },
+    {
+      "path": "research/images/verified_fronts_only.jpg",
+      "bytes": 46353,
+      "sha256": "e18fd5cc586183ae9b44eac0ef2615c936d9055515211807a7cf2893900c2a3c"
+    },
+    {
+      "path": "research/images/front/H015__Tab5__C145_02.webp",
+      "bytes": 82630,
+      "sha256": "5866a3d16da96c116d66d82bf45e1a1ad68769a3619896c3812423a13a1131ee"
+    },
+    {
+      "path": "research/images/front/H050__CardputerZero__main-pictures_06.webp",
+      "bytes": 99428,
+      "sha256": "b41b1ca19789f7990d195f23f8cce1a815331fba2fd2305e8b58d99f18b38415"
+    },
+    {
+      "path": "research/images/front/U109__Unit_CAM__unit_cam_02.webp",
+      "bytes": 80962,
+      "sha256": "0295a1934034b984ae4f95551291aa5ae0aa7316bda7d67f047b8feee1a3fe3b"
+    },
+    {
+      "path": "research/front_image_v5.md",
+      "bytes": 2298,
+      "sha256": "8de4bcc0d2a1d59810796b6f808217e0f2d50b85a1e32c0877b00386b9dc97d2"
+    },
+    {
+      "path": "research/gallery_urls_raw.json",
+      "bytes": 23928,
+      "sha256": "e7dac7bd541a343bd0900d932e669043d92da17b6ec28f195c4ea9eeafdf8ce2"
+    },
+    {
+      "path": "research/history/hardware_catalog_v3_258.csv",
+      "bytes": 150762,
+      "sha256": "4d559130a05da0893226d9a592d2fb8f89c3b26f6e09e6e8dd32ed218d80f5d6"
+    },
+    {
+      "path": "research/images/operation_front/U109__Unit_CAM__unit_cam_02.webp",
+      "bytes": 80962,
+      "sha256": "0295a1934034b984ae4f95551291aa5ae0aa7316bda7d67f047b8feee1a3fe3b"
+    },
+    {
+      "path": "research/images/operation_front/H031__img-60261bcd-a23f-40e6-994d-ad97477dcec4.webp",
+      "bytes": 63852,
+      "sha256": "6eb1c09c00fca9e629231610c0918b48a8148d2adf09dc161fc67f7384a33801"
+    },
+    {
+      "path": "research/images/operation_front/H027__img-ae3786cd-7586-44db-bfff-cd2cb2159a9b.webp",
+      "bytes": 37486,
+      "sha256": "b64d2099170c59a4c101a8d626dfd04745f445430fdfc6d5d5d903bbd55fe47c"
+    },
+    {
+      "path": "research/images/operation_front/H005__core2_04.webp",
+      "bytes": 25308,
+      "sha256": "efcbe0a3b2e0fdbd2e710f8e7444afd6f3c5dca1b57c170b7660ef197d3e5092"
+    },
+    {
+      "path": "research/images/operation_front/H027a__C008-B-V11-Atom-Matrix-v1.1-main-pictures_05.webp",
+      "bytes": 59728,
+      "sha256": "a6e2bf58c257bee6b7abaa4da293f20cc5669a7b1cce46186c159a06adc1d137"
+    },
+    {
+      "path": "research/images/operation_front/H050__CardputerZero__main-pictures_06.webp",
+      "bytes": 99428,
+      "sha256": "b41b1ca19789f7990d195f23f8cce1a815331fba2fd2305e8b58d99f18b38415"
+    },
+    {
+      "path": "research/images/operation_front/H028__6.webp",
+      "bytes": 28414,
+      "sha256": "c77b532fad9ace7936a0bdfab9f817bed68011bcd4aae2e1c6078075449e18d7"
+    },
+    {
+      "path": "research/images/operation_front/H015__Tab5__C145_02.webp",
+      "bytes": 82630,
+      "sha256": "5866a3d16da96c116d66d82bf45e1a1ad68769a3619896c3812423a13a1131ee"
+    },
+    {
+      "path": "research/images/back_ortho/H028__8.webp",
+      "bytes": 48682,
+      "sha256": "c05d43310020b2a75e2fee1ab2ec47803274fe64b35384c11fef16daa68d941d"
+    },
+    {
+      "path": "research/images/back_ortho/H026__img-d066cf3f-63a8-4866-bed2-2c2a6d9c034e.webp",
+      "bytes": 46858,
+      "sha256": "893cbc0db5219160f736d45fdd1d71e19fc2ab6c5117450e7d8901e2f6e80763"
+    },
+    {
+      "path": "research/images/back_ortho/H020__m5stickc_02.webp",
+      "bytes": 99972,
+      "sha256": "9aef19c4f7e48c94a719a707cc1766f6c7f91ffd26cc34b8966aeee405c7e6dc"
+    },
+    {
+      "path": "research/images/back_ortho/H027a__C008-B-V11-Atom-Matrix-v1.1-main-pictures_07.webp",
+      "bytes": 55296,
+      "sha256": "a270cf184186830e312e432d430f5913b68aa9a7a7c9a3a8f636ed7d2fe7c88f"
+    },
+    {
+      "path": "research/images/back_ortho/H009__img-3e707c18-8110-47f9-af1c-ae3c056447d2.webp",
+      "bytes": 35670,
+      "sha256": "4bdadc07df3c07418a7798d029478e613cd0bdf4dee36ffe5bdcf88830863231"
+    },
+    {
+      "path": "research/images/back_ortho/H005__core2_05.webp",
+      "bytes": 69826,
+      "sha256": "b0317a54bda6b2a00421ada4c39cd45bc397f33e488b799b0ab81dd0202d60b2"
+    },
+    {
+      "path": "research/images/back_ortho/H027__img-00b551c1-39bd-4ff5-bf92-9488afb74efc.webp",
+      "bytes": 46286,
+      "sha256": "498517bd6a933f9571c116a0f024c961cadab362610eb40510151ba9207259c0"
+    },
+    {
+      "path": "research/images/back_ortho/H031__img-e3288169-9100-44f4-becd-afe1556f56b0.webp",
+      "bytes": 62622,
+      "sha256": "c2dd9c051589a1964978ee961fe5e5b7ca83da039cd1f79da8f3292addaeddc2"
     }
   ]
 }

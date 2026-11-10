@@ -1,0 +1,159 @@
+{
+  "all_22_alpha_masks_pixel_identical": true,
+  "cards": [
+    {
+      "id": 1,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 2,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 3,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 4,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 5,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 6,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 7,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 8,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 9,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 10,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 11,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 12,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 13,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 14,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 15,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 16,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 17,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 18,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 19,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 20,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 21,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    },
+    {
+      "id": 22,
+      "radius_mm": 3.18,
+      "background_equals_clip": true,
+      "alpha_sha256": "9e99eb666b03f3ec5c43f28104f5aff84372159a85d3fc938968c4ca3ff4cccc",
+      "no_editable_text": true
+    }
+  ]
+}

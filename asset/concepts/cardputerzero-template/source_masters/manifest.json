@@ -1,0 +1,976 @@
+{
+  "source_sha256": "e299355089a5ac1b49dedb96af81bdccbedd63ddc40418ac2407bb1831965964",
+  "input_sha256": "3a8e9d7b1fc7a216afb29e905e685cd270865f118f2206be32867f10b8815a3d",
+  "source_page_mm": [
+    700,
+    297
+  ],
+  "source_document_pages": 1,
+  "coordinate_system": "CDR document page 1, converted SVG points (1/72 inch); top-left origin, x right, y down; bbox [xmin,ymin,xmax,ymax]",
+  "boundary": "Updated exact circular 3.18mm radius for both colored outer background and alpha clip, exact54x85mm dimensions, artwork unscaled",
+  "color": "libcdr converted source CMYK/RGB to SVG RGB; PNG tagged sRGB; source Japan Color 2001 Coated not explicitly proofed by renderer; not certified print color",
+  "font_warning": "18-22 titles remain a Calibri-compatible local substitute (Carlito), now outlined; slogans exact original outlined CORE typography",
+  "cards": [
+    {
+      "id": 1,
+      "name": "S3",
+      "name_source": "visible emblem S3; exact product designation pending",
+      "name_confidence": "medium",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 985,
+      "bbox_pt": [
+        265.8762,
+        51.838,
+        418.947,
+        292.7829000000002
+      ],
+      "bbox_mm": [
+        93.79521499999998,
+        18.28729444444444,
+        147.79519166666665,
+        103.2873008333334
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "01_S3",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2231,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 2,
+      "name": "StickS3",
+      "name_source": "outlined emblem text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 619,
+      "bbox_pt": [
+        445.87639999999976,
+        51.838,
+        598.9473,
+        292.7829000000002
+      ],
+      "bbox_mm": [
+        157.29528555555547,
+        18.28729444444444,
+        211.2952975,
+        103.2873008333334
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "02_StickS3",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2231,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 3,
+      "name": "AI PYRAMID PRO",
+      "name_source": "outlined emblem text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 327,
+      "bbox_pt": [
+        628.1637,
+        51.838,
+        781.2346000000002,
+        292.7829000000002
+      ],
+      "bbox_mm": [
+        221.60219416666664,
+        18.28729444444444,
+        275.6022061111112,
+        103.2873008333334
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "03_AI_PYRAMID_PRO",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2231,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 4,
+      "name": "M5STACK console motif",
+      "name_source": "only M5STACK legible; product name pending",
+      "name_confidence": "low",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 0,
+      "bbox_pt": [
+        265.8762,
+        306.0882,
+        418.947,
+        547.033
+      ],
+      "bbox_mm": [
+        93.79521499999998,
+        107.98111499999999,
+        147.79519166666665,
+        192.9810861111111
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "04_M5STACK_console_motif",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2230,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 5,
+      "name": "M5STACK ring motif",
+      "name_source": "only M5STACK legible; product name pending",
+      "name_confidence": "low",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 694,
+      "bbox_pt": [
+        445.87639999999976,
+        306.0882,
+        598.9473,
+        547.033
+      ],
+      "bbox_mm": [
+        157.29528555555547,
+        107.98111499999999,
+        211.2952975,
+        192.9810861111111
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "05_M5STACK_ring_motif",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2230,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 6,
+      "name": "VoiceS3R ATOM",
+      "name_source": "outlined emblem text; official spelling pending",
+      "name_confidence": "medium",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 463,
+      "bbox_pt": [
+        628.1637,
+        306.0882,
+        781.2346000000002,
+        547.033
+      ],
+      "bbox_mm": [
+        221.60219416666664,
+        107.98111499999999,
+        275.6022061111112,
+        192.9810861111111
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "06_VoiceS3R_ATOM",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2230,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 7,
+      "name": "NanoH2",
+      "name_source": "outlined emblem text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 933,
+      "bbox_pt": [
+        265.8762,
+        560.3383,
+        418.947,
+        801.2832000000002
+      ],
+      "bbox_mm": [
+        93.79521499999998,
+        197.67490027777777,
+        147.79519166666665,
+        282.67490666666674
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "07_NanoH2",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2231,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 8,
+      "name": "DUALKEY",
+      "name_source": "outlined emblem text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 773,
+      "bbox_pt": [
+        445.87639999999976,
+        560.3383,
+        598.9473,
+        801.2832000000002
+      ],
+      "bbox_mm": [
+        157.29528555555547,
+        197.67490027777777,
+        211.2952975,
+        282.67490666666674
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "08_DUALKEY",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2231,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 9,
+      "name": "StackChan",
+      "name_source": "outlined emblem text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 542,
+      "bbox_pt": [
+        628.1637,
+        560.3383,
+        781.2346000000002,
+        801.2832000000002
+      ],
+      "bbox_mm": [
+        221.60219416666664,
+        197.67490027777777,
+        275.6022061111112,
+        282.67490666666674
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "09_StackChan",
+      "alpha_zero_pixels": 3303,
+      "alpha_partial_pixels": 2231,
+      "font_warning": false,
+      "original_corner_form": "cubic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 10,
+      "name": "CORE",
+      "name_source": "outlined title",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1265,
+      "bbox_pt": [
+        875.8794,
+        24.8119,
+        1028.9503,
+        265.7568
+      ],
+      "bbox_mm": [
+        308.9907883333333,
+        8.753086944444444,
+        362.99080027777774,
+        93.75309333333333
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "10_CORE",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 11,
+      "name": "STICKC",
+      "name_source": "outlined title",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1133,
+      "bbox_pt": [
+        1037.336,
+        24.8119,
+        1190.4069,
+        265.7568
+      ],
+      "bbox_mm": [
+        365.94908888888887,
+        8.753086944444444,
+        419.94910083333326,
+        93.75309333333333
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "11_STICKC",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 12,
+      "name": "STICKV",
+      "name_source": "outlined title",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1827,
+      "bbox_pt": [
+        1198.3606,
+        24.8119,
+        1351.4315,
+        265.7568
+      ],
+      "bbox_mm": [
+        422.7549894444444,
+        8.753086944444444,
+        476.75500138888884,
+        93.75309333333333
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "12_STICKV",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 13,
+      "name": "UNIT",
+      "name_source": "outlined title",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1153,
+      "bbox_pt": [
+        1360.7527,
+        24.8119,
+        1513.8235,
+        265.7568
+      ],
+      "bbox_mm": [
+        480.04331361111105,
+        8.753086944444444,
+        534.0432902777777,
+        93.75309333333333
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "13_UNIT",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 14,
+      "name": "MODULE",
+      "name_source": "outlined title",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1246,
+      "bbox_pt": [
+        875.8794,
+        277.636,
+        1028.9503,
+        518.5809
+      ],
+      "bbox_mm": [
+        308.9907883333333,
+        97.94381111111112,
+        362.99080027777774,
+        182.9438175
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "14_MODULE",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 15,
+      "name": "BASE",
+      "name_source": "outlined title",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1227,
+      "bbox_pt": [
+        1037.336,
+        277.636,
+        1190.4069,
+        518.5809
+      ],
+      "bbox_mm": [
+        365.94908888888887,
+        97.94381111111112,
+        419.94910083333326,
+        182.9438175
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "15_BASE",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 16,
+      "name": "BALA",
+      "name_source": "outlined title",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1208,
+      "bbox_pt": [
+        1198.3606,
+        277.636,
+        1351.4315,
+        518.5809
+      ],
+      "bbox_mm": [
+        422.7549894444444,
+        97.94381111111112,
+        476.75500138888884,
+        182.9438175
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "16_BALA",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 17,
+      "name": "HAT",
+      "name_source": "outlined title",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1175,
+      "bbox_pt": [
+        1360.7527,
+        277.636,
+        1513.8235,
+        518.5809
+      ],
+      "bbox_mm": [
+        480.04331361111105,
+        97.94381111111112,
+        534.0432902777777,
+        182.9438175
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "17_HAT",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 18,
+      "name": "ATOM",
+      "name_source": "editable source text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1099,
+      "bbox_pt": [
+        882.8892,
+        576.1329,
+        1035.9601,
+        817.0778
+      ],
+      "bbox_mm": [
+        311.46369,
+        203.24688416666663,
+        365.46370194444444,
+        288.2468905555555
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "18_ATOM",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "slogan_fix": {
+        "source_card": 10,
+        "method": "reuse exact outlined path, uniform scale and center in black capsule",
+        "uniform_scale": 1.0,
+        "capsule_bbox_pt": [
+          914.6604999999995,
+          788.9541999999993,
+          1004.1888,
+          806.6809
+        ],
+        "slogan_bbox_pt": [
+          919.9123999999996,
+          794.3830999999996,
+          998.9368999999998,
+          801.2519999999998
+        ],
+        "margins_mm": [
+          1.8527536111111433,
+          1.9151952777778574,
+          1.8527536111111833,
+          1.9151952777778172
+        ]
+      },
+      "title_fix": "Original local Calibri-compatible fallback rendering frozen into paths; not recovered original font",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 19,
+      "name": "STICKC PLUS",
+      "name_source": "editable source text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1945,
+      "bbox_pt": [
+        1053.4932,
+        576.1329,
+        1206.5641,
+        817.0778
+      ],
+      "bbox_mm": [
+        371.6489899999999,
+        203.24688416666663,
+        425.6490019444444,
+        288.2468905555555
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "19_STICKC_PLUS",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "slogan_fix": {
+        "source_card": 10,
+        "method": "reuse exact outlined path, uniform scale and center in black capsule",
+        "uniform_scale": 1.0,
+        "capsule_bbox_pt": [
+          1085.2644999999989,
+          788.9541999999993,
+          1174.7928000000002,
+          806.6809
+        ],
+        "slogan_bbox_pt": [
+          1090.5163999999995,
+          794.3830999999996,
+          1169.5408999999997,
+          801.2519999999998
+        ],
+        "margins_mm": [
+          1.8527536111113438,
+          1.9151952777778574,
+          1.8527536111112637,
+          1.9151952777778172
+        ]
+      },
+      "title_fix": "Original local Calibri-compatible fallback rendering frozen into paths; not recovered original font",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 20,
+      "name": "CORE2",
+      "name_source": "editable source text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1944,
+      "bbox_pt": [
+        1224.0972,
+        576.1329,
+        1377.1681,
+        817.0778
+      ],
+      "bbox_mm": [
+        431.83428999999995,
+        203.24688416666663,
+        485.8343019444444,
+        288.2468905555555
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "20_CORE2",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "slogan_fix": {
+        "source_card": 10,
+        "method": "reuse exact outlined path, uniform scale and center in black capsule",
+        "uniform_scale": 1.0,
+        "capsule_bbox_pt": [
+          1255.8685,
+          788.9541999999993,
+          1345.3968,
+          806.6809
+        ],
+        "slogan_bbox_pt": [
+          1261.1203999999998,
+          794.3830999999996,
+          1340.1449,
+          801.2519999999998
+        ],
+        "margins_mm": [
+          1.852753611111023,
+          1.9151952777778574,
+          1.8527536111111031,
+          1.9151952777778172
+        ]
+      },
+      "title_fix": "Original local Calibri-compatible fallback rendering frozen into paths; not recovered original font",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 21,
+      "name": "CORE.INK",
+      "name_source": "editable source text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1919,
+      "bbox_pt": [
+        1394.7012,
+        576.1329,
+        1547.7721,
+        817.0778
+      ],
+      "bbox_mm": [
+        492.01959,
+        203.24688416666663,
+        546.0196019444444,
+        288.2468905555555
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "21_CORE_INK",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "slogan_fix": {
+        "source_card": 10,
+        "method": "reuse exact outlined path, uniform scale and center in black capsule",
+        "uniform_scale": 1.0,
+        "capsule_bbox_pt": [
+          1426.4725,
+          788.9541999999993,
+          1516.0008,
+          806.6809
+        ],
+        "slogan_bbox_pt": [
+          1431.7244,
+          794.3830999999996,
+          1510.7489000000003,
+          801.2519999999998
+        ],
+        "margins_mm": [
+          1.8527536111111031,
+          1.9151952777778574,
+          1.852753611111023,
+          1.9151952777778172
+        ]
+      },
+      "title_fix": "Original local Calibri-compatible fallback rendering frozen into paths; not recovered original font",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    },
+    {
+      "id": 22,
+      "name": "M5PAPER",
+      "name_source": "editable source text",
+      "name_confidence": "high",
+      "document_page": 1,
+      "libcdr_svg_index": 1,
+      "outline_path_index": 1125,
+      "bbox_pt": [
+        1565.3052,
+        576.1329,
+        1718.3761,
+        817.0778
+      ],
+      "bbox_mm": [
+        552.20489,
+        203.24688416666663,
+        606.2049019444444,
+        288.2468905555555
+      ],
+      "size_mm": [
+        54,
+        85
+      ],
+      "png_px": [
+        638,
+        1004
+      ],
+      "dpi": 300,
+      "stem": "22_M5PAPER",
+      "alpha_zero_pixels": 2531,
+      "alpha_partial_pixels": 2215,
+      "font_warning": false,
+      "original_corner_form": "quadratic Bezier, nominal 5.4mm",
+      "corner_radius_mm": 3.18,
+      "corner_geometry": "SVG circular A arcs; background and alpha clip identical",
+      "slogan_fix": {
+        "source_card": 10,
+        "method": "reuse exact outlined path, uniform scale and center in black capsule",
+        "uniform_scale": 1.0,
+        "capsule_bbox_pt": [
+          1597.0764999999992,
+          788.9541999999993,
+          1686.6048,
+          806.6809
+        ],
+        "slogan_bbox_pt": [
+          1602.3283999999994,
+          794.3830999999996,
+          1681.3528999999996,
+          801.2519999999998
+        ],
+        "margins_mm": [
+          1.8527536111111833,
+          1.9151952777778574,
+          1.8527536111112637,
+          1.9151952777778172
+        ]
+      },
+      "title_fix": "Original local Calibri-compatible fallback rendering frozen into paths; not recovered original font",
+      "coordinate_rounding_note": "Normalized boundary from source ~54x85mm to exact54x85mm; artwork unscaled"
+    }
+  ],
+  "revision": "v2",
+  "changes": "All 22 outer backgrounds + alpha masks: exact 3.18mm circular radius, size unchanged; 18-22 slogan replaced with CORE outlined path, centered with safe margins; 18-22 titles frozen from local fallback as paths",
+  "radius_reference": "CR80 / ID-1 card manufacturer reference, not universal NFC specification; original 54x85mm size unchanged",
+  "radius_reference_url": "https://www.blankplasticcards.com/blog/what-is-cr80-card-size-the-complete-guide-to-standard-plastic-card-dimensions/",
+  "svg_coordinate_system": "Each single card viewBox is local top-left(0,0),54x85mm in points; bbox_pt/bbox_mm retain original source-page global positions."
+}

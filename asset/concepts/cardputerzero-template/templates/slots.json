@@ -1,0 +1,123 @@
+{
+  "A": {
+    "style": "A",
+    "master_stem": "01_S3",
+    "card_id": 1,
+    "background": "#009ee0",
+    "viewBox": "0 0 153.0708661417323 240.9448818897638",
+    "width": "54mm",
+    "height": "85mm",
+    "char_union_pt": [
+      14.855,
+      52.442,
+      138.216,
+      154.49
+    ],
+    "char_union_px": [
+      61.9,
+      218.51,
+      575.9,
+      643.71
+    ],
+    "title_union_pt": null,
+    "title_union_px": null,
+    "slogan_union_pt": null,
+    "selected_char_ids": [
+      "Layer1080"
+    ],
+    "removed_title_count": 0,
+    "kept_slogan_count": 0,
+    "selection_notes": [
+      "skip[1] top title text",
+      "skip[2] bottom chrome",
+      "skip[3] bottom chrome",
+      "skip[4] bottom chrome"
+    ],
+    "template_svg": "templates/styleA_template_01_S3.svg",
+    "dynamic_name_in_char": true,
+    "name_font_note": "Style A product name lives inside the badge/char layer (outlined in original artwork). Style B original title is outlined paths of unknown source font (not live text). New title will be typeset with a local substitute and is NOT a glyph-accurate match."
+  },
+  "B": {
+    "style": "B",
+    "master_stem": "10_CORE",
+    "card_id": 10,
+    "background": "#0079b4",
+    "viewBox": "0 0 153.0708661417323 240.9448818897638",
+    "width": "54mm",
+    "height": "85mm",
+    "char_union_pt": [
+      23.026,
+      59.652,
+      130.546,
+      167.171
+    ],
+    "char_union_px": [
+      95.94,
+      248.55,
+      543.94,
+      696.55
+    ],
+    "title_union_pt": [
+      42.207,
+      190.863,
+      110.863,
+      215.346
+    ],
+    "title_union_px": [
+      175.86,
+      795.26,
+      461.93,
+      897.28
+    ],
+    "slogan_union_pt": [
+      31.771,
+      212.821,
+      121.3,
+      230.548
+    ],
+    "selected_char_ids": [
+      "Layer1089",
+      "Layer1091"
+    ],
+    "removed_title_count": 3,
+    "kept_slogan_count": 2,
+    "selection_notes": [
+      "skip[0] invisible/sunburst",
+      "skip[1] invisible/sunburst",
+      "skip[2] invisible/sunburst",
+      "skip[3] invisible/sunburst",
+      "skip[4] invisible/sunburst",
+      "skip[5] invisible/sunburst",
+      "skip[6] invisible/sunburst",
+      "skip[7] invisible/sunburst",
+      "skip[8] invisible/sunburst",
+      "skip[9] invisible/sunburst",
+      "skip[10] invisible/sunburst",
+      "skip[11] invisible/sunburst",
+      "skip[12] invisible/sunburst",
+      "skip[13] invisible/sunburst",
+      "skip[14] invisible/sunburst",
+      "skip[15] invisible/sunburst",
+      "skip[16] invisible/sunburst",
+      "skip[17] invisible/sunburst",
+      "skip[18] top logo",
+      "skip[19] top logo",
+      "skip[20] top logo",
+      "skip[21] top logo",
+      "skip[22] top logo",
+      "skip[23] top logo",
+      "skip[24] top logo",
+      "skip[25] top logo",
+      "skip[26] top logo",
+      "skip[27] colored ground oval",
+      "skip[30] title/slogan",
+      "skip[31] title/slogan",
+      "skip[32] title/slogan",
+      "skip[33] title/slogan",
+      "skip[34] title/slogan"
+    ],
+    "template_svg": "templates/styleB_template_10_CORE.svg",
+    "dynamic_name_in_char": false,
+    "name_font_note": "Style A product name lives inside the badge/char layer (outlined in original artwork). Style B original title is outlined paths of unknown source font (not live text). New title will be typeset with a local substitute and is NOT a glyph-accurate match."
+  }
+}

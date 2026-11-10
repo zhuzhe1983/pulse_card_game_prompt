@@ -1,21 +1,67 @@
 {
   "locale": "zh-CN",
   "names": {
-    "core2_guard": "CORE2 · 核心守卫",
-    "atom_scout": "ATOM · 侦察兵",
-    "stickc_operator": "StickC · 通讯员",
-    "dial_router": "Dial · 调度员",
-    "paper_archive": "PaperMono · 档案官",
-    "echo_booster": "Echo · 扩音手",
-    "cardputer_hacker": "Cardputer · 干扰员",
-    "lora_relay": "LoRa · 中继手",
-    "stamp_sentry": "Stamp · 哨兵",
-    "tough_guard": "TOUGH · 护卫",
-    "atom_matrix_link": "ATOM Matrix · 协作员",
-    "unit_cam_scout": "Unit Cam · 观察员",
-    "signal_boost": "增益信号",
-    "signal_jam": "干扰信号"
+    "core2_guard": "厚壳",
+    "tough_guard": "硬壳",
+    "stickc_operator": "细条",
+    "atom_scout": "探子",
+    "atom_matrix_link": "点阵",
+    "cardputer_hacker": "敲键",
+    "dial_router": "旋钮",
+    "paper_archive": "存页",
+    "stamp_sentry": "立岗",
+    "echo_booster": "帮腔",
+    "lora_relay": "远呼",
+    "unit_cam_scout": "千里眼",
+    "signal_boost": "加一把",
+    "signal_jam": "压一下"
   },
+  "intros": {
+    "core2_guard": "一块带触摸屏的厚主控，靠自己的分数站前排。",
+    "tough_guard": "外壳更扛造的主控，第一次被压分时能挡一下。",
+    "stickc_operator": "一根细长的小主机，适合待在后排。",
+    "atom_scout": "最小的一块主控，先拿出来占个位置。",
+    "atom_matrix_link": "自带点阵灯的小主控，能给已经在场的队友加分。",
+    "cardputer_hacker": "一台带键盘的掌机，打出时能压低对面一个人。",
+    "dial_router": "带旋钮的小设备，另一排已经有人时自己更有用。",
+    "paper_archive": "一块电子纸，分数摆上以后不再被加减。",
+    "stamp_sentry": "可以嵌进别的壳里的小主控，第一次被压分时能挡一下。",
+    "echo_booster": "专门给已经在场的队友加一把劲。",
+    "lora_relay": "后排已经有人时，自己打到前排会更有用。",
+    "unit_cam_scout": "一块插在主机上的小摄像头，用来盯住对面一个人。",
+    "signal_boost": "没有实物产品，用来给队友加分。",
+    "signal_jam": "没有实物产品，用来压低对面一个人。"
+  },
+  "skills": {
+    "core2_guard": "没有额外效果。打出后提供 6 点战力，放前排。",
+    "tough_guard": "提供 5 点战力，放前排。本小局第一次成为战力 -2 的目标时，这次减分不生效，然后防护用掉。",
+    "stickc_operator": "没有额外效果。打出后提供 4 点战力，放后排。",
+    "atom_scout": "没有额外效果。打出后提供 4 点战力，放前排。",
+    "atom_matrix_link": "打出时指定一个已经在我方场上的其他单位，它 +2。不能选自己。只这一次。自己提供 3 点，放前排。",
+    "cardputer_hacker": "打出时指定一个对方单位，战力 -2，最低 0。只这一次。自己提供 3 点，放后排。",
+    "dial_router": "前排或后排都能放。打出时看一次：如果我方另一排已经有单位，自己立刻 +2。自己基础 3 点。",
+    "paper_archive": "提供 5 点战力，放后排。本小局自己的战力不能被加分或减分改变。",
+    "stamp_sentry": "提供 4 点，前排或后排都能放。本小局第一次成为战力 -2 的目标时，这次减分不生效，然后防护用掉。",
+    "echo_booster": "打出时指定一个已经在我方场上的其他单位，它 +2。不能选自己。只这一次。自己提供 3 点，放后排。",
+    "lora_relay": "放前排。打出时看一次：如果我方后排已经有单位，自己立刻 +2。自己基础 3 点。",
+    "unit_cam_scout": "现行：打出时指定一个对方单位，战力 -2，最低 0。只这一次。自己提供 2 点，放后排。现在仍是角色，占单位名额。",
+    "signal_boost": "指定一个我方在场单位，它 +2。没有目标就不能打出。占 1 次出牌，不留在场上。",
+    "signal_jam": "指定一个对方在场单位，它 -2，最低 0。没有目标就不能打出。占 1 次出牌，不留在场上。"
+  },
+  "factions": {
+    "叠层": "Stack",
+    "细棍": "Slim",
+    "小块": "Block",
+    "换脸": "Swap Face",
+    "串线": "Chain",
+    "键盘": "Keyboard",
+    "表壳": "Shell",
+    "墨屏": "Ink Screen",
+    "大屏": "Big Screen",
+    "工位": "Bench",
+    "小无线": "Tiny Radio"
+  },
+  "note": "显示名是原创游戏名，不含官方型号。unit_cam_scout 的中文名是千里眼，但 v1 里它仍是角色；草案建议改为器具。稀有度不改变战力。",
   "skin_names": {
     "base": "原型",
     "ink": "墨线"
@@ -23,6 +69,5 @@
   "rarity_names": {
     "ordinary": "伙伴",
     "hero": "英雄"
-  },
-  "note": "英雄为收藏分类；standard14全部模板免费借用，稀有度不改变同模板战力。"
+  }
 }
