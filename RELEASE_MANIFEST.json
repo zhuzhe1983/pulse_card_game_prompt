@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 585924,
-      "sha256": "253fff6a50c7f3aa2a337955a353d865e8307327f7669c328ced2d74c8200a37"
+      "bytes": 585970,
+      "sha256": "edca76aa4c566c1bbf88743cbbc0d1a55948e04c04aa936e08bfb3a43e8f9416"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -588,8 +588,8 @@
     },
     {
       "path": "docs/18_ROSTER_AND_GROWTH.md",
-      "bytes": 18853,
-      "sha256": "75b0795aa474719e3051e98147a8b6a0eef5d4871869101a2b52c3057e0365b7"
+      "bytes": 18899,
+      "sha256": "1a00d9673bbccbf3d3a4014a7f2b9629c3b8bf071d9cc98fac94c98ff0b9e321"
     },
     {
       "path": "tests/test_clash_roster.py",
