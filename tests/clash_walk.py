@@ -44,6 +44,9 @@ class Game:
         game.graves = [[], []]
         game.ability_used = [{}, {}]
         game.promote_ban = [set(), set()]
+        game.upper_links = [[], []]
+        game.upper_pulsed = [False, False]
+        game.aiflow_armed = [False, False]
         game.seat = 0
         game.turns_started = [1, 0]
         game.phase = "main"
@@ -68,6 +71,7 @@ class Game:
             "attacked": False,
             "temp_attack": 0,
             "attachments": [],
+            "ability_lock": False,
         }
         self._next_id += 1
         if index is None:
@@ -90,6 +94,9 @@ class Game:
         self.graves = [[], []]
         self.ability_used = [{}, {}]
         self.promote_ban = [set(), set()]
+        self.upper_links = [[], []]
+        self.upper_pulsed = [False, False]
+        self.aiflow_armed = [False, False]
         self.seat = 0
         self.turns_started = [0, 0]
         self.phase = "opening"
@@ -112,7 +119,138 @@ class Game:
         self.log.append(text)
 
     def units(self, seat):
-        return list(self.boards[seat])
+        return [unit for unit in self.boards[seat] if not unit.get("link")]
+
+    def _is_chain(self, card_id):
+        card = self.cards[card_id]
+        return bool(card.get("chain_piece"))
+
+    def _is_esp32_main(self, card_id):
+        card = self.cards[card_id]
+        if card.get("upper_host") or card.get("kind") != "main":
+            return False
+        if card.get("esp32_main"):
+            return True
+        text = " ".join(card.get("official_main_chips") or [])
+        return card.get("hardware_controller") == "independent_host" and "ESP32" in text
+
+    def _is_upper_host(self, card_id):
+        return bool(self.cards[card_id].get("upper_host"))
+
+    def formation_state(self, seat):
+        line = self.boards[seat]
+        if not line or line[0].get("link") or self.cards[line[0]["card_id"]].get("kind") != "main":
+            return {"leader": False, "chain_run": 0, "percent": 0}
+        run = 0
+        for entry in line[1:]:
+            if entry.get("link") and self._is_chain(entry["card_id"]):
+                run += 1
+            else:
+                break
+        return {"leader": True, "chain_run": run, "percent": 10 + 5 * run}
+
+    def strike_damage(self, seat, attack_value):
+        if attack_value <= 0:
+            return 0
+        boosted = attack_value
+        if self.upper_links[seat]:
+            boosted += 1
+        if self.aiflow_armed[seat]:
+            boosted += 2
+            self.aiflow_armed[seat] = False
+        percent = self.formation_state(seat)["percent"]
+        return (boosted * (100 + percent) + 99) // 100
+
+    def _effective_max(self, seat):
+        bonus = 1 if self.upper_links[seat] else 0
+        return min(10, self.max_supply[seat] + bonus)
+
+    def _drop_upper_links(self, iid):
+        for seat in (0, 1):
+            kept = [link for link in self.upper_links[seat]
+                    if link["source"] != iid and link["target"] != iid]
+            if len(kept) != len(self.upper_links[seat]):
+                self.upper_links[seat] = kept
+                if not kept:
+                    self.supply[seat] = min(self.supply[seat], self.max_supply[seat])
+
+    def _place_link(self, seat, card_id, host_iid, index=None):
+        link = {
+            "iid": f"u{self._next_id}",
+            "card_id": card_id,
+            "seat": seat,
+            "slot": 0,
+            "durability": 1,
+            "sick": False,
+            "attacked": False,
+            "temp_attack": 0,
+            "attachments": [],
+            "ability_lock": False,
+            "link": True,
+            "host_iid": host_iid,
+        }
+        self._next_id += 1
+        if index is None:
+            self.boards[seat].append(link)
+        else:
+            self.boards[seat].insert(index, link)
+        self._reindex(seat)
+        self.event(f"链节标记放到座位{seat}位置{link['slot']}")
+        return link
+
+    def _remove_links(self, seat, host_iid):
+        self.boards[seat] = [
+            unit for unit in self.boards[seat]
+            if not (unit.get("link") and unit.get("host_iid") == host_iid)
+        ]
+        self._reindex(seat)
+
+    def _seize_unit(self, seat, foe):
+        old = foe["seat"]
+        links = [entry for entry in self.boards[old] if entry.get("link") and entry.get("host_iid") == foe["iid"]]
+        for entry in links:
+            self.boards[old].remove(entry)
+        self.boards[old].remove(foe)
+        self._reindex(old)
+        foe["seat"] = seat
+        foe["sick"] = True
+        foe["ability_lock"] = True
+        self.boards[seat].append(foe)
+        for entry in links:
+            entry["seat"] = seat
+            self.boards[seat].append(entry)
+        self._reindex(seat)
+        self._drop_upper_links(foe["iid"])
+        self.event(f"夺舍，{self.cards[foe['card_id']]['name']}改由座位{seat}控制，排到最右，本回合不能攻击")
+
+    def upper_link(self, seat, source_id, target_id):
+        self.require_main(seat)
+        source_iid = self.resolve_iid(seat, source_id)
+        target_iid = self.resolve_iid(seat, target_id)
+        source_seat, _slot, source = self.find(source_iid)
+        target_seat, _slot, target = self.find(target_iid)
+        if source_seat != seat or source.get("link") or not self._is_upper_host(source["card_id"]):
+            raise ClashError("来自上位的爱只能由己方上位机发动", "bad_target")
+        if source.get("ability_lock"):
+            raise ClashError("这台单位本回合不能发动技能", "seized_this_turn")
+        if target_seat != seat or target.get("link") or not self._is_esp32_main(target["card_id"]):
+            raise ClashError("只能连到己方的 ESP32 主控", "bad_target")
+        if source_iid == target_iid:
+            raise ClashError("不能连自己", "bad_target")
+        if any(item["source"] == source_iid for item in self.upper_links[seat]):
+            raise ClashError("这台上位机已经连着", "already_used_ability")
+        if any(item["target"] == target_iid for item in self.upper_links[seat]):
+            raise ClashError("这台主控已经连着上位机", "already_used_ability")
+        if self.supply[seat] < 1:
+            raise ClashError("供电不足", "not_enough_supply")
+        self.pay(seat, 1)
+        was_empty = not self.upper_links[seat]
+        self.upper_links[seat].append({"source": source_iid, "target": target_iid})
+        if was_empty and not self.upper_pulsed[seat]:
+            self.supply[seat] = min(10, self.supply[seat] + 1)
+            self.upper_pulsed[seat] = True
+        self.supply[seat] = min(self.supply[seat], self._effective_max(seat))
+        self.event("来自上位的爱接上")
 
     def alive_count(self, seat):
         return len(self.units(seat))
@@ -140,6 +278,9 @@ class Game:
         self.turns_started[seat] += 1
         self.ability_used[seat] = {}
         self.promote_ban[seat] = set()
+        self.upper_pulsed[seat] = False
+        for unit in self.units(seat):
+            unit["ability_lock"] = False
         first_opening = seat == 0 and self.turns_started[seat] == 1
         if first_opening:
             self.event(f"座位{seat}回合开始：先手第1回合不抽牌")
@@ -153,7 +294,7 @@ class Game:
             unit["attacked"] = False
         self.event(f"座位{seat}场上原有单位解除新入场限制")
         self.max_supply[seat] = min(10, self.max_supply[seat] + 1)
-        self.supply[seat] = self.max_supply[seat]
+        self.supply[seat] = self._effective_max(seat)
         self.phase = "main"
         self.event(f"座位{seat}供电上限{self.max_supply[seat]}，当前供电回满")
 
@@ -196,6 +337,7 @@ class Game:
             "attacked": False,
             "temp_attack": 0,
             "attachments": [],
+            "ability_lock": False,
         }
         self._next_id += 1
         if index is None:
@@ -231,6 +373,8 @@ class Game:
             if card.get("effect") == "play_damage" and target is not None:
                 self.find(self.resolve_iid(1 - seat, target))
         elif kind == "attachment":
+            if card.get("chain_piece") and index is not None and not (0 <= index <= len(self.boards[seat])):
+                raise ClashError("插入位置不存在", "bad_index")
             if target is None:
                 raise ClashError("配件必须指定己方主控", "bad_target")
             host_seat, _slot, host = self.find(self.resolve_iid(seat, target))
@@ -258,6 +402,8 @@ class Game:
         elif kind == "attachment":
             host["attachments"].append(card_id)
             self.event(f"{card['name']}装到{self.cards[host['card_id']]['name']}上")
+            if card.get("chain_piece"):
+                self._place_link(seat, card_id, host["iid"], index=index)
         else:
             self.cast_spell(seat, card, target, mode)
             self.graves[seat].append(card_id)
@@ -267,9 +413,18 @@ class Game:
 
     def prepare_spell(self, seat, card, target, mode):
         effect = card["effect"]
-        if effect == "supply":
+        if effect in ("supply", "heal_base", "draw_one", "retrieve_grave"):
             return
-        if effect == "heal_base":
+        if effect == "arm_aiflow":
+            if self.aiflow_armed[seat]:
+                raise ClashError("说人话还没用掉", "already_used_ability")
+            return
+        if effect == "seize":
+            if target is None or target == "base":
+                raise ClashError("夺舍只能指定敌方场上的主控", "bad_target")
+            foe_seat, _slot, foe = self.find(self.resolve_iid(1 - seat, target))
+            if foe_seat == seat or foe.get("link") or self.cards[foe["card_id"]].get("kind") != "main":
+                raise ClashError("夺舍只能指定敌方场上的主控", "bad_target")
             return
         if effect == "damage":
             if target is None:
@@ -312,14 +467,36 @@ class Game:
                 self.event(f"{self.cards[host['card_id']]['name']}本回合攻击变为{attack_of(self.cards, host)}")
             else:
                 raise ClashError("补给要选择修复或临时强化")
+        elif effect == "draw_one":
+            self.draw(seat)
+        elif effect == "retrieve_grave":
+            if not self.graves[seat]:
+                self.event("墓地是空的，记一笔没有取回")
+            else:
+                recovered = self.graves[seat].pop()
+                if len(self.hands[seat]) >= 8:
+                    self.graves[seat].append(recovered)
+                    self.event("手牌已满，记一笔没有取回")
+                else:
+                    self.hands[seat].append(recovered)
+                    self.event(f"记一笔取回{self.cards[recovered]['name']}")
+        elif effect == "arm_aiflow":
+            self.aiflow_armed[seat] = True
+            self.event("说人话：本回合下一次打击在百分比之前攻击+2")
+        elif effect == "seize":
+            foe = self.find(self.resolve_iid(1 - seat, target))[2]
+            self._seize_unit(seat, foe)
         else:
             raise ClashError("未知战术")
 
     def support(self, seat):
         """小印支援：把墓地里的厚壳工控复活到空位。小印自己留在场上。"""
         self.require_main(seat)
-        sources = [unit for unit in self.units(seat) if self.cards[unit["card_id"]].get("effect") == "support"]
-        if len(sources) < 1:
+        all_sources = [unit for unit in self.units(seat) if self.cards[unit["card_id"]].get("effect") == "support"]
+        sources = [unit for unit in all_sources if not unit.get("ability_lock")]
+        if not sources:
+            if all_sources:
+                raise ClashError("这台小印本回合不能支援", "seized_this_turn")
             raise ClashError("场上要有一台小印才能支援", "no_stamp_on_board")
         if self.ability_used[seat].get("support"):
             raise ClashError("本回合已经支援过", "already_used_ability")
@@ -372,6 +549,8 @@ class Game:
         self.pay(seat, cost)
         self.take_hand(seat, next_id)
         if kind == "main":
+            self._drop_upper_links(unit["iid"])
+            self._remove_links(seat, unit["iid"])
             slot = unit["slot"]
             for attachment in list(unit["attachments"]):
                 self.graves[seat].append(attachment)
@@ -386,6 +565,9 @@ class Game:
             self.graves[seat].append(current_id)
             self.promote_ban[seat].add(current_id)
             unit["attachments"].append(next_id)
+            for entry in self.boards[seat]:
+                if entry.get("link") and entry.get("host_iid") == unit["iid"] and entry["card_id"] == current_id:
+                    entry["card_id"] = next_id
             self.event(f"{current['name']}升成{nxt['name']}，仍装在原宿主上")
         self.check_deaths()
         self.check_bases()
@@ -397,6 +579,8 @@ class Game:
         host_seat, _slot, host = self.find(host_id)
         if host_seat != seat or self.cards[host["card_id"]].get("effect") != "knob":
             raise ClashError("只有己方旋钮台能调这一下", "bad_target")
+        if host.get("ability_lock"):
+            raise ClashError("这台单位本回合不能发动技能", "seized_this_turn")
         if self.ability_used[seat].get("knob"):
             raise ClashError("本回合旋钮已经用过", "already_used_ability")
         ally_seat, _slot, ally = self.find(target)
@@ -415,6 +599,8 @@ class Game:
         atk_seat, _slot, attacker = self.find(attacker_id)
         if atk_seat != seat:
             raise ClashError("不能操作对方的单位", "bad_target")
+        if attacker.get("link"):
+            raise ClashError("链节标记不能攻击", "bad_target")
         if attacker["sick"]:
             raise ClashError("新入场的单位本回合不能攻击", "summoning_sickness")
         if attacker["attacked"]:
@@ -424,7 +610,7 @@ class Game:
             if guards and not bypass_guard(self.cards, attacker):
                 raise ClashError("对方有护卫时只能攻击护卫", "guard_blocks")
             attacker["attacked"] = True
-            damage = attack_of(self.cards, attacker)
+            damage = self.strike_damage(seat, attack_of(self.cards, attacker))
             self.bases[1 - seat] = max(0, self.bases[1 - seat] - damage)
             self.event(f"{self.cards[attacker['card_id']]['name']}攻击基地，对方基地变为{self.bases[1 - seat]}")
             self.check_bases()
@@ -432,11 +618,13 @@ class Game:
         def_seat, _slot, defender = self.find(self.resolve_iid(1 - seat, target))
         if def_seat == seat:
             raise ClashError("不能攻击己方单位", "bad_target")
+        if defender.get("link"):
+            raise ClashError("不能攻击链节标记", "bad_target")
         if guards and defender not in guards and not bypass_guard(self.cards, attacker):
             raise ClashError("对方有护卫时只能攻击护卫", "guard_blocks")
         attacker["attacked"] = True
-        atk_damage = attack_of(self.cards, attacker)
-        def_damage = attack_of(self.cards, defender)
+        atk_damage = self.strike_damage(seat, attack_of(self.cards, attacker))
+        def_damage = self.strike_damage(1 - seat, attack_of(self.cards, defender))
         attacker["durability"] = max(0, attacker["durability"] - def_damage)
         defender["durability"] = max(0, defender["durability"] - atk_damage)
         self.event(
@@ -448,10 +636,15 @@ class Game:
     def check_deaths(self):
         dead = []
         for seat in (0, 1):
-            for slot, unit in enumerate(self.boards[seat]):
-                if unit is not None and unit["durability"] <= 0:
-                    dead.append((seat, slot, unit))
-        for seat, _slot, unit in dead:
+            for unit in self.boards[seat]:
+                if not unit.get("link") and unit["durability"] <= 0:
+                    dead.append(unit)
+        for unit in dead:
+            seat = unit["seat"]
+            if unit not in self.boards[seat]:
+                continue
+            self._drop_upper_links(unit["iid"])
+            self._remove_links(seat, unit["iid"])
             for attachment in unit["attachments"]:
                 self.graves[seat].append(attachment)
                 self.event(f"{self.cards[attachment]['name']}随宿主进入墓地")
@@ -477,6 +670,7 @@ class Game:
             unit["temp_attack"] = 0
             unit["attacked"] = False
         self.supply[seat] = 0
+        self.aiflow_armed[seat] = False
         self.event(f"座位{seat}回合结束，临时攻击加成清除，没用完的供电清零")
         self.seat = 1 - seat
         self.phase = "between"
@@ -494,6 +688,9 @@ class Game:
                 "guard": has_guard(self.cards, unit),
                 "attachments": list(unit["attachments"]),
             }
+            if unit.get("link"):
+                shown["link"] = True
+                shown["host_iid"] = unit["host_iid"]
         return {
             "bases": list(self.bases),
             "supply": list(self.supply),
@@ -505,6 +702,9 @@ class Game:
             "winner": self.winner,
             "seat": self.seat,
             "phase": self.phase,
+            "formation": [self.formation_state(0), self.formation_state(1)],
+            "upper_links": [list(row) for row in self.upper_links],
+            "aiflow_armed": list(self.aiflow_armed),
         }
 
 
@@ -523,6 +723,8 @@ def replay(cards, deck0, deck1, steps):
             game.knob(seat, step["host"], step["target"])
         elif kind == "attack":
             game.attack(seat, step["attacker"], step["target"])
+        elif kind == "upper_link":
+            game.upper_link(seat, step["source"], step["target"])
         elif kind == "end":
             game.end_turn(seat)
         else:

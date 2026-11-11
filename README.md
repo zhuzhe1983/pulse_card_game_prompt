@@ -2,7 +2,7 @@
 
 中文显示名为「脉冲对决」，英文显示名为 PULSE。技术标识保持 `pulse-card` 与协议 `pcg`。
 
-现在要玩的是单局回合战：双方基地、会增长并每回合重置的供电、主控单位的攻击和耐久。规则在 `docs/01_GAMEPLAY.md`，试玩卡在 `content/clash_playtest.json`，96 张扩展在 `content/clash_roster_96.json`，教学核对在 `fixtures/clash_v0_lesson.json`，网页入口是 `WEB_IMPLEMENTATION_HANDOFF.md`。编号 `pcg.clash.v0`，平衡还没验证。旧的三局点数规则留在 `docs/history/`，冻结卡包和参考裁判仍是 `pcg.core.v1`，这次没有改它们的字节。
+现在要玩的是单局回合战：双方基地、会增长并每回合重置的供电、主控单位的攻击和耐久。规则在 `docs/01_GAMEPLAY.md`，Chain、上位连接、服务牌和夺舍在 `docs/19_SYNERGY_AND_SERVICES.md`。试玩卡在 `content/clash_playtest.json`，服务牌在 `content/clash_services.json`，96 张扩展在 `content/clash_roster_96.json`，教学核对在 `fixtures/clash_v0_lesson.json`，网页入口是 `WEB_IMPLEMENTATION_HANDOFF.md`。编号 `pcg.clash.v0`，平衡还没验证。旧的三局点数规则留在 `docs/history/`，冻结卡包和参考裁判仍是 `pcg.core.v1`，这次没有改它们的字节。
 
 中文显示名在 `content/zh-CN.json`，英文显示名在 `content/en.json`。扩展目录在 `docs/13_WORLD_AND_FACTIONS.md`、`docs/14_EXPANSION_DRAFT.md` 和 `content/game_catalog.csv`，那是旧点数规则的未启用草案。
 
