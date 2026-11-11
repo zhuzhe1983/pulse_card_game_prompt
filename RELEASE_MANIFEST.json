@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 598354,
-      "sha256": "43ec2eb6b367776c21a9ded6f7a22912317c43276b2d3ebf791be0d8c1c4ddef"
+      "bytes": 600840,
+      "sha256": "ecabb95c0a85a39b08fa19e74794393be7115366a6b676d750d678c3d51e49b3"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -573,8 +573,8 @@
     },
     {
       "path": "WEB_IMPLEMENTATION_HANDOFF.md",
-      "bytes": 11693,
-      "sha256": "ac5dde60176dfb8eebf825892faabc5e6995929a714fb22b27220d06aacc61c7"
+      "bytes": 11971,
+      "sha256": "de2dd1c0ce132c821f76357247f47edcd490c8175c873e14920f1b6fc42625c8"
     },
     {
       "path": "fixtures/clash_v0_lesson.json",
@@ -618,13 +618,13 @@
     },
     {
       "path": "docs/20_POINTER_AND_MODES.md",
-      "bytes": 12278,
-      "sha256": "ecb5cd2185db351a5749b8ec14382ba6c8a999e97edc6111718beb364a036c6a"
+      "bytes": 14764,
+      "sha256": "c822d56f24bf3cab474aa74d05511654877fd796a7429c9019f9c73e63d2682d"
     },
     {
       "path": "tests/test_pointer_spec.py",
-      "bytes": 3030,
-      "sha256": "752f5b858fc3b249afe39661f160a7d21b0c9880399cf3e42398ce6fa815d87e"
+      "bytes": 3333,
+      "sha256": "958bc62c34fa01bcbe92aac320a0bd8f142d129b99095e83ed2fc55128581720"
     }
   ]
 }
