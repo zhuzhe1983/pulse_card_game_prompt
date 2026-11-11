@@ -43,6 +43,7 @@ class Game:
         game.boards = [[None] * 5, [None] * 5]
         game.graves = [[], []]
         game.ability_used = [{}, {}]
+        game.promote_ban = [set(), set()]
         game.seat = 0
         game.turns_started = [1, 0]
         game.phase = "main"
@@ -79,7 +80,8 @@ class Game:
         self.hands = [[], []]
         self.boards = [[None] * 5, [None] * 5]
         self.graves = [[], []]
-        self.ability_used = [{} , {}]
+        self.ability_used = [{}, {}]
+        self.promote_ban = [set(), set()]
         self.seat = 0
         self.turns_started = [0, 0]
         self.phase = "opening"
@@ -129,6 +131,7 @@ class Game:
         self.phase = "start"
         self.turns_started[seat] += 1
         self.ability_used[seat] = {}
+        self.promote_ban[seat] = set()
         first_opening = seat == 0 and self.turns_started[seat] == 1
         if first_opening:
             self.event(f"座位{seat}回合开始：先手第1回合不抽牌")
@@ -178,24 +181,28 @@ class Game:
                 return slot
         return None
 
-    def place_new(self, seat, card_id):
-        slot = self.empty_slot(seat)
+    def place_new(self, seat, card_id, slot=None, sick=True):
+        if slot is None:
+            slot = self.empty_slot(seat)
         if slot is None:
             raise ClashError("场上没有空位", "board_full")
+        if self.boards[seat][slot] is not None:
+            raise ClashError("位置已有单位", "board_full")
         unit = {
             "iid": f"u{self._next_id}",
             "card_id": card_id,
             "seat": seat,
             "slot": slot,
             "durability": self.cards[card_id]["durability"],
-            "sick": True,
+            "sick": sick,
             "attacked": False,
             "temp_attack": 0,
             "attachments": [],
         }
         self._next_id += 1
         self.boards[seat][slot] = unit
-        self.event(f"座位{seat}{self.cards[card_id]['name']}进入位置{slot}，新入场不能攻击")
+        note = "本回合不能攻击" if sick else "本回合可以攻击"
+        self.event(f"座位{seat}{self.cards[card_id]['name']}进入位置{slot}，{note}")
         return unit
 
     def resolve_iid(self, seat, ref):
@@ -219,6 +226,8 @@ class Game:
         if kind == "main":
             if self.alive_count(seat) >= 5:
                 raise ClashError("场位已满", "board_full")
+            if card.get("effect") == "play_damage" and target is not None:
+                self.find(self.resolve_iid(1 - seat, target))
         elif kind == "attachment":
             if target is None:
                 raise ClashError("配件必须指定己方主控", "bad_target")
@@ -236,7 +245,14 @@ class Game:
         self.pay(seat, card["cost"])
         self.take_hand(seat, card_id)
         if kind == "main":
-            self.place_new(seat, card_id)
+            unit = self.place_new(seat, card_id, sick=not card.get("rush"))
+            if card.get("effect") == "play_draw":
+                self.draw(seat)
+            elif card.get("effect") == "play_damage" and target is not None:
+                foe = self.find(self.resolve_iid(1 - seat, target))[2]
+                amount = card.get("effect_amount") or card.get("amount") or 1
+                foe["durability"] = max(0, foe["durability"] - amount)
+                self.event(f"入场打击，{self.cards[foe['card_id']]['name']}耐久变为{foe['durability']}")
         elif kind == "attachment":
             host["attachments"].append(card_id)
             self.event(f"{card['name']}装到{self.cards[host['card_id']]['name']}上")
@@ -254,7 +270,6 @@ class Game:
         if effect == "heal_base":
             return
         if effect == "damage":
-            host_seat, _slot, _host = self.find(self.resolve_iid(1 - seat, target))
             if target is None:
                 raise ClashError("干扰必须指定敌方单位", "bad_target")
             host_seat, _slot, _host = self.find(self.resolve_iid(1 - seat, target))
@@ -301,32 +316,88 @@ class Game:
     def support(self, seat):
         """小印支援：把墓地里的厚壳工控复活到空位。小印自己留在场上。"""
         self.require_main(seat)
-        sources = [unit for unit in self.units(seat) if unit["card_id"] == "xiao_yin"]
-        if len(sources) != 1:
+        sources = [unit for unit in self.units(seat) if self.cards[unit["card_id"]].get("effect") == "support"]
+        if len(sources) < 1:
             raise ClashError("场上要有一台小印才能支援", "no_stamp_on_board")
-        if self.ability_used[seat].get("xiao_yin"):
+        if self.ability_used[seat].get("support"):
             raise ClashError("本回合已经支援过", "already_used_ability")
-        if "hou_ke" not in self.graves[seat]:
-            raise ClashError("墓地里没有厚壳工控", "no_shell_in_grave")
+        if "hou_ke" not in self.graves[seat] or "hou_ke" in self.promote_ban[seat]:
+            raise ClashError("墓地里没有可支援的厚壳工控", "no_shell_in_grave")
         if self.alive_count(seat) >= 5:
             raise ClashError("场上没有空位", "board_full")
         if self.supply[seat] < 2:
             raise ClashError("供电不足", "not_enough_supply")
         self.pay(seat, 2)
-        self.ability_used[seat]["xiao_yin"] = 1
+        self.ability_used[seat]["support"] = 1
         self.graves[seat].remove("hou_ke")
         self.event("小印支援，厚壳工控离开墓地")
         revived = self.place_new(seat, "hou_ke")
         return revived
+
+    def promote_cost(self, current_id, next_id):
+        current = self.cards[current_id]
+        nxt = self.cards[next_id]
+        return max(1, nxt["cost"] - current["cost"])
+
+    def promote(self, seat, current_id):
+        """把场上的这一星换成手牌里的下一星。没有降星。"""
+        self.require_main(seat)
+        current = self.cards.get(current_id)
+        if current is None or not current.get("next_template_id"):
+            raise ClashError("这张牌没有下一星", "no_growth")
+        next_id = current["next_template_id"]
+        nxt = self.cards[next_id]
+        if current.get("growth_kind") != "chain" or nxt.get("growth_family") != current.get("growth_family"):
+            raise ClashError("这张牌没有下一星", "no_growth")
+        if nxt.get("star") != current.get("star") + 1:
+            raise ClashError("星级没有接上", "no_growth")
+        if next_id not in self.hands[seat]:
+            raise ClashError("手牌里没有下一星", "not_in_hand")
+        found = None
+        for unit in self.units(seat):
+            if unit["card_id"] == current_id:
+                found = ("main", unit)
+                break
+            if current_id in unit["attachments"]:
+                found = ("attachment", unit)
+                break
+        if found is None:
+            raise ClashError("场上没有这一星", "bad_target")
+        kind, unit = found
+        if kind == "attachment" and nxt.get("grants_guard") and self.cards[unit["card_id"]].get("guard"):
+            raise ClashError("这台主控已经有护卫", "already_has_guard")
+        cost = self.promote_cost(current_id, next_id)
+        if self.supply[seat] < cost:
+            raise ClashError("供电不足", "not_enough_supply")
+        self.pay(seat, cost)
+        self.take_hand(seat, next_id)
+        if kind == "main":
+            slot = unit["slot"]
+            for attachment in list(unit["attachments"]):
+                self.graves[seat].append(attachment)
+                self.event(f"{self.cards[attachment]['name']}随升星进入墓地")
+            self.boards[seat][slot] = None
+            self.graves[seat].append(current_id)
+            self.promote_ban[seat].add(current_id)
+            self.event(f"{current['name']}升星退役，进入墓地")
+            self.place_new(seat, next_id, slot=slot, sick=True)
+        else:
+            unit["attachments"].remove(current_id)
+            self.graves[seat].append(current_id)
+            self.promote_ban[seat].add(current_id)
+            unit["attachments"].append(next_id)
+            self.event(f"{current['name']}升成{nxt['name']}，仍装在原宿主上")
+        self.check_deaths()
+        self.check_bases()
 
     def knob(self, seat, host_id, target):
         self.require_main(seat)
         host_id = self.resolve_iid(seat, host_id)
         target = self.resolve_iid(seat, target)
         host_seat, _slot, host = self.find(host_id)
-        if host_seat != seat or host["card_id"] != "xuan_niu":
+        if host_seat != seat or self.cards[host["card_id"]].get("effect") != "knob":
             raise ClashError("只有己方旋钮台能调这一下", "bad_target")
-        if self.ability_used[seat].get("xuan_niu"):
+        if self.ability_used[seat].get("knob"):
             raise ClashError("本回合旋钮已经用过", "already_used_ability")
         ally_seat, _slot, ally = self.find(target)
         if ally_seat != seat:
@@ -334,7 +405,7 @@ class Game:
         if self.supply[seat] < 1:
             raise ClashError("供电不足", "not_enough_supply")
         self.pay(seat, 1)
-        self.ability_used[seat]["xuan_niu"] = 1
+        self.ability_used[seat]["knob"] = 1
         ally["temp_attack"] += 1
         self.event(f"旋钮台让{self.cards[ally['card_id']]['name']}本回合攻击变为{attack_of(self.cards, ally)}")
 

@@ -11,6 +11,8 @@
 | `docs/01_GAMEPLAY.md` | 给人看的规则、战例、首版默认 |
 | `content/clash_playtest.json` | 12 张代表卡、后手代币、两副教学牌库 |
 | `fixtures/clash_v0_lesson.json` | 教学局逐步行动和核对点 |
+| `content/clash_roster_96.json` | 96 张扩展牌、星级和产品 rid |
+| `docs/18_ROSTER_AND_GROWTH.md` | 升星规则和家族说明 |
 | `tests/test_clash_playtest.py` | 对照测试。复算器只在 `tests/clash_walk.py`，不是要移植的框架 |
 
 卡图、96 张美术、固件都不在这轮范围里。
@@ -57,6 +59,7 @@
 | `knob` | 场上的旋钮台花 1 点电，一个己方单位（可以是自己）本回合攻击 +1。每回合 1 次。新入场也能用 |
 | `attack` | 新入场不能打，一台一回合一次。打单位时先抄下双方攻击，再同时扣耐久，再一次性死亡。打基地不反击 |
 | `end_turn` | 见上面第 6 步 |
+| `promote` | 场上这一星换成手牌里的下一星。费用是差价，最少 1。没有降星。新主控进原位置，满耐久，本回合不能攻击，不带配件。旧配件先入墓地。升星不刷新本回合已经用过的支援或旋钮。本回合因此退役的厚壳不能马上被支援召回 |
 
 借一格电是 0 费，当前供电 +1，可以暂时高于上限。回合结束清零。
 
@@ -70,7 +73,7 @@
 
 网页可以按码提示，不必解析中文句子。拒绝时局面与行动前相同。
 
-`game_over` `not_your_turn` `bad_phase` `not_enough_supply` `not_in_hand` `board_full` `bad_target` `already_has_attachment` `already_has_guard` `no_stamp_on_board` `no_shell_in_grave` `already_used_ability` `summoning_sickness` `already_attacked` `guard_blocks`
+`game_over` `not_your_turn` `bad_phase` `not_enough_supply` `not_in_hand` `board_full` `bad_target` `already_has_attachment` `already_has_guard` `no_stamp_on_board` `no_shell_in_grave` `already_used_ability` `summoning_sickness` `already_attacked` `guard_blocks` `no_growth`
 
 同一回合里支援或旋钮已经用过，再试一次报 `already_used_ability`，即使当时也没电。第一次用、但是电不够，才报 `not_enough_supply`。
 

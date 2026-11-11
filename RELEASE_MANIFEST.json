@@ -8,8 +8,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4290,
-      "sha256": "f9bc751d434787490cd2569d4b73fa7b7689c28b5effa72bbf51027318124314"
+      "bytes": 4339,
+      "sha256": "634ced3bba05637eec7fdd70ab27932c7bcc61f8017c16c54b7fe0ae34bfa8d4"
     },
     {
       "path": "REQUIREMENTS.html",
@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 554694,
-      "sha256": "d4838a5391ee500a599aca19a427b07e35b3038b366bfa9169b5071f8cc4ad26"
+      "bytes": 554918,
+      "sha256": "006026f507b5918078afafca1c310fd631aa100d9fd8e4c153f47f4d2f1040a3"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 19239,
-      "sha256": "048090c31e0d25dc21311ad58bacdff3ba5408901efe7c102502661d385e0c05"
+      "bytes": 19463,
+      "sha256": "dd1d5b48e8dbb39b48da6ea51b1b9af94a0075969aa1627e19f152541d47944d"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
@@ -563,8 +563,8 @@
     },
     {
       "path": "tests/clash_walk.py",
-      "bytes": 19566,
-      "sha256": "f55438c78ba487b3b942f44bed5eb3081dd4cea0de81a07588c5ebc09c0a76f2"
+      "bytes": 23293,
+      "sha256": "67f3e0e624e6c4399aea45a80aa3d095797f1a13473197a038506f7eee9ce117"
     },
     {
       "path": "tests/test_clash_playtest.py",
@@ -573,13 +573,28 @@
     },
     {
       "path": "WEB_IMPLEMENTATION_HANDOFF.md",
-      "bytes": 6367,
-      "sha256": "68e76bff17b936af30bd3d620bacffbe2d687e80500b907eced169ab27fbdaf5"
+      "bytes": 6838,
+      "sha256": "981adf8b5460944564ee6ce46177a727d27b991985998c5292fab51df5b28969"
     },
     {
       "path": "fixtures/clash_v0_lesson.json",
       "bytes": 8722,
       "sha256": "0acce84683c82c1e88f3009a41a083cbda48d28ff9b748a57831e199ca6b3b18"
+    },
+    {
+      "path": "content/clash_roster_96.json",
+      "bytes": 154473,
+      "sha256": "3279ebcf6bac546a026f7e792a61e7c7a1763a36882dd1d6df66d05fa93723ab"
+    },
+    {
+      "path": "docs/18_ROSTER_AND_GROWTH.md",
+      "bytes": 13925,
+      "sha256": "c4247c54aff064587ea8e215064e49d10336f84b5ed6a7771e5b9d193ee5c13f"
+    },
+    {
+      "path": "tests/test_clash_roster.py",
+      "bytes": 7324,
+      "sha256": "8dac6727d0a8afab817ea07b0a64c2527e8fc326bb4d4009a12f8893e41c7c5b"
     }
   ]
 }
