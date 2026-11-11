@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 566268,
-      "sha256": "1d297dc56905e114495d36e74f7521c8d678aa3c88dedfb89a14bc51c354407f"
+      "bytes": 584653,
+      "sha256": "4e9e2de88dd6463b76219dc5283dcc4e1cd832cef2ddf71a7840d32fe94e9ca7"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 20016,
-      "sha256": "996e2ef51cbc7be9f514b10bc3dbb6db284634db2402a030fcfd1fc2362c3787"
+      "bytes": 21870,
+      "sha256": "88628d01b004aa92c578909ab4c5d5630dc3928229940d5737c763c34d765257"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
@@ -93,8 +93,8 @@
     },
     {
       "path": "docs/09_TUTORIAL_AND_PLAYTEST.md",
-      "bytes": 1900,
-      "sha256": "cb81d75fe0523282844655ccbd947d0f5986a69413ae0cb87e48648a4455c6a0"
+      "bytes": 1930,
+      "sha256": "a6fcccc650e8aa9d1bcd4194d5fdaff4894a404fef0b553126ac8389759af8ba"
     },
     {
       "path": "docs/10_SOURCES_AND_MATERIALS.md",
@@ -543,8 +543,8 @@
     },
     {
       "path": "content/clash_playtest.json",
-      "bytes": 9079,
-      "sha256": "4f54fe26e46807d6de40fec472eaaa60c9fdd3f06534815467328fdaf150cf4d"
+      "bytes": 11287,
+      "sha256": "9ce2e5c33d16a9c80085258e97199eaf355ef3e19b5df6ec1814ef621951372e"
     },
     {
       "path": "docs/history/README.md",
@@ -563,53 +563,58 @@
     },
     {
       "path": "tests/clash_walk.py",
-      "bytes": 32808,
-      "sha256": "731a4648cc0dfd0cdf05a4d38cef0ca73591eb26a6a2fdcdee3bae5e32f8001e"
+      "bytes": 33043,
+      "sha256": "f9683dda8c7d9b7532aa136f1fb3a417ead378f87de3b4b370724da25423e772"
     },
     {
       "path": "tests/test_clash_playtest.py",
-      "bytes": 16891,
-      "sha256": "6e18dee68f270de1ab8dc3c13a1e51128eab7a8ec9cc8b7b9131b8d862492409"
+      "bytes": 16616,
+      "sha256": "597efed61bb695508af3c5073a4202f83d4e0d8217fcc2af36dc77bf30db9137"
     },
     {
       "path": "WEB_IMPLEMENTATION_HANDOFF.md",
-      "bytes": 10091,
-      "sha256": "9950294fffcdba9a4aab4c6e12cbd1969933be3a171350da7b5ab65c72439399"
+      "bytes": 10216,
+      "sha256": "55c4e7a2d923bec10489f10c8574bf23279432b8bf00b691fbc26d65433af39d"
     },
     {
       "path": "fixtures/clash_v0_lesson.json",
-      "bytes": 7607,
-      "sha256": "072596c85d8581561fd67d7bcb00b8fad8d6479aea5dcbbc03b8a8653bd7335e"
+      "bytes": 7608,
+      "sha256": "f26d69c1ae22a8817ea117f76bd4630119ef05e64dbe5bf6795b5a529df6638d"
     },
     {
       "path": "content/clash_roster_96.json",
-      "bytes": 155171,
-      "sha256": "1779c5f7fcdad048f2403b54251855271398a595e6ae59929de2cc49d6c5f22e"
+      "bytes": 177669,
+      "sha256": "a89cafbd30f4d246128eef2fbebcda997521c988edb975ffd87713e178859378"
     },
     {
       "path": "docs/18_ROSTER_AND_GROWTH.md",
-      "bytes": 13970,
-      "sha256": "9fa9aa80fb5dbbc62d8705ca08a02bfe60bd29075ab1d970a91982700238cadb"
+      "bytes": 17886,
+      "sha256": "53d4bdde147cc6febb1be37427b8673f204202c1baf3ae3b0b33c09477e2801a"
     },
     {
       "path": "tests/test_clash_roster.py",
-      "bytes": 7501,
-      "sha256": "e165385e51e5ece5489d43a746924f84e1503a1bd077b548be10ad16a42520da"
+      "bytes": 7502,
+      "sha256": "76608dd4fc2293a5ffce02ff5e580bdd7311043e84ccea6a6a175cbdf34a6846"
     },
     {
       "path": "content/clash_services.json",
-      "bytes": 4101,
-      "sha256": "a46d50e47fcbd59281d63f646d588e3afc2d80ff78d02468e72a8534afde3f90"
+      "bytes": 4481,
+      "sha256": "904edaec401443aa4ed49d32d6d26050be672803620a00671cf0d036fc64a35d"
     },
     {
       "path": "docs/19_SYNERGY_AND_SERVICES.md",
-      "bytes": 8552,
-      "sha256": "f78d6cd1b3456daa45e5b8f3abfc7eb6e0593694c4c9a0a4a3c31042523f70c2"
+      "bytes": 8984,
+      "sha256": "54dc15b94dfb8d387b46a87d1c342d2fd525d0b1d1433e29c56ba65f1a23f364"
     },
     {
       "path": "tests/test_clash_synergy.py",
-      "bytes": 13973,
-      "sha256": "99c815f49626aea0cdce0c502a1531f340b03afe334b2af1c480a1a22486ac51"
+      "bytes": 14031,
+      "sha256": "4a7525a9dd9328efb550625bce66b91bcd46eec0b4026c31be526f4330cb2e47"
+    },
+    {
+      "path": "tests/test_clash_cost_curve.py",
+      "bytes": 4383,
+      "sha256": "2c8caca72686654735350c39d9a5fafac91a1b85817611d10a697cceaad8df84"
     }
   ]
 }

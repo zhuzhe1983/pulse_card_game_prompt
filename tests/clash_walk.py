@@ -29,6 +29,13 @@ def bypass_guard(card, unit):
     return any(card[item]["bypass_guard"] for item in unit["attachments"])
 
 
+def support_cost(card):
+    amount = card.get("effect_amount")
+    if not amount:
+        amount = card.get("amount") or 1
+    return amount
+
+
 class Game:
     @classmethod
     def empty(cls, cards):
@@ -502,9 +509,9 @@ class Game:
             raise ClashError("本回合已经支援过", "already_used_ability")
         if "hou_ke" not in self.graves[seat] or "hou_ke" in self.promote_ban[seat]:
             raise ClashError("墓地里没有可支援的厚壳工控", "no_shell_in_grave")
-        if self.supply[seat] < 2:
+        if self.supply[seat] < support_cost(self.cards[sources[0]["card_id"]]):
             raise ClashError("供电不足", "not_enough_supply")
-        self.pay(seat, 2)
+        self.pay(seat, support_cost(self.cards[sources[0]["card_id"]]))
         self.ability_used[seat]["support"] = 1
         self.graves[seat].remove("hou_ke")
         self.event("小印支援，厚壳工控离开墓地")

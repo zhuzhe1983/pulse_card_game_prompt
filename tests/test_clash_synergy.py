@@ -51,9 +51,9 @@ def arena():
 class FormationTests(unittest.TestCase):
     def test_leader_percent_and_low_attack_ceil(self):
         game, _chain = arena()
-        game.spawn(0, "xi_tiao", sick=False)
+        game.spawn(0, "xiao_yin", sick=False)
         self.assertEqual(game.formation_state(0)["percent"], 10)
-        game.attack(0, "xi_tiao", "base")
+        game.attack(0, "xiao_yin", "base")
         self.assertEqual(game.bases[1], 18)
 
     def test_zero_attack_stays_zero(self):
@@ -109,7 +109,7 @@ class FormationTests(unittest.TestCase):
         game.spawn(1, "hou_ke", sick=False)
         game.hands[0] = ["gan_rao"]
         game.play(0, "gan_rao", "hou_ke")
-        self.assertEqual(game.units(1)[0]["durability"], 4)
+        self.assertEqual(game.units(1)[0]["durability"], 5)
 
 
 class UpperLinkTests(unittest.TestCase):
@@ -126,7 +126,7 @@ class UpperLinkTests(unittest.TestCase):
         game.upper_link(0, "cm4_stack", "xiao_yin")
         self.assertEqual(game.supply[0], 9)
         game.attack(0, "qiao_jian", "base")
-        self.assertEqual(game.bases[1], 14)
+        self.assertEqual(game.bases[1], 13)
         before = game.view()
         with self.assertRaises(ClashError) as again:
             game.upper_link(0, "art_h050", "xiao_yin")
@@ -204,14 +204,14 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual(game.graves[0], ["ezdata_note"])
         game.hands[0] = ["aiflow_say", "aiflow_say"]
         game.supply[0] = 8
-        game.spawn(0, "xi_tiao", sick=False)
+        game.spawn(0, "xiao_yin", sick=False)
         game.play(0, "aiflow_say")
         before = game.view()
         with self.assertRaises(ClashError) as armed:
             game.play(0, "aiflow_say")
         self.assertEqual(armed.exception.code, "already_used_ability")
         self.assertEqual(game.view(), before)
-        game.attack(0, "xi_tiao", "base")
+        game.attack(0, "xiao_yin", "base")
         self.assertEqual(game.bases[1], 16)
         self.assertFalse(game.aiflow_armed[0])
         game.hands[0] = ["aiflow_say", "gan_rao"]
@@ -219,7 +219,7 @@ class ServiceTests(unittest.TestCase):
         game.spawn(1, "hou_ke", sick=False)
         game.play(0, "aiflow_say")
         game.play(0, "gan_rao", "hou_ke")
-        self.assertEqual(game.units(1)[0]["durability"], 4)
+        self.assertEqual(game.units(1)[0]["durability"], 5)
         self.assertTrue(game.aiflow_armed[0])
         game.end_turn(0)
         self.assertFalse(game.aiflow_armed[0])
@@ -302,7 +302,7 @@ class SeizeTests(unittest.TestCase):
         game.ability_used[0] = {}
         game.support(0)
         self.assertEqual(game.units(0)[0]["card_id"], "hou_ke")
-        self.assertEqual(game.units(0)[0]["durability"], 6)
+        self.assertEqual(game.units(0)[0]["durability"], 7)
         game.seat = 1
         with self.assertRaises(ClashError) as missing:
             game.support(1)
@@ -319,14 +319,15 @@ class ServiceRosterSplitTests(unittest.TestCase):
             self.assertIsNone(card["trusted_sku"])
             self.assertIsNone(card["artwork"])
         zero = roster["art_h050"]
-        self.assertEqual((zero["cost"], zero["attack"], zero["durability"]), (5, 4, 4))
+        self.assertEqual((zero["cost"], zero["attack"], zero["durability"]), (10, 4, 7))
         self.assertTrue(zero["upper_host"])
         core = roster["art_h018"]
         self.assertNotIn("upper_host", core)
         play = payload()
         by_id = {card["template_id"]: card for card in play["cards"]}
         self.assertEqual(by_id["lian_jie"]["attack_bonus"], 1)
-        self.assertEqual(by_id["xiao_yin"]["cost"], 2)
+        self.assertEqual(by_id["xiao_yin"]["cost"], 1)
+        self.assertEqual(by_id["hou_ke"]["cost"], 6)
         self.assertTrue(by_id["lian_jie"]["chain_piece"])
 
 

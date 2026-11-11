@@ -66,40 +66,34 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(game.hands[1][:4], ["xi_tiao", "hu_zhao", "xiao_yin", "gan_rao"])
         self.assertIn("jie_yi_ge_dian", game.hands[1])
         game.start_turn()
-        game.play(0, "xi_tiao")
+        game.play(0, "xiao_yin")
         game.end_turn(0)
         game.start_turn()
         self.assertEqual(game.hands[1][-2:], ["jie_yi_ge_dian", "dian_zhen"])
         game.play(1, "jie_yi_ge_dian")
         self.assertEqual(game.supply[1], 2)
-        game.play(1, "xiao_yin")
+        game.play(1, "dian_zhen")
         with self.assertRaises(ClashError):
-            game.attack(1, "xiao_yin", "base")
+            game.attack(1, "dian_zhen", "base")
         game.end_turn(1)
         game.start_turn()
-        game.play(0, "xiao_yin")
-        game.attack(0, "xi_tiao", "base")
-        self.assertEqual(game.bases, [20, 18])
-        with self.assertRaises(ClashError):
-            game.attack(0, "xiao_yin", "base")
+        game.attack(0, "xiao_yin", "dian_zhen")
+        self.assertEqual(game.bases, [20, 20])
+        self.assertEqual(game.graves[0], ["xiao_yin"])
+        self.assertEqual(game.units(1)[0]["durability"], 1)
         game.end_turn(0)
         game.start_turn()
-        game.play(1, "xi_tiao")
-        game.attack(1, "xiao_yin", "xi_tiao")
-        self.assertEqual(game.graves[0], ["xi_tiao"])
-        self.assertEqual(game.graves[1], ["jie_yi_ge_dian", "xiao_yin"])
-        self.assertEqual(game.bases, [20, 18])
-        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["xiao_yin"])
-        self.assertEqual([unit["card_id"] for unit in game.units(1)], ["xi_tiao"])
+        game.attack(1, "dian_zhen", "base")
+        self.assertEqual(game.bases, [18, 20])
+        game.play(1, "xiao_yin")
         game.end_turn(1)
         game.start_turn()
-        game.play(0, "dian_zhen")
-        game.attack(0, "xiao_yin", "xi_tiao")
-        self.assertEqual(game.graves[0], ["xi_tiao", "xiao_yin"])
-        self.assertEqual(game.graves[1], ["jie_yi_ge_dian", "xiao_yin", "xi_tiao"])
-        self.assertEqual(game.bases, [20, 18])
-        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["dian_zhen"])
-        self.assertEqual(game.units(1), [])
+        game.play(0, "xi_tiao")
+        self.assertEqual(game.graves[0], ["xiao_yin"])
+        self.assertEqual(game.graves[1], ["jie_yi_ge_dian"])
+        self.assertEqual(game.bases, [18, 20])
+        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["xi_tiao"])
+        self.assertEqual([unit["card_id"] for unit in game.units(1)], ["dian_zhen", "xiao_yin"])
         self.assertTrue(game.units(0)[0]["sick"])
         self.assertIsNone(game.winner)
         self.assertIn("同时结算", "\n".join(game.log))
@@ -115,27 +109,27 @@ class ClashExampleTests(unittest.TestCase):
         game.spawn(0, "xiao_yin", 0, sick=False)
         game.spawn(1, "dian_zhen", 0)
         game.support(0)
-        self.assertEqual(game.supply[0], 4)
+        self.assertEqual(game.supply[0], 5)
         self.assertEqual(game.graves[0], [])
         self.assertEqual([unit["card_id"] for unit in game.units(0)], ["hou_ke", "xiao_yin"])
         shell = next(unit for unit in game.units(0) if unit["card_id"] == "hou_ke")
         stamp = next(unit for unit in game.units(0) if unit["card_id"] == "xiao_yin")
-        self.assertEqual(shell["durability"], 6)
+        self.assertEqual(shell["durability"], 7)
         self.assertTrue(shell["sick"])
         self.assertFalse(stamp["sick"])
         with self.assertRaises(ClashError):
             game.support(0)
-        self.assertEqual(game.supply[0], 4)
+        self.assertEqual(game.supply[0], 5)
         with self.assertRaises(ClashError):
             game.attack(0, "hou_ke", "dian_zhen")
         with self.assertRaises(ClashError):
             game.attack(0, "xiao_yin", "base")
         game.play(0, "bu_ji", "hou_ke", "heal")
-        self.assertEqual(shell["durability"], 6)
-        self.assertEqual(game.supply[0], 3)
+        self.assertEqual(shell["durability"], 7)
+        self.assertEqual(game.supply[0], 4)
         game.play(0, "gan_rao", "dian_zhen")
-        self.assertEqual(game.units(1)[0]["durability"], 2)
-        self.assertEqual(game.supply[0], 1)
+        self.assertEqual(game.units(1)[0]["durability"], 1)
+        self.assertEqual(game.supply[0], 2)
         self.assertEqual([unit["card_id"] for unit in game.units(0)], ["hou_ke", "xiao_yin"])
 
     def test_support_after_later_deploy_and_after_shell_dies(self):
@@ -150,12 +144,12 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(later.supply[0], 6)
         self.assertEqual(later.graves[0], ["hou_ke"])
         later.play(0, "xiao_yin")
-        self.assertEqual(later.supply[0], 4)
+        self.assertEqual(later.supply[0], 5)
         self.assertTrue(later.units(0)[0]["sick"])
         later.support(0)
-        self.assertEqual(later.supply[0], 2)
+        self.assertEqual(later.supply[0], 4)
         shell = next(unit for unit in later.units(0) if unit["card_id"] == "hou_ke")
-        self.assertEqual(shell["durability"], 6)
+        self.assertEqual(shell["durability"], 7)
         self.assertTrue(shell["sick"])
         with self.assertRaises(ClashError):
             later.attack(0, "hou_ke", "base")
@@ -181,9 +175,9 @@ class ClashExampleTests(unittest.TestCase):
         revived = next(unit for unit in stayed.units(0) if unit["card_id"] == "hou_ke")
         self.assertEqual([unit["card_id"] for unit in stayed.units(0)], ["hou_ke", "xiao_yin"])
         self.assertEqual(revived["slot"], 0)
-        self.assertEqual(revived["durability"], 6)
+        self.assertEqual(revived["durability"], 7)
         self.assertTrue(revived["sick"])
-        self.assertEqual(stayed.supply[0], 2)
+        self.assertEqual(stayed.supply[0], 3)
 
     def test_edges(self):
         cards = load_cards(payload())
@@ -198,16 +192,16 @@ class ClashExampleTests(unittest.TestCase):
         full.support(0)
         self.assertEqual(len(full.units(0)), 6)
         self.assertEqual(full.units(0)[0]["card_id"], "hou_ke")
-        self.assertEqual(full.supply[0], 3)
+        self.assertEqual(full.supply[0], 4)
         full.hands[0] = ["bu_ji"]
         full.play(0, "bu_ji", "hou_ke", "heal")
         full.hands[0] = ["xi_tiao"]
-        full.supply[0] = 1
+        full.supply[0] = 3
         full.play(0, "xi_tiao", index=3)
         self.assertEqual(len(full.units(0)), 7)
         self.assertEqual(full.units(0)[3]["card_id"], "xi_tiao")
         full.hands[0] = ["xi_tiao"]
-        full.supply[0] = 1
+        full.supply[0] = 3
         before = full.view()
         with self.assertRaises(ClashError) as bad:
             full.play(0, "xi_tiao", index=99)
@@ -225,7 +219,7 @@ class ClashExampleTests(unittest.TestCase):
         host = guard.units(0)[0]
         host["sick"] = False
         guard.attack(0, "dian_zhen", "base")
-        self.assertEqual(guard.bases[1], 17)
+        self.assertEqual(guard.bases[1], 18)
 
         mend = Game.empty(cards)
         mend.supply = [1, 1]
@@ -292,13 +286,13 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(game.view(), before)
 
         knob = Game.empty(cards)
-        knob.supply = [4, 0]
-        knob.max_supply = [4, 0]
+        knob.supply = [9, 0]
+        knob.max_supply = [9, 0]
         knob.hands = [["xuan_niu"], []]
         knob.play(0, "xuan_niu")
         self.assertTrue(knob.units(0)[0]["sick"])
         knob.knob(0, "xuan_niu", "xuan_niu")
-        self.assertEqual(knob.view()["boards"][0][0]["attack"], 2)
+        self.assertEqual(knob.view()["boards"][0][0]["attack"], 4)
         self.assertEqual(knob.supply[0], 0)
         with self.assertRaises(ClashError) as used:
             knob.knob(0, "xuan_niu", "xuan_niu")
@@ -386,9 +380,9 @@ class ClashExampleTests(unittest.TestCase):
                 actual = game.view()
                 for key, value in step["expect"].items():
                     self.assertEqual(actual[key], value, step.get("name", kind))
-        self.assertEqual(game.bases, [20, 18])
-        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["dian_zhen"])
-        self.assertEqual(game.units(1), [])
+        self.assertEqual(game.bases, [18, 20])
+        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["xi_tiao"])
+        self.assertEqual([unit["card_id"] for unit in game.units(1)], ["dian_zhen", "xiao_yin"])
 
 
 if __name__ == "__main__":

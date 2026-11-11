@@ -44,7 +44,7 @@ class RosterTests(unittest.TestCase):
             self.assertIn(card["hardware_controller"],
                           ("independent_host", "auxiliary_programmable_mcu", "no_main_chip_listed"))
             self.assertGreaterEqual(card["cost"], 1)
-            self.assertLessEqual(card["cost"], 6)
+            self.assertLessEqual(card["cost"], 10)
             if card["kind"] == "main":
                 self.assertGreaterEqual(card["durability"], 1)
                 self.assertLessEqual(card["attack"], 5)
@@ -117,27 +117,27 @@ class RosterTests(unittest.TestCase):
         stamp["attachments"] = ["lian_jie"]
         game.graves = [["hou_ke"], []]
         game.support(0)
-        self.assertEqual(game.supply[0], 3)
+        self.assertEqual(game.supply[0], 4)
         held = game.hands[0].pop(0)
         with self.assertRaises(ClashError) as missing:
             game.promote(0, "xiao_yin")
         self.assertEqual(missing.exception.code, "not_in_hand")
-        self.assertEqual(game.supply[0], 3)
+        self.assertEqual(game.supply[0], 4)
         game.hands[0].append(held)
         game.promote(0, "xiao_yin")
-        self.assertEqual(game.supply[0], 2)
+        self.assertEqual(game.supply[0], 3)
         self.assertEqual(game.graves[0][-2:], ["lian_jie", "xiao_yin"])
         revived = game.boards[0][2]
         self.assertEqual(game.boards[0][0]["card_id"], "hou_ke")
         self.assertEqual(game.boards[0][1]["card_id"], "dian_zhen")
         self.assertEqual(revived["card_id"], "art_h038a")
-        self.assertEqual(revived["durability"], 3)
+        self.assertEqual(revived["durability"], 2)
         self.assertTrue(revived["sick"])
         self.assertEqual(revived["attachments"], [])
         with self.assertRaises(ClashError) as again:
             game.support(0)
         self.assertEqual(again.exception.code, "already_used_ability")
-        self.assertEqual(game.supply[0], 2)
+        self.assertEqual(game.supply[0], 3)
         with self.assertRaises(ClashError) as lateral:
             game.promote(0, "art_h038b")
         self.assertEqual(lateral.exception.code, "no_growth")
