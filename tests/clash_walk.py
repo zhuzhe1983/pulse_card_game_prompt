@@ -40,7 +40,7 @@ class Game:
         game.fatigue = [0, 0]
         game.decks = [[], []]
         game.hands = [[], []]
-        game.boards = [[None] * 5, [None] * 5]
+        game.boards = [[], []]
         game.graves = [[], []]
         game.ability_used = [{}, {}]
         game.promote_ban = [set(), set()]
@@ -52,13 +52,17 @@ class Game:
         game._next_id = 1
         return game
 
-    def spawn(self, seat, card_id, slot, durability=None, sick=False):
+    def _reindex(self, seat):
+        for index, unit in enumerate(self.boards[seat]):
+            unit["slot"] = index
+
+    def spawn(self, seat, card_id, index=None, durability=None, sick=False):
         card = self.cards[card_id]
         unit = {
             "iid": f"u{self._next_id}",
             "card_id": card_id,
             "seat": seat,
-            "slot": slot,
+            "slot": 0,
             "durability": card["durability"] if durability is None else durability,
             "sick": sick,
             "attacked": False,
@@ -66,9 +70,13 @@ class Game:
             "attachments": [],
         }
         self._next_id += 1
-        if self.boards[seat][slot] is not None:
-            raise ClashError("位置已有单位")
-        self.boards[seat][slot] = unit
+        if index is None:
+            self.boards[seat].append(unit)
+        elif 0 <= index <= len(self.boards[seat]):
+            self.boards[seat].insert(index, unit)
+        else:
+            raise ClashError("插入位置不存在", "bad_index")
+        self._reindex(seat)
         return unit
     def __init__(self, cards, deck0, deck1):
         self.cards = cards
@@ -78,7 +86,7 @@ class Game:
         self.fatigue = [0, 0]
         self.decks = [list(deck0), list(deck1)]
         self.hands = [[], []]
-        self.boards = [[None] * 5, [None] * 5]
+        self.boards = [[], []]
         self.graves = [[], []]
         self.ability_used = [{}, {}]
         self.promote_ban = [set(), set()]
@@ -104,7 +112,7 @@ class Game:
         self.log.append(text)
 
     def units(self, seat):
-        return [unit for unit in self.boards[seat] if unit is not None]
+        return list(self.boards[seat])
 
     def alive_count(self, seat):
         return len(self.units(seat))
@@ -175,24 +183,14 @@ class Game:
         except ValueError as exc:
             raise ClashError("手牌里没有这张牌", "not_in_hand") from exc
 
-    def empty_slot(self, seat):
-        for slot, unit in enumerate(self.boards[seat]):
-            if unit is None:
-                return slot
-        return None
-
-    def place_new(self, seat, card_id, slot=None, sick=True):
-        if slot is None:
-            slot = self.empty_slot(seat)
-        if slot is None:
-            raise ClashError("场上没有空位", "board_full")
-        if self.boards[seat][slot] is not None:
-            raise ClashError("位置已有单位", "board_full")
+    def place_new(self, seat, card_id, index=None, sick=True):
+        if index is not None and not (0 <= index <= len(self.boards[seat])):
+            raise ClashError("插入位置不存在", "bad_index")
         unit = {
             "iid": f"u{self._next_id}",
             "card_id": card_id,
             "seat": seat,
-            "slot": slot,
+            "slot": 0,
             "durability": self.cards[card_id]["durability"],
             "sick": sick,
             "attacked": False,
@@ -200,9 +198,13 @@ class Game:
             "attachments": [],
         }
         self._next_id += 1
-        self.boards[seat][slot] = unit
+        if index is None:
+            self.boards[seat].append(unit)
+        else:
+            self.boards[seat].insert(index, unit)
+        self._reindex(seat)
         note = "本回合不能攻击" if sick else "本回合可以攻击"
-        self.event(f"座位{seat}{self.cards[card_id]['name']}进入位置{slot}，{note}")
+        self.event(f"座位{seat}{self.cards[card_id]['name']}进入位置{unit['slot']}，{note}")
         return unit
 
     def resolve_iid(self, seat, ref):
@@ -214,7 +216,7 @@ class Game:
             raise ClashError("无法唯一确定单位", "bad_target")
         return found[0]
 
-    def play(self, seat, card_id, target=None, mode=None):
+    def play(self, seat, card_id, target=None, mode=None, index=None):
         self.require_main(seat)
         card = self.cards[card_id]
         if card_id not in self.hands[seat]:
@@ -224,8 +226,8 @@ class Game:
         kind = card["kind"]
         host = None
         if kind == "main":
-            if self.alive_count(seat) >= 5:
-                raise ClashError("场位已满", "board_full")
+            if index is not None and not (0 <= index <= len(self.boards[seat])):
+                raise ClashError("插入位置不存在", "bad_index")
             if card.get("effect") == "play_damage" and target is not None:
                 self.find(self.resolve_iid(1 - seat, target))
         elif kind == "attachment":
@@ -245,7 +247,7 @@ class Game:
         self.pay(seat, card["cost"])
         self.take_hand(seat, card_id)
         if kind == "main":
-            unit = self.place_new(seat, card_id, sick=not card.get("rush"))
+            unit = self.place_new(seat, card_id, index=index, sick=not card.get("rush"))
             if card.get("effect") == "play_draw":
                 self.draw(seat)
             elif card.get("effect") == "play_damage" and target is not None:
@@ -323,15 +325,13 @@ class Game:
             raise ClashError("本回合已经支援过", "already_used_ability")
         if "hou_ke" not in self.graves[seat] or "hou_ke" in self.promote_ban[seat]:
             raise ClashError("墓地里没有可支援的厚壳工控", "no_shell_in_grave")
-        if self.alive_count(seat) >= 5:
-            raise ClashError("场上没有空位", "board_full")
         if self.supply[seat] < 2:
             raise ClashError("供电不足", "not_enough_supply")
         self.pay(seat, 2)
         self.ability_used[seat]["support"] = 1
         self.graves[seat].remove("hou_ke")
         self.event("小印支援，厚壳工控离开墓地")
-        revived = self.place_new(seat, "hou_ke")
+        revived = self.place_new(seat, "hou_ke", index=0, sick=True)
         return revived
 
     def promote_cost(self, current_id, next_id):
@@ -376,11 +376,11 @@ class Game:
             for attachment in list(unit["attachments"]):
                 self.graves[seat].append(attachment)
                 self.event(f"{self.cards[attachment]['name']}随升星进入墓地")
-            self.boards[seat][slot] = None
+            self.boards[seat].pop(slot)
             self.graves[seat].append(current_id)
             self.promote_ban[seat].add(current_id)
             self.event(f"{current['name']}升星退役，进入墓地")
-            self.place_new(seat, next_id, slot=slot, sick=True)
+            self.place_new(seat, next_id, index=slot, sick=True)
         else:
             unit["attachments"].remove(current_id)
             self.graves[seat].append(current_id)
@@ -451,12 +451,13 @@ class Game:
             for slot, unit in enumerate(self.boards[seat]):
                 if unit is not None and unit["durability"] <= 0:
                     dead.append((seat, slot, unit))
-        for seat, slot, unit in dead:
+        for seat, _slot, unit in dead:
             for attachment in unit["attachments"]:
                 self.graves[seat].append(attachment)
                 self.event(f"{self.cards[attachment]['name']}随宿主进入墓地")
             self.graves[seat].append(unit["card_id"])
-            self.boards[seat][slot] = None
+            self.boards[seat].remove(unit)
+            self._reindex(seat)
             self.event(f"{self.cards[unit['card_id']]['name']}进入座位{seat}墓地")
 
     def check_bases(self):
@@ -515,7 +516,7 @@ def replay(cards, deck0, deck1, steps):
         if kind == "start":
             game.start_turn()
         elif kind == "play":
-            game.play(seat, step["card"], step.get("target"), step.get("mode"))
+            game.play(seat, step["card"], step.get("target"), step.get("mode"), step.get("index"))
         elif kind == "support":
             game.support(seat)
         elif kind == "knob":

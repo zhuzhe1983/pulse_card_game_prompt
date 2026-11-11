@@ -112,7 +112,8 @@ class RosterTests(unittest.TestCase):
         game.supply = [5, 0]
         game.max_supply = [5, 0]
         game.hands = [["art_h038a"], []]
-        stamp = game.spawn(0, "xiao_yin", 2, sick=False)
+        game.spawn(0, "dian_zhen", sick=False)
+        stamp = game.spawn(0, "xiao_yin", sick=False)
         stamp["attachments"] = ["lian_jie"]
         game.graves = [["hou_ke"], []]
         game.support(0)
@@ -127,6 +128,8 @@ class RosterTests(unittest.TestCase):
         self.assertEqual(game.supply[0], 2)
         self.assertEqual(game.graves[0][-2:], ["lian_jie", "xiao_yin"])
         revived = game.boards[0][2]
+        self.assertEqual(game.boards[0][0]["card_id"], "hou_ke")
+        self.assertEqual(game.boards[0][1]["card_id"], "dian_zhen")
         self.assertEqual(revived["card_id"], "art_h038a")
         self.assertEqual(revived["durability"], 3)
         self.assertTrue(revived["sick"])

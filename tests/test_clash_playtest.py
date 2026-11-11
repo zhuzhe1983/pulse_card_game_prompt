@@ -116,7 +116,7 @@ class ClashExampleTests(unittest.TestCase):
         game.support(0)
         self.assertEqual(game.supply[0], 4)
         self.assertEqual(game.graves[0], [])
-        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["xiao_yin", "hou_ke"])
+        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["hou_ke", "xiao_yin"])
         shell = next(unit for unit in game.units(0) if unit["card_id"] == "hou_ke")
         stamp = next(unit for unit in game.units(0) if unit["card_id"] == "xiao_yin")
         self.assertEqual(shell["durability"], 6)
@@ -135,7 +135,7 @@ class ClashExampleTests(unittest.TestCase):
         game.play(0, "gan_rao", "dian_zhen")
         self.assertEqual(game.units(1)[0]["durability"], 2)
         self.assertEqual(game.supply[0], 1)
-        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["xiao_yin", "hou_ke"])
+        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["hou_ke", "xiao_yin"])
 
     def test_support_after_later_deploy_and_after_shell_dies(self):
         cards = load_cards(payload())
@@ -189,13 +189,29 @@ class ClashExampleTests(unittest.TestCase):
         full = Game.empty(cards)
         full.supply = [5, 5]
         full.max_supply = [5, 5]
-        for slot, card_id in enumerate(["xiao_yin", "dian_zhen", "xuan_niu", "qiao_jian", "xi_tiao"]):
-            full.spawn(0, card_id, slot, sick=False)
+        names = ["xiao_yin", "dian_zhen", "xuan_niu", "qiao_jian", "xi_tiao"]
+        for card_id in names:
+            full.spawn(0, card_id, sick=False)
+        self.assertEqual(len(full.units(0)), 5)
         full.graves[0] = ["hou_ke"]
-        with self.assertRaises(ClashError):
-            full.support(0)
-        self.assertEqual(full.supply[0], 5)
-        self.assertEqual(full.graves[0], ["hou_ke"])
+        full.support(0)
+        self.assertEqual(len(full.units(0)), 6)
+        self.assertEqual(full.units(0)[0]["card_id"], "hou_ke")
+        self.assertEqual(full.supply[0], 3)
+        full.hands[0] = ["bu_ji"]
+        full.play(0, "bu_ji", "hou_ke", "heal")
+        full.hands[0] = ["xi_tiao"]
+        full.supply[0] = 1
+        full.play(0, "xi_tiao", index=3)
+        self.assertEqual(len(full.units(0)), 7)
+        self.assertEqual(full.units(0)[3]["card_id"], "xi_tiao")
+        full.hands[0] = ["xi_tiao"]
+        full.supply[0] = 1
+        before = full.view()
+        with self.assertRaises(ClashError) as bad:
+            full.play(0, "xi_tiao", index=99)
+        self.assertEqual(bad.exception.code, "bad_index")
+        self.assertEqual(full.view(), before)
 
         guard = Game.empty(cards)
         guard.supply = [2, 2]
