@@ -96,15 +96,15 @@ class MountRuleTests(unittest.TestCase):
             bus.play(0, "art_c002c", "dian_zhen")
         host = bus.units(0)[0]
         self.assertEqual(host["attachments"].count("art_c002c"), 6)
-        self.assertEqual(bus.profile(0, host)[0], 2)
+        self.assertEqual(bus.profile(0, host)[0], 1)
         for meta in host["attachment_meta"]:
             meta["ready"] = True
-        self.assertEqual(bus.profile(0, host)[0], 14)
+        self.assertEqual(bus.profile(0, host)[0], 13)
         bus.spawn(1, "xiao_yin", sick=False)
         bus.seat = 1
         bus.attack(1, "xiao_yin", host["attachment_meta"][3]["iid"])
         self.assertTrue(host["attachment_meta"][3]["severed"])
-        self.assertEqual(bus.profile(0, host)[0], 6)
+        self.assertEqual(bus.profile(0, host)[0], 5)
 
     def test_same_series_neighbors_stack_and_drop_when_split(self):
         game = board(0, [], [])
@@ -113,7 +113,7 @@ class MountRuleTests(unittest.TestCase):
         self.assertEqual(left["durability"], game.cards["art_h024"]["durability"] + 1)
         self.assertEqual(right["durability"], game.cards["art_h022"]["durability"] + 1)
         attack, parts = game.profile(0, left)
-        self.assertEqual(attack, game.cards["art_h024"]["attack"] + 2)
+        self.assertEqual(attack, game.cards["art_h024"]["attack"] + 1)
         self.assertIn(("右邻同系", 1, 1), parts)
         _attack, right_parts = game.profile(0, right)
         self.assertIn(("左邻同系", 1, 1), right_parts)

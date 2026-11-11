@@ -12,7 +12,7 @@
       4
     ]
   },
-  "note": "教学局不洗牌。牌库列表第 0 张在顶。第 1 回合打 1 费小印。第 3 回合先手打 3 费的 H024 新细条 art_h024。占位牌细条已退役。千里眼是 4 费，这一局不用它。最左主控的打击按 10% 向上取整。结束回合后必须立刻开始对方回合。非法行动不改变局面。",
+  "note": "教学局不洗牌。牌库列表第 0 张在顶。第 1 回合打 1 费小印。第 3 回合先手打 3 费的 H024 新细条 art_h024。占位牌细条已退役。千里眼是 4 费，这一局不用它。站在最左边不加攻击。结束回合后必须立刻开始对方回合。非法行动不改变局面。",
   "lesson_steps": [
     {
       "name": "t1_start",
@@ -69,19 +69,14 @@
               "iid": "u1",
               "card_id": "xiao_yin",
               "durability": 2,
-              "attack": 3,
-              "attack_tone": "green",
+              "attack": 2,
+              "attack_tone": "normal",
               "durability_tone": "normal",
               "breakdown": [
                 {
                   "source": "基础",
                   "attack": 2,
                   "durability": 2
-                },
-                {
-                  "source": "最左主控",
-                  "attack": 1,
-                  "durability": 0
                 }
               ],
               "sick": true,
@@ -156,19 +151,14 @@
               "iid": "u1",
               "card_id": "xiao_yin",
               "durability": 2,
-              "attack": 3,
-              "attack_tone": "green",
+              "attack": 2,
+              "attack_tone": "normal",
               "durability_tone": "normal",
               "breakdown": [
                 {
                   "source": "基础",
                   "attack": 2,
                   "durability": 2
-                },
-                {
-                  "source": "最左主控",
-                  "attack": 1,
-                  "durability": 0
                 }
               ],
               "sick": true,
@@ -182,19 +172,14 @@
               "iid": "u2",
               "card_id": "dian_zhen",
               "durability": 4,
-              "attack": 2,
-              "attack_tone": "green",
+              "attack": 1,
+              "attack_tone": "normal",
               "durability_tone": "normal",
               "breakdown": [
                 {
                   "source": "基础",
                   "attack": 1,
                   "durability": 4
-                },
-                {
-                  "source": "最左主控",
-                  "attack": 1,
-                  "durability": 0
                 }
               ],
               "sick": true,
@@ -247,23 +232,46 @@
           3
         ],
         "graves": [
-          [
-            "xiao_yin"
-          ],
+          [],
           [
             "jie_yi_ge_dian"
           ]
         ],
         "winner": null,
         "boards": [
-          [],
+          [
+            {
+              "iid": "u1",
+              "card_id": "xiao_yin",
+              "durability": 1,
+              "attack": 2,
+              "attack_tone": "normal",
+              "durability_tone": "red",
+              "breakdown": [
+                {
+                  "source": "基础",
+                  "attack": 2,
+                  "durability": 2
+                },
+                {
+                  "source": "受伤",
+                  "attack": 0,
+                  "durability": -1
+                }
+              ],
+              "sick": false,
+              "guard": false,
+              "attachments": [],
+              "row2": []
+            }
+          ],
           [
             {
               "iid": "u2",
               "card_id": "dian_zhen",
-              "durability": 1,
-              "attack": 2,
-              "attack_tone": "green",
+              "durability": 2,
+              "attack": 1,
+              "attack_tone": "normal",
               "durability_tone": "red",
               "breakdown": [
                 {
@@ -272,14 +280,9 @@
                   "durability": 4
                 },
                 {
-                  "source": "最左主控",
-                  "attack": 1,
-                  "durability": 0
-                },
-                {
                   "source": "受伤",
                   "attack": 0,
-                  "durability": -3
+                  "durability": -2
                 }
               ],
               "sick": true,
@@ -319,7 +322,7 @@
       "seat": 1,
       "expect": {
         "bases": [
-          18,
+          19,
           20
         ],
         "supply": [
@@ -348,23 +351,46 @@
           2
         ],
         "graves": [
-          [
-            "xiao_yin"
-          ],
+          [],
           [
             "jie_yi_ge_dian"
           ]
         ],
         "winner": null,
         "boards": [
-          [],
+          [
+            {
+              "iid": "u1",
+              "card_id": "xiao_yin",
+              "durability": 1,
+              "attack": 2,
+              "attack_tone": "normal",
+              "durability_tone": "red",
+              "breakdown": [
+                {
+                  "source": "基础",
+                  "attack": 2,
+                  "durability": 2
+                },
+                {
+                  "source": "受伤",
+                  "attack": 0,
+                  "durability": -1
+                }
+              ],
+              "sick": false,
+              "guard": false,
+              "attachments": [],
+              "row2": []
+            }
+          ],
           [
             {
               "iid": "u2",
               "card_id": "dian_zhen",
-              "durability": 1,
-              "attack": 2,
-              "attack_tone": "green",
+              "durability": 2,
+              "attack": 1,
+              "attack_tone": "normal",
               "durability_tone": "red",
               "breakdown": [
                 {
@@ -373,14 +399,9 @@
                   "durability": 4
                 },
                 {
-                  "source": "最左主控",
-                  "attack": 1,
-                  "durability": 0
-                },
-                {
                   "source": "受伤",
                   "attack": 0,
-                  "durability": -3
+                  "durability": -2
                 }
               ],
               "sick": false,
@@ -427,7 +448,7 @@
       "seat": 0,
       "expect": {
         "bases": [
-          18,
+          19,
           20
         ],
         "supply": [
@@ -456,9 +477,7 @@
           2
         ],
         "graves": [
-          [
-            "xiao_yin"
-          ],
+          [],
           [
             "jie_yi_ge_dian"
           ]
@@ -467,22 +486,41 @@
         "boards": [
           [
             {
+              "iid": "u1",
+              "card_id": "xiao_yin",
+              "durability": 1,
+              "attack": 2,
+              "attack_tone": "normal",
+              "durability_tone": "red",
+              "breakdown": [
+                {
+                  "source": "基础",
+                  "attack": 2,
+                  "durability": 2
+                },
+                {
+                  "source": "受伤",
+                  "attack": 0,
+                  "durability": -1
+                }
+              ],
+              "sick": false,
+              "guard": false,
+              "attachments": [],
+              "row2": []
+            },
+            {
               "iid": "u4",
               "card_id": "art_h024",
               "durability": 2,
-              "attack": 4,
-              "attack_tone": "green",
+              "attack": 3,
+              "attack_tone": "normal",
               "durability_tone": "normal",
               "breakdown": [
                 {
                   "source": "基础",
                   "attack": 3,
                   "durability": 2
-                },
-                {
-                  "source": "最左主控",
-                  "attack": 1,
-                  "durability": 0
                 }
               ],
               "sick": true,
@@ -495,9 +533,9 @@
             {
               "iid": "u2",
               "card_id": "dian_zhen",
-              "durability": 1,
-              "attack": 2,
-              "attack_tone": "green",
+              "durability": 2,
+              "attack": 1,
+              "attack_tone": "normal",
               "durability_tone": "red",
               "breakdown": [
                 {
@@ -506,14 +544,9 @@
                   "durability": 4
                 },
                 {
-                  "source": "最左主控",
-                  "attack": 1,
-                  "durability": 0
-                },
-                {
                   "source": "受伤",
                   "attack": 0,
-                  "durability": -3
+                  "durability": -2
                 }
               ],
               "sick": false,

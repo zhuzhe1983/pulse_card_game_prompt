@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 612777,
-      "sha256": "c5c33e7781955ff3a48bf75ac4326e46bd3c93aa354f1d295d7d998c625c723d"
+      "bytes": 613309,
+      "sha256": "977d48b3255665ca5a934bc5d6f83cecf113c0ddaf5f3f5ad1ffefdc727b83ef"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 22337,
-      "sha256": "79d4475d8c9708928735e18a8b1a8ddd9e010c940fd7d0422c103587c6a60875"
+      "bytes": 22367,
+      "sha256": "432b81027299b4d81549a6cfc5a86fd287556121305c54412a48a2940e0e4acd"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
@@ -93,8 +93,8 @@
     },
     {
       "path": "docs/09_TUTORIAL_AND_PLAYTEST.md",
-      "bytes": 1990,
-      "sha256": "87c6e942d6598efaeb6b753ff9ae342556ed3bf92b98c694dd61814bb4b7d025"
+      "bytes": 2011,
+      "sha256": "75ac69b1a0667af6f2f6ef34de1d772559c356bde607bf055d9454902d166c9c"
     },
     {
       "path": "docs/10_SOURCES_AND_MATERIALS.md",
@@ -563,23 +563,23 @@
     },
     {
       "path": "tests/clash_walk.py",
-      "bytes": 43840,
-      "sha256": "bbfc472a9b55f47ef26b9b1c0eeb432387dcabac7a0b47be4afb379d5c05b79c"
+      "bytes": 43568,
+      "sha256": "68eafb5cf6459583a80c6613a3ef8ee90f14ce20cf9e2c3832c26b42dfa1994d"
     },
     {
       "path": "tests/test_clash_playtest.py",
-      "bytes": 17405,
-      "sha256": "95ffb64d1e48e1de0422b4146e68810ffd55671892948a284180058b485d8cae"
+      "bytes": 17520,
+      "sha256": "daa85f99636dad1a093d0673ee6dc05bab649d8da9323a76d2185089a58f2bb4"
     },
     {
       "path": "WEB_IMPLEMENTATION_HANDOFF.md",
-      "bytes": 12744,
-      "sha256": "b7b4c0c50c7bc3a9843586b3db42aea16a85baa6bc1c04038eb9ba7626fed48d"
+      "bytes": 13024,
+      "sha256": "e03bc229833b9a0a18bdf7acba3405a24fa9b4967306820f4c440ac06e5eb64f"
     },
     {
       "path": "fixtures/clash_v0_lesson.json",
-      "bytes": 11793,
-      "sha256": "ef796201ed7e9e2a8fed6c01372b9eaba7b3be9e369674b8b683d58ac7461c4e"
+      "bytes": 12701,
+      "sha256": "0077bfd4dd52fed9e3808fac42337f0e301430d7ac4bbee2905a83b6af2a24c7"
     },
     {
       "path": "content/clash_roster_96.json",
@@ -588,8 +588,8 @@
     },
     {
       "path": "docs/18_ROSTER_AND_GROWTH.md",
-      "bytes": 20228,
-      "sha256": "6e8278d148a423a91a043b64dcfc0c6dcc92f3c049a248b39a1c957081f3b00d"
+      "bytes": 20231,
+      "sha256": "49251ace2cd43c8181d87b147d8cf5fd134c6646a9162723596e32a235cf7c73"
     },
     {
       "path": "tests/test_clash_roster.py",
@@ -603,13 +603,13 @@
     },
     {
       "path": "docs/19_SYNERGY_AND_SERVICES.md",
-      "bytes": 11803,
-      "sha256": "7e86ae5be9bfc14b32605e37ec06872b974406906e96af234f9a39ddce9c2149"
+      "bytes": 11850,
+      "sha256": "bc8cef831b32024542c7706da77d94334d948e304e4c89a2ba88e1d35a1dac20"
     },
     {
       "path": "tests/test_clash_synergy.py",
-      "bytes": 13645,
-      "sha256": "8415a9f1719aa9c6d2afccfe85fcc6bc17ab7a17daecf045755e1292598f710d"
+      "bytes": 13753,
+      "sha256": "52c44a1f3c6dc8214317cdfce8f162fbdcb4dd28618b721665f00dd706f1d32f"
     },
     {
       "path": "tests/test_clash_cost_curve.py",
@@ -618,13 +618,13 @@
     },
     {
       "path": "docs/20_POINTER_AND_MODES.md",
-      "bytes": 16458,
-      "sha256": "9f4f0afbf8a8f803856ca331ae36550e43c3e30969f2c08f83530aedd1b35437"
+      "bytes": 16889,
+      "sha256": "8fa5b0a990b31d044fead84a576b05c9c34f24a28a1fbec161bde4d715d595c8"
     },
     {
       "path": "tests/test_pointer_spec.py",
-      "bytes": 3418,
-      "sha256": "46079b432bd20110b9188409dfa260af8518f2857283cd0dd1b36e3af0b417d0"
+      "bytes": 3698,
+      "sha256": "a6c46604125895e41ba3273ce365475b23ce251da4492a082f7db5f89c6d8c03"
     },
     {
       "path": "docs/21_NFC_TAP_TO_PLAY.md",
@@ -649,7 +649,7 @@
     {
       "path": "tests/test_mount_rules.py",
       "bytes": 6321,
-      "sha256": "85022a446f3179f8858ca522c4e7daba370e7f675e6a676a9bf92cd07460fb32"
+      "sha256": "ea00dbe754c43e7f26e129c69133b4e55217373cf0b0a913f65d34d051e35e7e"
     }
   ]
 }

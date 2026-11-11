@@ -184,10 +184,7 @@ class Game:
         return bool(self.cards[card_id].get("upper_host"))
 
     def formation_state(self, seat):
-        row = self.units(seat)
-        if not row:
-            return {"leader": False, "leader_attack": 0}
-        return {"leader": True, "leader_attack": 1}
+        return {"units": len(self.units(seat))}
 
     def _series_neighbors(self, seat, unit):
         row = self.units(seat)
@@ -222,9 +219,6 @@ class Game:
         attack = 0
         if raw > 0:
             attack = raw
-            if self.units(seat) and self.units(seat)[0]["iid"] == unit["iid"]:
-                attack += 1
-                parts.append(("最左主控", 1, 0))
             left, right = self._series_neighbors(seat, unit)
             if left:
                 attack += 1

@@ -53,9 +53,11 @@ class FormationTests(unittest.TestCase):
     def test_leader_percent_and_low_attack_ceil(self):
         game, _chain = arena()
         game.spawn(0, "dian_zhen", sick=False)
-        self.assertEqual(game.formation_state(0)["leader_attack"], 1)
+        attack, parts = game.profile(0, game.units(0)[0])
+        self.assertEqual(attack, 1)
+        self.assertNotIn("最左主控", [item[0] for item in parts])
         game.attack(0, "dian_zhen", "base")
-        self.assertEqual(game.bases[1], 18)
+        self.assertEqual(game.bases[1], 19)
 
     def test_zero_attack_stays_zero(self):
         game, _chain = arena()
@@ -70,10 +72,10 @@ class FormationTests(unittest.TestCase):
         game.play(0, chain_id, "qiao_jian")
         host = game.units(0)[0]
         self.assertFalse(host["attachment_meta"][0]["ready"])
-        self.assertEqual(game.profile(0, host)[0], 6)
+        self.assertEqual(game.profile(0, host)[0], 5)
         host["attachment_meta"][0]["ready"] = True
         bonus = game.cards[chain_id]["attack_bonus"]
-        self.assertEqual(game.profile(0, host)[0], 6 + bonus)
+        self.assertEqual(game.profile(0, host)[0], 5 + bonus)
         with self.assertRaises(ClashError) as full:
             game.play(0, chain_id, "qiao_jian")
         self.assertEqual(full.exception.code, "chain_slot_full")
@@ -81,7 +83,7 @@ class FormationTests(unittest.TestCase):
         game.seat = 1
         game.attack(1, "xiao_yin", host["attachment_meta"][0]["iid"])
         self.assertEqual(host["attachments"], [])
-        self.assertEqual(game.profile(0, host)[0], 6)
+        self.assertEqual(game.profile(0, host)[0], 5)
         self.assertIn(chain_id, game.graves[0])
 
     def test_three_links_and_counter_uses_defender_formation(self):
@@ -93,7 +95,7 @@ class FormationTests(unittest.TestCase):
         game.play(0, chain_id, "xiao_yin")
         game.play(0, chain_id, "qiao_jian")
         game.play(0, chain_id, "hou_ke")
-        self.assertEqual(game.formation_state(0)["leader_attack"], 1)
+        self.assertNotIn("最左主控", [item["source"] for item in game.view()["boards"][0][0]["breakdown"]])
         game.spawn(1, "art_h024", sick=False)
         game.attack(0, "xiao_yin", "art_h024")
         self.assertEqual(game.units(1), [])
@@ -208,7 +210,7 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual(armed.exception.code, "already_used_ability")
         self.assertEqual(game.view(), before)
         game.attack(0, "xiao_yin", "base")
-        self.assertEqual(game.bases[1], 15)
+        self.assertEqual(game.bases[1], 16)
         self.assertFalse(game.aiflow_armed[0])
         game.hands[0] = ["aiflow_say", "gan_rao"]
         game.supply[0] = 8
@@ -243,8 +245,7 @@ class SeizeTests(unittest.TestCase):
         self.assertTrue(moved["sick"])
         self.assertTrue(moved["ability_lock"])
         self.assertFalse(game.boards[0][-1].get("link"))
-        self.assertEqual(game.formation_state(0)["leader_attack"], 1)
-        self.assertEqual(game.formation_state(1)["leader_attack"], 1)
+        self.assertNotIn("最左主控", [item["source"] for item in game.view()["boards"][0][0]["breakdown"]])
         self.assertEqual(game.upper_links[1], [])
         with self.assertRaises(ClashError) as sick:
             game.attack(0, "qiao_jian", "base")
