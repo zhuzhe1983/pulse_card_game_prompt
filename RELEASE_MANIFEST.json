@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 606712,
-      "sha256": "af2d1f4af6e49f0b3e3ab00ccfb72dfc14c733e7ba3901bbe98efdab5dbd66f2"
+      "bytes": 607744,
+      "sha256": "e6f631acc145aeb5f1313b288074aac6f992222ba02a9dc7187c37b414350092"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -563,8 +563,8 @@
     },
     {
       "path": "tests/clash_walk.py",
-      "bytes": 33043,
-      "sha256": "f9683dda8c7d9b7532aa136f1fb3a417ead378f87de3b4b370724da25423e772"
+      "bytes": 33127,
+      "sha256": "dda5552611d959d4650a7c1befe47c5751e8b2c85b93b4199a411113a2596cd4"
     },
     {
       "path": "tests/test_clash_playtest.py",
@@ -573,8 +573,8 @@
     },
     {
       "path": "WEB_IMPLEMENTATION_HANDOFF.md",
-      "bytes": 12081,
-      "sha256": "a6849012127bbbfc146573ba7c3a1251aa0ed458115002681008ac9cb848e144"
+      "bytes": 12222,
+      "sha256": "a93da9849c7634d4f1b8817700757e893f69c4fb034384b5a2004a3ae0d9fc9a"
     },
     {
       "path": "fixtures/clash_v0_lesson.json",
@@ -618,13 +618,13 @@
     },
     {
       "path": "docs/20_POINTER_AND_MODES.md",
-      "bytes": 14764,
-      "sha256": "c822d56f24bf3cab474aa74d05511654877fd796a7429c9019f9c73e63d2682d"
+      "bytes": 15796,
+      "sha256": "740acf1994aa00cd66371e3b7ce273b01ab49c0380c7528696679d74d9d8b622"
     },
     {
       "path": "tests/test_pointer_spec.py",
-      "bytes": 3333,
-      "sha256": "958bc62c34fa01bcbe92aac320a0bd8f142d129b99095e83ed2fc55128581720"
+      "bytes": 3418,
+      "sha256": "46079b432bd20110b9188409dfa260af8518f2857283cd0dd1b36e3af0b417d0"
     },
     {
       "path": "docs/21_NFC_TAP_TO_PLAY.md",
@@ -635,6 +635,16 @@
       "path": "tests/test_nfc_tap_spec.py",
       "bytes": 1850,
       "sha256": "4064f38559b0fcbfa004b7ebf040243e834e72a638446f2bb48690f44cc17819"
+    },
+    {
+      "path": "tests/constructed_deck.py",
+      "bytes": 3735,
+      "sha256": "152016974b653106617b1aa797c370bf367e63ce2bed4c084c8986fcd8845d6e"
+    },
+    {
+      "path": "tests/test_constructed_deck.py",
+      "bytes": 3350,
+      "sha256": "9da857f9fb286c3631b9e04097e301c369e6cc050efc8fe317d5b3c9d8779d97"
     }
   ]
 }

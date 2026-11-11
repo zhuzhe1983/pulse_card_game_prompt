@@ -54,6 +54,7 @@ class Game:
         game.upper_links = [[], []]
         game.upper_pulsed = [False, False]
         game.aiflow_armed = [False, False]
+        game.hand_limit = 8
         game.seat = 0
         game.turns_started = [1, 0]
         game.phase = "main"
@@ -104,6 +105,7 @@ class Game:
         self.upper_links = [[], []]
         self.upper_pulsed = [False, False]
         self.aiflow_armed = [False, False]
+        self.hand_limit = 8
         self.seat = 0
         self.turns_started = [0, 0]
         self.phase = "opening"
@@ -308,7 +310,7 @@ class Game:
     def draw(self, seat):
         if self.decks[seat]:
             card_id = self.decks[seat].pop(0)
-            if len(self.hands[seat]) >= 8:
+            if len(self.hands[seat]) >= self.hand_limit:
                 self.graves[seat].append(card_id)
                 self.event(f"座位{seat}手牌已满，{self.cards[card_id]['name']}展示后进入墓地")
             else:
@@ -481,7 +483,7 @@ class Game:
                 self.event("墓地是空的，记一笔没有取回")
             else:
                 recovered = self.graves[seat].pop()
-                if len(self.hands[seat]) >= 8:
+                if len(self.hands[seat]) >= self.hand_limit:
                     self.graves[seat].append(recovered)
                     self.event("手牌已满，记一笔没有取回")
                 else:
