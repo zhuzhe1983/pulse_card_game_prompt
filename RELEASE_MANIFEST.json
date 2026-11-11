@@ -8,8 +8,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4190,
-      "sha256": "f4358e63f68e1189fcb8fb982a41c23f60acb5ac31f99c7bf512971aff03ba11"
+      "bytes": 4290,
+      "sha256": "f9bc751d434787490cd2569d4b73fa7b7689c28b5effa72bbf51027318124314"
     },
     {
       "path": "REQUIREMENTS.html",
@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 553504,
-      "sha256": "4bde4298173f3c04ce1303cdfa508f1fdd9d687f3c8cf3eb0b0556521d9bc5a6"
+      "bytes": 554694,
+      "sha256": "d4838a5391ee500a599aca19a427b07e35b3038b366bfa9169b5071f8cc4ad26"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 18091,
-      "sha256": "445afdd508034501af74fe0c0a32df524ca656e891ff33d9a566870ce20f6e7c"
+      "bytes": 19239,
+      "sha256": "048090c31e0d25dc21311ad58bacdff3ba5408901efe7c102502661d385e0c05"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
@@ -93,8 +93,8 @@
     },
     {
       "path": "docs/09_TUTORIAL_AND_PLAYTEST.md",
-      "bytes": 1740,
-      "sha256": "fab58b5f1a57c5a246934a2540c671e0691f1c14aa7c022170e0d3e936753af3"
+      "bytes": 1782,
+      "sha256": "3dafa974409958bb04497535d190ffa1f9c245141a0e8896304c76004e06a572"
     },
     {
       "path": "docs/10_SOURCES_AND_MATERIALS.md",
@@ -563,13 +563,23 @@
     },
     {
       "path": "tests/clash_walk.py",
-      "bytes": 18289,
-      "sha256": "97368ac558b791a8d27a9d59fbfc5cf9571934f561b01aa3cb36c90377ae25ad"
+      "bytes": 19566,
+      "sha256": "f55438c78ba487b3b942f44bed5eb3081dd4cea0de81a07588c5ebc09c0a76f2"
     },
     {
       "path": "tests/test_clash_playtest.py",
-      "bytes": 10841,
-      "sha256": "2b4bc62ef6995ba53f3179257d4fbac03af64bf5b2335c8eb4e4b4590a2e81a6"
+      "bytes": 16202,
+      "sha256": "8c5325241fdde90f87fac39fedea9bf800ed7aff96baa7d704c8100ed80cbd13"
+    },
+    {
+      "path": "WEB_IMPLEMENTATION_HANDOFF.md",
+      "bytes": 6367,
+      "sha256": "68e76bff17b936af30bd3d620bacffbe2d687e80500b907eced169ab27fbdaf5"
+    },
+    {
+      "path": "fixtures/clash_v0_lesson.json",
+      "bytes": 8722,
+      "sha256": "0acce84683c82c1e88f3009a41a083cbda48d28ff9b748a57831e199ca6b3b18"
     }
   ]
 }

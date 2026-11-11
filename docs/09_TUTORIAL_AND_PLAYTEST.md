@@ -24,4 +24,4 @@
 
 ## 3. 还没做的事
 
-本仓库没有回合战的联机裁判，也没有新的网页。`reference/battle.py` 继续只裁决旧规则。下一版客户端要接的局面和行动，写在第 01 章第 11 节。
+本仓库没有回合战的联机裁判，也没有新的网页。`reference/battle.py` 继续只裁决旧规则。网页按 `WEB_IMPLEMENTATION_HANDOFF.md`、`content/clash_playtest.json` 和 `fixtures/clash_v0_lesson.json` 做。

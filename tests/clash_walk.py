@@ -9,7 +9,9 @@ from copy import deepcopy
 
 
 class ClashError(Exception):
-    pass
+    def __init__(self, message, code="rejected"):
+        super().__init__(message)
+        self.code = code
 
 
 def attack_of(card, unit):
@@ -114,13 +116,15 @@ class Game:
 
     def require_main(self, seat):
         if self.winner is not None:
-            raise ClashError("对局已经结束")
+            raise ClashError("对局已经结束", "game_over")
         if self.phase != "main" or self.seat != seat:
-            raise ClashError("还没轮到这一方的主阶段")
+            raise ClashError("还没轮到这一方的主阶段", "not_your_turn")
 
     def start_turn(self):
         if self.winner is not None:
-            raise ClashError("对局已经结束")
+            raise ClashError("对局已经结束", "game_over")
+        if self.phase not in ("opening", "between"):
+            raise ClashError("回合开始只能接在开局或上一回合结束之后", "bad_phase")
         seat = self.seat
         self.phase = "start"
         self.turns_started[seat] += 1
@@ -159,14 +163,14 @@ class Game:
 
     def pay(self, seat, amount):
         if self.supply[seat] < amount:
-            raise ClashError("供电不足")
+            raise ClashError("供电不足", "not_enough_supply")
         self.supply[seat] -= amount
 
     def take_hand(self, seat, card_id):
         try:
             self.hands[seat].remove(card_id)
         except ValueError as exc:
-            raise ClashError("手牌里没有这张牌") from exc
+            raise ClashError("手牌里没有这张牌", "not_in_hand") from exc
 
     def empty_slot(self, seat):
         for slot, unit in enumerate(self.boards[seat]):
@@ -177,7 +181,7 @@ class Game:
     def place_new(self, seat, card_id):
         slot = self.empty_slot(seat)
         if slot is None:
-            raise ClashError("场上没有空位")
+            raise ClashError("场上没有空位", "board_full")
         unit = {
             "iid": f"u{self._next_id}",
             "card_id": card_id,
@@ -200,29 +204,31 @@ class Game:
             return ref
         found = [unit["iid"] for unit in self.units(seat) if unit["card_id"] == ref]
         if len(found) != 1:
-            raise ClashError("无法唯一确定单位")
+            raise ClashError("无法唯一确定单位", "bad_target")
         return found[0]
 
     def play(self, seat, card_id, target=None, mode=None):
         self.require_main(seat)
         card = self.cards[card_id]
         if card_id not in self.hands[seat]:
-            raise ClashError("手牌里没有这张牌")
+            raise ClashError("手牌里没有这张牌", "not_in_hand")
         if self.supply[seat] < card["cost"]:
-            raise ClashError("供电不足")
+            raise ClashError("供电不足", "not_enough_supply")
         kind = card["kind"]
         host = None
         if kind == "main":
             if self.alive_count(seat) >= 5:
-                raise ClashError("场位已满")
+                raise ClashError("场位已满", "board_full")
         elif kind == "attachment":
+            if target is None:
+                raise ClashError("配件必须指定己方主控", "bad_target")
             host_seat, _slot, host = self.find(self.resolve_iid(seat, target))
             if host_seat != seat:
-                raise ClashError("配件只能装在己方主控上")
+                raise ClashError("配件只能装在己方主控上", "bad_target")
             if len(host["attachments"]) >= 1:
-                raise ClashError("这台主控已经有配件")
+                raise ClashError("这台主控已经有配件", "already_has_attachment")
             if card["grants_guard"] and has_guard(self.cards, host):
-                raise ClashError("这台主控已经有护卫")
+                raise ClashError("这台主控已经有护卫", "already_has_guard")
         elif kind == "spell":
             self.prepare_spell(seat, card, target, mode)
         else:
@@ -249,12 +255,17 @@ class Game:
             return
         if effect == "damage":
             host_seat, _slot, _host = self.find(self.resolve_iid(1 - seat, target))
+            if target is None:
+                raise ClashError("干扰必须指定敌方单位", "bad_target")
+            host_seat, _slot, _host = self.find(self.resolve_iid(1 - seat, target))
             if host_seat == seat:
-                raise ClashError("干扰只能指定敌方单位")
+                raise ClashError("干扰只能指定敌方单位", "bad_target")
         elif effect == "mend":
+            if target is None:
+                raise ClashError("补给必须指定己方单位", "bad_target")
             self.find(self.resolve_iid(seat, target))
             if mode not in ("heal", "temp"):
-                raise ClashError("补给要选择修复或临时强化")
+                raise ClashError("补给要选择修复或临时强化", "bad_target")
         else:
             raise ClashError("未知战术")
 
@@ -292,15 +303,15 @@ class Game:
         self.require_main(seat)
         sources = [unit for unit in self.units(seat) if unit["card_id"] == "xiao_yin"]
         if len(sources) != 1:
-            raise ClashError("场上要有一台小印才能支援")
+            raise ClashError("场上要有一台小印才能支援", "no_stamp_on_board")
         if self.ability_used[seat].get("xiao_yin"):
-            raise ClashError("本回合已经支援过")
+            raise ClashError("本回合已经支援过", "already_used_ability")
         if "hou_ke" not in self.graves[seat]:
-            raise ClashError("墓地里没有厚壳工控")
+            raise ClashError("墓地里没有厚壳工控", "no_shell_in_grave")
         if self.alive_count(seat) >= 5:
-            raise ClashError("场上没有空位")
+            raise ClashError("场上没有空位", "board_full")
         if self.supply[seat] < 2:
-            raise ClashError("供电不足")
+            raise ClashError("供电不足", "not_enough_supply")
         self.pay(seat, 2)
         self.ability_used[seat]["xiao_yin"] = 1
         self.graves[seat].remove("hou_ke")
@@ -314,12 +325,14 @@ class Game:
         target = self.resolve_iid(seat, target)
         host_seat, _slot, host = self.find(host_id)
         if host_seat != seat or host["card_id"] != "xuan_niu":
-            raise ClashError("只有己方旋钮台能调这一下")
+            raise ClashError("只有己方旋钮台能调这一下", "bad_target")
         if self.ability_used[seat].get("xuan_niu"):
-            raise ClashError("本回合旋钮已经用过")
+            raise ClashError("本回合旋钮已经用过", "already_used_ability")
         ally_seat, _slot, ally = self.find(target)
         if ally_seat != seat:
-            raise ClashError("旋钮只能强化己方单位")
+            raise ClashError("旋钮只能强化己方单位", "bad_target")
+        if self.supply[seat] < 1:
+            raise ClashError("供电不足", "not_enough_supply")
         self.pay(seat, 1)
         self.ability_used[seat]["xuan_niu"] = 1
         ally["temp_attack"] += 1
@@ -330,15 +343,15 @@ class Game:
         attacker_id = self.resolve_iid(seat, attacker_id)
         atk_seat, _slot, attacker = self.find(attacker_id)
         if atk_seat != seat:
-            raise ClashError("不能操作对方的单位")
+            raise ClashError("不能操作对方的单位", "bad_target")
         if attacker["sick"]:
-            raise ClashError("新入场的单位本回合不能攻击")
+            raise ClashError("新入场的单位本回合不能攻击", "summoning_sickness")
         if attacker["attacked"]:
-            raise ClashError("这台单位本回合已经攻击过")
+            raise ClashError("这台单位本回合已经攻击过", "already_attacked")
         guards = [unit for unit in self.units(1 - seat) if has_guard(self.cards, unit)]
         if target == "base":
             if guards and not bypass_guard(self.cards, attacker):
-                raise ClashError("对方有护卫时只能攻击护卫")
+                raise ClashError("对方有护卫时只能攻击护卫", "guard_blocks")
             attacker["attacked"] = True
             damage = attack_of(self.cards, attacker)
             self.bases[1 - seat] = max(0, self.bases[1 - seat] - damage)
@@ -347,9 +360,9 @@ class Game:
             return
         def_seat, _slot, defender = self.find(self.resolve_iid(1 - seat, target))
         if def_seat == seat:
-            raise ClashError("不能攻击己方单位")
+            raise ClashError("不能攻击己方单位", "bad_target")
         if guards and defender not in guards and not bypass_guard(self.cards, attacker):
-            raise ClashError("对方有护卫时只能攻击护卫")
+            raise ClashError("对方有护卫时只能攻击护卫", "guard_blocks")
         attacker["attacked"] = True
         atk_damage = attack_of(self.cards, attacker)
         def_damage = attack_of(self.cards, defender)

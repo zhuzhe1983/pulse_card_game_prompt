@@ -252,6 +252,127 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(link.graves[0], ["lian_jie", "xiao_yin"])
         self.assertEqual(link.units(0), [])
 
+    def test_illegal_actions_do_not_spend_and_game_over_locks(self):
+        cards = load_cards(payload())
+        game = Game.empty(cards)
+        game.supply = [1, 1]
+        game.max_supply = [1, 1]
+        game.hands = [["lian_jie", "hu_zhao", "xuan_niu"], []]
+        game.spawn(0, "xiao_yin", 0, sick=False)
+        game.spawn(1, "xi_tiao", 0, sick=False)
+        before = game.view()
+        with self.assertRaises(ClashError) as enemy_part:
+            game.play(0, "lian_jie", "xi_tiao")
+        self.assertEqual(enemy_part.exception.code, "bad_target")
+        self.assertEqual(game.view(), before)
+        game.play(0, "lian_jie", "xiao_yin")
+        self.assertEqual(game.supply[0], 0)
+        game.supply[0] = 1
+        before = game.view()
+        with self.assertRaises(ClashError) as second:
+            game.play(0, "hu_zhao", "xiao_yin")
+        self.assertEqual(second.exception.code, "already_has_attachment")
+        self.assertEqual(game.view(), before)
+
+        knob = Game.empty(cards)
+        knob.supply = [4, 0]
+        knob.max_supply = [4, 0]
+        knob.hands = [["xuan_niu"], []]
+        knob.play(0, "xuan_niu")
+        self.assertTrue(knob.units(0)[0]["sick"])
+        knob.knob(0, "xuan_niu", "xuan_niu")
+        self.assertEqual(knob.view()["boards"][0][0]["attack"], 2)
+        self.assertEqual(knob.supply[0], 0)
+        with self.assertRaises(ClashError) as used:
+            knob.knob(0, "xuan_niu", "xuan_niu")
+        self.assertEqual(used.exception.code, "already_used_ability")
+        self.assertEqual(knob.supply[0], 0)
+        broke = Game.empty(cards)
+        broke.supply = [0, 0]
+        broke.spawn(0, "xuan_niu", 0, sick=False)
+        before = broke.view()
+        with self.assertRaises(ClashError) as poor:
+            broke.knob(0, "xuan_niu", "xuan_niu")
+        self.assertEqual(poor.exception.code, "not_enough_supply")
+        self.assertEqual(broke.view(), before)
+        with self.assertRaises(ClashError) as sick:
+            knob.attack(0, "xuan_niu", "base")
+        self.assertEqual(sick.exception.code, "summoning_sickness")
+        knob.end_turn(0)
+        self.assertEqual(knob.units(0)[0]["temp_attack"], 0)
+        self.assertEqual(knob.supply[0], 0)
+        with self.assertRaises(ClashError) as phase:
+            knob.start_turn()
+            knob.start_turn()
+        self.assertEqual(phase.exception.code, "bad_phase")
+
+        tired = Game.empty(cards)
+        tired.bases = [1, 3]
+        tired.decks = [[], []]
+        tired.phase = "between"
+        tired.turns_started = [1, 0]
+        tired.start_turn()
+        self.assertEqual(tired.winner, 1)
+        self.assertEqual(tired.max_supply[0], 0)
+        frozen = tired.view()
+        with self.assertRaises(ClashError) as locked:
+            tired.play(0, "xi_tiao")
+        self.assertEqual(locked.exception.code, "game_over")
+        self.assertEqual(tired.view(), frozen)
+
+        soft = Game.empty(cards)
+        soft.bases = [5, 20]
+        soft.decks = [[], []]
+        soft.phase = "between"
+        soft.turns_started = [1, 0]
+        soft.start_turn()
+        self.assertIsNone(soft.winner)
+        self.assertEqual(soft.bases[0], 4)
+        self.assertEqual(soft.fatigue[0], 1)
+        self.assertEqual(soft.max_supply[0], 1)
+        self.assertEqual(soft.supply[0], 1)
+
+        guards = Game.empty(cards)
+        guards.spawn(0, "qiao_jian", 0, sick=False)
+        guards.spawn(1, "dian_zhen", 0, sick=False)
+        guards.spawn(1, "hou_ke", 1, sick=False)
+        guards.spawn(1, "xi_tiao", 2, sick=False)
+        with self.assertRaises(ClashError) as blocked:
+            guards.attack(0, "qiao_jian", "xi_tiao")
+        self.assertEqual(blocked.exception.code, "guard_blocks")
+        guards.attack(0, "qiao_jian", "dian_zhen")
+        self.assertEqual(guards.graves[1], ["dian_zhen"])
+        self.assertNotIn("dian_zhen", [unit["card_id"] for unit in guards.units(1)])
+
+    def test_lesson_fixture(self):
+        fixture = json.loads((ROOT / "fixtures" / "clash_v0_lesson.json").read_text(encoding="utf-8"))
+        data = payload()
+        self.assertEqual(fixture["ruleset_id"], data["ruleset_id"])
+        for key in ("base_life", "max_supply", "hand_limit", "board_limit"):
+            self.assertEqual(fixture["rules"][key], data[key])
+        cards = load_cards(data)
+        game = Game(cards, data["decks"]["first"], data["decks"]["second"])
+        for step in fixture["lesson_steps"]:
+            kind = step["do"]
+            seat = step.get("seat", game.seat)
+            if kind == "start":
+                game.start_turn()
+            elif kind == "play":
+                game.play(seat, step["card"], step.get("target"), step.get("mode"))
+            elif kind == "attack":
+                game.attack(seat, step["attacker"], step["target"])
+            elif kind == "end":
+                game.end_turn(seat)
+            else:
+                raise AssertionError(kind)
+            if "expect" in step:
+                actual = game.view()
+                for key, value in step["expect"].items():
+                    self.assertEqual(actual[key], value, step.get("name", kind))
+        self.assertEqual(game.bases, [20, 19])
+        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["dian_zhen"])
+        self.assertEqual([unit["card_id"] for unit in game.units(1)], ["xi_tiao"])
+
 
 if __name__ == "__main__":
     unittest.main()
