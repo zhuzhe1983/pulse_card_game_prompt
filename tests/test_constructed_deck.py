@@ -7,11 +7,16 @@ from pathlib import Path
 from clash_walk import Game, load_cards
 from constructed_deck import (
     DECK_SIZE,
+    MAX_ATTACHMENTS,
+    MIN_MAINS,
+    SERVICE_IDS,
     build_simulated_deck,
     build_simulated_pair,
     copy_limit,
+    deck_has_host,
     eligible_cards,
     is_chain_top,
+    required_host_family,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,8 +50,15 @@ class ConstructedDeckTests(unittest.TestCase):
                         self.assertLessEqual(count, 1)
                 mains = [by_id[template_id] for template_id in deck if by_id[template_id]["kind"] == "main"]
                 attachments = [template_id for template_id in deck if by_id[template_id]["kind"] == "attachment"]
-                self.assertGreaterEqual(len(mains), 10)
-                self.assertGreaterEqual(len(attachments), 5)
+                for template_id in SERVICE_IDS:
+                    self.assertGreaterEqual(counts[template_id], 1)
+                self.assertGreaterEqual(len(mains), MIN_MAINS)
+                self.assertLessEqual(len(attachments), MAX_ATTACHMENTS)
+                self.assertGreater(len(mains), len(attachments))
+                for template_id in attachments:
+                    family = required_host_family(by_id[template_id])
+                    self.assertIsNotNone(family)
+                    self.assertTrue(deck_has_host(deck, by_id, family), template_id)
                 self.assertGreaterEqual(sum(card["cost"] <= 2 for card in mains), 5)
                 self.assertGreaterEqual(sum(3 <= by_id[template_id]["cost"] <= 5 for template_id in deck), 5)
                 self.assertGreaterEqual(sum(by_id[template_id]["cost"] >= 6 for template_id in deck), 3)

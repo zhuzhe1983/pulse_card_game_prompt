@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 609107,
-      "sha256": "64cbb14e51155720e8b2c1438fc50b9b79ecb451602f76a783e1afd6267799b8"
+      "bytes": 612777,
+      "sha256": "c5c33e7781955ff3a48bf75ac4326e46bd3c93aa354f1d295d7d998c625c723d"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 22148,
-      "sha256": "be3f241011b2925e33d2edbe0a8a5e486608670fa84e5300d384b7ae2e78aba8"
+      "bytes": 22337,
+      "sha256": "79d4475d8c9708928735e18a8b1a8ddd9e010c940fd7d0422c103587c6a60875"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
@@ -543,8 +543,8 @@
     },
     {
       "path": "content/clash_playtest.json",
-      "bytes": 11310,
-      "sha256": "96c8ee84b57c6a6d637a2abe09c8bdf2d2b3c01c66787434e61a5fc172668de5"
+      "bytes": 12202,
+      "sha256": "7c7912e15dab9527c48475c803e029b960c0e8a869db7a89766e198b46f708df"
     },
     {
       "path": "docs/history/README.md",
@@ -563,28 +563,28 @@
     },
     {
       "path": "tests/clash_walk.py",
-      "bytes": 33127,
-      "sha256": "dda5552611d959d4650a7c1befe47c5751e8b2c85b93b4199a411113a2596cd4"
+      "bytes": 43840,
+      "sha256": "bbfc472a9b55f47ef26b9b1c0eeb432387dcabac7a0b47be4afb379d5c05b79c"
     },
     {
       "path": "tests/test_clash_playtest.py",
-      "bytes": 17417,
-      "sha256": "1c1cbe3494a7a91be713dd714e8b9fd9e53d98d55d38dbf6d5650d9ed001b8b5"
+      "bytes": 17405,
+      "sha256": "95ffb64d1e48e1de0422b4146e68810ffd55671892948a284180058b485d8cae"
     },
     {
       "path": "WEB_IMPLEMENTATION_HANDOFF.md",
-      "bytes": 12369,
-      "sha256": "0544cd78d65a6aa0e9bfe5d0b74ff3fea7c1d0b079d3315425d52f034c4b54c3"
+      "bytes": 12744,
+      "sha256": "b7b4c0c50c7bc3a9843586b3db42aea16a85baa6bc1c04038eb9ba7626fed48d"
     },
     {
       "path": "fixtures/clash_v0_lesson.json",
-      "bytes": 7727,
-      "sha256": "509f0c898d4806c6e3e8d5a32305eaaec22a1ff7b87489f54151829996b599c9"
+      "bytes": 11793,
+      "sha256": "ef796201ed7e9e2a8fed6c01372b9eaba7b3be9e369674b8b683d58ac7461c4e"
     },
     {
       "path": "content/clash_roster_96.json",
-      "bytes": 181663,
-      "sha256": "b8ebe6df6cff346d73a3583a7623dec0ce46afe5cafcc475f11336d83dd3a582"
+      "bytes": 198136,
+      "sha256": "c2c3ee54849595a53659fd6348213dc0e8392924adbde7d0b4891e7e321726f9"
     },
     {
       "path": "docs/18_ROSTER_AND_GROWTH.md",
@@ -598,18 +598,18 @@
     },
     {
       "path": "content/clash_services.json",
-      "bytes": 4481,
-      "sha256": "904edaec401443aa4ed49d32d6d26050be672803620a00671cf0d036fc64a35d"
+      "bytes": 5513,
+      "sha256": "19228ce71c8adb973ffc28122b0272c9bd6a9d8045a02b23798e1185b655e1fc"
     },
     {
       "path": "docs/19_SYNERGY_AND_SERVICES.md",
-      "bytes": 8984,
-      "sha256": "ef11e1197d3fcdd7dc3d74e1e3356529929acb26b48b6d6caecde511cf3a839b"
+      "bytes": 11803,
+      "sha256": "7e86ae5be9bfc14b32605e37ec06872b974406906e96af234f9a39ddce9c2149"
     },
     {
       "path": "tests/test_clash_synergy.py",
-      "bytes": 14080,
-      "sha256": "93c2c2b96575b5dba5bf074ab758ccd7d3b05668ed729c1519749336303307c3"
+      "bytes": 13645,
+      "sha256": "8415a9f1719aa9c6d2afccfe85fcc6bc17ab7a17daecf045755e1292598f710d"
     },
     {
       "path": "tests/test_clash_cost_curve.py",
@@ -618,8 +618,8 @@
     },
     {
       "path": "docs/20_POINTER_AND_MODES.md",
-      "bytes": 15796,
-      "sha256": "740acf1994aa00cd66371e3b7ce273b01ab49c0380c7528696679d74d9d8b622"
+      "bytes": 16458,
+      "sha256": "9f4f0afbf8a8f803856ca331ae36550e43c3e30969f2c08f83530aedd1b35437"
     },
     {
       "path": "tests/test_pointer_spec.py",
@@ -638,13 +638,18 @@
     },
     {
       "path": "tests/constructed_deck.py",
-      "bytes": 3735,
-      "sha256": "152016974b653106617b1aa797c370bf367e63ce2bed4c084c8986fcd8845d6e"
+      "bytes": 5519,
+      "sha256": "18e85507dbaaf5988a654edbd58c351bd2f83c812d6dd352e5985af1d3830b06"
     },
     {
       "path": "tests/test_constructed_deck.py",
-      "bytes": 3350,
-      "sha256": "9da857f9fb286c3631b9e04097e301c369e6cc050efc8fe317d5b3c9d8779d97"
+      "bytes": 3899,
+      "sha256": "ea9ef0340a40ec35089b2f6af5e34fc93d3107d8bc2d281189a5c9602c3fd1f7"
+    },
+    {
+      "path": "tests/test_mount_rules.py",
+      "bytes": 6321,
+      "sha256": "85022a446f3179f8858ca522c4e7daba370e7f675e6a676a9bf92cd07460fb32"
     }
   ]
 }

@@ -299,7 +299,7 @@ class ClashExampleTests(unittest.TestCase):
         before = game.view()
         with self.assertRaises(ClashError) as second:
             game.play(0, "hu_zhao", "xiao_yin")
-        self.assertEqual(second.exception.code, "already_has_attachment")
+        self.assertEqual(second.exception.code, "wrong_host")
         self.assertEqual(game.view(), before)
 
         knob = Game.empty(cards)
@@ -309,7 +309,7 @@ class ClashExampleTests(unittest.TestCase):
         knob.play(0, "xuan_niu")
         self.assertTrue(knob.units(0)[0]["sick"])
         knob.knob(0, "xuan_niu", "xuan_niu")
-        self.assertEqual(knob.view()["boards"][0][0]["attack"], 5)
+        self.assertEqual(knob.view()["boards"][0][0]["attack"], 6)
         self.assertEqual(knob.supply[0], 0)
         with self.assertRaises(ClashError) as used:
             knob.knob(0, "xuan_niu", "xuan_niu")

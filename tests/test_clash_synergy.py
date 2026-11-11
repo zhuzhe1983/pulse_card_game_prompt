@@ -53,7 +53,7 @@ class FormationTests(unittest.TestCase):
     def test_leader_percent_and_low_attack_ceil(self):
         game, _chain = arena()
         game.spawn(0, "dian_zhen", sick=False)
-        self.assertEqual(game.formation_state(0)["percent"], 10)
+        self.assertEqual(game.formation_state(0)["leader_attack"], 1)
         game.attack(0, "dian_zhen", "base")
         self.assertEqual(game.bases[1], 18)
 
@@ -63,42 +63,37 @@ class FormationTests(unittest.TestCase):
         game.attack(0, "zero_atk", "base")
         self.assertEqual(game.bases[1], 20)
 
-    def test_chain_run_breaks_and_recalculates(self):
+    def test_chain_bonus_is_integer_and_a_break_cuts_the_tail(self):
         game, chain_id = arena()
         game.spawn(0, "qiao_jian", sick=False)
-        game.spawn(0, "xiao_yin", sick=False)
-        game.hands[0] = [chain_id, "lian_jie", chain_id]
-        game.play(0, chain_id, "qiao_jian", index=1)
-        self.assertEqual(game.formation_state(0), {"leader": True, "chain_run": 1, "percent": 15})
-        game.play(0, "lian_jie", "xiao_yin")
-        self.assertEqual(game.formation_state(0)["percent"], 15)
-        before = game.view()
-        with self.assertRaises(ClashError) as bad:
-            game.play(0, chain_id, "qiao_jian", index=99)
-        self.assertEqual(bad.exception.code, "bad_index")
-        self.assertEqual(game.view(), before)
-        link = next(unit for unit in game.boards[0] if unit.get("link") and unit["card_id"] == chain_id)
-        game.boards[0].remove(link)
-        game.boards[0].insert(0, link)
-        game._reindex(0)
-        self.assertEqual(game.formation_state(0)["percent"], 0)
-        host = next(unit for unit in game.units(0) if unit["card_id"] == "qiao_jian")
-        host["durability"] = 0
-        game.check_deaths()
-        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["xiao_yin"])
-        self.assertEqual(game.graves[0].count(chain_id), 1)
-        self.assertTrue(any(unit.get("link") and unit["card_id"] == "lian_jie" for unit in game.boards[0]))
+        game.hands[0] = [chain_id, chain_id, chain_id]
+        game.play(0, chain_id, "qiao_jian")
+        host = game.units(0)[0]
+        self.assertFalse(host["attachment_meta"][0]["ready"])
+        self.assertEqual(game.profile(0, host)[0], 6)
+        host["attachment_meta"][0]["ready"] = True
+        bonus = game.cards[chain_id]["attack_bonus"]
+        self.assertEqual(game.profile(0, host)[0], 6 + bonus)
+        with self.assertRaises(ClashError) as full:
+            game.play(0, chain_id, "qiao_jian")
+        self.assertEqual(full.exception.code, "chain_slot_full")
+        game.spawn(1, "xiao_yin", sick=False)
+        game.seat = 1
+        game.attack(1, "xiao_yin", host["attachment_meta"][0]["iid"])
+        self.assertEqual(host["attachments"], [])
+        self.assertEqual(game.profile(0, host)[0], 6)
+        self.assertIn(chain_id, game.graves[0])
 
     def test_three_links_and_counter_uses_defender_formation(self):
         game, chain_id = arena()
         game.spawn(0, "xiao_yin", sick=False)
-        game.spawn(0, "dian_zhen", sick=False)
+        game.spawn(0, "qiao_jian", sick=False)
         game.spawn(0, "hou_ke", sick=False)
         game.hands[0] = [chain_id, chain_id, chain_id]
-        game.play(0, chain_id, "xiao_yin", index=1)
-        game.play(0, chain_id, "dian_zhen", index=2)
-        game.play(0, chain_id, "hou_ke", index=3)
-        self.assertEqual(game.formation_state(0)["percent"], 25)
+        game.play(0, chain_id, "xiao_yin")
+        game.play(0, chain_id, "qiao_jian")
+        game.play(0, chain_id, "hou_ke")
+        self.assertEqual(game.formation_state(0)["leader_attack"], 1)
         game.spawn(1, "art_h024", sick=False)
         game.attack(0, "xiao_yin", "art_h024")
         self.assertEqual(game.units(1), [])
@@ -127,7 +122,7 @@ class UpperLinkTests(unittest.TestCase):
         game.upper_link(0, "cm4_stack", "xiao_yin")
         self.assertEqual(game.supply[0], 9)
         game.attack(0, "qiao_jian", "base")
-        self.assertEqual(game.bases[1], 13)
+        self.assertEqual(game.bases[1], 14)
         before = game.view()
         with self.assertRaises(ClashError) as again:
             game.upper_link(0, "art_h050", "xiao_yin")
@@ -149,14 +144,14 @@ class UpperLinkTests(unittest.TestCase):
         game.spawn(1, "xiao_yin", sick=False)
         game.hands[0] = [chain_id]
         game.play(0, chain_id, "qiao_jian")
-        link = next(unit for unit in game.boards[0] if unit.get("link"))
+        accessory = game.units(0)[2]["attachment_meta"][0]["iid"]
         before = game.view()
         for source, target in (
             ("art_h018", "qiao_jian"),
             ("art_h050", "art_h018"),
             ("art_h050", "xiao_yin"),
             ("art_h050", "art_h050"),
-            ("art_h050", link["iid"]),
+            ("art_h050", accessory),
         ):
             with self.assertRaises(ClashError) as bad:
                 game.upper_link(0, source, target)
@@ -235,7 +230,7 @@ class SeizeTests(unittest.TestCase):
         game.hands[1] = [chain_id]
         game.spawn(1, "art_h050", sick=False)
         game.seat = 1
-        game.play(1, chain_id, "qiao_jian", index=1)
+        game.play(1, chain_id, "qiao_jian")
         game.upper_link(1, "art_h050", "qiao_jian")
         game.seat = 0
         before_dur = foe["durability"]
@@ -247,9 +242,9 @@ class SeizeTests(unittest.TestCase):
         self.assertEqual(moved["attachments"], [chain_id])
         self.assertTrue(moved["sick"])
         self.assertTrue(moved["ability_lock"])
-        self.assertEqual(game.boards[0][-1]["link"], True)
-        self.assertEqual(game.formation_state(0)["percent"], 15)
-        self.assertEqual(game.formation_state(1)["percent"], 10)
+        self.assertFalse(game.boards[0][-1].get("link"))
+        self.assertEqual(game.formation_state(0)["leader_attack"], 1)
+        self.assertEqual(game.formation_state(1)["leader_attack"], 1)
         self.assertEqual(game.upper_links[1], [])
         with self.assertRaises(ClashError) as sick:
             game.attack(0, "qiao_jian", "base")
@@ -267,14 +262,14 @@ class SeizeTests(unittest.TestCase):
         leader = game.spawn(1, "art_h050", sick=False)
         game.hands[1] = [chain_id]
         game.seat = 1
-        game.play(1, chain_id, "art_h050", index=1)
+        game.play(1, chain_id, "art_h050")
         game.seat = 0
-        link = next(unit for unit in game.boards[1] if unit.get("link"))
+        accessory = game.units(1)[0]["attachment_meta"][0]["iid"]
         before = game.view()
         with self.assertRaises(ClashError):
             game.play(0, "burner_seize", "base")
         with self.assertRaises(ClashError):
-            game.play(0, "burner_seize", link["iid"])
+            game.play(0, "burner_seize", accessory)
         with self.assertRaises(ClashError):
             game.play(0, "burner_seize", "xiao_yin")
         self.assertEqual(game.view(), before)
