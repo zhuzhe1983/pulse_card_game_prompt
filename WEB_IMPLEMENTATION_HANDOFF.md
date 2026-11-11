@@ -15,7 +15,7 @@
 | `fixtures/clash_v0_lesson.json` | 教学局逐步行动和核对点 |
 | `content/clash_roster_96.json` | 96 张扩展牌、星级和产品 rid。零键只多了上位机资格 |
 | `docs/18_ROSTER_AND_GROWTH.md` | 升星规则和家族说明 |
-| `docs/20_POINTER_AND_MODES.md` | 拖拽、指向、取消，以及默认人机和可选热座。不改战斗数字 |
+| `docs/20_POINTER_AND_MODES.md` | 拖拽、指向、绿标和红 ×、取消，以及默认人机和可选热座。不改战斗数字 |
 | `tests/test_clash_playtest.py` | 教学局和基线边界。复算器只在 `tests/clash_walk.py`，不是要移植的框架 |
 | `tests/test_clash_synergy.py` | 阵型、上位连接、服务牌、夺舍 |
 
