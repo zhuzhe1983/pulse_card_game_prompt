@@ -120,6 +120,12 @@ class UpperLinkTests(unittest.TestCase):
         game.upper_link(0, "art_h050", "qiao_jian")
         self.assertEqual(game.supply[0], 9)
         self.assertEqual(len(game.upper_links[0]), 1)
+        linked, linked_parts = game.profile(0, esp)
+        other_attack, other_parts = game.profile(0, other)
+        self.assertEqual(linked, 6)
+        self.assertIn("来自上位的爱", [item[0] for item in linked_parts])
+        self.assertEqual(other_attack, 2)
+        self.assertNotIn("来自上位的爱", [item[0] for item in other_parts])
         game.supply[0] = 10
         game.upper_link(0, "cm4_stack", "xiao_yin")
         self.assertEqual(game.supply[0], 9)

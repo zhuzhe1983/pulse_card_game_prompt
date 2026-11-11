@@ -14,9 +14,9 @@
 
 Atom、Stick 同样只把核心本体放在系列基础档。摄像头、长焦、扩展座、语音款仍然是 Atom 大小，留在 2 费。这 96 张里没有单独的 Atom 套件主机，也没有 Stick 套装整机。核心本体的系列档这轮不动。
 
-官方文档写明 DinMeter 的主控是 Stamp-S3，v1.1 换成 Stamp-S3A，所以它是邮票套装，不是邮票模块，也不是 Dial。一星 2 费，攻击 2、耐久 2。二星 3 费，攻击 1、耐久 4。依据：<https://docs.m5stack.com/en/core/DinMeter> 与 <https://docs.m5stack.com/en/core/DinMeter_v1.1>。
+官方文档写明 DinMeter 的主控是 Stamp-S3，v1.1 换成 Stamp-S3A，所以它是邮票套装，不是邮票模块，也不是 Dial。一星 2 费，攻击 3、耐久 2。二星 3 费，攻击 4、耐久 2。依据：<https://docs.m5stack.com/en/core/DinMeter> 与 <https://docs.m5stack.com/en/core/DinMeter_v1.1>。
 
-Air Quality 同样处理。商店名是 Air Quality Kit with M5StampS3，文档写由 StampS3 供电；v1.1 的商店名和文档都写主控换成 Stamp-S3A。一星 2 费，攻击 1、耐久 3。二星 3 费，攻击 2、耐久 3。依据：<https://docs.m5stack.com/en/core/Air_Quality> 与 <https://shop.m5stack.com/products/air-quality-kit-w-m5stamps3-sen55-scd40>。SKU 仍待核验，不编造编号。
+Air Quality 同样处理。商店名是 Air Quality Kit with M5StampS3，文档写由 StampS3 供电；v1.1 的商店名和文档都写主控换成 Stamp-S3A。一星 2 费，攻击 3、耐久 2。二星 3 费，攻击 4、耐久 2。依据：<https://docs.m5stack.com/en/core/Air_Quality> 与 <https://shop.m5stack.com/products/air-quality-kit-w-m5stamps3-sen55-scd40>。SKU 仍待核验，不编造编号。
 
 Dial 仍是点名的 8 费整机档。StamPLC 仍是 6 费工控整机。StampFly 不在这 96 张里。
 
@@ -47,7 +47,7 @@ Dial 仍是点名的 8 费整机档。StamPLC 仍是 6 费工控整机。StampFl
 
 1 费邮票的费用不按芯片加价。入门 C3、C5、C6 攻击 1；S3 攻击 2、耐久 2；P4 大印攻击 3、耐久 1。打出去就是这个攻击数，站在最左边不再加。短印仍是冲锋，攻击 1、耐久 1。C6LoRa 仍没有入场伤害。Stamp-P4 的官方型号仍是一枚邮票，所以费用留在 1，攻击按高性能档抬高。
 
-夺舍仍是 7 费。拿 1 费入门邮票是亏的；拿 1 费大印、6 费厚壳或 9 到 10 费的整机才值。积木开工、记一笔、说人话的费用不动。来自上位的爱仍是 1 费，光环仍是不叠加的 +1。
+夺舍仍是 7 费。拿 1 费入门邮票是亏的；拿 1 费大印、6 费厚壳或 9 到 10 费的整机才值。积木开工、记一笔、说人话的费用不动。来自上位的爱仍是 1 费，只给被连上的那一台 +1，多条不叠加。
 
 ## 0.1 芯片档次
 

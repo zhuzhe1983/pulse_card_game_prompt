@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 613309,
-      "sha256": "977d48b3255665ca5a934bc5d6f83cecf113c0ddaf5f3f5ad1ffefdc727b83ef"
+      "bytes": 613576,
+      "sha256": "29bd0ca74c61f2efc32f4ae60043e87c97dede045b9ad5f0b804d9d2161411b7"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/01_GAMEPLAY.md",
-      "bytes": 22367,
-      "sha256": "432b81027299b4d81549a6cfc5a86fd287556121305c54412a48a2940e0e4acd"
+      "bytes": 22403,
+      "sha256": "a1c49d2df150c9889f951fa10a4cfc439c164a31fb9f51e86504cca0fb636373"
     },
     {
       "path": "docs/02_STYLE_AND_UX.md",
@@ -573,8 +573,8 @@
     },
     {
       "path": "WEB_IMPLEMENTATION_HANDOFF.md",
-      "bytes": 13024,
-      "sha256": "e03bc229833b9a0a18bdf7acba3405a24fa9b4967306820f4c440ac06e5eb64f"
+      "bytes": 13146,
+      "sha256": "158a71ee7041fa8f0c266dfb64c634e30ba42c184a0be6e617b8c10b12d0561f"
     },
     {
       "path": "fixtures/clash_v0_lesson.json",
@@ -583,13 +583,13 @@
     },
     {
       "path": "content/clash_roster_96.json",
-      "bytes": 198136,
-      "sha256": "c2c3ee54849595a53659fd6348213dc0e8392924adbde7d0b4891e7e321726f9"
+      "bytes": 198143,
+      "sha256": "b77243ffb9392fa1606c8c1c221d3d535cdc2702b94b696e9767bfd8a67e49db"
     },
     {
       "path": "docs/18_ROSTER_AND_GROWTH.md",
-      "bytes": 20231,
-      "sha256": "49251ace2cd43c8181d87b147d8cf5fd134c6646a9162723596e32a235cf7c73"
+      "bytes": 20252,
+      "sha256": "f66ab465f7d5df87e34e16a31ae5909d14610153aaf7d90e3da12d535351153d"
     },
     {
       "path": "tests/test_clash_roster.py",
@@ -603,13 +603,13 @@
     },
     {
       "path": "docs/19_SYNERGY_AND_SERVICES.md",
-      "bytes": 11850,
-      "sha256": "bc8cef831b32024542c7706da77d94334d948e304e4c89a2ba88e1d35a1dac20"
+      "bytes": 11997,
+      "sha256": "49fdacab32ebbea36705b0de98b37acee41875ca4f8c97df05a4b6bd21a3e7e7"
     },
     {
       "path": "tests/test_clash_synergy.py",
-      "bytes": 13753,
-      "sha256": "52c44a1f3c6dc8214317cdfce8f162fbdcb4dd28618b721665f00dd706f1d32f"
+      "bytes": 14104,
+      "sha256": "c956dddfa3d8dfc30b1a4971d62107ff9abbe41811acf3d4cb2c82e1b01cbf1d"
     },
     {
       "path": "tests/test_clash_cost_curve.py",
@@ -618,8 +618,8 @@
     },
     {
       "path": "docs/20_POINTER_AND_MODES.md",
-      "bytes": 16889,
-      "sha256": "8fa5b0a990b31d044fead84a576b05c9c34f24a28a1fbec161bde4d715d595c8"
+      "bytes": 16952,
+      "sha256": "4e68536f7f6a4b758ed34c0cbf5f611bf6ebbd3a726a851bd49ec4113658e235"
     },
     {
       "path": "tests/test_pointer_spec.py",
