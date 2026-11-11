@@ -16,6 +16,8 @@
 
 内容另有 `content_pack_id`（例如 `m5.core.v1`）、`content_version`（发布标签）和 **`content_hash`**（精确规则内容的SHA-256）。version便于人读，hash用于证明双方装载了同一份规则材料。改了卡片数值或合法排位，即使还叫同一个模板名，也不能继续用原hash。
 
+`pcg.core.v1` 的语义继续冻结，给已经按三局点数实现的裁判和黄金向量使用。单局回合战使用新编号 `pcg.clash.v0`，试玩卡表在 `content/clash_playtest.json`，不写入 `m5.core.v1` 的内容哈希。旧联机消息在迁移完成前仍只承载 `pcg.core.v1`。
+
 PCG-F1 的 `frame_version=1` 只是数据报封装版本。它不同于 PCG envelope 1.0，也不同于 ESP-NOW 硬件/SDK所谓的 v1/v2；禁止把这几个“1”当作同一含义。
 
 保存/实体卡文档如果使用带命名空间的实际版本字段，以它们的schema为准；本表表达独立的生命周期，不要求把两个版本字段硬塞进战斗envelope。

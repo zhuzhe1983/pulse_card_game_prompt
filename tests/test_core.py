@@ -1,4 +1,8 @@
-"""Pure core/claim contract tests. Does not claim real hardware coverage."""
+"""Frozen pcg.core.v1 contract tests. Does not claim real hardware coverage.
+
+The playable rules are now pcg.clash.v0 in docs/01_GAMEPLAY.md.
+These tests keep the archived three-round judge reproducible.
+"""
 from pathlib import Path
 from copy import deepcopy
 import hashlib,json,unittest

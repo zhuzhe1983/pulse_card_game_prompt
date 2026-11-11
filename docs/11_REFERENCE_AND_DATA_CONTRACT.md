@@ -4,7 +4,7 @@
 
 `CONTRACT.json` 是冻结常量，`content/core_pack.json` 是参与规则和获取逻辑的完整内容；展示文字与图像路径在 `content/zh-CN.json` 或目标资源中。`content/manifest.json` 记录实际 hash。不要把 manifest 中的 hash 再放进被 hash 的 pack 本身，避免循环定义。
 
-规则 ID 为 `pcg.core.v1`。线路字段 `rule_id` 与状态字段 `ruleset_id` 是同一值。线路 `content_version` 等于 pack 的 `content_pack_version`；规范中泛称 manifest 的握手材料是内容身份元数据，实际 content_hash 只计算 core_pack.json 的 canonical 对象，不对 manifest.json 的元数据再计算。HELLO/SELECT 的 `effect_opcodes`/`required_opcodes` 使用 pack.required_ops 原名，加上每个 required_traits 的 `trait:` 前缀，如 `trait:shield_once`；两类能力都必须检查。
+冻结规则 ID 仍为 `pcg.core.v1`。线路字段 `rule_id` 与状态字段 `ruleset_id` 是同一值。回合战 `pcg.clash.v0` 还没有进入这条线路；它的试玩卡表单独放在 `content/clash_playtest.json`，不参与 `core_pack.json` 的内容哈希。线路 `content_version` 等于 pack 的 `content_pack_version`；规范中泛称 manifest 的握手材料是内容身份元数据，实际 content_hash 只计算 core_pack.json 的 canonical 对象，不对 manifest.json 的元数据再计算。HELLO/SELECT 的 `effect_opcodes`/`required_opcodes` 使用 pack.required_ops 原名，加上每个 required_traits 的 `trait:` 前缀，如 `trait:shield_once`；两类能力都必须检查。
 
 同 template_id 的卡在一个锁定 manifest 内有唯一含义。可以在未来内容版本调整数值，但必须是不同 content_hash，旧对局继续原包。display 名称、本地化、图片尺寸不进入 reducer；换图片不改变 pack hash。角色名称不是技能代码。
 
