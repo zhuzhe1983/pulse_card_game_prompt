@@ -23,8 +23,8 @@
     },
     {
       "path": "UNIVERSAL_PROMPT_FULL.txt",
-      "bytes": 600840,
-      "sha256": "ecabb95c0a85a39b08fa19e74794393be7115366a6b676d750d678c3d51e49b3"
+      "bytes": 606712,
+      "sha256": "af2d1f4af6e49f0b3e3ab00ccfb72dfc14c733e7ba3901bbe98efdab5dbd66f2"
     },
     {
       "path": "VALIDATION_REPORT.txt",
@@ -573,8 +573,8 @@
     },
     {
       "path": "WEB_IMPLEMENTATION_HANDOFF.md",
-      "bytes": 11971,
-      "sha256": "de2dd1c0ce132c821f76357247f47edcd490c8175c873e14920f1b6fc42625c8"
+      "bytes": 12081,
+      "sha256": "a6849012127bbbfc146573ba7c3a1251aa0ed458115002681008ac9cb848e144"
     },
     {
       "path": "fixtures/clash_v0_lesson.json",
@@ -625,6 +625,16 @@
       "path": "tests/test_pointer_spec.py",
       "bytes": 3333,
       "sha256": "958bc62c34fa01bcbe92aac320a0bd8f142d129b99095e83ed2fc55128581720"
+    },
+    {
+      "path": "docs/21_NFC_TAP_TO_PLAY.md",
+      "bytes": 5770,
+      "sha256": "b9053d3f30fb67f1c7f3080555fde4c08705777c8c89794bb7e0e6014d2ac9a2"
+    },
+    {
+      "path": "tests/test_nfc_tap_spec.py",
+      "bytes": 1850,
+      "sha256": "4064f38559b0fcbfa004b7ebf040243e834e72a638446f2bb48690f44cc17819"
     }
   ]
 }
