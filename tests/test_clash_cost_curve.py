@@ -33,7 +33,8 @@ class CostCurveTests(unittest.TestCase):
             self.assertEqual(card["cost_band"], "series_core")
             self.assertEqual(card["cost_line"], "stamp_core")
             self.assertEqual(card["cost"], 1)
-            self.assertLessEqual(card["attack"], 1)
+            if card.get("chip_tier") == "entry":
+                self.assertLessEqual(card["attack"], 1)
         self.assertEqual(by_rid["H038a"]["cost"], 2)
         machine = by_rid["H041"]
         self.assertEqual(machine["official_product_name_en"], "StamPLC")
@@ -102,14 +103,14 @@ class CostCurveTests(unittest.TestCase):
         self.assertNotIn("xi_tiao", base)
         roster_by = {card["template_id"]: card for card in roster()["cards"]}
         self.assertEqual(roster_by["art_h024"]["cost"], 3)
-        self.assertEqual(roster_by["art_h024"]["attack"], 2)
-        self.assertEqual(roster_by["art_h024"]["durability"], 3)
+        self.assertEqual(roster_by["art_h024"]["attack"], 3)
+        self.assertEqual(roster_by["art_h024"]["durability"], 2)
         self.assertIsNone(roster_by["art_h024"]["effect"])
         decks = playtest()["decks"]
         self.assertIn("art_h024", decks["first"])
         self.assertIn("art_h024", decks["second"])
         self.assertEqual(base["xiao_yin"]["amount"], 1)
-        self.assertEqual(base["hou_ke"]["durability"], 7)
+        self.assertEqual(base["hou_ke"]["durability"], 5)
 
     def test_accessories_keep_a_one_cost_tier(self):
         parts = [card for card in roster()["cards"] if card["kind"] == "attachment"]

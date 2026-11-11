@@ -131,7 +131,7 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual([unit["card_id"] for unit in game.units(0)], ["hou_ke", "xiao_yin"])
         shell = next(unit for unit in game.units(0) if unit["card_id"] == "hou_ke")
         stamp = next(unit for unit in game.units(0) if unit["card_id"] == "xiao_yin")
-        self.assertEqual(shell["durability"], 7)
+        self.assertEqual(shell["durability"], 5)
         self.assertTrue(shell["sick"])
         self.assertFalse(stamp["sick"])
         with self.assertRaises(ClashError):
@@ -142,10 +142,10 @@ class ClashExampleTests(unittest.TestCase):
         with self.assertRaises(ClashError):
             game.attack(0, "xiao_yin", "base")
         game.play(0, "bu_ji", "hou_ke", "heal")
-        self.assertEqual(shell["durability"], 7)
+        self.assertEqual(shell["durability"], 5)
         self.assertEqual(game.supply[0], 4)
         game.play(0, "gan_rao", "dian_zhen")
-        self.assertEqual(game.units(1)[0]["durability"], 1)
+        self.assertEqual(game.units(1)[0]["durability"], 2)
         self.assertEqual(game.supply[0], 2)
         self.assertEqual([unit["card_id"] for unit in game.units(0)], ["hou_ke", "xiao_yin"])
 
@@ -166,7 +166,7 @@ class ClashExampleTests(unittest.TestCase):
         later.support(0)
         self.assertEqual(later.supply[0], 4)
         shell = next(unit for unit in later.units(0) if unit["card_id"] == "hou_ke")
-        self.assertEqual(shell["durability"], 7)
+        self.assertEqual(shell["durability"], 5)
         self.assertTrue(shell["sick"])
         with self.assertRaises(ClashError):
             later.attack(0, "hou_ke", "base")
@@ -192,7 +192,7 @@ class ClashExampleTests(unittest.TestCase):
         revived = next(unit for unit in stayed.units(0) if unit["card_id"] == "hou_ke")
         self.assertEqual([unit["card_id"] for unit in stayed.units(0)], ["hou_ke", "xiao_yin"])
         self.assertEqual(revived["slot"], 0)
-        self.assertEqual(revived["durability"], 7)
+        self.assertEqual(revived["durability"], 5)
         self.assertTrue(revived["sick"])
         self.assertEqual(stayed.supply[0], 3)
 
@@ -309,7 +309,7 @@ class ClashExampleTests(unittest.TestCase):
         knob.play(0, "xuan_niu")
         self.assertTrue(knob.units(0)[0]["sick"])
         knob.knob(0, "xuan_niu", "xuan_niu")
-        self.assertEqual(knob.view()["boards"][0][0]["attack"], 4)
+        self.assertEqual(knob.view()["boards"][0][0]["attack"], 5)
         self.assertEqual(knob.supply[0], 0)
         with self.assertRaises(ClashError) as used:
             knob.knob(0, "xuan_niu", "xuan_niu")

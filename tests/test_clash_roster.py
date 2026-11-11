@@ -103,6 +103,17 @@ class RosterTests(unittest.TestCase):
         kept = {"lian_jie", "qian_li", "hu_zhao", "bu_ji", "gan_rao", "hui_chong"}
         self.assertTrue(kept.isdisjoint(by_template))
 
+    def test_stamp_cost_one_attack_rises_with_chip_tier(self):
+        groups = {}
+        for card in roster()["cards"]:
+            if card["kind"] == "main":
+                self.assertIn(card.get("chip_tier"), ("entry", "s3", "p4", "classic", "non_esp"))
+            if card.get("cost_line") == "stamp_core" and card["cost"] == 1:
+                groups.setdefault(card["chip_tier"], []).append(card["attack"])
+        self.assertLess(max(groups["entry"]), min(groups["s3"]))
+        self.assertLess(max(groups["s3"]), min(groups["p4"]))
+        self.assertEqual(min(groups["p4"]), 3)
+
     def test_promote_keeps_slot_and_does_not_refresh_support(self):
         data = roster()
         base = load_cards(json.loads((ROOT / "content" / "clash_playtest.json").read_text(encoding="utf-8")))

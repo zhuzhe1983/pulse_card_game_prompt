@@ -52,9 +52,9 @@ def arena():
 class FormationTests(unittest.TestCase):
     def test_leader_percent_and_low_attack_ceil(self):
         game, _chain = arena()
-        game.spawn(0, "xiao_yin", sick=False)
+        game.spawn(0, "dian_zhen", sick=False)
         self.assertEqual(game.formation_state(0)["percent"], 10)
-        game.attack(0, "xiao_yin", "base")
+        game.attack(0, "dian_zhen", "base")
         self.assertEqual(game.bases[1], 18)
 
     def test_zero_attack_stays_zero(self):
@@ -110,7 +110,7 @@ class FormationTests(unittest.TestCase):
         game.spawn(1, "hou_ke", sick=False)
         game.hands[0] = ["gan_rao"]
         game.play(0, "gan_rao", "hou_ke")
-        self.assertEqual(game.units(1)[0]["durability"], 5)
+        self.assertEqual(game.units(1)[0]["durability"], 3)
 
 
 class UpperLinkTests(unittest.TestCase):
@@ -213,14 +213,14 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual(armed.exception.code, "already_used_ability")
         self.assertEqual(game.view(), before)
         game.attack(0, "xiao_yin", "base")
-        self.assertEqual(game.bases[1], 16)
+        self.assertEqual(game.bases[1], 15)
         self.assertFalse(game.aiflow_armed[0])
         game.hands[0] = ["aiflow_say", "gan_rao"]
         game.supply[0] = 8
         game.spawn(1, "hou_ke", sick=False)
         game.play(0, "aiflow_say")
         game.play(0, "gan_rao", "hou_ke")
-        self.assertEqual(game.units(1)[0]["durability"], 5)
+        self.assertEqual(game.units(1)[0]["durability"], 3)
         self.assertTrue(game.aiflow_armed[0])
         game.end_turn(0)
         self.assertFalse(game.aiflow_armed[0])
@@ -303,7 +303,7 @@ class SeizeTests(unittest.TestCase):
         game.ability_used[0] = {}
         game.support(0)
         self.assertEqual(game.units(0)[0]["card_id"], "hou_ke")
-        self.assertEqual(game.units(0)[0]["durability"], 7)
+        self.assertEqual(game.units(0)[0]["durability"], 5)
         game.seat = 1
         with self.assertRaises(ClashError) as missing:
             game.support(1)
