@@ -16,9 +16,18 @@ def payload():
     return json.loads((ROOT / "content" / "clash_playtest.json").read_text(encoding="utf-8"))
 
 
+def lesson_cards(data=None):
+    data = payload() if data is None else data
+    cards = load_cards(data)
+    roster = json.loads((ROOT / "content" / "clash_roster_96.json").read_text(encoding="utf-8"))
+    stick = next(card for card in roster["cards"] if card["template_id"] == "art_h024")
+    cards["art_h024"] = stick
+    return cards
+
+
 def new_game():
     data = payload()
-    cards = load_cards(data)
+    cards = lesson_cards(data)
     decks = data["decks"]
     return Game(cards, decks["first"], decks["second"]), cards
 
@@ -38,8 +47,10 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(link["game_role"], "attachment")
         self.assertEqual(link["hardware_controller"], "auxiliary_programmable_mcu")
         self.assertIsNone(link["art_type"])
+        self.assertNotIn("xi_tiao", by_id)
+        self.assertEqual(data["retired"][0]["replaced_by"], "art_h024")
         self.assertNotIn("无主控", link["hardware_note"].split("不是无主控")[0])
-        self.assertEqual(len(data["cards"]), 12)
+        self.assertEqual(len(data["cards"]), 11)
         names = [card["name"] for card in data["cards"]]
         self.assertEqual(len(names), len(set(names)))
         for card in data["cards"]:
@@ -62,8 +73,8 @@ class ClashExampleTests(unittest.TestCase):
 
     def test_first_three_turns(self):
         game, _cards = new_game()
-        self.assertEqual(game.hands[0], ["xi_tiao", "xiao_yin", "bu_ji"])
-        self.assertEqual(game.hands[1][:4], ["xi_tiao", "hu_zhao", "xiao_yin", "gan_rao"])
+        self.assertEqual(game.hands[0], ["art_h024", "xiao_yin", "bu_ji"])
+        self.assertEqual(game.hands[1][:4], ["art_h024", "hu_zhao", "xiao_yin", "gan_rao"])
         self.assertIn("jie_yi_ge_dian", game.hands[1])
         game.start_turn()
         game.play(0, "xiao_yin")
@@ -88,18 +99,18 @@ class ClashExampleTests(unittest.TestCase):
         game.play(1, "xiao_yin")
         game.end_turn(1)
         game.start_turn()
-        game.play(0, "xi_tiao")
+        game.play(0, "art_h024")
         self.assertEqual(game.graves[0], ["xiao_yin"])
         self.assertEqual(game.graves[1], ["jie_yi_ge_dian"])
         self.assertEqual(game.bases, [18, 20])
-        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["xi_tiao"])
+        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["art_h024"])
         self.assertEqual([unit["card_id"] for unit in game.units(1)], ["dian_zhen", "xiao_yin"])
         self.assertTrue(game.units(0)[0]["sick"])
         self.assertIsNone(game.winner)
         self.assertIn("同时结算", "\n".join(game.log))
 
     def test_support_already_on_board(self):
-        cards = load_cards(payload())
+        cards = lesson_cards()
         game = Game.empty(cards)
         game.supply = [6, 6]
         game.max_supply = [6, 6]
@@ -133,7 +144,7 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual([unit["card_id"] for unit in game.units(0)], ["hou_ke", "xiao_yin"])
 
     def test_support_after_later_deploy_and_after_shell_dies(self):
-        cards = load_cards(payload())
+        cards = lesson_cards()
         later = Game.empty(cards)
         later.supply = [6, 6]
         later.max_supply = [6, 6]
@@ -180,11 +191,11 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(stayed.supply[0], 3)
 
     def test_edges(self):
-        cards = load_cards(payload())
+        cards = lesson_cards()
         full = Game.empty(cards)
         full.supply = [5, 5]
         full.max_supply = [5, 5]
-        names = ["xiao_yin", "dian_zhen", "xuan_niu", "qiao_jian", "xi_tiao"]
+        names = ["xiao_yin", "dian_zhen", "xuan_niu", "qiao_jian", "art_h024"]
         for card_id in names:
             full.spawn(0, card_id, sick=False)
         self.assertEqual(len(full.units(0)), 5)
@@ -195,16 +206,16 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(full.supply[0], 4)
         full.hands[0] = ["bu_ji"]
         full.play(0, "bu_ji", "hou_ke", "heal")
-        full.hands[0] = ["xi_tiao"]
+        full.hands[0] = ["art_h024"]
         full.supply[0] = 3
-        full.play(0, "xi_tiao", index=3)
+        full.play(0, "art_h024", index=3)
         self.assertEqual(len(full.units(0)), 7)
-        self.assertEqual(full.units(0)[3]["card_id"], "xi_tiao")
-        full.hands[0] = ["xi_tiao"]
+        self.assertEqual(full.units(0)[3]["card_id"], "art_h024")
+        full.hands[0] = ["art_h024"]
         full.supply[0] = 3
         before = full.view()
         with self.assertRaises(ClashError) as bad:
-            full.play(0, "xi_tiao", index=99)
+            full.play(0, "art_h024", index=99)
         self.assertEqual(bad.exception.code, "bad_index")
         self.assertEqual(full.view(), before)
 
@@ -235,10 +246,10 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(unit["temp_attack"], 0)
 
         burn = Game.empty(cards)
-        burn.decks[0] = ["xi_tiao"]
+        burn.decks[0] = ["art_h024"]
         burn.hands[0] = ["bu_ji"] * 8
         burn.draw(0)
-        self.assertEqual(burn.graves[0], ["xi_tiao"])
+        self.assertEqual(burn.graves[0], ["art_h024"])
         self.assertEqual(len(burn.hands[0]), 8)
 
         tired = Game.empty(cards)
@@ -264,16 +275,16 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(link.units(0), [])
 
     def test_illegal_actions_do_not_spend_and_game_over_locks(self):
-        cards = load_cards(payload())
+        cards = lesson_cards()
         game = Game.empty(cards)
         game.supply = [1, 1]
         game.max_supply = [1, 1]
         game.hands = [["lian_jie", "hu_zhao", "xuan_niu"], []]
         game.spawn(0, "xiao_yin", 0, sick=False)
-        game.spawn(1, "xi_tiao", 0, sick=False)
+        game.spawn(1, "art_h024", 0, sick=False)
         before = game.view()
         with self.assertRaises(ClashError) as enemy_part:
-            game.play(0, "lian_jie", "xi_tiao")
+            game.play(0, "lian_jie", "art_h024")
         self.assertEqual(enemy_part.exception.code, "bad_target")
         self.assertEqual(game.view(), before)
         game.play(0, "lian_jie", "xiao_yin")
@@ -327,7 +338,7 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(tired.max_supply[0], 0)
         frozen = tired.view()
         with self.assertRaises(ClashError) as locked:
-            tired.play(0, "xi_tiao")
+            tired.play(0, "art_h024")
         self.assertEqual(locked.exception.code, "game_over")
         self.assertEqual(tired.view(), frozen)
 
@@ -347,9 +358,9 @@ class ClashExampleTests(unittest.TestCase):
         guards.spawn(0, "qiao_jian", 0, sick=False)
         guards.spawn(1, "dian_zhen", 0, sick=False)
         guards.spawn(1, "hou_ke", 1, sick=False)
-        guards.spawn(1, "xi_tiao", 2, sick=False)
+        guards.spawn(1, "art_h024", 2, sick=False)
         with self.assertRaises(ClashError) as blocked:
-            guards.attack(0, "qiao_jian", "xi_tiao")
+            guards.attack(0, "qiao_jian", "art_h024")
         self.assertEqual(blocked.exception.code, "guard_blocks")
         guards.attack(0, "qiao_jian", "dian_zhen")
         self.assertEqual(guards.graves[1], ["dian_zhen"])
@@ -361,7 +372,7 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(fixture["ruleset_id"], data["ruleset_id"])
         for key in ("base_life", "max_supply", "hand_limit", "board_limit"):
             self.assertEqual(fixture["rules"][key], data[key])
-        cards = load_cards(data)
+        cards = lesson_cards(data)
         game = Game(cards, data["decks"]["first"], data["decks"]["second"])
         for step in fixture["lesson_steps"]:
             kind = step["do"]
@@ -381,7 +392,7 @@ class ClashExampleTests(unittest.TestCase):
                 for key, value in step["expect"].items():
                     self.assertEqual(actual[key], value, step.get("name", kind))
         self.assertEqual(game.bases, [18, 20])
-        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["xi_tiao"])
+        self.assertEqual([unit["card_id"] for unit in game.units(0)], ["art_h024"])
         self.assertEqual([unit["card_id"] for unit in game.units(1)], ["dian_zhen", "xiao_yin"])
 
 

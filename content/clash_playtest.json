@@ -44,28 +44,6 @@
       "cost_note": "基线就是 Stamp-S3 本体。支援费用降到 1。"
     },
     {
-      "template_id": "xi_tiao",
-      "name": "细条",
-      "kind": "main",
-      "cost": 3,
-      "attack": 2,
-      "durability": 3,
-      "guard": false,
-      "attack_bonus": 0,
-      "grants_guard": false,
-      "bypass_guard": false,
-      "effect": null,
-      "amount": 0,
-      "series": "stick",
-      "role_note": "主控单位。Stick 核心档，3 费。第一回合的 1 点电打不出。",
-      "hardware_note": "灵感是细长的独立主机，不是外接条。",
-      "esp32_main": true,
-      "cost_band": "series_core",
-      "cost_line": "stick_core",
-      "series_confidence": "uncertain",
-      "cost_note": "基线设计牌，按 Stick 核心档。不是某一款官方 Stick 的编号，96 张里的新细条才是 StickS3。"
-    },
-    {
       "template_id": "dian_zhen",
       "name": "点阵哨",
       "kind": "main",
@@ -306,7 +284,7 @@
   },
   "decks": {
     "first": [
-      "xi_tiao",
+      "art_h024",
       "xiao_yin",
       "bu_ji",
       "dian_zhen",
@@ -316,7 +294,7 @@
       "qiao_jian"
     ],
     "second": [
-      "xi_tiao",
+      "art_h024",
       "hu_zhao",
       "xiao_yin",
       "gan_rao",
@@ -325,5 +303,13 @@
       "hou_ke",
       "qiao_jian"
     ]
-  }
+  },
+  "retired": [
+    {
+      "template_id": "xi_tiao",
+      "name": "细条",
+      "replaced_by": "art_h024",
+      "reason": "不是官方产品，曾标为存疑。已退役。教学和牌库改用 H024 新细条，模板 id 是 art_h024。"
+    }
+  ]
 }

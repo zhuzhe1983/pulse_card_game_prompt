@@ -34,7 +34,8 @@ def table():
         if card.get("chain_piece") and card["kind"] == "attachment" and not card["grants_guard"]
     )
     cards[chain["template_id"]] = chain
-    cards["zero_atk"] = dict(cards["xi_tiao"], template_id="zero_atk", name="零攻", attack=0)
+    cards["art_h024"] = roster["art_h024"]
+    cards["zero_atk"] = dict(cards["xiao_yin"], template_id="zero_atk", name="零攻", attack=0)
     return cards, chain["template_id"]
 
 
@@ -98,8 +99,8 @@ class FormationTests(unittest.TestCase):
         game.play(0, chain_id, "dian_zhen", index=2)
         game.play(0, chain_id, "hou_ke", index=3)
         self.assertEqual(game.formation_state(0)["percent"], 25)
-        game.spawn(1, "xi_tiao", sick=False)
-        game.attack(0, "xiao_yin", "xi_tiao")
+        game.spawn(1, "art_h024", sick=False)
+        game.attack(0, "xiao_yin", "art_h024")
         self.assertEqual(game.units(1), [])
         self.assertNotIn("xiao_yin", [unit["card_id"] for unit in game.units(0)])
 
@@ -173,7 +174,7 @@ class UpperLinkTests(unittest.TestCase):
         game.max_supply = [4, 4]
         game.supply = [4, 4]
         upper = game.spawn(0, "cm4_stack", sick=False)
-        target = game.spawn(0, "xi_tiao", sick=False)
+        target = game.spawn(0, "art_h024", sick=False)
         game.upper_link(0, upper["iid"], target["iid"])
         self.assertEqual(game.supply[0], 4)
         target["durability"] = 0

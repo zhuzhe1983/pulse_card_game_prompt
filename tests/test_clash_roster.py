@@ -100,7 +100,7 @@ class RosterTests(unittest.TestCase):
             for key in ("cost", "attack", "durability", "guard", "effect"):
                 self.assertEqual(card[key] if key != "effect" else card["effect"], src[key], card["rid"] + key)
         self.assertEqual(sorted(linked), ["dian_zhen", "hou_ke", "qiao_jian", "xiao_yin", "xuan_niu"])
-        kept = {"xi_tiao", "lian_jie", "qian_li", "hu_zhao", "bu_ji", "gan_rao", "hui_chong"}
+        kept = {"lian_jie", "qian_li", "hu_zhao", "bu_ji", "gan_rao", "hui_chong"}
         self.assertTrue(kept.isdisjoint(by_template))
 
     def test_promote_keeps_slot_and_does_not_refresh_support(self):

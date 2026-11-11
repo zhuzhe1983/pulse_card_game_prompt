@@ -12,7 +12,7 @@
       4
     ]
   },
-  "note": "教学局不洗牌。牌库列表第 0 张在顶。第 1 回合打 1 费小印。细条是 3 费。千里眼是 4 费，这一局不用它。最左主控的打击按 10% 向上取整。结束回合后必须立刻开始对方回合。非法行动不改变局面。",
+  "note": "教学局不洗牌。牌库列表第 0 张在顶。第 1 回合打 1 费小印。第 3 回合先手打 3 费的 H024 新细条 art_h024。占位牌细条已退役。千里眼是 4 费，这一局不用它。最左主控的打击按 10% 向上取整。结束回合后必须立刻开始对方回合。非法行动不改变局面。",
   "lesson_steps": [
     {
       "name": "t1_start",
@@ -43,11 +43,11 @@
         ],
         "hands": [
           [
-            "xi_tiao",
+            "art_h024",
             "bu_ji"
           ],
           [
-            "xi_tiao",
+            "art_h024",
             "hu_zhao",
             "xiao_yin",
             "gan_rao",
@@ -114,11 +114,11 @@
         ],
         "hands": [
           [
-            "xi_tiao",
+            "art_h024",
             "bu_ji"
           ],
           [
-            "xi_tiao",
+            "art_h024",
             "hu_zhao",
             "xiao_yin",
             "gan_rao"
@@ -186,12 +186,12 @@
         ],
         "hands": [
           [
-            "xi_tiao",
+            "art_h024",
             "bu_ji",
             "dian_zhen"
           ],
           [
-            "xi_tiao",
+            "art_h024",
             "hu_zhao",
             "xiao_yin",
             "gan_rao"
@@ -267,12 +267,12 @@
         ],
         "hands": [
           [
-            "xi_tiao",
+            "art_h024",
             "bu_ji",
             "dian_zhen"
           ],
           [
-            "xi_tiao",
+            "art_h024",
             "hu_zhao",
             "gan_rao",
             "hui_chong"
@@ -324,7 +324,7 @@
       "name": "t3_play",
       "do": "play",
       "seat": 0,
-      "card": "xi_tiao"
+      "card": "art_h024"
     },
     {
       "name": "t3_end",
@@ -350,7 +350,7 @@
             "lian_jie"
           ],
           [
-            "xi_tiao",
+            "art_h024",
             "hu_zhao",
             "gan_rao",
             "hui_chong"
@@ -373,7 +373,7 @@
           [
             {
               "iid": "u4",
-              "card_id": "xi_tiao",
+              "card_id": "art_h024",
               "durability": 3,
               "attack": 2,
               "sick": true,

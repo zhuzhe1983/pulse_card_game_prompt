@@ -99,7 +99,15 @@ class CostCurveTests(unittest.TestCase):
             src = base[linked]
             for key in ("cost", "attack", "durability", "guard", "effect"):
                 self.assertEqual(card[key], src[key], card["rid"] + key)
-        self.assertEqual(base["xi_tiao"]["cost"], 3)
+        self.assertNotIn("xi_tiao", base)
+        roster_by = {card["template_id"]: card for card in roster()["cards"]}
+        self.assertEqual(roster_by["art_h024"]["cost"], 3)
+        self.assertEqual(roster_by["art_h024"]["attack"], 2)
+        self.assertEqual(roster_by["art_h024"]["durability"], 3)
+        self.assertIsNone(roster_by["art_h024"]["effect"])
+        decks = playtest()["decks"]
+        self.assertIn("art_h024", decks["first"])
+        self.assertIn("art_h024", decks["second"])
         self.assertEqual(base["xiao_yin"]["amount"], 1)
         self.assertEqual(base["hou_ke"]["durability"], 7)
 

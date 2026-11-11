@@ -3158,8 +3158,8 @@
       ],
       "hardware_controller": "independent_host",
       "game_name_zh": "新细条",
-      "game_description": "新一代细条。教学里的细条是另一张没有这批图的牌。",
-      "balance_intent": "不占用基线细条的 id。",
+      "game_description": "StickS3。教学局用的就是这一张。",
+      "balance_intent": "占位牌细条已退役，教学改用这个 id。",
       "faction": "细棍",
       "game_role": "main",
       "kind": "main",
@@ -3181,7 +3181,7 @@
       "growth_basis": "自带电、省电条、新细条和热眼睛是四种细条产品，不是同一条 v1 到 v4。",
       "v8_game_name_zh": "新细条",
       "v8_template_id": "stick_s3",
-      "v8_change": "保留中文名。基线细条仍单独存在。",
+      "v8_change": "保留中文名。占位牌细条已退役，不再单独存在。",
       "design_status": "playtest_draft",
       "hardware_controller_note": null,
       "name": "新细条",
@@ -3189,7 +3189,7 @@
       "cost_band": "series_core",
       "cost_line": "stick_core",
       "series_confidence": "official",
-      "cost_note": "StickS3 是 Stick 本体，不是基线那张细条。"
+      "cost_note": "StickS3 是 Stick 本体。占位牌细条已退役，教学局用 art_h024。"
     },
     {
       "rid": "H025",
