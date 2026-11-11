@@ -49,6 +49,12 @@ class ClashExampleTests(unittest.TestCase):
         self.assertIsNone(link["art_type"])
         self.assertNotIn("xi_tiao", by_id)
         self.assertEqual(data["retired"][0]["replaced_by"], "art_h024")
+        self.assertEqual(by_id["xiao_yin"]["amount"], 1)
+        handoff = (ROOT / "WEB_IMPLEMENTATION_HANDOFF.md").read_text(encoding="utf-8")
+        self.assertIn("花 1 电复活厚壳", handoff)
+        self.assertNotIn("花 2 电", handoff)
+        self.assertIn("复活厚壳 · 1电", handoff)
+        self.assertIn("攻击+1 · 1电", handoff)
         self.assertNotIn("无主控", link["hardware_note"].split("不是无主控")[0])
         self.assertEqual(len(data["cards"]), 11)
         names = [card["name"] for card in data["cards"]]
