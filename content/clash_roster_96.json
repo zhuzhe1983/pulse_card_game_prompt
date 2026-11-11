@@ -144,7 +144,7 @@
       "faction": "细棍",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -170,7 +170,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "只给护卫会改攻击目标，比 1 费的单纯加攻强，上调到 3 费。"
     },
     {
       "rid": "A007",
@@ -292,7 +292,7 @@
       "faction": "细棍",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -318,7 +318,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "热成像帽忽略护卫，上调到 4 费。"
     },
     {
       "rid": "A012",
@@ -390,7 +390,7 @@
       "faction": "细棍",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -416,7 +416,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "八舵帽攻击 +2，比加攻 1 厚一档，上调到 4 费。"
     },
     {
       "rid": "A012b",
@@ -488,7 +488,7 @@
       "faction": "细棍",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -514,7 +514,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "只给护卫，和摇杆帽同一档，上调到 3 费。"
     },
     {
       "rid": "A014",
@@ -586,7 +586,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -613,7 +613,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "护卫再加链节标记，两件强技能叠在一起，上调到 4 费。"
     },
     {
       "rid": "C001b",
@@ -688,7 +688,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 5,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -715,7 +715,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "忽略护卫并且是链节标记，两件强技能，上调到 5 费。"
     },
     {
       "rid": "C001d",
@@ -739,7 +739,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 5,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -766,7 +766,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "忽略护卫并且是链节标记，上调到 5 费。"
     },
     {
       "rid": "C001e",
@@ -790,7 +790,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -817,7 +817,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "护卫再加链节标记，上调到 4 费。"
     },
     {
       "rid": "C001f",
@@ -841,7 +841,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -868,7 +868,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "链节标记会给全队加百分比，不是普通帽子，上调到 3 费。"
     },
     {
       "rid": "C001g",
@@ -892,7 +892,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -919,7 +919,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "链节标记会给全队加百分比，上调到 3 费。"
     },
     {
       "rid": "C001h",
@@ -1045,7 +1045,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -1072,7 +1072,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "链节标记会给全队加百分比，上调到 3 费。"
     },
     {
       "rid": "C001z",
@@ -1096,7 +1096,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -1123,7 +1123,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "链节标记会给全队加百分比，上调到 3 费。"
     },
     {
       "rid": "C002a",
@@ -1145,7 +1145,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -1172,7 +1172,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "回传节既是链节标记又加攻击，上调到 3 费。"
     },
     {
       "rid": "C002b",
@@ -1194,7 +1194,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -1221,7 +1221,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "护卫再加链节标记，上调到 4 费。"
     },
     {
       "rid": "C002c",
@@ -1538,7 +1538,7 @@
       "faction": "小块",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -1564,7 +1564,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "二星把攻击加成从 +1 提到 +2，费用升到 3。升星付 2。"
     },
     {
       "rid": "C004e",
@@ -1586,7 +1586,7 @@
       "faction": "小块",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -1612,7 +1612,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "定位座忽略护卫，上调到 4 费。"
     },
     {
       "rid": "C004g",
@@ -1730,7 +1730,7 @@
       "faction": "小块",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 3,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -1756,7 +1756,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "电池座给护卫，技能强于加攻 1，上调到 3 费。"
     },
     {
       "rid": "C004j",
@@ -1874,7 +1874,7 @@
       "faction": "小块",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 1,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -1900,7 +1900,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "忽略护卫能绕过护卫打基地，1 费过强，上调到 4 费。"
     },
     {
       "rid": "C004m",
@@ -2260,7 +2260,7 @@
       "faction": "串线",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 5,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -2287,7 +2287,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "攻击 +2 并且是链节标记，上调到 5 费。"
     },
     {
       "rid": "H003",
@@ -2912,9 +2912,9 @@
       "faction": "大屏",
       "game_role": "main",
       "kind": "main",
-      "cost": 7,
-      "attack": 2,
-      "durability": 7,
+      "cost": 3,
+      "attack": 1,
+      "durability": 4,
       "guard": true,
       "rush": false,
       "effect": null,
@@ -2938,7 +2938,7 @@
       "cost_band": "series_machine",
       "cost_line": "core_form",
       "series_confidence": "uncertain",
-      "cost_note": "CoreMatrix 是大型灯阵整机，比一块 CoreS3 更大。放在 7 费。"
+      "cost_note": "按普通 Core 的 4 费减 1，定 3 费。护卫保留，耐久收到 3 费的厚度。"
     },
     {
       "rid": "H017",
@@ -2963,10 +2963,10 @@
       "faction": "工位",
       "game_role": "main",
       "kind": "main",
-      "cost": 4,
+      "cost": 5,
       "attack": 2,
-      "durability": 5,
-      "guard": false,
+      "durability": 7,
+      "guard": true,
       "rush": false,
       "effect": null,
       "effect_amount": 0,
@@ -2989,7 +2989,7 @@
       "cost_band": "series_machine",
       "cost_line": "core_form",
       "series_confidence": "uncertain",
-      "cost_note": "PowerHub 在目录里是其他 Core 形态，不是初代 Fire，也不是套件。按接近一块 Core 的体量放在 4 费。"
+      "cost_note": "供电整机放在中段 5 费，做成护卫胖墙，不占用 Core 初代本体的 4 费。"
     },
     {
       "rid": "H018",
@@ -3967,9 +3967,9 @@
       "faction": "表壳",
       "game_role": "main",
       "kind": "main",
-      "cost": 8,
-      "attack": 3,
-      "durability": 5,
+      "cost": 2,
+      "attack": 2,
+      "durability": 2,
       "guard": false,
       "rush": false,
       "effect": null,
@@ -3992,8 +3992,8 @@
       "amount": 0,
       "cost_band": "series_machine",
       "cost_line": "stamp_machine",
-      "series_confidence": "uncertain",
-      "cost_note": "DinMeter 官方总览放在 Stamp 躯壳谱系，但是导轨仪表整机，不是邮票模块。按仪器体量与 Dial 同档。"
+      "series_confidence": "official",
+      "cost_note": "官方文档写明主控是 Stamp-S3，是邮票套装不是邮票模块。按 2 费曲线重配为攻击 2、耐久 2。"
     },
     {
       "rid": "H036a",
@@ -4018,9 +4018,9 @@
       "faction": "表壳",
       "game_role": "main",
       "kind": "main",
-      "cost": 9,
-      "attack": 2,
-      "durability": 6,
+      "cost": 3,
+      "attack": 1,
+      "durability": 4,
       "guard": false,
       "rush": false,
       "effect": null,
@@ -4043,8 +4043,8 @@
       "amount": 0,
       "cost_band": "series_machine",
       "cost_line": "stamp_machine",
-      "series_confidence": "uncertain",
-      "cost_note": "DinMeter 二星，基础档 +1。"
+      "series_confidence": "official",
+      "cost_note": "官方 v1.1 把主控换成 Stamp-S3A，仍是同一套装的二星。费用 +1，改成更肉的攻击 1、耐久 4。"
     },
     {
       "rid": "H037",
@@ -4068,9 +4068,9 @@
       "faction": "表壳",
       "game_role": "main",
       "kind": "main",
-      "cost": 8,
-      "attack": 2,
-      "durability": 6,
+      "cost": 2,
+      "attack": 1,
+      "durability": 3,
       "guard": false,
       "rush": false,
       "effect": null,
@@ -4093,8 +4093,8 @@
       "amount": 0,
       "cost_band": "series_machine",
       "cost_line": "stamp_machine",
-      "series_confidence": "uncertain",
-      "cost_note": "Air Quality 同样是 Stamp 躯壳上的空气站整机，不是邮票模块。"
+      "series_confidence": "official",
+      "cost_note": "商店名是 Air Quality Kit with M5StampS3，文档写由 StampS3 供电。与 DinMeter 同属邮票套装，按 2 费曲线重配为攻击 1、耐久 3。"
     },
     {
       "rid": "H037a",
@@ -4118,9 +4118,9 @@
       "faction": "表壳",
       "game_role": "main",
       "kind": "main",
-      "cost": 9,
-      "attack": 3,
-      "durability": 5,
+      "cost": 3,
+      "attack": 2,
+      "durability": 3,
       "guard": false,
       "rush": false,
       "effect": null,
@@ -4143,8 +4143,8 @@
       "amount": 0,
       "cost_band": "series_machine",
       "cost_line": "stamp_machine",
-      "series_confidence": "uncertain",
-      "cost_note": "Air Quality 二星，基础档 +1。"
+      "series_confidence": "official",
+      "cost_note": "商店名是 Air Quality Kit v1.1 with M5StampS3A，文档写主控换成 Stamp-S3A。二星费用 +1，攻击 2、耐久 3。"
     },
     {
       "rid": "H038",
@@ -4719,7 +4719,7 @@
       "faction": "外设",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -4745,7 +4745,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "GPS 模块忽略护卫，上调到 4 费。"
     },
     {
       "rid": "U002a",
@@ -4767,7 +4767,7 @@
       "faction": "外设",
       "game_role": "attachment",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -4793,7 +4793,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "配件或无独立主控单元。简单加攻、给护卫留在 1 费；忽略护卫或攻击 +2 留在 2 费。不按宿主系列抬到主控档。"
+      "cost_note": "测距眼忽略护卫，上调到 4 费。"
     }
   ]
 }

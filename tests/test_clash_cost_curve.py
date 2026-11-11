@@ -16,11 +16,14 @@ def playtest():
 
 
 class CostCurveTests(unittest.TestCase):
-    def test_every_cost_from_one_to_ten_has_a_card(self):
+    def test_cost_counts_leave_room_in_the_middle(self):
         counts = Counter(card["cost"] for card in roster()["cards"])
-        for cost in range(1, 11):
-            self.assertGreaterEqual(counts[cost], 2, cost)
-        self.assertNotIn(0, counts)
+        self.assertLessEqual(counts[1], 24)
+        self.assertLessEqual(counts[2], 22)
+        self.assertGreaterEqual(counts[3] + counts[4] + counts[5], 25)
+        self.assertEqual(counts[1], 24)
+        self.assertEqual(counts[2], 21)
+        self.assertEqual(counts[3] + counts[4] + counts[5], 34)
 
     def test_stamp_modules_are_one_and_machines_are_not(self):
         by_rid = {card["rid"]: card for card in roster()["cards"]}
@@ -58,8 +61,19 @@ class CostCurveTests(unittest.TestCase):
         self.assertEqual(by_rid["H050"]["cost"], 10)
         self.assertTrue(by_rid["H050"]["upper_host"])
         self.assertNotIn("upper_host", by_rid["H018"])
+        self.assertEqual(by_rid["H016"]["cost"], 3)
+        self.assertTrue(by_rid["H016"]["guard"])
+        self.assertEqual(by_rid["H017"]["cost"], 5)
+        self.assertTrue(by_rid["H017"]["guard"])
+        self.assertGreaterEqual(by_rid["H017"]["durability"], 7)
+        self.assertEqual(by_rid["H036"]["cost"], 2)
+        self.assertEqual(by_rid["H036a"]["cost"], 3)
+        self.assertEqual(by_rid["H037"]["cost"], 2)
+        self.assertEqual(by_rid["H037a"]["cost"], 3)
+        self.assertEqual(by_rid["H036"]["series_confidence"], "official")
+        self.assertEqual(by_rid["H037"]["series_confidence"], "official")
+        self.assertEqual(by_rid["H018"]["series_confidence"], "uncertain")
         for rid in ("H016", "H017", "H018", "H036", "H037"):
-            self.assertEqual(by_rid[rid]["series_confidence"], "uncertain")
             self.assertEqual(by_rid[rid]["cost_band"], "series_machine")
         self.assertEqual(by_rid["H004"]["cost_line"], "core_kit")
         self.assertEqual(by_rid["H004"]["cost"], 5)
@@ -72,7 +86,11 @@ class CostCurveTests(unittest.TestCase):
             nxt = card.get("next_template_id")
             if not nxt:
                 continue
-            self.assertEqual(max(1, by_id[nxt]["cost"] - card["cost"]), 1, card["rid"])
+            diff = max(1, by_id[nxt]["cost"] - card["cost"])
+            self.assertGreaterEqual(diff, 1, card["rid"])
+            if card["kind"] == "main":
+                self.assertEqual(diff, 1, card["rid"])
+        self.assertEqual(by_id["art_c004d"]["cost"] - by_id["art_c004c"]["cost"], 2)
         base = {card["template_id"]: card for card in playtest()["cards"]}
         for card in cards:
             linked = card.get("baseline_template_id")
@@ -90,7 +108,8 @@ class CostCurveTests(unittest.TestCase):
         self.assertGreaterEqual(sum(card["cost"] == 1 for card in parts), 8)
         for card in parts:
             self.assertEqual(card["cost_band"], "accessory")
-            self.assertIn(card["cost"], (1, 2))
+            self.assertIn(card["cost"], (1, 2, 3, 4, 5))
+        self.assertGreaterEqual(sum(card["cost"] >= 3 for card in parts), 12)
 
 
 if __name__ == "__main__":

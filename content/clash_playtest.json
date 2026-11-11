@@ -185,7 +185,7 @@
       "template_id": "qian_li",
       "name": "千里眼",
       "kind": "attachment",
-      "cost": 2,
+      "cost": 4,
       "attack": 0,
       "durability": 0,
       "guard": false,
@@ -200,7 +200,7 @@
       "cost_band": "accessory",
       "cost_line": "accessory",
       "series_confidence": "official",
-      "cost_note": "战术或配件，不按主机系列改费用。"
+      "cost_note": "忽略护卫能绕过护卫打基地，和 96 张里的同类配件一起上调到 4 费。"
     },
     {
       "template_id": "hu_zhao",

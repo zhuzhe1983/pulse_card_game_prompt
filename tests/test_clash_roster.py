@@ -143,7 +143,7 @@ class RosterTests(unittest.TestCase):
         self.assertEqual(lateral.exception.code, "no_growth")
 
         motion = Game.empty(cards)
-        motion.supply = [2, 0]
+        motion.supply = [3, 0]
         motion.hands = [["art_c004d"], []]
         host = motion.spawn(0, "dian_zhen", 0, sick=False)
         host["attachments"] = ["art_c004c"]

@@ -209,7 +209,7 @@ class ClashExampleTests(unittest.TestCase):
         self.assertEqual(full.view(), before)
 
         guard = Game.empty(cards)
-        guard.supply = [2, 2]
+        guard.supply = [4, 4]
         guard.hands = [["hu_zhao", "qian_li"], []]
         guard.spawn(0, "dian_zhen", 0)
         with self.assertRaises(ClashError):
