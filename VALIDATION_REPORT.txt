@@ -1,120 +1,12 @@
-脉冲对决 v1.0.0 · 参考规格验证报告
+PULSE tactical-v1 · 2026-11-13
 
-Executed at UTC: 2026-11-08T11:40:02.561682+00:00
-Python: 3.12.14
-ruleset_id: pcg.core.v1
-content_hash: 04fdd26a10af50aada7ade7f34ec97be2c24df67786be687a878b0299a46dbaf
-Unit tests: 85; failures: 0; errors: 0; skipped: 0; duration_seconds: 2.239
-Schema validation return code: 0
+通过：python3 -m unittest discover -s tests
+- 当前 CONTRACT 与 balance 配置一致，参考引擎 SHA-256 有效。
+- 六组 Node 行为套件通过（战术、随机牌组、装配、设备与升星、协同、AI）。
+- 同级 web 引擎、设备牌表、战术牌表、平衡与能力表字节一致。
 
-Scope: pure reference logic, deterministic golden vectors, packet codecs and simulated byte-level interrupted writes.
-Not tested: physical NFC cards/readers, ESP32/Android/iOS/Web clients, real RF/ESP-NOW, true card power loss, remote deployment, human gameplay balance.
-No complete production game client or online service is included in this specification bundle.
+web 验证：node tools/check.cjs 通过，含 11 组新战术测试和 1566 项图鉴检查。
+真实浏览器覆盖：新增 8 张技能、拒绝原子性、AI、双人交接、疲劳终局与重开、重开取消旧 AI、拖拽取消、5 种视口及大厅/图鉴。
+200 种子自对弈全部结束，无非法 AI 动作，数据见 docs/review/。
 
-SCHEMA VALIDATION
-Schemas checked: 8
-Valid positive objects: 87/87
-  battle-state.schema.json: 21
-  battle-view.schema.json: 2
-  content-pack.schema.json: 1
-  envelope.schema.json: 22
-  envelope.schema.json#/$defs/command_body: 20
-  frame.schema.json: 11
-  hero-descriptor.schema.json: 4
-  player-snapshot.schema.json: 6
-  reader-capabilities.schema.json: 0
-Wire demo nested views: envelope-format checks only; not counted as core battle/view instances.
-Schema definitions checked without a supplied positive instance: reader-capabilities.schema.json
-PASS: all supplied schemas and adapted positive instances are valid.
-
-UNIT TEST DETAILS
-test_dial_order (test_core.BattleTests.test_dial_order) ... ok
-test_empty_rounds_auto_settle (test_core.BattleTests.test_empty_rounds_auto_settle) ... ok
-test_empty_target_unit_vs_tactic (test_core.BattleTests.test_empty_target_unit_vs_tactic) ... ok
-test_five_plays_auto_pass (test_core.BattleTests.test_five_plays_auto_pass) ... ok
-test_full_golden_and_manual_totals (test_core.BattleTests.test_full_golden_and_manual_totals) ... ok
-test_idempotence_accept_reject_conflict (test_core.BattleTests.test_idempotence_accept_reject_conflict) ... ok
-test_initial_and_invalid_decks (test_core.BattleTests.test_initial_and_invalid_decks) ... ok
-test_invalid_actions_are_atomic (test_core.BattleTests.test_invalid_actions_are_atomic) ... ok
-test_legal_enumerator_and_unknown_effect (test_core.BattleTests.test_legal_enumerator_and_unknown_effect) ... ok
-test_pass_permanent (test_core.BattleTests.test_pass_permanent) ... ok
-test_private_view (test_core.BattleTests.test_private_view) ... ok
-test_real_twenty_plays_exhaust_hands_then_auto_draw (test_core.BattleTests.test_real_twenty_plays_exhaust_hands_then_auto_draw) ... ok
-test_shield_once (test_core.BattleTests.test_shield_once) ... ok
-test_stable (test_core.BattleTests.test_stable) ... ok
-test_tactic_null_row_and_discard (test_core.BattleTests.test_tactic_null_row_and_discard) ... ok
-test_target_required_no_self_boost (test_core.BattleTests.test_target_required_no_self_boost) ... ok
-test_three_draws_and_starters (test_core.BattleTests.test_three_draws_and_starters) ... ok
-test_zero_stays_and_counts_other_row (test_core.BattleTests.test_zero_stays_and_counts_other_row) ... ok
-test_golden (test_core.CanonicalTests.test_golden) ... ok
-test_invalid (test_core.CanonicalTests.test_invalid) ... ok
-test_keys_unicode_and_duplicate (test_core.CanonicalTests.test_keys_unicode_and_duplicate) ... ok
-test_manual_bytes_and_numbers (test_core.CanonicalTests.test_manual_bytes_and_numbers) ... ok
-test_uid_case_and_order (test_core.CanonicalTests.test_uid_case_and_order) ... ok
-test_branches_and_same_id_conflict (test_core.PlayerTests.test_branches_and_same_id_conflict) ... ok
-test_calendar_midnight_and_clock (test_core.PlayerTests.test_calendar_midnight_and_clock) ... ok
-test_daily_duplicate_and_pool_change (test_core.PlayerTests.test_daily_duplicate_and_pool_change) ... ok
-test_deterministic_crash_retry (test_core.PlayerTests.test_deterministic_crash_retry) ... ok
-test_draw_vectors (test_core.PlayerTests.test_draw_vectors) ... ok
-test_duplicates_and_cosmetic (test_core.PlayerTests.test_duplicates_and_cosmetic) ... ok
-test_future_schema_read_only (test_core.PlayerTests.test_future_schema_read_only) ... ok
-test_login_local_and_card_newer (test_core.PlayerTests.test_login_local_and_card_newer) ... ok
-test_next_day_and_other_player (test_core.PlayerTests.test_next_day_and_other_player) ... ok
-test_structural_validation (test_core.PlayerTests.test_structural_validation) ... ok
-test_unknown_nested_fields_preserved (test_core.PlayerTests.test_unknown_nested_fields_preserved) ... ok
-test_bad_new_payload_falls_back_to_old_valid_slot (test_storage.StorageTests.test_bad_new_payload_falls_back_to_old_valid_slot) ... ok
-test_claim_day_change_preserves_unknown_nested_fields (test_storage.StorageTests.test_claim_day_change_preserves_unknown_nested_fields) ... ok
-test_claim_vectors_match_rewards_and_snapshot_hashes (test_storage.StorageTests.test_claim_vectors_match_rewards_and_snapshot_hashes) ... ok
-test_codec0_matches_frozen_hex_hash_and_binary (test_storage.StorageTests.test_codec0_matches_frozen_hex_hash_and_binary) ... ok
-test_container_capacity_exact_fit_and_one_byte_short (test_storage.StorageTests.test_container_capacity_exact_fit_and_one_byte_short) ... ok
-test_corrupted_header_crc_and_uncommitted_marker_are_rejected (test_storage.StorageTests.test_corrupted_header_crc_and_uncommitted_marker_are_rejected) ... ok
-test_corrupted_or_uncommitted_future_header_can_fall_back (test_storage.StorageTests.test_corrupted_or_uncommitted_future_header_can_fall_back) ... ok
-test_crc_valid_future_headers_block_read_and_overwrite (test_storage.StorageTests.test_crc_valid_future_headers_block_read_and_overwrite) ... ok
-test_equal_generation_different_snapshots_are_a_conflict (test_storage.StorageTests.test_equal_generation_different_snapshots_are_a_conflict) ... ok
-test_every_raw_rewrite_byte_cut_preserves_old_or_complete_new (test_storage.StorageTests.test_every_raw_rewrite_byte_cut_preserves_old_or_complete_new) ... ok
-test_first_raw_write_is_unreadable_until_complete_commit (test_storage.StorageTests.test_first_raw_write_is_unreadable_until_complete_commit) ... ok
-test_future_snapshot_is_readonly_and_cannot_be_redeemed_or_bumped (test_storage.StorageTests.test_future_snapshot_is_readonly_and_cannot_be_redeemed_or_bumped) ... ok
-test_generation_overflow_refuses_without_wrap (test_storage.StorageTests.test_generation_overflow_refuses_without_wrap) ... ok
-test_hash_valid_nonobject_payloads_fall_back_without_crashing (test_storage.StorageTests.test_hash_valid_nonobject_payloads_fall_back_without_crashing) ... ok
-test_hash_valid_snapshot_missing_collection_falls_back (test_storage.StorageTests.test_hash_valid_snapshot_missing_collection_falls_back) ... ok
-test_header_offsets_crc_and_ndef_overhead (test_storage.StorageTests.test_header_offsets_crc_and_ndef_overhead) ... ok
-test_login_same_id_different_hash_and_parallel_branches_conflict (test_storage.StorageTests.test_login_same_id_different_hash_and_parallel_branches_conflict) ... ok
-test_login_selection_never_requests_automatic_card_write (test_storage.StorageTests.test_login_selection_never_requests_automatic_card_write) ... ok
-test_mixed_players_are_a_conflict (test_storage.StorageTests.test_mixed_players_are_a_conflict) ... ok
-test_ndef_matches_frozen_vector_and_binary (test_storage.StorageTests.test_ndef_matches_frozen_vector_and_binary) ... ok
-test_nonempty_damaged_card_is_not_automatically_initialized (test_storage.StorageTests.test_nonempty_damaged_card_is_not_automatically_initialized) ... ok
-test_oversized_raw_save_refuses_without_changing_card_or_snapshot (test_storage.StorageTests.test_oversized_raw_save_refuses_without_changing_card_or_snapshot) ... ok
-test_raw_fixture_selects_frozen_slot_and_generation (test_storage.StorageTests.test_raw_fixture_selects_frozen_slot_and_generation) ... ok
-test_reexport_of_identical_snapshot_remains_valid (test_storage.StorageTests.test_reexport_of_identical_snapshot_remains_valid) ... ok
-test_same_snapshot_id_with_different_hash_is_a_conflict (test_storage.StorageTests.test_same_snapshot_id_with_different_hash_is_a_conflict) ... ok
-test_zlib_and_ndef_round_trip (test_storage.StorageTests.test_zlib_and_ndef_round_trip) ... ok
-test_ack_bitmap_bit_order_and_index_bounds (test_wire.WireConformanceTests.test_ack_bitmap_bit_order_and_index_bounds) ... ok
-test_ack_spare_bits_rejected_even_with_correct_crc (test_wire.WireConformanceTests.test_ack_spare_bits_rejected_even_with_correct_crc) ... ok
-test_active_duplicate_payload_conflict (test_wire.WireConformanceTests.test_active_duplicate_payload_conflict) ... ok
-test_active_transfer_metadata_conflict (test_wire.WireConformanceTests.test_active_transfer_metadata_conflict) ... ok
-test_bad_crc_does_not_allocate_reassembly (test_wire.WireConformanceTests.test_bad_crc_does_not_allocate_reassembly) ... ok
-test_completed_cache_capacity_and_ttl (test_wire.WireConformanceTests.test_completed_cache_capacity_and_ttl) ... ok
-test_completed_duplicate_payload_conflict (test_wire.WireConformanceTests.test_completed_duplicate_payload_conflict) ... ok
-test_documented_canonical_rejections (test_wire.WireConformanceTests.test_documented_canonical_rejections) ... ok
-test_documented_canonical_vectors (test_wire.WireConformanceTests.test_documented_canonical_vectors) ... ok
-test_documented_frame_vector_exact (test_wire.WireConformanceTests.test_documented_frame_vector_exact) ... ok
-test_envelope_length_and_fragment_boundary_limits (test_wire.WireConformanceTests.test_envelope_length_and_fragment_boundary_limits) ... ok
-test_hard_deadline_rejects_regular_slow_progress (test_wire.WireConformanceTests.test_hard_deadline_rejects_regular_slow_progress) ... ok
-test_idle_timeout_is_extended_by_new_fragments_only (test_wire.WireConformanceTests.test_idle_timeout_is_extended_by_new_fragments_only) ... ok
-test_invalid_mtu_is_rejected_before_fragment_arithmetic (test_wire.WireConformanceTests.test_invalid_mtu_is_rejected_before_fragment_arithmetic) ... ok
-test_lost_final_ack_duplicate_returns_published_complete_ack (test_wire.WireConformanceTests.test_lost_final_ack_duplicate_returns_published_complete_ack) ... ok
-test_maximum_envelope_uses_79_or_47_fragments (test_wire.WireConformanceTests.test_maximum_envelope_uses_79_or_47_fragments) ... ok
-test_out_of_order_and_duplicate_deliver_exactly_once (test_wire.WireConformanceTests.test_out_of_order_and_duplicate_deliver_exactly_once) ... ok
-test_stream_batch_limit_is_per_message (test_wire.WireConformanceTests.test_stream_batch_limit_is_per_message) ... ok
-test_stream_one_byte_reads_of_concatenated_messages (test_wire.WireConformanceTests.test_stream_one_byte_reads_of_concatenated_messages) ... ok
-test_stream_rejects_zero_and_oversized_length_headers (test_wire.WireConformanceTests.test_stream_rejects_zero_and_oversized_length_headers) ... ok
-test_transfer_id_gap_before_and_during_reassembly (test_wire.WireConformanceTests.test_transfer_id_gap_before_and_during_reassembly) ... ok
-test_wire_golden_canonical_and_stream_bytes (test_wire.WireConformanceTests.test_wire_golden_canonical_and_stream_bytes) ... ok
-test_wire_golden_control_frames_exact (test_wire.WireConformanceTests.test_wire_golden_control_frames_exact) ... ok
-test_wire_golden_frames_exact (test_wire.WireConformanceTests.test_wire_golden_frames_exact) ... ok
-test_wrong_link_is_rejected (test_wire.WireConformanceTests.test_wrong_link_is_rejected) ... ok
-
-----------------------------------------------------------------------
-Ran 85 tests in 2.215s
-
-OK
+未验证：真人平衡、实体手机手势、实体 NFC。本地构建不等于线上发布。

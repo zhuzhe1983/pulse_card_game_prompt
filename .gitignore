@@ -4,3 +4,6 @@
 *.[cC][dD][rR]
 /card_export*/
 /card_assets*.zip
+
+__pycache__/
+*.pyc

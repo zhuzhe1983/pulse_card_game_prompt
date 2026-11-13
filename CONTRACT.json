@@ -1,36 +1,45 @@
 {
-  "spec_version": "1.0.0",
-  "spec_status": "implementation_baseline_not_hardware_certification",
+  "spec_version": "2.0.0",
+  "spec_status": "implemented_playtest",
   "product_name": "脉冲对决",
-  "product_slug": "pulse-card",
-  "protocol": "pcg",
-  "protocol_version": "1.0",
-  "ruleset_id": "pcg.core.v1",
-  "content_pack_id": "m5.core.v1",
-  "content_pack_version": "1.0.0",
-  "save_schema_version": 1,
-  "player_card_container_version": 1,
-  "canonical_encoding": "PCG-C14N-1",
-  "game_calendar_offset_min": 480,
-  "daily_claim_scope": "player_id_and_hero_card_id_and_game_day",
-  "migration_policy": "explicit_verified_full_player_card_write",
-  "default_trust_profile": "casual_local",
-  "deck_size": 10,
-  "max_template_copies": 1,
-  "rows": ["front", "rear"],
-  "max_rounds": 3,
-  "max_plays_per_round": 5,
-  "round_win_points": 2,
-  "round_draw_points": 1,
-  "early_finish_points": 4,
-  "initial_draw": "whole_selected_deck",
-  "between_round_draw": 0,
-  "core_ops": ["NONE", "BOOST", "DAMAGE", "SELF_BOOST_OTHER_ROW"],
-  "core_traits": ["shield_once", "stable"],
-  "max_json_integer": 9007199254740991,
-  "max_snapshot_plain_bytes": 65536,
-  "raw_player_card_slot_bytes": 4096,
-  "raw_player_card_slot_count": 2,
-  "player_card_header_bytes": 96,
-  "max_lineage_tail": 16
+  "ruleset_id": "pcg.clash.v0",
+  "balance_version": "tactical-v1",
+  "rules": {
+    "baseLife": 30,
+    "maxSupply": 10,
+    "handLimit": 10,
+    "boardLimit": 7,
+    "openingHand": [
+      3,
+      4
+    ],
+    "adjacencyAttack": 0,
+    "adjacencyCap": 1
+  },
+  "random_deck": {
+    "size": 30,
+    "mains": 16,
+    "spells": 10,
+    "attachments": 4
+  },
+  "max_template_copies": 2,
+  "chain_top_copies": 1,
+  "content_load_order": [
+    "content/clash_playtest.json",
+    "content/clash_roster_96.json",
+    "content/clash_services.json",
+    "content/clash_tactics.json",
+    "content/clash_balance.json"
+  ],
+  "reference": {
+    "path": "reference/clash.js",
+    "sha256": "d334073d56d4bd06b3633b44e49cdc0b770642b33d05ae868c116f4080fe170c"
+  },
+  "retired_ruleset_archive": "archive/pre-tactical-20261113",
+  "non_goals": [
+    "old_gwent_rounds",
+    "old_collection_and_save",
+    "remote_multiplayer",
+    "hardware_certification"
+  ]
 }

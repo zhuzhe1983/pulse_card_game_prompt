@@ -1,46 +1,13 @@
-# 脉冲对决
+# PULSE · 脉冲对决规格
 
-中文显示名为「脉冲对决」，英文显示名为 PULSE。技术标识保持 `pulse-card` 与协议 `pcg`。
+当前唯一主线：`pcg.clash.v0 / tactical-v1`，已实现、待真人试玩。30 生命、7 台主控位、12 张技能、16/10/4 随机牌组；原昆特式点数方案已归档。
 
-现在要玩的是单局回合战：双方基地、会增长并每回合重置的供电、主控单位的攻击和耐久。规则在 `docs/01_GAMEPLAY.md`，Chain、上位连接、服务牌和夺舍在 `docs/19_SYNERGY_AND_SERVICES.md`。试玩卡在 `content/clash_playtest.json`，服务牌在 `content/clash_services.json`，96 张扩展在 `content/clash_roster_96.json`，教学核对在 `fixtures/clash_v0_lesson.json`，网页入口是 `WEB_IMPLEMENTATION_HANDOFF.md`。给接手下一位的中文索引在 [`HANDOFF.md`](HANDOFF.md)。编号 `pcg.clash.v0`，平衡还没验证。旧的三局点数规则留在 `docs/history/`，冻结卡包和参考裁判仍是 `pcg.core.v1`，这次没有改它们的字节。
+先读 [START_HERE.md](START_HERE.md)、[游戏规格](docs/01_GAMEPLAY.md) 和 [复审报告](docs/09_TUTORIAL_AND_PLAYTEST.md)。网页实现位于隔壁 pulse_card_game_web，当前参考裁判为 reference/clash.js，两边引擎与配置保持字节一致。
 
-中文显示名在 `content/zh-CN.json`，英文显示名在 `content/en.json`。扩展目录在 `docs/13_WORLD_AND_FACTIONS.md`、`docs/14_EXPANSION_DRAFT.md` 和 `content/game_catalog.csv`，那是旧点数规则的未启用草案。
+```bash
+python3 -m unittest discover -s tests
+```
 
-卡面实验在 `docs/16_CARD_FACE_STYLES.md`。第一轮整卡生成在 `asset/concepts/cardputerzero/`，已放弃。当前模板预览在 `asset/concepts/cardputerzero-template/`，状态 needs_revision，不是验收稿。产品图见 `research/front_image_v5.md`。v3 的 3 张不是最新结论，也不是官方一共只有 3 张。
+检查需要 Python 3 与 Node.js，不需要 pip 包。卡牌加载顺序：clash_playtest → clash_roster_96 → clash_tactics → clash_balance.card_overrides；规则读取 clash_balance.rules。旧 clash_playtest/clash_services/教学 fixture 是基线资料，不是当前数值。根 CONTRACT.json 已改为当前契约。
 
-原卡和角色图的序号已去掉，字节没有改。档案在 `asset/offical/`，工作副本在 `asset/card/` 和 `asset/char/`。StampFly、StamPLC、CoreMatrix、CardputerZero 的 style-a / style-b 预览已入库，状态是 preview_not_accepted，配色按产品分开，还没有验收。索引在 `asset/offical/README.md` 和 `asset/preview/README.md`。
-
-## 进阶：实现与协议
-
-本目录仍是实现基线。它定义玩法、角色获取、玩家卡保存、跨平台对战、传输适配、版本兼容和互操作验证。显示名可以再改，协议字段、规则、序列化和黄金测试向量必须一致。
-
-## 使用方法
-
-把整个目录或 ZIP 放进目标开发项目，首先将 `START_HERE.txt` 的完整内容交给 coding agent。需要单文件提示词时使用 `UNIVERSAL_PROMPT_FULL.txt`。不同平台可以采用不同语言、界面框架与读卡驱动，但必须通过同一组测试向量。
-
-`CONTRACT.json` 是本次确认的参数表。详细字段以对应规范、JSON Schema、内容包和 fixtures 为准。发现相互冲突必须报告并修订规范，禁止客户端自行选择不同解释。
-
-## 交付范围
-
-本包是可执行规格和参考裁判，不是已经完成的 ESP32 固件、手机应用或联网服务。参考实现用于确定行为和测试移植；真实 NFC 读写、无线传输、系统权限和电源中断恢复仍必须在目标硬件验收。
-
-## 读取顺序
-
-1. `START_HERE.txt` 与 `CONTRACT.json`。
-2. `docs/00_PRODUCT_AND_DECISIONS.md`、`01_GAMEPLAY.md`、`02_STYLE_AND_UX.md`。
-3. `03_NFC_PLAYER_SAVE.md`、`04_WIRE_PROTOCOL.md`、`05_PLATFORM_ADAPTERS.md`。
-4. `06_VERSION_COMPATIBILITY.md`、`07_ACCEPTANCE_AND_RECOVERY.md`、`08_AGENT_IMPLEMENTATION_CONTRACT.md`。
-5. `09_TUTORIAL_AND_PLAYTEST.md`、`10_SOURCES_AND_MATERIALS.md`、`11_REFERENCE_AND_DATA_CONTRACT.md`、`12_LOBBY_AND_SESSION.md`。
-6. `schemas/`、`content/`、`examples/`、`fixtures/` 与 `reference/`。
-
-## 验证
-
-在本目录执行 `python -m unittest discover -s tests -v`。标准库参考测试不需要联网。另有 JSON Schema 验证时，需要运行环境提供 `jsonschema`，并必须在验证报告中明确有没有执行。
-
-所有日期样例都是固定测试数据，不应用来设置设备的当前时间。随机 UUID、首局种子与平台当前 UTC 时间由实际运行环境提供；确定性规则引擎不得自行读系统时间或抽随机数。
-
-## 单文件与完整开发包
-
-`UNIVERSAL_PROMPT_FULL.txt` 包含主提示词、全部需求章节和关键机器契约，供只能粘贴文本的工具使用。完整开发包额外提供 Python 参考实现、完整状态/二进制 fixtures 和测试。上下文较小的 coding agent 应优先接收 ZIP 与 START_HERE，按章节读取；不要在不支持的上下文长度下截断尾部协议。
-
-核心命令行参考：`python -m reference.runner`。输入是一行一份 JSON 的开发 oracle，和 PCG 的线上 envelope/帧边界不同。可选操作见参考实现；例如 `{"op":"game_day","args":{"utc_ms":1794103200000}}`。
+旧 pcg.core.v1 的源码、契约、数据、测试、存档和联网设计保存在本地 archive/pre-tactical-20261113（6a3ce9d）。查看方式：`git show archive/pre-tactical-20261113:CONTRACT.json`。没有删除设备原图、来源资料或未跟踪的美术草稿。
