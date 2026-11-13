@@ -4,6 +4,8 @@
 
 视觉主线为电子工作台，内置 ImageGen 位图组件和 12 张技能插画已接入网页；不使用原木酒馆主题。见 [视觉与交互规范](docs/02_STYLE_AND_UX.md)。
 
+网页支持简体中文和英语，覆盖卡名、技能、战斗日志与图鉴；切换语言保留对局状态。英文词库同步保存在 `content/clash_i18n_en.json`，详情见 [视觉与交互规范](docs/02_STYLE_AND_UX.md)。
+
 先读 [START_HERE.md](START_HERE.md)、[游戏规格](docs/01_GAMEPLAY.md) 和 [复审报告](docs/09_TUTORIAL_AND_PLAYTEST.md)。网页实现位于隔壁 pulse_card_game_web，当前参考裁判为 reference/clash.js，两边引擎与配置保持字节一致。
 
 ```bash
