@@ -2,6 +2,8 @@
 
 当前唯一主线：`pcg.clash.v0 / tactical-v1`，已实现、待真人试玩。30 生命、7 台主控位、12 张技能、16/10/4 随机牌组；原昆特式点数方案已归档。
 
+视觉主线为电子工作台，内置 ImageGen 位图组件和 12 张技能插画已接入网页；不使用原木酒馆主题。见 [视觉与交互规范](docs/02_STYLE_AND_UX.md)。
+
 先读 [START_HERE.md](START_HERE.md)、[游戏规格](docs/01_GAMEPLAY.md) 和 [复审报告](docs/09_TUTORIAL_AND_PLAYTEST.md)。网页实现位于隔壁 pulse_card_game_web，当前参考裁判为 reference/clash.js，两边引擎与配置保持字节一致。
 
 ```bash
